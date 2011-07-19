@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TBXML.h"
 
-@class TBXML;
-@class TBXMLElement;
 @class Course;
 @class Lesson;
 

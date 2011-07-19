@@ -119,13 +119,13 @@
 				TBXMLElement* textStream = [TBXML childElementNamed:@"textstream" parentElement:body];
 				if (textStream) {
 					lesson.setences = [[NSMutableArray alloc] init];
-					[self loadSentence:textStream toSentences:lesson.setences];
+					[self loadSentence:textStream to:lesson.setences];
 				}
 				// load teachers
 				TBXMLElement* teachers = [TBXML childElementNamed:@"teachers" parentElement:body];
 				if (teachers) {
 					lesson.teachers = [[NSMutableArray alloc] init];
-					[self loadTeacher:teachers toTeachers:lesson.teachers];
+					[self loadTeacher:teachers to:lesson.teachers];
 				}
 				// get wav file
 				TBXMLElement* media = [TBXML childElementNamed:@"media" parentElement:body];
