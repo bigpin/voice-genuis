@@ -33,6 +33,14 @@
 		0D8E168413D471830005CD0F /* ScenesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167813D471830005CD0F /* ScenesViewController.xib */; };
 		0D8E168513D471830005CD0F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E167B13D471830005CD0F /* SettingViewController.m */; };
 		0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167C13D471830005CD0F /* SettingViewController.xib */; };
+		E222057C13D5B89F006BA2A4 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E222056E13D5B89F006BA2A4 /* Course.m */; };
+		E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057013D5B89F006BA2A4 /* CourseParser.m */; };
+		E222057E13D5B89F006BA2A4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057213D5B89F006BA2A4 /* Lesson.m */; };
+		E222057F13D5B89F006BA2A4 /* Sentence.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057413D5B89F006BA2A4 /* Sentence.m */; };
+		E222058013D5B89F006BA2A4 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057713D5B89F006BA2A4 /* NSDataAdditions.m */; };
+		E222058113D5B89F006BA2A4 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057913D5B89F006BA2A4 /* TBXML.m */; };
+		E222058213D5B89F006BA2A4 /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057B13D5B89F006BA2A4 /* Teacher.m */; };
+		E222058413D5B9CA006BA2A4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E222058313D5B9CA006BA2A4 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +91,21 @@
 		0D8E167A13D471830005CD0F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		0D8E167B13D471830005CD0F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		0D8E167C13D471830005CD0F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		E222056D13D5B89F006BA2A4 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		E222056E13D5B89F006BA2A4 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		E222056F13D5B89F006BA2A4 /* CourseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseParser.h; sourceTree = "<group>"; };
+		E222057013D5B89F006BA2A4 /* CourseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseParser.m; sourceTree = "<group>"; };
+		E222057113D5B89F006BA2A4 /* Lesson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lesson.h; sourceTree = "<group>"; };
+		E222057213D5B89F006BA2A4 /* Lesson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lesson.m; sourceTree = "<group>"; };
+		E222057313D5B89F006BA2A4 /* Sentence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sentence.h; sourceTree = "<group>"; };
+		E222057413D5B89F006BA2A4 /* Sentence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sentence.m; sourceTree = "<group>"; };
+		E222057613D5B89F006BA2A4 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
+		E222057713D5B89F006BA2A4 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
+		E222057813D5B89F006BA2A4 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		E222057913D5B89F006BA2A4 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		E222057A13D5B89F006BA2A4 /* Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.h; sourceTree = "<group>"; };
+		E222057B13D5B89F006BA2A4 /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
+		E222058313D5B9CA006BA2A4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E222058413D5B9CA006BA2A4 /* AVFoundation.framework in Frameworks */,
 				0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */,
 				0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */,
 				0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */,
@@ -112,6 +136,7 @@
 		0D8E161C13D471580005CD0F = {
 			isa = PBXGroup;
 			children = (
+				E222058313D5B9CA006BA2A4 /* AVFoundation.framework */,
 				0D8E166913D471830005CD0F /* Classes */,
 				0D8E163113D471580005CD0F /* Voice */,
 				0D8E165613D471580005CD0F /* VoiceTests */,
@@ -205,6 +230,7 @@
 		0D8E166913D471830005CD0F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E222056C13D5B89F006BA2A4 /* CourseParser */,
 				0D8E166A13D471830005CD0F /* Favor */,
 				0D8E166E13D471830005CD0F /* Listening */,
 				0D8E167213D471830005CD0F /* Scene */,
@@ -255,6 +281,35 @@
 				0D8E167C13D471830005CD0F /* SettingViewController.xib */,
 			);
 			path = Setting;
+			sourceTree = "<group>";
+		};
+		E222056C13D5B89F006BA2A4 /* CourseParser */ = {
+			isa = PBXGroup;
+			children = (
+				E222056D13D5B89F006BA2A4 /* Course.h */,
+				E222056E13D5B89F006BA2A4 /* Course.m */,
+				E222056F13D5B89F006BA2A4 /* CourseParser.h */,
+				E222057013D5B89F006BA2A4 /* CourseParser.m */,
+				E222057113D5B89F006BA2A4 /* Lesson.h */,
+				E222057213D5B89F006BA2A4 /* Lesson.m */,
+				E222057313D5B89F006BA2A4 /* Sentence.h */,
+				E222057413D5B89F006BA2A4 /* Sentence.m */,
+				E222057513D5B89F006BA2A4 /* TBXML */,
+				E222057A13D5B89F006BA2A4 /* Teacher.h */,
+				E222057B13D5B89F006BA2A4 /* Teacher.m */,
+			);
+			path = CourseParser;
+			sourceTree = "<group>";
+		};
+		E222057513D5B89F006BA2A4 /* TBXML */ = {
+			isa = PBXGroup;
+			children = (
+				E222057613D5B89F006BA2A4 /* NSDataAdditions.h */,
+				E222057713D5B89F006BA2A4 /* NSDataAdditions.m */,
+				E222057813D5B89F006BA2A4 /* TBXML.h */,
+				E222057913D5B89F006BA2A4 /* TBXML.m */,
+			);
+			path = TBXML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +431,13 @@
 				0D8E168113D471830005CD0F /* LessonsViewController.m in Sources */,
 				0D8E168313D471830005CD0F /* ScenesViewController.m in Sources */,
 				0D8E168513D471830005CD0F /* SettingViewController.m in Sources */,
+				E222057C13D5B89F006BA2A4 /* Course.m in Sources */,
+				E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */,
+				E222057E13D5B89F006BA2A4 /* Lesson.m in Sources */,
+				E222057F13D5B89F006BA2A4 /* Sentence.m in Sources */,
+				E222058013D5B89F006BA2A4 /* NSDataAdditions.m in Sources */,
+				E222058113D5B89F006BA2A4 /* TBXML.m in Sources */,
+				E222058213D5B89F006BA2A4 /* Teacher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +508,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "-lz";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -462,6 +525,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-lz";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -558,6 +622,7 @@
 				0D8E166513D471580005CD0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0D8E166613D471580005CD0F /* Build configuration list for PBXNativeTarget "VoiceTests" */ = {
 			isa = XCConfigurationList;
@@ -566,6 +631,7 @@
 				0D8E166813D471580005CD0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
