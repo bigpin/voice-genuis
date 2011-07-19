@@ -140,7 +140,6 @@
 		0D8E161C13D471580005CD0F = {
 			isa = PBXGroup;
 			children = (
-				E222058313D5B9CA006BA2A4 /* AVFoundation.framework */,
 				0D8E166913D471830005CD0F /* Classes */,
 				0D8E163113D471580005CD0F /* Voice */,
 				0DDAD85313D5C9BC00A718E6 /* Resources */,
@@ -162,6 +161,7 @@
 		0D8E162A13D471580005CD0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E222058313D5B9CA006BA2A4 /* AVFoundation.framework */,
 				0D8E162B13D471580005CD0F /* UIKit.framework */,
 				0D8E162D13D471580005CD0F /* Foundation.framework */,
 				0D8E162F13D471580005CD0F /* CoreGraphics.framework */,
