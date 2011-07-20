@@ -40,26 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // test
-    NSMutableArray* array = [[NSMutableArray alloc] init];
-    NSString* scenes1 = @"01 社交礼仪、接待";
-    [array addObject:scenes1];
-    
-    NSString* scenes2 = @"02 社交礼仪、指引、引见";
-    [array addObject:scenes2];
-    
-    NSString* scenes3 = @"03 社交礼仪、开场白、致辞";
-    [array addObject:scenes3];
-    
-    NSString* scenes4 = @"04 社交礼仪、询问、质疑";
-    [array addObject:scenes4];
-    
-    NSString* scenes5 = @"05 社交礼仪、结束、致谢";
-    [array addObject:scenes5];
-    
-    self.scenesArray = array;
-    [array release];
+    [self loadScenes];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -174,7 +155,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row >= [self.scenesArray count]) {
+        return;
+    }
     LessonsViewController* lesson = [[LessonsViewController alloc] initWithNibName:@"LessonsViewController" bundle:nil];
+    NSString* scenes = [[NSString alloc] initWithString:[self.scenesArray objectAtIndex:indexPath.row]];
+    lesson.scenesName = scenes;
+    [scenes release];
     [self.navigationController pushViewController:lesson animated:YES];
     [lesson release];
     // Navigation logic may go here. Create and push another view controller.
@@ -185,6 +172,37 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+- (void)loadScenes;
+{
+    if (self.scenesArray == nil) {
+        NSMutableArray* array = [[NSMutableArray alloc] init];
+        NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+        NSString* stringResource = STRING_RESOURCE_DATA;
+        resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+        
+        NSFileManager* manager = [[NSFileManager alloc] init];
+        NSDirectoryEnumerator *dirEnum = [manager enumeratorAtPath:resourcePath];
+        
+        NSString* file = [dirEnum nextObject];
+        while (file) {
+            NSRange range = [file rangeOfString:@"/" options:NSBackwardsSearch];
+            if (range.location != NSNotFound) {
+                file = [dirEnum nextObject];
+                continue;
+            }
+            
+            if ([[file pathExtension] length] == 0) {
+                [array addObject:file];
+            }
+            file = [dirEnum nextObject];
+        }
+        self.scenesArray = array;
+        [self.tableView reloadData];
+        [array release];
+        [manager release];
+    }
 }
 
 @end

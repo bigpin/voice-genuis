@@ -12,6 +12,7 @@
 
 @implementation LessonsViewController
 @synthesize lessonsArray = _lessonsArray;
+@synthesize scenesName = _scenesName;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,6 +26,7 @@
 - (void)dealloc
 {
     [self.lessonsArray release];
+    [self.scenesName release];
     [super dealloc];
 }
 
@@ -41,26 +43,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    NSMutableArray* array = [[NSMutableArray alloc] init];
-    NSString* lesson1 = @"Lessons 01";
-    [array addObject:lesson1];
-    
-    NSString* lesson2 = @"Lessons 02";
-    [array addObject:lesson2];
-    
-    NSString* lesson3 = @"Lessons 03";
-    [array addObject:lesson3];
-    
-    NSString* lesson4 = @"Lessons 04";
-    [array addObject:lesson4];
-    
-    NSString* lesson5 = @"Lessons 05";
-    [array addObject:lesson5];
-    
-    self.lessonsArray = array;
-    [array release];
     self.title = @"lessons";
+    //[self loadLessonsFolder];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -189,6 +173,41 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+- (void)loadLessonsFolder;
+{
+    if (self.scenesName == nil) {
+        return;
+    }
+    
+    if (self.lessonsArray == nil) {
+        NSMutableArray* array = [[NSMutableArray alloc] init];
+        NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+        NSString* stringResource = STRING_RESOURCE_DATA;
+        resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+        resourcePath = [NSString stringWithFormat:@"/%@/%@", resourcePath, self.scenesName];
+        NSFileManager* manager = [[NSFileManager alloc] init];
+        NSDirectoryEnumerator *dirEnum = [manager enumeratorAtPath:resourcePath];
+        
+        NSString* file = [dirEnum nextObject];
+        while (file) {
+            NSRange range = [file rangeOfString:@"/" options:NSBackwardsSearch];
+            if (range.location != NSNotFound) {
+                file = [dirEnum nextObject];
+                continue;
+            }
+            
+            if ([[file pathExtension] length] == 0) {
+                [array addObject:file];
+            }
+            file = [dirEnum nextObject];
+        }
+        self.lessonsArray = array;
+        [self.tableView reloadData];
+        [array release];
+        [manager release];
+    }
 }
 
 @end

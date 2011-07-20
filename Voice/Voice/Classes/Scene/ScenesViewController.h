@@ -12,6 +12,8 @@
 @interface ScenesViewController : UITableViewController {
     NSMutableArray* _scenesArray;
 }
+
 @property (nonatomic, retain) NSMutableArray* scenesArray;
+- (void)loadScenes;
 
 @end

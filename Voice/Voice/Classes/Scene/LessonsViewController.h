@@ -11,7 +11,12 @@
 
 @interface LessonsViewController : UITableViewController {
     NSMutableArray* _lessonsArray;
+    NSString* _scenesName;
 }
+
 @property (nonatomic, retain) NSMutableArray* lessonsArray;
+@property (nonatomic, retain) NSString* scenesName;
+
+- (void)loadLessonsFolder;
 
 @end
