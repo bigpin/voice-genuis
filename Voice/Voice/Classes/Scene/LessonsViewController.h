@@ -8,15 +8,39 @@
 
 #import <UIKit/UIKit.h>
 
+#import "TBXML.h"
+#import "Course.h"
+#import "Lesson.h"
+#import "Sentence.h"
+#import "Teacher.h"
+
+@class XMLAuthorsViewController;
 
 @interface LessonsViewController : UITableViewController {
-    NSMutableArray* _lessonsArray;
+ 	NSMutableArray * authors;
+	
+	TBXML * tbxml;
+	Course* course;
     NSString* _scenesName;
 }
 
-@property (nonatomic, retain) NSMutableArray* lessonsArray;
 @property (nonatomic, retain) NSString* scenesName;
 
-- (void)loadLessonsFolder;
+- (void) loadURL;
+- (void) loadXMLString;
+- (void) loadXMLData;
+- (void) loadBooks;
+- (void) loadUnknownXML;
+- (void) traverseElement:(TBXMLElement *)element;
+
+- (void) loadCourses;
+- (void) loadMetadata:(TBXMLElement*)element;
+- (void) loadLessons:(TBXMLElement*)element;
+
+- (void) loadLesson:(Lesson*)lesson;
+- (void) loadSentence:(TBXMLElement*)element 
+		  toSentences:(NSMutableArray*)sentences;
+- (void) loadTeacher:(TBXMLElement*)element 
+		  toTeachers:(NSMutableArray*)teachers;
 
 @end

@@ -14,3 +14,4 @@
 #endif
 
 #define STRING_RESOURCE_DATA @"Data"
+#define STRING_LESSONS_INDEX_XML @"index.xml"
