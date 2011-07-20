@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D77FBC213D67479007A122D /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = 0D77FBC113D67479007A122D /* Resources */; };
 		0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162B13D471580005CD0F /* UIKit.framework */; };
 		0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162D13D471580005CD0F /* Foundation.framework */; };
 		0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162F13D471580005CD0F /* CoreGraphics.framework */; };
@@ -33,8 +34,6 @@
 		0D8E168413D471830005CD0F /* ScenesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167813D471830005CD0F /* ScenesViewController.xib */; };
 		0D8E168513D471830005CD0F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E167B13D471830005CD0F /* SettingViewController.m */; };
 		0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167C13D471830005CD0F /* SettingViewController.xib */; };
-		0DDAD86713D5CD5F00A718E6 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0DDAD86513D5CD5F00A718E6 /* Data */; };
-		0DDAD86813D5CD5F00A718E6 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 0DDAD86613D5CD5F00A718E6 /* Image */; };
 		E222057C13D5B89F006BA2A4 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E222056E13D5B89F006BA2A4 /* Course.m */; };
 		E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057013D5B89F006BA2A4 /* CourseParser.m */; };
 		E222057E13D5B89F006BA2A4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057213D5B89F006BA2A4 /* Lesson.m */; };
@@ -56,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D77FBC113D67479007A122D /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = Voice/Resources; sourceTree = "<group>"; };
 		0D8E162713D471580005CD0F /* Voice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E162B13D471580005CD0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D8E162D13D471580005CD0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -93,8 +93,6 @@
 		0D8E167A13D471830005CD0F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		0D8E167B13D471830005CD0F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		0D8E167C13D471830005CD0F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
-		0DDAD86513D5CD5F00A718E6 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Data; sourceTree = "<group>"; };
-		0DDAD86613D5CD5F00A718E6 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Image; sourceTree = "<group>"; };
 		E222056D13D5B89F006BA2A4 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E222056E13D5B89F006BA2A4 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		E222056F13D5B89F006BA2A4 /* CourseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseParser.h; sourceTree = "<group>"; };
@@ -142,7 +140,7 @@
 			children = (
 				0D8E166913D471830005CD0F /* Classes */,
 				0D8E163113D471580005CD0F /* Voice */,
-				0DDAD85313D5C9BC00A718E6 /* Resources */,
+				0D77FBC113D67479007A122D /* Resources */,
 				0D8E165613D471580005CD0F /* VoiceTests */,
 				0D8E162A13D471580005CD0F /* Frameworks */,
 				0D8E162813D471580005CD0F /* Products */,
@@ -288,16 +286,6 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		0DDAD85313D5C9BC00A718E6 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0DDAD86513D5CD5F00A718E6 /* Data */,
-				0DDAD86613D5CD5F00A718E6 /* Image */,
-			);
-			name = Resources;
-			path = Voice/Resources;
-			sourceTree = "<group>";
-		};
 		E222056C13D5B89F006BA2A4 /* CourseParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,8 +390,7 @@
 				0D8E168213D471830005CD0F /* LessonsViewController.xib in Resources */,
 				0D8E168413D471830005CD0F /* ScenesViewController.xib in Resources */,
 				0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */,
-				0DDAD86713D5CD5F00A718E6 /* Data in Resources */,
-				0DDAD86813D5CD5F00A718E6 /* Image in Resources */,
+				0D77FBC213D67479007A122D /* Resources in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
