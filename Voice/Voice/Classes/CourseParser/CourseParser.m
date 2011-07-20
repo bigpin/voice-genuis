@@ -28,6 +28,7 @@
 {
 	// Load and parse the index.xml file
     NSString* fullFilename = [resourcePath stringByAppendingPathComponent:filename];
+    NSLog(@"%@", fullFilename);
 	tbxml = [[TBXML tbxmlWithXMLFile:fullFilename] retain];
 	
 	// Obtain root element
