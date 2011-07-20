@@ -29,7 +29,8 @@
 	// Load and parse the index.xml file
     NSString* fullFilename = [resourcePath stringByAppendingPathComponent:filename];
     NSLog(@"%@", fullFilename);
-	tbxml = [[TBXML tbxmlWithXMLFile:fullFilename] retain];
+    NSData* filedata = [NSData dataWithContentsOfFile:fullFilename];
+	tbxml = [[TBXML tbxmlWithXMLData:filedata] retain];
 	
 	// Obtain root element
 	TBXMLElement * root = tbxml.rootXMLElement;
@@ -108,9 +109,11 @@
 {
 	if (lesson) {
 		// load file
-		NSString* filepath = [resourcePath stringByAppendingPathComponent:lesson.path];
-		filepath = [filepath stringByAppendingPathComponent:lesson.file];
-		tbxml = [[TBXML tbxmlWithXMLFile:filepath] retain];
+        NSString* fullFilename = [resourcePath stringByAppendingPathComponent:lesson.path];
+        fullFilename = [fullFilename stringByAppendingPathComponent:lesson.file];
+        NSLog(@"%@", fullFilename);
+        NSData* filedata = [NSData dataWithContentsOfFile:fullFilename];
+        tbxml = [[TBXML tbxmlWithXMLData:filedata] retain];
 		
 		TBXMLElement* root = tbxml.rootXMLElement;
 		if (root) {
