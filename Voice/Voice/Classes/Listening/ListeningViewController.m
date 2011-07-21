@@ -195,7 +195,7 @@
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString* stringResource = @"Image";
     resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
-    if (bStart) {
+    if (!bStart) {
         self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
     } else {
         self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
