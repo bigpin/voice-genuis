@@ -12,6 +12,11 @@
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
 @synthesize sentencesTableView = _sentencesTableView;
+@synthesize previousItem;
+@synthesize nextItem;
+@synthesize playItem;
+@synthesize loopLesson;
+@synthesize loopSingle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -19,6 +24,7 @@
     if (self) {
         // Custom initialization
         self.hidesBottomBarWhenPushed = YES;
+        bStart = NO;
     }
     return self;
 }
@@ -42,7 +48,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Uncomment the following line to preserve selection between presentations.
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    self.previousItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/previous.png", resourcePath]];
+    self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
+    self.nextItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/next.png", resourcePath]];
+    self.loopSingle.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/loopsingle.png", resourcePath]];
+    self.loopLesson.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
+
+   // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -162,6 +177,41 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+#pragma Action
+- (IBAction)onPrevious:(id)sender;
+{
+    
+}
+
+- (IBAction)onStart:(id)sender;
+{
+    bStart = !bStart;
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    if (bStart) {
+        self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
+    } else {
+        self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
+    }
+    
+}
+
+- (IBAction)onNext:(id)sender;
+{
+    
+}
+
+- (IBAction)onLoopLesson:(id)sender;
+{
+    
+}
+
+- (IBAction)onLoopSentence:(id)sender;
+{
+    
 }
 
 @end

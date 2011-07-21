@@ -20,11 +20,17 @@
 {
     UITabBarController* tb = [[UITabBarController alloc] init];
     NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
     
     // lessons
     ScenesViewController* lessons = [[ScenesViewController alloc] initWithNibName:@"ScenesViewController" bundle:nil];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:lessons];
+    nav.navigationBar.tintColor = [UIColor blackColor];
     lessons.title = @"Scenes root";
+	lessons.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/world.png", resourcePath]];
+    
     nav.title = @"Scenes";
     [viewControllers addObject:nav];
     
@@ -34,7 +40,9 @@
     // favor
     FavorViewController* favor = [[FavorViewController alloc] initWithNibName:@"FavorViewController" bundle:nil];
     
+	favor.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/clock.png", resourcePath]];
     nav = [[UINavigationController alloc] initWithRootViewController:favor];
+    nav.navigationBar.tintColor = [UIColor blackColor];
     [viewControllers addObject:nav];
     favor.title = @"Favor root";
     nav.title = @"Favor";
@@ -44,7 +52,9 @@
     // settings
     SettingViewController* setting = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
     
+ 	setting.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/preferences.png", resourcePath]];
     nav = [[UINavigationController alloc] initWithRootViewController:setting];
+    nav.navigationBar.tintColor = [UIColor blackColor];
     [viewControllers addObject:nav];
     setting.title = @"Setting root";
     nav.title = @"Setting";

@@ -164,6 +164,7 @@
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
     [ListeningViewController release];
+    
 
     // Navigation logic may go here. Create and push another view controller.
     /*
