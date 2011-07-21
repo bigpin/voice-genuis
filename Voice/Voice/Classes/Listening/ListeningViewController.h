@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface ListeningViewController : UIViewController {
     NSMutableArray* _sentencesArray;
     UITableView* _sentencesTableView;

@@ -24,6 +24,7 @@
     if (self) {
         // Custom initialization
         self.hidesBottomBarWhenPushed = YES;
+
         bStart = NO;
     }
     return self;
@@ -124,12 +125,25 @@
     // Configure the cell...
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.row];
     cell.textLabel.text = sentence.orintext;
+    cell.textLabel.numberOfLines = 0;
+    cell.textLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
 	cell.accessoryType = UITableViewCellAccessoryNone;
     cell.detailTextLabel.text = sentence.ps;
     
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell=[self tableView: tableView cellForRowAtIndexPath: indexPath];
+    
+    CGSize constraint = CGSizeMake(cell.frame.size.width - CELL_CONTENT_MARGIN*2, 20000.0f);
+    
+    CGSize size = [cell.textLabel.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+
+    CGFloat height = MAX(size.height, 44.0f);
+    return (height + CELL_CONTENT_MARGIN*2);
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

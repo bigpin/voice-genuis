@@ -110,11 +110,24 @@
     if (indexPath.row < [_courseParser.course.lessons count]) {
         Lesson * lesson = [_courseParser.course.lessons objectAtIndex:indexPath.row];
         cell.textLabel.text = lesson.title;
+        cell.textLabel.numberOfLines = 0;
+        cell.textLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
    }
      // Configure the cell...
     
     return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell=[self tableView: tableView cellForRowAtIndexPath: indexPath];
+    
+    CGSize constraint = CGSizeMake(cell.frame.size.width - CELL_CONTENT_MARGIN*2, 20000.0f);
+    
+    CGSize size = [cell.textLabel.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height, 44.0f);
+    return (height + CELL_CONTENT_MARGIN*2);
 }
 
 /*
