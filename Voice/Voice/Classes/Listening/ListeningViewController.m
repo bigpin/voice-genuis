@@ -7,7 +7,7 @@
 //
 
 #import "ListeningViewController.h"
-
+#import "Sentence.h"
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
@@ -122,6 +122,10 @@
     }
     
     // Configure the cell...
+    Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = sentence.orintext;
+	cell.accessoryType = UITableViewCellAccessoryNone;
+    cell.detailTextLabel.text = sentence.ps;
     
     return cell;
 }
