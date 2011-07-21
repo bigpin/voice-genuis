@@ -108,6 +108,7 @@
     // Configure the cell...
     if (indexPath.row < [self.scenesArray count]) {
         cell.textLabel.text = [self.scenesArray objectAtIndex:indexPath.row];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return cell;
 }

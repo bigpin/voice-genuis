@@ -110,7 +110,8 @@
     if (indexPath.row < [_courseParser.course.lessons count]) {
         Lesson * lesson = [_courseParser.course.lessons objectAtIndex:indexPath.row];
         cell.textLabel.text = lesson.title;
-    }
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+   }
      // Configure the cell...
     
     return cell;
