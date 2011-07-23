@@ -105,9 +105,15 @@
 	}
 }
 
-- (void)loadLesson:(Lesson *)lesson
+- (void)loadLesson:(NSInteger)lessonindex
 {
-	if (lesson) {
+    Lesson* lesson = [course.lessons objectAtIndex:lessonindex];
+    // is parsed?
+    if (lesson.bParsed) {
+        return;
+    }
+    
+	if (lessonindex < [course.lessons count]) {
 		// load file
         NSString* fullFilename = [resourcePath stringByAppendingPathComponent:lesson.path];
         fullFilename = [fullFilename stringByAppendingPathComponent:lesson.file];
@@ -136,9 +142,10 @@
 				if (media) {
 					TBXMLElement* file = [TBXML childElementNamed:@"file" parentElement:media];
 					if (file) {
-						lesson.wavfile = [TBXML valueOfAttributeNamed:@"src" forElement:file];
+						lesson.wavfile = [resourcePath stringByAppendingPathComponent: [TBXML valueOfAttributeNamed:@"src" forElement:file]];
 					}
 				}
+                lesson.bParsed = YES;
 			}
 		}
 		[tbxml release];

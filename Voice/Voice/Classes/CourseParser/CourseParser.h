@@ -28,7 +28,7 @@
 - (void) loadLessons:(TBXMLElement*)element;
 
 // Load in ....xml
-- (void) loadLesson:(Lesson*)lesson;
+- (void) loadLesson:(NSInteger)lessonindex;
 - (void) loadSentence:(TBXMLElement*)element
                    to:(NSMutableArray*)sentences;
 - (void) loadTeacher:(TBXMLElement*)element 

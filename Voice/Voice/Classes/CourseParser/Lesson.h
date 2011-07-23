@@ -19,7 +19,8 @@
 	NSMutableArray* teachers;
 	NSString* wavfile;
 	NSMutableArray* setences;
-		
+    
+    BOOL bParsed;
 }
 
 @property (nonatomic, retain) NSString* lessonid;
@@ -30,5 +31,7 @@
 @property (nonatomic, retain) NSMutableArray* teachers;
 @property (nonatomic, retain) NSString* wavfile;
 @property (nonatomic, retain) NSMutableArray* setences;
+
+@property (nonatomic) BOOL bParsed;
 
 @end

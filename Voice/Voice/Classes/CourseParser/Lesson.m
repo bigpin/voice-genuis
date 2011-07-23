@@ -11,8 +11,21 @@
 
 @implementation Lesson
 
-@synthesize lessonid, title, order, path, file, teachers, wavfile, setences;
+@synthesize lessonid, title, order, path, file, teachers, wavfile, setences, bParsed;
 
-
+- (id) init
+{
+    lessonid = nil;
+    title = nil;
+    order = 999;
+    path = nil;
+    bParsed = NO;
+    file = nil;
+    teachers = nil;
+    wavfile = nil;
+    setences = nil;
+    
+    return self;
+}
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ListeningViewController.h"
 #import "Sentence.h"
+#import <Foundation/NSDate.h>
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
@@ -17,6 +18,8 @@
 @synthesize playItem;
 @synthesize loopLesson;
 @synthesize loopSingle;
+@synthesize wavefile;
+@synthesize player;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +29,7 @@
         self.hidesBottomBarWhenPushed = YES;
 
         bStart = NO;
+        looptype = PLAY_LOOPTYPE_LESSON;
     }
     return self;
 }
@@ -84,6 +88,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [self.player stop];
     [super viewWillDisappear:animated];
 }
 
@@ -215,6 +220,37 @@
         self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
     }
     
+    // play and stop
+    if (bStart) {
+        if (!player) {
+            NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
+            AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+            [fileURL release];
+            
+            self.player = newPlayer;
+            [newPlayer release];
+        }
+        [player prepareToPlay];
+        [player setDelegate:(id<AVAudioPlayerDelegate>)self];
+        switch (looptype) {
+            case PLAY_LOOPTYPE_LESSON:
+                self.player.numberOfLoops = -1;    // Loop playback until invoke stop method
+                break;
+            case PLAY_LOOPTYPE_SENTENCE:
+                self.player.numberOfLoops = 1;
+                break;
+                
+            default:
+                break;
+        }
+//        NSTimeInterval time;
+//        [self.player playAtTime:time];
+        [self.player play];
+    }
+    else {
+        [self.player pause];
+    }
+    
 }
 
 - (IBAction)onNext:(id)sender;
@@ -224,12 +260,12 @@
 
 - (IBAction)onLoopLesson:(id)sender;
 {
-    
+    looptype = PLAY_LOOPTYPE_LESSON;
 }
 
 - (IBAction)onLoopSentence:(id)sender;
 {
-    
+    looptype = PLAY_LOOPTYPE_SENTENCE;
 }
 
 @end
