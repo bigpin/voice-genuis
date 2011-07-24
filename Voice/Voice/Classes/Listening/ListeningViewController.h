@@ -23,6 +23,8 @@ typedef NSInteger PLAY_LOOPTPYE;
     UIBarButtonItem* playItem;
     UIBarButtonItem* loopSingle;
     UIBarButtonItem* loopLesson;
+    UISlider* progressBar;
+   	NSTimer* updateTimer;
     BOOL bStart;
     
     NSString* wavefile;             // 音频文件
@@ -31,19 +33,24 @@ typedef NSInteger PLAY_LOOPTPYE;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
-@property (nonatomic, retain)IBOutlet UITableView* sentencesTableView;
-@property (nonatomic, retain)IBOutlet UIBarButtonItem* previousItem;
-@property (nonatomic, retain)IBOutlet UIBarButtonItem* nextItem;
-@property (nonatomic, retain)IBOutlet UIBarButtonItem* playItem;
-@property (nonatomic, retain)IBOutlet UIBarButtonItem* loopSingle;
-@property (nonatomic, retain)IBOutlet UIBarButtonItem* loopLesson;
-@property (nonatomic, retain)NSString* wavefile;
-@property (nonatomic, retain)AVAudioPlayer* player;
+@property (nonatomic, retain) IBOutlet UITableView* sentencesTableView;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* previousItem;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* nextItem;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* playItem;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* loopSingle;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* loopLesson;
+@property (nonatomic, retain) IBOutlet UISlider* progressBar;
+@property (nonatomic, retain) NSTimer* updataeTimer;
+@property (nonatomic, retain) NSString* wavefile;
+@property (nonatomic, retain) AVAudioPlayer* player;
 
 - (IBAction)onPrevious:(id)sender;
 - (IBAction)onStart:(id)sender;
 - (IBAction)onNext:(id)sender;
 - (IBAction)onLoopLesson:(id)sender;
 - (IBAction)onLoopSentence:(id)sender;
+
+- (void)updateCurrentTime;
+- (void)updateViewForPlayer;
 
 @end

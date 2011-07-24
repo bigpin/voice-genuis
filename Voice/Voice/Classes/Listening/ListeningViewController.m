@@ -18,6 +18,8 @@
 @synthesize playItem;
 @synthesize loopLesson;
 @synthesize loopSingle;
+@synthesize progressBar;
+@synthesize updataeTimer;
 @synthesize wavefile;
 @synthesize player;
 
@@ -30,6 +32,10 @@
 
         bStart = NO;
         looptype = PLAY_LOOPTYPE_LESSON;
+        progressBar.minimumValue = 0.0;
+        progressBar.maximumValue = 10.0;
+        [progressBar setValue:0.0];
+        updateTimer = nil;
     }
     return self;
 }
@@ -37,6 +43,10 @@
 - (void)dealloc
 {
     [self.sentencesArray release];
+    [progressBar release];
+    [updateTimer release];
+    [self.player stop];
+    [self.player release];
     [super dealloc];
 }
 
@@ -88,7 +98,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [self.player stop];
     [super viewWillDisappear:animated];
 }
 
@@ -211,14 +220,6 @@
 - (IBAction)onStart:(id)sender;
 {
     bStart = !bStart;
-    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSString* stringResource = @"Image";
-    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
-    if (!bStart) {
-        self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
-    } else {
-        self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
-    }
     
     // play and stop
     if (bStart) {
@@ -243,6 +244,7 @@
             default:
                 break;
         }
+        progressBar.maximumValue = player.duration;
 //        NSTimeInterval time;
 //        [self.player playAtTime:time];
         [self.player play];
@@ -251,6 +253,7 @@
         [self.player pause];
     }
     
+    [self updateViewForPlayer];
 }
 
 - (IBAction)onNext:(id)sender;
@@ -266,6 +269,38 @@
 - (IBAction)onLoopSentence:(id)sender;
 {
     looptype = PLAY_LOOPTYPE_SENTENCE;
+}
+
+#pragma mark - Update timer
+
+- (void)updateCurrentTimeForPlayer:(AVAudioPlayer *)p
+{
+// 	currentTime.text = [NSString stringWithFormat:@"%d:%02d", (int)p.currentTime / 60, (int)p.currentTime % 60, nil];
+	progressBar.value = p.currentTime;
+}
+
+- (void)updateCurrentTime
+{
+	[self updateCurrentTimeForPlayer:self.player];
+}
+
+- (void)updateViewForPlayer
+{
+	[self updateCurrentTimeForPlayer:self.player];
+    
+	if (updateTimer) 
+		[updateTimer invalidate];
+    
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    if (!bStart) {
+        self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
+        updateTimer = nil;
+    } else {
+        self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
+        updateTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCurrentTime) userInfo:player repeats:YES];
+    }
 }
 
 @end
