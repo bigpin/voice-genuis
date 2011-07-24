@@ -147,6 +147,15 @@
     } else {
         backgroundCell.position = UACellBackgroundViewPositionMiddle;
     }
+    if (indexPath.row % 2 == 0) {
+        backgroundCell.toRed = 111.0/255.0;
+        backgroundCell.toGreen = 171.0/255.0;
+        backgroundCell.toBlue = 205.0/255.0;
+    } else {
+        backgroundCell.toRed = 249.0/255.0;
+        backgroundCell.toGreen = 209.0/255.0;
+        backgroundCell.toBlue = 124.0/255.0;
+    }
      cell.backgroundView = backgroundCell;
     [backgroundCell release];
    

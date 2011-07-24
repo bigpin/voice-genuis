@@ -17,6 +17,20 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
 @implementation UACellBackgroundView
 
 @synthesize position;
+@synthesize fromRed,fromGreen,fromBlue,toRed,toGreen,toBlue;
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        fromRed = 1.0;
+        fromGreen = 1.0;
+        fromBlue = 1.0;
+        toRed = 0.866;
+        toGreen = 0.866;
+        toBlue = 0.866;
+    }
+    return self;
+}
 
 - (BOOL) isOpaque {
     return NO;
@@ -34,10 +48,10 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     CGFloat miny = CGRectGetMinY(rect), midy = CGRectGetMidY(rect), maxy = CGRectGetMaxY(rect);
     miny -= 1;
     
-    CGFloat locations[2] = { 0.0, 1.0 };
+    CGFloat locations[3] = { 0.0, 0.2, 0.8 };
     CGColorSpaceRef myColorspace = CGColorSpaceCreateDeviceRGB();
     CGGradientRef myGradient = nil;
-    CGFloat components[8] = TABLE_CELL_BACKGROUND;
+    CGFloat components[12] = {toRed+10, toGreen+10, toBlue+10, 1.0, toRed, toGreen, toBlue, 1.0,toRed, toGreen, toBlue, 1.0};
     CGContextSetStrokeColorWithColor(c, [[UIColor grayColor] CGColor]);
     CGContextSetLineWidth(c, lineWidth);
     CGContextSetAllowsAntialiasing(c, YES);
@@ -60,7 +74,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
         CGContextAddPath(c, path);
         CGContextClip(c);
         
-        myGradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, 2);
+        myGradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, 3);
         CGContextDrawLinearGradient(c, myGradient, CGPointMake(minx,miny), CGPointMake(minx,maxy), 0);
         
         CGContextAddPath(c, path);
@@ -83,7 +97,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
         CGContextAddPath(c, path);
         CGContextClip(c);
         
-        myGradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, 2);
+        myGradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, 3);
         CGContextDrawLinearGradient(c, myGradient, CGPointMake(minx,miny), CGPointMake(minx,maxy), 0);
         
         CGContextAddPath(c, path);
@@ -107,7 +121,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
         CGContextAddPath(c, path);
         CGContextClip(c);
         
-        myGradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, 2);
+        myGradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, 3);
         CGContextDrawLinearGradient(c, myGradient, CGPointMake(minx,miny), CGPointMake(minx,maxy), 0);
         
         CGContextAddPath(c, path);
@@ -133,7 +147,7 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
         CGContextClip(c);
         
         
-        myGradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, 2);
+        myGradient = CGGradientCreateWithColorComponents(myColorspace, components, locations, 3);
         CGContextDrawLinearGradient(c, myGradient, CGPointMake(minx,miny), CGPointMake(minx,maxy), 0);
         
         CGContextAddPath(c, path);

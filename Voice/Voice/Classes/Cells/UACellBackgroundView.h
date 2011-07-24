@@ -17,9 +17,22 @@ typedef enum  {
 } UACellBackgroundViewPosition;
 
 @interface UACellBackgroundView : UIView {
-    UACellBackgroundViewPosition position;
+    UACellBackgroundViewPosition position;;
+    CGFloat fromRed;
+    CGFloat fromGreen;
+    CGFloat fromBlue;
+    CGFloat toRed;
+    CGFloat toGreen;
+    CGFloat toBlue;
 }
 
 @property(nonatomic) UACellBackgroundViewPosition position;
+@property(nonatomic) CGFloat fromRed;
+@property(nonatomic) CGFloat fromGreen;
+@property(nonatomic) CGFloat fromBlue;
+@property(nonatomic) CGFloat toRed;
+@property(nonatomic) CGFloat toGreen;
+@property(nonatomic) CGFloat toBlue;
+
 
 @end
