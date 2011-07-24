@@ -161,6 +161,9 @@
    
     // Configure the cell...
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.shadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:.35];
+    cell.textLabel.shadowOffset = CGSizeMake(0, -1.0); 
     cell.textLabel.text = sentence.orintext;
     cell.textLabel.numberOfLines = 0;
     cell.textLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
