@@ -30,6 +30,7 @@ typedef NSInteger PLAY_LOOPTPYE;
     NSString* wavefile;             // 音频文件
     AVAudioPlayer *player;
     PLAY_LOOPTPYE looptype;
+    NSInteger nPlayingIndex;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;

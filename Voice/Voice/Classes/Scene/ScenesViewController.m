@@ -162,6 +162,7 @@
     LessonsViewController* lesson = [[LessonsViewController alloc] initWithNibName:@"LessonsViewController" bundle:nil];
     NSString* scenes = [[NSString alloc] initWithString:[self.scenesArray objectAtIndex:indexPath.row]];
     lesson.scenesName = scenes;
+    lesson.title = scenes;
     [scenes release];
     [self.navigationController pushViewController:lesson animated:YES];
     [lesson release];

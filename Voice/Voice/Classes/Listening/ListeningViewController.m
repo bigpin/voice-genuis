@@ -6,9 +6,10 @@
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
+#import <Foundation/NSDate.h>
 #import "ListeningViewController.h"
 #import "Sentence.h"
-#import <Foundation/NSDate.h>
+#import "UACellBackgroundView.h"
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
@@ -36,6 +37,7 @@
         progressBar.maximumValue = 10.0;
         [progressBar setValue:0.0];
         updateTimer = nil;
+        nPlayingIndex = 0;
     }
     return self;
 }
@@ -134,8 +136,20 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell.textLabel.backgroundColor = nil;
+        cell.textLabel.backgroundColor = [UIColor clearColor];
     }
-    
+    UACellBackgroundView* backgroundCell = [[UACellBackgroundView alloc] initWithFrame:CGRectZero];
+    if (indexPath.row == 0) {
+        backgroundCell.position = UACellBackgroundViewPositionTop;
+    } else if (indexPath.row == ([self.sentencesArray count] - 1)) {
+        backgroundCell.position = UACellBackgroundViewPositionBottom;
+    } else {
+        backgroundCell.position = UACellBackgroundViewPositionMiddle;
+    }
+     cell.backgroundView = backgroundCell;
+    [backgroundCell release];
+   
     // Configure the cell...
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.row];
     cell.textLabel.text = sentence.orintext;
@@ -143,7 +157,7 @@
     cell.textLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
 	cell.accessoryType = UITableViewCellAccessoryNone;
     cell.detailTextLabel.text = sentence.ps;
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -155,8 +169,14 @@
     
     CGSize size = [cell.textLabel.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
 
-    CGFloat height = MAX(size.height, 44.0f);
-    return (height + CELL_CONTENT_MARGIN*2);
+    if (size.height < 44.0) {
+        CGFloat height = MAX(size.height, 44.0f);
+        return (height + + CELL_CONTENT_MARGIN*2);
+    } else {
+        CGFloat height = MAX(size.height, 44.0f);
+        return (height + CELL_CONTENT_MARGIN*2 + 20);
+    
+    }
 }
 /*
 // Override to support conditional editing of the table view.
@@ -275,6 +295,7 @@
 
 - (void)updateCurrentTimeForPlayer:(AVAudioPlayer *)p
 {
+    NSLog(@"%f", p.currentTime);
 // 	currentTime.text = [NSString stringWithFormat:@"%d:%02d", (int)p.currentTime / 60, (int)p.currentTime % 60, nil];
 	progressBar.value = p.currentTime;
 }

@@ -42,7 +42,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"lessons";
     [self loadCourses];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -181,6 +180,7 @@
     Lesson* lesson = (Lesson*)[_courseParser.course.lessons objectAtIndex:indexPath.row];
     detailViewController.sentencesArray = lesson.setences;
     detailViewController.wavefile = lesson.wavfile;
+    detailViewController.title = lesson.title;
     [ListeningViewController release];
     
 
