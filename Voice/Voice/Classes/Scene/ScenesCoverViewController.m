@@ -12,6 +12,7 @@
 
 @implementation ScenesCoverViewController
 @synthesize scenesArray = _scenesArray;
+@synthesize scenesLabel = _scenesLabel;
 @synthesize covers;
 @synthesize coverflow;
 
@@ -26,8 +27,10 @@
 
 - (void)dealloc
 {
+    [self.scenesLabel release];
     [coverflow release];
 	[covers release];
+    [self.scenesArray release];
     [super dealloc];
 }
 
@@ -64,36 +67,17 @@
 	
 	[self.view addSubview:coverflow];
 	
-	
-	/*if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone){
-		
-		UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		btn.frame = CGRectMake(0,0,100,20);
-		[btn setTitle:@"# Covers" forState:UIControlStateNormal];
-		[btn addTarget:self action:@selector(changeNumberOfCovers) forControlEvents:UIControlEventTouchUpInside];
-		[self.view addSubview:btn];
-	}else{
-		
-		UIBarButtonItem *nocoversitem = [[UIBarButtonItem alloc] initWithTitle:@"# Covers" 
-                                                                         style:UIBarButtonItemStyleBordered 
-                                                                        target:self action:@selector(changeNumberOfCovers)];
-		
-		UIBarButtonItem *flex = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        
-		self.toolbarItems = [NSArray arrayWithObjects:flex,nocoversitem,nil];
-		[nocoversitem release];
-		[flex release];
-	}
-    
-	*/
-    
-	/*CGSize s = self.view.bounds.size;
-	
-	UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-	[infoButton addTarget:self action:@selector(info) forControlEvents:UIControlEventTouchUpInside];
-	infoButton.frame = CGRectMake(s.width-50, 5, 50, 30);
-	[self.view addSubview:infoButton];
-    */
+    // label
+	UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.navigationController.view.bounds.size.height - 50, self.view.bounds.size.width, 60)];
+
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = [UIColor whiteColor];
+    label.textAlignment = UITextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:20];
+    [self.navigationController.view addSubview:label];
+    [self.navigationController.view bringSubviewToFront:label];
+    self.scenesLabel = label;
+    [label release];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -131,6 +115,7 @@
 
 - (void) viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
+    self.scenesLabel.hidden = NO;
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque]; 
 }
 - (void) viewDidAppear:(BOOL)animated{
@@ -140,6 +125,8 @@
 }
 - (void) viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
+    self.scenesLabel.hidden = YES;
+
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
@@ -171,6 +158,12 @@
 }
 
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index{
+    NSInteger nCount = [self.scenesArray count];
+    NSInteger nMod = index % nCount;
+    if (nMod < nCount) {
+        NSLog(@"%@", [self.scenesArray objectAtIndex:nMod]);
+        self.scenesLabel.text = [self.scenesArray objectAtIndex:nMod];
+    }
 	NSLog(@"Front %d",index);
 }
 

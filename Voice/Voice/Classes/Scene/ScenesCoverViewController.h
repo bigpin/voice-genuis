@@ -16,11 +16,13 @@
 	NSMutableArray *covers; // album covers images
 	BOOL collapsed;
 	NSInteger nCoverIndex;
+    UILabel* _scenesLabel;
 }
 
-@property (nonatomic,retain,) TKCoverflowView *coverflow; 
+@property (nonatomic,retain) TKCoverflowView *coverflow; 
 @property (nonatomic,retain) NSMutableArray *covers;
 @property (nonatomic,retain) NSMutableArray* scenesArray;
+@property (nonatomic,retain) UILabel* scenesLabel;
 
 - (void)loadScenes;
 @end
