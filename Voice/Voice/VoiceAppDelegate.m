@@ -8,6 +8,7 @@
 
 #import "VoiceAppDelegate.h"
 #import "ScenesViewController.h"
+#import "ScenesCoverViewController.h"
 #import "FavorViewController.h"
 #import "SettingViewController.h"
 
@@ -25,7 +26,7 @@
     resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
     
     // lessons
-    ScenesViewController* lessons = [[ScenesViewController alloc] initWithNibName:@"ScenesViewController" bundle:nil];
+    /*ScenesViewController* lessons = [[ScenesViewController alloc] initWithNibName:@"ScenesViewController" bundle:nil];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:lessons];
     nav.navigationBar.tintColor = [UIColor blackColor];
     lessons.title = @"Scenes root";
@@ -35,7 +36,19 @@
     [viewControllers addObject:nav];
     
     [lessons release];
+    [nav release];*/
+    ScenesCoverViewController* scenes = [[ScenesCoverViewController alloc] init];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:scenes];
+    nav.navigationBar.tintColor = [UIColor blackColor];
+    scenes.title = @"Scenes root";
+	scenes.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/world.png", resourcePath]];
+    
+    nav.title = @"Scenes";
+    [viewControllers addObject:nav];
+    
+    [scenes release];
     [nav release];
+    
     
     // favor
     FavorViewController* favor = [[FavorViewController alloc] initWithNibName:@"FavorViewController" bundle:nil];

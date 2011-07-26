@@ -8,6 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		0D3B8CA113DC08B1005898CD /* UACellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B8CA013DC08B1005898CD /* UACellBackgroundView.m */; };
+		0D4D6ABF13DE3D7600F87B13 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0D4D6ABE13DE3D7600F87B13 /* TapkuLibrary.bundle */; };
+		0D4D6AC113DE3DAB00F87B13 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4D6AC013DE3DAB00F87B13 /* QuartzCore.framework */; };
+		0D4D6AC313DE3DB300F87B13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4D6AC213DE3DB300F87B13 /* MapKit.framework */; };
+		0D4D6AC713DE3E1B00F87B13 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4D6AC613DE3E1B00F87B13 /* libTapkuLibrary.a */; };
+		0D4D6AE213DE3FE600F87B13 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0D4D6AC913DE3FE600F87B13 /* LICENSE.txt */; };
+		0D4D6AE313DE3FE600F87B13 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0D4D6ACA13DE3FE600F87B13 /* README.txt */; };
+		0D4D6AE413DE3FE600F87B13 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6ACD13DE3FE600F87B13 /* CDataScanner.m */; };
+		0D4D6AE513DE3FE600F87B13 /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6AD013DE3FE600F87B13 /* CDataScanner_Extensions.m */; };
+		0D4D6AE613DE3FE600F87B13 /* NSCharacterSet_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6AD213DE3FE600F87B13 /* NSCharacterSet_Extensions.m */; };
+		0D4D6AE713DE3FE600F87B13 /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6AD413DE3FE600F87B13 /* NSDictionary_JSONExtensions.m */; };
+		0D4D6AE813DE3FE600F87B13 /* NSScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6AD613DE3FE600F87B13 /* NSScanner_Extensions.m */; };
+		0D4D6AE913DE3FE600F87B13 /* CJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6AD913DE3FE600F87B13 /* CJSONDataSerializer.m */; };
+		0D4D6AEA13DE3FE600F87B13 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6ADB13DE3FE600F87B13 /* CJSONDeserializer.m */; };
+		0D4D6AEB13DE3FE600F87B13 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6ADD13DE3FE600F87B13 /* CJSONScanner.m */; };
+		0D4D6AEC13DE3FE600F87B13 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6ADF13DE3FE600F87B13 /* CJSONSerializer.m */; };
+		0D4D6AED13DE3FE600F87B13 /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6AE113DE3FE600F87B13 /* CSerializedJSONData.m */; };
+		0D4D6B0413DE410800F87B13 /* ScenesCoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */; };
 		0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162B13D471580005CD0F /* UIKit.framework */; };
 		0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162D13D471580005CD0F /* Foundation.framework */; };
 		0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162F13D471580005CD0F /* CoreGraphics.framework */; };
@@ -47,6 +64,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0D4D6AC413DE3DFE00F87B13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = TapkuLibrary;
+		};
 		0D8E165413D471580005CD0F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0D8E161E13D471580005CD0F /* Project object */;
@@ -54,11 +78,53 @@
 			remoteGlobalIDString = 0D8E162613D471580005CD0F;
 			remoteInfo = Voice;
 		};
+		0DD5619113DE3D2900F928E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = TapkuLibrary;
+		};
+		0DD5619313DE3D2900F928E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3B45DDF1134C736600D24C1A;
+			remoteInfo = LogicTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0D3B8C9F13DC08B1005898CD /* UACellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UACellBackgroundView.h; path = Cells/UACellBackgroundView.h; sourceTree = "<group>"; };
 		0D3B8CA013DC08B1005898CD /* UACellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UACellBackgroundView.m; path = Cells/UACellBackgroundView.m; sourceTree = "<group>"; };
+		0D4D6ABE13DE3D7600F87B13 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Voice/TapKu/TapkuLibrary.bundle; sourceTree = SOURCE_ROOT; };
+		0D4D6AC013DE3DAB00F87B13 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0D4D6AC213DE3DB300F87B13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0D4D6AC613DE3E1B00F87B13 /* libTapkuLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libTapkuLibrary.a; sourceTree = SOURCE_ROOT; };
+		0D4D6AC913DE3FE600F87B13 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		0D4D6ACA13DE3FE600F87B13 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		0D4D6ACC13DE3FE600F87B13 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
+		0D4D6ACD13DE3FE600F87B13 /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
+		0D4D6ACF13DE3FE600F87B13 /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner_Extensions.h; sourceTree = "<group>"; };
+		0D4D6AD013DE3FE600F87B13 /* CDataScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner_Extensions.m; sourceTree = "<group>"; };
+		0D4D6AD113DE3FE600F87B13 /* NSCharacterSet_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCharacterSet_Extensions.h; sourceTree = "<group>"; };
+		0D4D6AD213DE3FE600F87B13 /* NSCharacterSet_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCharacterSet_Extensions.m; sourceTree = "<group>"; };
+		0D4D6AD313DE3FE600F87B13 /* NSDictionary_JSONExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionary_JSONExtensions.h; sourceTree = "<group>"; };
+		0D4D6AD413DE3FE600F87B13 /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
+		0D4D6AD513DE3FE600F87B13 /* NSScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSScanner_Extensions.h; sourceTree = "<group>"; };
+		0D4D6AD613DE3FE600F87B13 /* NSScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSScanner_Extensions.m; sourceTree = "<group>"; };
+		0D4D6AD813DE3FE600F87B13 /* CJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDataSerializer.h; sourceTree = "<group>"; };
+		0D4D6AD913DE3FE600F87B13 /* CJSONDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDataSerializer.m; sourceTree = "<group>"; };
+		0D4D6ADA13DE3FE600F87B13 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer.h; sourceTree = "<group>"; };
+		0D4D6ADB13DE3FE600F87B13 /* CJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer.m; sourceTree = "<group>"; };
+		0D4D6ADC13DE3FE600F87B13 /* CJSONScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONScanner.h; sourceTree = "<group>"; };
+		0D4D6ADD13DE3FE600F87B13 /* CJSONScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONScanner.m; sourceTree = "<group>"; };
+		0D4D6ADE13DE3FE600F87B13 /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
+		0D4D6ADF13DE3FE600F87B13 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
+		0D4D6AE013DE3FE600F87B13 /* CSerializedJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSerializedJSONData.h; sourceTree = "<group>"; };
+		0D4D6AE113DE3FE600F87B13 /* CSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSerializedJSONData.m; sourceTree = "<group>"; };
+		0D4D6B0213DE410800F87B13 /* ScenesCoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenesCoverViewController.h; sourceTree = "<group>"; };
+		0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenesCoverViewController.m; sourceTree = "<group>"; };
 		0D8E162713D471580005CD0F /* Voice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E162B13D471580005CD0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D8E162D13D471580005CD0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -98,6 +164,7 @@
 		0D8E167C13D471830005CD0F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		0D90AA2F13D69F2C005FA104 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = Voice/Resources/Data; sourceTree = "<group>"; };
 		0D90ABD213D69F2C005FA104 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Voice/Resources/Image; sourceTree = "<group>"; };
+		0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Voice/TapKu/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		E222056D13D5B89F006BA2A4 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E222056E13D5B89F006BA2A4 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		E222056F13D5B89F006BA2A4 /* CourseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseParser.h; sourceTree = "<group>"; };
@@ -120,6 +187,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D4D6AC713DE3E1B00F87B13 /* libTapkuLibrary.a in Frameworks */,
+				0D4D6AC313DE3DB300F87B13 /* MapKit.framework in Frameworks */,
+				0D4D6AC113DE3DAB00F87B13 /* QuartzCore.framework in Frameworks */,
 				E222058413D5B9CA006BA2A4 /* AVFoundation.framework in Frameworks */,
 				0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */,
 				0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */,
@@ -149,6 +219,60 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		0D4D6AC813DE3FE600F87B13 /* TouchJSON */ = {
+			isa = PBXGroup;
+			children = (
+				0D4D6AC913DE3FE600F87B13 /* LICENSE.txt */,
+				0D4D6ACA13DE3FE600F87B13 /* README.txt */,
+				0D4D6ACB13DE3FE600F87B13 /* Source */,
+			);
+			name = TouchJSON;
+			path = Voice/TapKu/Frameworks/TouchJSON;
+			sourceTree = "<group>";
+		};
+		0D4D6ACB13DE3FE600F87B13 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0D4D6ACC13DE3FE600F87B13 /* CDataScanner.h */,
+				0D4D6ACD13DE3FE600F87B13 /* CDataScanner.m */,
+				0D4D6ACE13DE3FE600F87B13 /* Extensions */,
+				0D4D6AD713DE3FE600F87B13 /* JSON */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		0D4D6ACE13DE3FE600F87B13 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0D4D6ACF13DE3FE600F87B13 /* CDataScanner_Extensions.h */,
+				0D4D6AD013DE3FE600F87B13 /* CDataScanner_Extensions.m */,
+				0D4D6AD113DE3FE600F87B13 /* NSCharacterSet_Extensions.h */,
+				0D4D6AD213DE3FE600F87B13 /* NSCharacterSet_Extensions.m */,
+				0D4D6AD313DE3FE600F87B13 /* NSDictionary_JSONExtensions.h */,
+				0D4D6AD413DE3FE600F87B13 /* NSDictionary_JSONExtensions.m */,
+				0D4D6AD513DE3FE600F87B13 /* NSScanner_Extensions.h */,
+				0D4D6AD613DE3FE600F87B13 /* NSScanner_Extensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0D4D6AD713DE3FE600F87B13 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				0D4D6AD813DE3FE600F87B13 /* CJSONDataSerializer.h */,
+				0D4D6AD913DE3FE600F87B13 /* CJSONDataSerializer.m */,
+				0D4D6ADA13DE3FE600F87B13 /* CJSONDeserializer.h */,
+				0D4D6ADB13DE3FE600F87B13 /* CJSONDeserializer.m */,
+				0D4D6ADC13DE3FE600F87B13 /* CJSONScanner.h */,
+				0D4D6ADD13DE3FE600F87B13 /* CJSONScanner.m */,
+				0D4D6ADE13DE3FE600F87B13 /* CJSONSerializer.h */,
+				0D4D6ADF13DE3FE600F87B13 /* CJSONSerializer.m */,
+				0D4D6AE013DE3FE600F87B13 /* CSerializedJSONData.h */,
+				0D4D6AE113DE3FE600F87B13 /* CSerializedJSONData.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		0D8E161C13D471580005CD0F = {
 			isa = PBXGroup;
 			children = (
@@ -173,10 +297,15 @@
 		0D8E162A13D471580005CD0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D4D6AC613DE3E1B00F87B13 /* libTapkuLibrary.a */,
+				0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */,
+				0D4D6AC213DE3DB300F87B13 /* MapKit.framework */,
+				0D4D6AC013DE3DAB00F87B13 /* QuartzCore.framework */,
 				E222058313D5B9CA006BA2A4 /* AVFoundation.framework */,
 				0D8E162B13D471580005CD0F /* UIKit.framework */,
 				0D8E162D13D471580005CD0F /* Foundation.framework */,
 				0D8E162F13D471580005CD0F /* CoreGraphics.framework */,
+				0D4D6AC813DE3FE600F87B13 /* TouchJSON */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -237,6 +366,7 @@
 		0D8E165713D471580005CD0F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0D4D6ABE13DE3D7600F87B13 /* TapkuLibrary.bundle */,
 				0D8E165813D471580005CD0F /* VoiceTests-Info.plist */,
 				0D8E165913D471580005CD0F /* InfoPlist.strings */,
 				0D8E165C13D471580005CD0F /* VoiceTests-Prefix.pch */,
@@ -287,6 +417,8 @@
 				0D8E167613D471830005CD0F /* ScenesViewController.h */,
 				0D8E167713D471830005CD0F /* ScenesViewController.m */,
 				0D8E167813D471830005CD0F /* ScenesViewController.xib */,
+				0D4D6B0213DE410800F87B13 /* ScenesCoverViewController.h */,
+				0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -308,6 +440,15 @@
 				0D90ABD213D69F2C005FA104 /* Image */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		0DD5618A13DE3D2800F928E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0DD5619213DE3D2900F928E6 /* libTapkuLibrary.a */,
+				0DD5619413DE3D2900F928E6 /* LogicTests.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E222056C13D5B89F006BA2A4 /* CourseParser */ = {
@@ -353,6 +494,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0D4D6AC513DE3DFE00F87B13 /* PBXTargetDependency */,
 			);
 			name = Voice;
 			productName = Voice;
@@ -393,6 +535,12 @@
 			mainGroup = 0D8E161C13D471580005CD0F;
 			productRefGroup = 0D8E162813D471580005CD0F /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0DD5618A13DE3D2800F928E6 /* Products */;
+					ProjectRef = 0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0D8E162613D471580005CD0F /* Voice */,
@@ -400,6 +548,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0DD5619213DE3D2900F928E6 /* libTapkuLibrary.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTapkuLibrary.a;
+			remoteRef = 0DD5619113DE3D2900F928E6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0DD5619413DE3D2900F928E6 /* LogicTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LogicTests.octest;
+			remoteRef = 0DD5619313DE3D2900F928E6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0D8E162513D471580005CD0F /* Resources */ = {
@@ -416,6 +581,9 @@
 				0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */,
 				0D90ABD513D69F2C005FA104 /* Data in Resources */,
 				0D90ABD613D69F2C005FA104 /* Image in Resources */,
+				0D4D6ABF13DE3D7600F87B13 /* TapkuLibrary.bundle in Resources */,
+				0D4D6AE213DE3FE600F87B13 /* LICENSE.txt in Resources */,
+				0D4D6AE313DE3FE600F87B13 /* README.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +636,17 @@
 				E222058113D5B89F006BA2A4 /* TBXML.m in Sources */,
 				E222058213D5B89F006BA2A4 /* Teacher.m in Sources */,
 				0D3B8CA113DC08B1005898CD /* UACellBackgroundView.m in Sources */,
+				0D4D6AE413DE3FE600F87B13 /* CDataScanner.m in Sources */,
+				0D4D6AE513DE3FE600F87B13 /* CDataScanner_Extensions.m in Sources */,
+				0D4D6AE613DE3FE600F87B13 /* NSCharacterSet_Extensions.m in Sources */,
+				0D4D6AE713DE3FE600F87B13 /* NSDictionary_JSONExtensions.m in Sources */,
+				0D4D6AE813DE3FE600F87B13 /* NSScanner_Extensions.m in Sources */,
+				0D4D6AE913DE3FE600F87B13 /* CJSONDataSerializer.m in Sources */,
+				0D4D6AEA13DE3FE600F87B13 /* CJSONDeserializer.m in Sources */,
+				0D4D6AEB13DE3FE600F87B13 /* CJSONScanner.m in Sources */,
+				0D4D6AEC13DE3FE600F87B13 /* CJSONSerializer.m in Sources */,
+				0D4D6AED13DE3FE600F87B13 /* CSerializedJSONData.m in Sources */,
+				0D4D6B0413DE410800F87B13 /* ScenesCoverViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +661,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0D4D6AC513DE3DFE00F87B13 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapkuLibrary;
+			targetProxy = 0D4D6AC413DE3DFE00F87B13 /* PBXContainerItemProxy */;
+		};
 		0D8E165513D471580005CD0F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 0D8E162613D471580005CD0F /* Voice */;
@@ -569,7 +753,17 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voice/Voice-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Voice/TapKu/";
 				INFOPLIST_FILE = "Voice/Voice-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -582,7 +776,17 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voice/Voice-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Voice/TapKu/";
 				INFOPLIST_FILE = "Voice/Voice-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
