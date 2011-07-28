@@ -41,7 +41,7 @@
         volumBar.maximumValue = 1.0;
        
         updateTimer = nil;
-        timeStart = 2.0;
+        timeStart = 12.0;
         nPlayingIndex = 0;
     }
     return self;
@@ -91,6 +91,7 @@
     [newPlayer release];
     progressBar.maximumValue = [self.player duration];
     progressBar.value = timeStart;
+    self.player.currentTime = timeStart;
     [volumBar setValue:0.8];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -261,7 +262,7 @@
 #pragma Action
 - (IBAction)onPrevious:(id)sender;
 {
-    
+    self.player.currentTime = self.player.currentTime - 5;
 }
 
 - (IBAction)onStart:(id)sender;
@@ -297,7 +298,7 @@
 
 - (IBAction)onNext:(id)sender;
 {
-    
+    self.player.currentTime = self.player.currentTime + 5;
 }
 
 - (IBAction)onLoopLesson:(id)sender;
