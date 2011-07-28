@@ -27,4 +27,7 @@
 @property (nonatomic, retain) NSString* techerid;
 @property (nonatomic, retain) NSString* ps;
 
+- (NSTimeInterval) startTime;
+- (NSTimeInterval) endTime;
+
 @end

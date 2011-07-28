@@ -20,6 +20,7 @@
 @synthesize loopLesson;
 @synthesize loopSingle;
 @synthesize progressBar;
+@synthesize volumBar;
 @synthesize updataeTimer;
 @synthesize wavefile;
 @synthesize player;
@@ -35,8 +36,12 @@
         looptype = PLAY_LOOPTYPE_LESSON;
         progressBar.minimumValue = 0.0;
         progressBar.maximumValue = 10.0;
-        [progressBar setValue:0.0];
+        
+        volumBar.minimumValue = 0.0;
+        volumBar.maximumValue = 1.0;
+       
         updateTimer = nil;
+        timeStart = 2.0;
         nPlayingIndex = 0;
     }
     return self;
@@ -76,7 +81,17 @@
 
    // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
+    // init the player
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
+    AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+    [fileURL release];
+    
+    self.player = newPlayer;
+    [newPlayer release];
+    progressBar.maximumValue = [self.player duration];
+    progressBar.value = timeStart;
+    [volumBar setValue:0.8];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -255,14 +270,6 @@
     
     // play and stop
     if (bStart) {
-        if (!player) {
-            NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
-            AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-            [fileURL release];
-            
-            self.player = newPlayer;
-            [newPlayer release];
-        }
         [player prepareToPlay];
         [player setDelegate:(id<AVAudioPlayerDelegate>)self];
         switch (looptype) {
@@ -307,8 +314,9 @@
 
 - (void)updateCurrentTimeForPlayer:(AVAudioPlayer *)p
 {
-    NSLog(@"%f", p.currentTime);
+    NSLog(@"%f, volume:%f", p.currentTime, volumBar.value);
 // 	currentTime.text = [NSString stringWithFormat:@"%d:%02d", (int)p.currentTime / 60, (int)p.currentTime % 60, nil];
+    p.volume = volumBar.value;
 	progressBar.value = p.currentTime;
 }
 

@@ -23,13 +23,18 @@ typedef NSInteger PLAY_LOOPTPYE;
     UIBarButtonItem* playItem;
     UIBarButtonItem* loopSingle;
     UIBarButtonItem* loopLesson;
+    
     UISlider* progressBar;
-   	NSTimer* updateTimer;
+    UISlider* volumBar;
+   	
+    NSTimer* updateTimer;
     BOOL bStart;
     
     NSString* wavefile;             // 音频文件
     AVAudioPlayer *player;
     PLAY_LOOPTPYE looptype;
+    NSTimeInterval timeStart;       // 起始时间
+    
     NSInteger nPlayingIndex;
 }
 
@@ -41,6 +46,7 @@ typedef NSInteger PLAY_LOOPTPYE;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* loopSingle;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* loopLesson;
 @property (nonatomic, retain) IBOutlet UISlider* progressBar;
+@property (nonatomic, retain) IBOutlet UISlider* volumBar;
 @property (nonatomic, retain) NSTimer* updataeTimer;
 @property (nonatomic, retain) NSString* wavefile;
 @property (nonatomic, retain) AVAudioPlayer* player;
