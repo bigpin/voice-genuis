@@ -63,7 +63,9 @@
 	
 	id <TKCoverflowViewDelegate> coverflowDelegate;
 	id <TKCoverflowViewDataSource> dataSource;
+    NSInteger nCurrentIndex;
 }
+
 @property (nonatomic, assign) id <TKCoverflowViewDelegate> coverflowDelegate;
 @property (nonatomic, assign) id <TKCoverflowViewDataSource> dataSource;
 @property (nonatomic, assign) CGSize coverSize; // default 224 x 224
@@ -86,6 +88,7 @@
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasBroughtToFront:(int)index;
 @optional
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasDoubleTapped:(int)index;
+- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasSingleTapped:(int)index;
 @end
 
 @protocol TKCoverflowViewDataSource <NSObject>

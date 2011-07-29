@@ -17,6 +17,7 @@
 	BOOL collapsed;
 	NSInteger nCoverIndex;
     UILabel* _scenesLabel;
+    BOOL bAnimation;
 }
 
 @property (nonatomic,retain) TKCoverflowView *coverflow; 
@@ -25,4 +26,5 @@
 @property (nonatomic,retain) UILabel* scenesLabel;
 
 - (void)loadScenes;
+- (void)openScenes:(TKCoverflowView*)coverflowView coverAtIndex:(int)index;
 @end

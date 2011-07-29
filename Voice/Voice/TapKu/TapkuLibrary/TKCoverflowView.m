@@ -93,8 +93,8 @@
 	
 	currentIndex = -1;
 	currentSize = self.frame.size;
-	
 }
+
 - (void) setup{
 
 	currentIndex = -1;
@@ -378,6 +378,7 @@
 	}
 
 }
+
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 
 	UITouch *touch = [touches anyObject];
@@ -390,16 +391,20 @@
 			
 		}else{
 			int index = [coverViews indexOfObject:currentTouch];
-			[self setContentOffset:CGPointMake(coverSpacing*index, 0) animated:YES];
+            if (index != nCurrentIndex) {
+                [self setContentOffset:CGPointMake(coverSpacing*index, 0) animated:YES];
+                nCurrentIndex = index;
+            } else {
+                 if([coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasSingleTapped:)])
+                    [coverflowDelegate coverflowView:self coverAtIndexWasSingleTapped:currentIndex];
+
+            }
 		}
-		
-
 	}
-	
-
 	
 	currentTouch = nil;
 }
+
 - (void) touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event{
 	if(currentTouch!= nil) currentTouch = nil;
 }

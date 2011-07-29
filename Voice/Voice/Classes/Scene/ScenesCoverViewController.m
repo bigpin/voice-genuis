@@ -48,6 +48,7 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void) loadView{
 	[super loadView];
+    bAnimation = NO;
     [self loadScenes];
 	self.view.backgroundColor = [UIColor whiteColor];
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -130,6 +131,27 @@
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
 
+- (void)openScenes:(TKCoverflowView*)coverflowView coverAtIndex:(int)index;
+{
+    TKCoverflowCoverView *cover = [coverflowView coverAtIndex:index];
+	if(cover == nil) return;
+    
+    if (bAnimation) {
+        return;
+    }
+    
+    bAnimation = YES;
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(finishedTapped:finished:context:)];
+	[UIView setAnimationDuration:1];
+	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:cover cache:YES];
+	[UIView commitAnimations];
+	nCoverIndex = index;
+	NSLog(@"Index: %d",index);
+
+}
+
 - (void) info{
 	
 	if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone)
@@ -183,19 +205,14 @@
 }
 
 - (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasDoubleTapped:(int)index{
-	TKCoverflowCoverView *cover = [coverflowView coverAtIndex:index];
-	if(cover == nil) return;
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDelegate:self];
-	[UIView setAnimationDidStopSelector:@selector(finishedDoubleTapped:finished:context:)];
-	[UIView setAnimationDuration:1];
-	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:cover cache:YES];
-	[UIView commitAnimations];
-	nCoverIndex = index;
-	NSLog(@"Index: %d",index);
+    [self openScenes:(TKCoverflowView*)coverflowView coverAtIndex:(int)index];
 }
 
-- (void)finishedDoubleTapped:(NSString*)animationID finished:(BOOL)finished context:(void *)context {
+- (void) coverflowView:(TKCoverflowView*)coverflowView coverAtIndexWasSingleTapped:(int)index{
+    [self openScenes:(TKCoverflowView*)coverflowView coverAtIndex:(int)index];
+}
+
+- (void)finishedTapped:(NSString*)animationID finished:(BOOL)finished context:(void *)context {
     NSInteger nCount = [self.scenesArray count];
     NSInteger nMod = nCoverIndex % nCount;
     if (nMod < nCount) {
@@ -207,6 +224,7 @@
         [self.navigationController pushViewController:lesson animated:YES];
         [lesson release];
     }
+    bAnimation = NO;
 }
 
 
