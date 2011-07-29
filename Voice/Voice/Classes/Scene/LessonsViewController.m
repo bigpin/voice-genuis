@@ -175,13 +175,14 @@
     ListeningViewController *detailViewController = [[ListeningViewController alloc] initWithNibName:@"ListeningViewController" bundle:nil];
     // ...
     // Pass the selected object to the new view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
     [_courseParser loadLesson:indexPath.row];
     Lesson* lesson = (Lesson*)[_courseParser.course.lessons objectAtIndex:indexPath.row];
     detailViewController.sentencesArray = lesson.setences;
     detailViewController.wavefile = lesson.wavfile;
-    detailViewController.title = lesson.title;
-    [ListeningViewController release];
+    detailViewController.title = lesson.title; 
+    [self.navigationController pushViewController:detailViewController animated:YES];
+
+    [detailViewController release];
     
 
     // Navigation logic may go here. Create and push another view controller.
