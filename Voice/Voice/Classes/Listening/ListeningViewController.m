@@ -270,8 +270,8 @@
     Sentence* sentence = [_sentencesArray objectAtIndex:indexPath.row];
     switch (looptype) {
         case PLAY_LOOPTYPE_LESSON:
-            loopstarttime = [sentence startTime];
-            loopendtime = self.player.duration;
+//            loopstarttime = [sentence startTime];
+//            loopendtime = self.player.duration;
             break;
             
         case PLAY_LOOPTYPE_SENTENCE:
@@ -282,7 +282,7 @@
         default:
             break;
     }
-    player.currentTime = loopstarttime;
+    player.currentTime = [sentence startTime];
     bStart = YES;
     [self updateViewForPlayer];
     
@@ -303,7 +303,7 @@
     if (index > 0) {
         Sentence* sentence = [_sentencesArray objectAtIndex:index - 1];
         player.currentTime = [sentence startTime];
-        NSLog(@"%f", player.currentTime);
+        NSLog(@"%d, %f", index - 1, player.currentTime);
     }
 }
 
@@ -317,10 +317,10 @@
 - (IBAction)onNext:(id)sender;
 {
     int index = [self getSentenceIndex:self.player.currentTime];
-    if (index < [_sentencesArray count]) {
+    if (index < [_sentencesArray count] - 1) {
         Sentence* sentence = [_sentencesArray objectAtIndex:index + 1];
         player.currentTime = [sentence startTime];
-        NSLog(@"%f", player.currentTime);
+        NSLog(@"%d,%f", index + 1, player.currentTime);
     }
 }
 
@@ -350,6 +350,7 @@
 // 	currentTime.text = [NSString stringWithFormat:@"%d:%02d", (int)p.currentTime / 60, (int)p.currentTime % 60, nil];
     p.volume = volumBar.value;
 	progressBar.value = p.currentTime;
+//   NSLog(@"%f, %f === %f",p.currentTime, loopstarttime, loopendtime);
     if (p.currentTime > loopendtime + 0.1 || p.currentTime < loopstarttime - 0.1) {
         p.currentTime = loopstarttime;
     }
@@ -362,24 +363,16 @@
 
 - (void)updateViewForPlayer
 {
-    // play and stop
-    if (bStart) {
-        switch (looptype) {
-            case PLAY_LOOPTYPE_LESSON:
-                self.player.numberOfLoops = -1;    // Loop playback until invoke stop method
-                break;
-            case PLAY_LOOPTYPE_SENTENCE:
-                self.player.numberOfLoops = -1;
-                break;
-                
-            default:
-                break;
-        }
-
-        [self.player play];
-    }
-    else {
-        [self.player pause];
+    switch (looptype) {
+        case PLAY_LOOPTYPE_LESSON:
+            self.player.numberOfLoops = -1;    // Loop playback until invoke stop method
+            break;
+        case PLAY_LOOPTYPE_SENTENCE:
+            self.player.numberOfLoops = -1;
+            break;
+            
+        default:
+            break;
     }
     
 	[self updateCurrentTimeForPlayer:self.player];
@@ -396,6 +389,14 @@
     } else {
         self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
         updateTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCurrentTime) userInfo:player repeats:YES];
+    }
+    if (bStart) {
+        if (![self.player isPlaying]) {
+            [self.player play];
+        }
+    }
+    else {
+        [self.player pause];
     }
 }
 
