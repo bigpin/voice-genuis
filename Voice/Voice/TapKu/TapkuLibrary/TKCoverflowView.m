@@ -262,7 +262,9 @@
 	}
 	
 	if(animated) [UIView commitAnimations];
-	else [coverflowDelegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
+	else {
+        [coverflowDelegate coverflowView:self coverAtIndexWasBroughtToFront:currentIndex];
+    }
 
 }
 - (void) animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context{
@@ -391,10 +393,9 @@
 			
 		}else{
 			int index = [coverViews indexOfObject:currentTouch];
-            if (index != nCurrentIndex) {
+            if (index != currentIndex) {
                 [self setContentOffset:CGPointMake(coverSpacing*index, 0) animated:YES];
-                nCurrentIndex = index;
-            } else {
+             } else {
                  if([coverflowDelegate respondsToSelector:@selector(coverflowView:coverAtIndexWasSingleTapped:)])
                     [coverflowDelegate coverflowView:self coverAtIndexWasSingleTapped:currentIndex];
 

@@ -63,7 +63,6 @@
 	
 	id <TKCoverflowViewDelegate> coverflowDelegate;
 	id <TKCoverflowViewDataSource> dataSource;
-    NSInteger nCurrentIndex;
 }
 
 @property (nonatomic, assign) id <TKCoverflowViewDelegate> coverflowDelegate;
