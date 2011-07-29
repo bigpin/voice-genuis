@@ -88,10 +88,15 @@
     [fileURL release];
     
     self.player = newPlayer;
+    [player prepareToPlay];
+    [player setDelegate:(id<AVAudioPlayerDelegate>)self];
     [newPlayer release];
+    
     progressBar.maximumValue = [self.player duration];
     progressBar.value = timeStart;
     self.player.currentTime = timeStart;
+    loopstarttime = 0.0;
+    loopendtime = self.player.duration;
     [volumBar setValue:0.8];
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -247,8 +252,40 @@
 
 #pragma mark - Table view delegate
 
+- (int)getSentenceIndex:(NSTimeInterval)time
+{
+    Sentence* sentence = nil;
+    for (int i = 0; i < [_sentencesArray count]; i++) {
+        sentence = [_sentencesArray objectAtIndex:i];
+        if (time < [sentence endTime]) {
+            NSLog(@"%d", i);
+            return i;
+        }
+    }
+    return 0;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Sentence* sentence = [_sentencesArray objectAtIndex:indexPath.row];
+    switch (looptype) {
+        case PLAY_LOOPTYPE_LESSON:
+            loopstarttime = [sentence startTime];
+            loopendtime = self.player.duration;
+            break;
+            
+        case PLAY_LOOPTYPE_SENTENCE:
+            loopstarttime = [sentence startTime];
+            loopendtime = [sentence endTime];
+            break;
+            
+        default:
+            break;
+    }
+    player.currentTime = loopstarttime;
+    bStart = YES;
+    [self updateViewForPlayer];
+    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -262,63 +299,60 @@
 #pragma Action
 - (IBAction)onPrevious:(id)sender;
 {
-    self.player.currentTime = self.player.currentTime - 5;
+    int index = [self getSentenceIndex:self.player.currentTime];
+    if (index > 0) {
+        Sentence* sentence = [_sentencesArray objectAtIndex:index - 1];
+        player.currentTime = [sentence startTime];
+        NSLog(@"%f", player.currentTime);
+    }
 }
 
 - (IBAction)onStart:(id)sender;
 {
     bStart = !bStart;
     
-    // play and stop
-    if (bStart) {
-        [player prepareToPlay];
-        [player setDelegate:(id<AVAudioPlayerDelegate>)self];
-        switch (looptype) {
-            case PLAY_LOOPTYPE_LESSON:
-                self.player.numberOfLoops = -1;    // Loop playback until invoke stop method
-                break;
-            case PLAY_LOOPTYPE_SENTENCE:
-                self.player.numberOfLoops = 1;
-                break;
-                
-            default:
-                break;
-        }
-        progressBar.maximumValue = player.duration;
-//        NSTimeInterval time;
-//        [self.player playAtTime:time];
-        [self.player play];
-    }
-    else {
-        [self.player pause];
-    }
-    
     [self updateViewForPlayer];
 }
 
 - (IBAction)onNext:(id)sender;
 {
-    self.player.currentTime = self.player.currentTime + 5;
+    int index = [self getSentenceIndex:self.player.currentTime];
+    if (index < [_sentencesArray count]) {
+        Sentence* sentence = [_sentencesArray objectAtIndex:index + 1];
+        player.currentTime = [sentence startTime];
+        NSLog(@"%f", player.currentTime);
+    }
 }
 
 - (IBAction)onLoopLesson:(id)sender;
 {
     looptype = PLAY_LOOPTYPE_LESSON;
+    loopstarttime = 0.0;
+    loopendtime = self.player.duration;
 }
 
 - (IBAction)onLoopSentence:(id)sender;
 {
     looptype = PLAY_LOOPTYPE_SENTENCE;
+    int index = [self getSentenceIndex:self.player.currentTime];
+    if (index < [_sentencesArray count]) {
+        Sentence* sentence = [_sentencesArray objectAtIndex:index];
+        loopstarttime = [sentence startTime];
+        loopendtime = [sentence endTime];
+    }
 }
 
 #pragma mark - Update timer
 
 - (void)updateCurrentTimeForPlayer:(AVAudioPlayer *)p
 {
-    NSLog(@"%f, volume:%f", p.currentTime, volumBar.value);
+//    NSLog(@"%f, volume:%f", p.currentTime, volumBar.value);
 // 	currentTime.text = [NSString stringWithFormat:@"%d:%02d", (int)p.currentTime / 60, (int)p.currentTime % 60, nil];
     p.volume = volumBar.value;
 	progressBar.value = p.currentTime;
+    if (p.currentTime > loopendtime + 0.1 || p.currentTime < loopstarttime - 0.1) {
+        p.currentTime = loopstarttime;
+    }
 }
 
 - (void)updateCurrentTime
@@ -328,6 +362,26 @@
 
 - (void)updateViewForPlayer
 {
+    // play and stop
+    if (bStart) {
+        switch (looptype) {
+            case PLAY_LOOPTYPE_LESSON:
+                self.player.numberOfLoops = -1;    // Loop playback until invoke stop method
+                break;
+            case PLAY_LOOPTYPE_SENTENCE:
+                self.player.numberOfLoops = -1;
+                break;
+                
+            default:
+                break;
+        }
+
+        [self.player play];
+    }
+    else {
+        [self.player pause];
+    }
+    
 	[self updateCurrentTimeForPlayer:self.player];
     
 	if (updateTimer) 

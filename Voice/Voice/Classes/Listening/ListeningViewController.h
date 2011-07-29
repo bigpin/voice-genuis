@@ -32,7 +32,12 @@ typedef NSInteger PLAY_LOOPTPYE;
     
     NSString* wavefile;             // 音频文件
     AVAudioPlayer *player;
-    PLAY_LOOPTPYE looptype;
+    
+    // 循环控制
+    PLAY_LOOPTPYE looptype;         // 循环类型
+    NSTimeInterval loopstarttime;   // 循环开始时间
+    NSTimeInterval loopendtime;     // 循环结束时间
+    
     NSTimeInterval timeStart;       // 起始时间
     
     NSInteger nPlayingIndex;
@@ -59,5 +64,7 @@ typedef NSInteger PLAY_LOOPTPYE;
 
 - (void)updateCurrentTime;
 - (void)updateViewForPlayer;
+
+- (int)getSentenceIndex:(NSTimeInterval)time;
 
 @end
