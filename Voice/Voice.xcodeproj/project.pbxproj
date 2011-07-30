@@ -53,6 +53,7 @@
 		0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167C13D471830005CD0F /* SettingViewController.xib */; };
 		0D90ABD513D69F2C005FA104 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D90AA2F13D69F2C005FA104 /* Data */; };
 		0D90ABD613D69F2C005FA104 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 0D90ABD213D69F2C005FA104 /* Image */; };
+		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
 		E222057C13D5B89F006BA2A4 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E222056E13D5B89F006BA2A4 /* Course.m */; };
 		E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057013D5B89F006BA2A4 /* CourseParser.m */; };
 		E222057E13D5B89F006BA2A4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057213D5B89F006BA2A4 /* Lesson.m */; };
@@ -164,6 +165,8 @@
 		0D8E167C13D471830005CD0F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		0D90AA2F13D69F2C005FA104 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = Voice/Resources/Data; sourceTree = "<group>"; };
 		0D90ABD213D69F2C005FA104 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Voice/Resources/Image; sourceTree = "<group>"; };
+		0DC0218D13E45825007170F3 /* BubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BubbleCell.m; path = Cells/BubbleCell.m; sourceTree = "<group>"; };
+		0DC0218E13E45825007170F3 /* BubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleCell.h; path = Cells/BubbleCell.h; sourceTree = "<group>"; };
 		0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Voice/TapKu/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		E222056D13D5B89F006BA2A4 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E222056E13D5B89F006BA2A4 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
@@ -213,6 +216,8 @@
 		0D3B8C9E13DC0892005898CD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0DC0218E13E45825007170F3 /* BubbleCell.h */,
+				0DC0218D13E45825007170F3 /* BubbleCell.m */,
 				0D3B8C9F13DC08B1005898CD /* UACellBackgroundView.h */,
 				0D3B8CA013DC08B1005898CD /* UACellBackgroundView.m */,
 			);
@@ -647,6 +652,7 @@
 				0D4D6AEC13DE3FE600F87B13 /* CJSONSerializer.m in Sources */,
 				0D4D6AED13DE3FE600F87B13 /* CSerializedJSONData.m in Sources */,
 				0D4D6B0413DE410800F87B13 /* ScenesCoverViewController.m in Sources */,
+				0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

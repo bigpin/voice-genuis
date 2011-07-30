@@ -10,6 +10,7 @@
 #import "ListeningViewController.h"
 #import "Sentence.h"
 #import "UACellBackgroundView.h"
+#import "BubbleCell.h"
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
@@ -142,76 +143,76 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [self.sentencesArray count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.sentencesArray count];
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+     NSString *CellIdentifier = @"MsgListCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    BubbleCell *cell = (BubbleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell.textLabel.backgroundColor = nil;
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-    }
-    UACellBackgroundView* backgroundCell = [[UACellBackgroundView alloc] initWithFrame:CGRectZero];
-    if (indexPath.row == 0) {
-        backgroundCell.position = UACellBackgroundViewPositionTop;
-    } else if (indexPath.row == ([self.sentencesArray count] - 1)) {
-        backgroundCell.position = UACellBackgroundViewPositionBottom;
+        cell = [[[BubbleCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     } else {
-        backgroundCell.position = UACellBackgroundViewPositionMiddle;
+        cell.backgroundView = nil;
+ 		while ([[cell.contentView subviews] count] > 0) {
+			UIView *sub = [[cell.contentView subviews] objectAtIndex:0];
+			if (sub != nil) {
+				[sub removeFromSuperview];
+			}
+			
+		}
+       
     }
-    if (indexPath.row % 2 == 0) {
-        backgroundCell.toRed = 111.0/255.0;
-        backgroundCell.toGreen = 171.0/255.0;
-        backgroundCell.toBlue = 205.0/255.0;
+    
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
+    NSLog(@"%@", sentence.techerid);
+    if (indexPath.section % 2 == 0) {
+        resourcePath = [NSString stringWithFormat:@"%@/purple.png", resourcePath];
     } else {
-        backgroundCell.toRed = 249.0/255.0;
-        backgroundCell.toGreen = 209.0/255.0;
-        backgroundCell.toBlue = 124.0/255.0;
+        resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
     }
-     cell.backgroundView = backgroundCell;
-    [backgroundCell release];
-   
-    // Configure the cell...
-    Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.row];
-    cell.textLabel.textColor = [UIColor blackColor];
-    cell.textLabel.shadowColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:.35];
-    cell.textLabel.shadowOffset = CGSizeMake(0, -1.0); 
-    cell.textLabel.text = sentence.orintext;
-    cell.textLabel.numberOfLines = 0;
-    cell.textLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
-	cell.accessoryType = UITableViewCellAccessoryNone;
-    cell.detailTextLabel.text = sentence.ps;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+   // self.previousItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/previous.png", resourcePath]];
+     cell.imgName = resourcePath;
+     cell.msgText = sentence.orintext;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell=[self tableView: tableView cellForRowAtIndexPath: indexPath];
+    Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
+   	NSString *aMsg = sentence.orintext;
+    CGFloat divide = 0.9;
+	CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:self.view.bounds.size.width*divide];
     
-    CGSize constraint = CGSizeMake(cell.frame.size.width - CELL_CONTENT_MARGIN*2, 20000.0f);
-    
-    CGSize size = [cell.textLabel.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-
-    if (size.height < 44.0) {
-        CGFloat height = MAX(size.height, 44.0f);
-        return (height + + CELL_CONTENT_MARGIN*2);
-    } else {
-        CGFloat height = MAX(size.height, 44.0f);
-        return (height + CELL_CONTENT_MARGIN*2 + 20);
-    
-    }
+	size.height += 5;
+	
+	CGFloat height = (size.height < 44) ? 44 : size.height;
+	
+	return height;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	
+    // create the parent view that will hold header Label
+	UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(10.0, 0.0, self.view.bounds.size.width, 20.0)] autorelease];
+    return customView;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	return 20.0;
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -362,7 +363,7 @@
 	[self updateCurrentTimeForPlayer:self.player];
     int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
     if (nCurrentIndex != nPosition) {
-        [_sentencesTableView scrollToRowAtIndexPath:[NSIndexPath  indexPathForRow:nCurrentIndex  inSection:0]
+        [_sentencesTableView scrollToRowAtIndexPath:[NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex]
                                    atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
         nPosition = nCurrentIndex;
     }
