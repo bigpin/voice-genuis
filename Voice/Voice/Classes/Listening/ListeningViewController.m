@@ -42,7 +42,8 @@
        
         updateTimer = nil;
         timeStart = 12.0;
-        nPlayingIndex = 0;
+
+        nPosition = 0;
     }
     return self;
 }
@@ -359,6 +360,12 @@
 - (void)updateCurrentTime
 {
 	[self updateCurrentTimeForPlayer:self.player];
+    int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
+    if (nCurrentIndex != nPosition) {
+        [_sentencesTableView scrollToRowAtIndexPath:[NSIndexPath  indexPathForRow:nCurrentIndex  inSection:0]
+                                   atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        nPosition = nCurrentIndex;
+    }
 }
 
 - (void)updateViewForPlayer

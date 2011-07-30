@@ -40,7 +40,7 @@ typedef NSInteger PLAY_LOOPTPYE;
     
     NSTimeInterval timeStart;       // 起始时间
     
-    NSInteger nPlayingIndex;
+    NSInteger nPosition;            // 滚动位置
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
