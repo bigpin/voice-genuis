@@ -12,10 +12,12 @@
 @interface BubbleCell : UITableViewCell {
     NSString *msgText;
     NSString *imgName;
+    NSString *imgIcon;
 }
 
 @property (nonatomic, retain) NSString *msgText;
 @property (nonatomic, retain) NSString *imgName;
+@property (nonatomic, retain) NSString *imgIcon;
 
 + (CGSize)calcTextHeight:(NSString *)str withWidth:(CGFloat)width;
 

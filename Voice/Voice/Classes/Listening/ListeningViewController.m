@@ -183,23 +183,29 @@
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString* stringResource = @"Image";
     resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    NSString* iconPath = resourcePath;
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
     if ([self.teachersArray count] > 0) {
         Teacher* teacher = [self.teachersArray objectAtIndex:0];
         if ([teacher.teacherid isEqualToString:sentence.techerid]) {
             resourcePath = [NSString stringWithFormat:@"%@/purple.png", resourcePath];
+            iconPath = [NSString stringWithFormat:@"%@/t1.png", iconPath];
         } else {
             resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+            iconPath = [NSString stringWithFormat:@"%@/t2.png", iconPath];
         }
     } else {
         if (indexPath.section % 2 == 0) {
             resourcePath = [NSString stringWithFormat:@"%@/purple.png", resourcePath];
+            iconPath = [NSString stringWithFormat:@"%@/t1.png", iconPath];
         } else {
             resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+            iconPath = [NSString stringWithFormat:@"%@/t2.png", iconPath];
         }
         
     }
      cell.imgName = resourcePath;
+    cell.imgIcon = iconPath;
      cell.msgText = sentence.orintext;
     return cell;
 }
@@ -209,7 +215,8 @@
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
    	NSString *aMsg = sentence.orintext;
     CGFloat divide = 0.9;
-	CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:self.view.bounds.size.width*divide];
+    CGFloat width = self.view.bounds.size.width * divide - 44;
+	CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
     
 	size.height += 5;
 	
