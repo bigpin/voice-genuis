@@ -202,7 +202,7 @@
 			TBXMLElement* avatar = [TBXML childElementNamed:@"avatar" parentElement:teacherEle];
 			teacher.avatar = [TBXML textForElement:avatar];
 			[teachers addObject:teacher];
-			teacherEle = [TBXML nextSiblingNamed:@"teache" searchFromElement:teacherEle];
+			teacherEle = [TBXML nextSiblingNamed:@"teacher" searchFromElement:teacherEle];
 		}
 	}
 }
