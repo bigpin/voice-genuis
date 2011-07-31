@@ -24,6 +24,8 @@
 @synthesize loopSingle;
 @synthesize progressBar;
 @synthesize volumBar;
+@synthesize timepreces;
+@synthesize timelast;
 @synthesize updataeTimer;
 @synthesize wavefile;
 @synthesize player;
@@ -100,6 +102,8 @@
     progressBar.maximumValue = [self.player duration];
     progressBar.value = timeStart;
     self.player.currentTime = timeStart;
+    [timepreces setTitle:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
+    [timelast setTitle:[NSString stringWithFormat:@"%.1f", self.player.currentTime - self.player.duration]];
     loopstarttime = 0.0;
     loopendtime = self.player.duration;
     [volumBar setValue:0.8];
@@ -375,6 +379,8 @@
     if (p.currentTime > loopendtime + 0.1 || p.currentTime < loopstarttime - 0.1) {
         p.currentTime = loopstarttime;
     }
+    [timepreces setTitle:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
+    [timelast setTitle:[NSString stringWithFormat:@"%.1f", self.player.currentTime - self.player.duration]];
 }
 
 - (void)updateCurrentTime
