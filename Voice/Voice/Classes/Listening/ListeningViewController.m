@@ -9,11 +9,13 @@
 #import <Foundation/NSDate.h>
 #import "ListeningViewController.h"
 #import "Sentence.h"
+#import "Teacher.h"
 #import "UACellBackgroundView.h"
 #import "BubbleCell.h"
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
+@synthesize teachersArray = _teachersArray;
 @synthesize sentencesTableView = _sentencesTableView;
 @synthesize previousItem;
 @synthesize nextItem;
@@ -52,6 +54,7 @@
 - (void)dealloc
 {
     [self.sentencesArray release];
+    [self.teachersArray release];
     [progressBar release];
     [updateTimer release];
     [self.player stop];
@@ -138,6 +141,11 @@
      //return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
+{
+    [self.sentencesTableView reloadData];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -176,13 +184,21 @@
     NSString* stringResource = @"Image";
     resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
-    NSLog(@"%@", sentence.techerid);
-    if (indexPath.section % 2 == 0) {
-        resourcePath = [NSString stringWithFormat:@"%@/purple.png", resourcePath];
+    if ([self.teachersArray count] > 0) {
+        Teacher* teacher = [self.teachersArray objectAtIndex:0];
+        if ([teacher.teacherid isEqualToString:sentence.techerid]) {
+            resourcePath = [NSString stringWithFormat:@"%@/purple.png", resourcePath];
+        } else {
+            resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+        }
     } else {
-        resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+        if (indexPath.section % 2 == 0) {
+            resourcePath = [NSString stringWithFormat:@"%@/purple.png", resourcePath];
+        } else {
+            resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+        }
+        
     }
-   // self.previousItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/previous.png", resourcePath]];
      cell.imgName = resourcePath;
      cell.msgText = sentence.orintext;
     return cell;

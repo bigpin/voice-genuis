@@ -178,6 +178,7 @@
     [_courseParser loadLesson:indexPath.row];
     Lesson* lesson = (Lesson*)[_courseParser.course.lessons objectAtIndex:indexPath.row];
     detailViewController.sentencesArray = lesson.setences;
+    detailViewController.teachersArray = lesson.teachers;
     detailViewController.wavefile = lesson.wavfile;
     detailViewController.title = lesson.title; 
     [self.navigationController pushViewController:detailViewController animated:YES];

@@ -17,6 +17,7 @@ typedef NSInteger PLAY_LOOPTPYE;
 
 @interface ListeningViewController : UIViewController {
     NSMutableArray* _sentencesArray;
+    NSMutableArray* _teachersArray;
     UITableView* _sentencesTableView;
     UIBarButtonItem* previousItem;
     UIBarButtonItem* nextItem;
@@ -44,6 +45,7 @@ typedef NSInteger PLAY_LOOPTPYE;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
+@property (nonatomic, retain) NSMutableArray* teachersArray;
 @property (nonatomic, retain) IBOutlet UITableView* sentencesTableView;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* previousItem;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* nextItem;
