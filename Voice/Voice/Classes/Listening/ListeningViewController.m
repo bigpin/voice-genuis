@@ -126,6 +126,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    bStart = NO;
+    [self updateViewForPlayer];
+
     [super viewWillDisappear:animated];
 }
 
