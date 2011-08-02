@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "ListeningToolbar.h"
 
+#define VOLUMNVIEW_TAG  50001
 enum {
     PLAY_LOOPTYPE_LESSON    = 1,
     PLAY_LOOPTYPE_SENTENCE  = 2,
@@ -19,17 +21,12 @@ typedef NSInteger PLAY_LOOPTPYE;
     NSMutableArray* _sentencesArray;
     NSMutableArray* _teachersArray;
     UITableView* _sentencesTableView;
-    UIBarButtonItem* previousItem;
-    UIBarButtonItem* nextItem;
-    UIBarButtonItem* playItem;
-    UIBarButtonItem* loopSingle;
-    UIBarButtonItem* loopLesson;
+    ListeningToolbar* _listeningToolbar;
     
     UISlider* progressBar;
     UISlider* volumBar;
     UIBarButtonItem* timepreces;
     UIBarButtonItem* timelast;
-   	
     NSTimer* updateTimer;
     BOOL bStart;
     
@@ -48,12 +45,8 @@ typedef NSInteger PLAY_LOOPTPYE;
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
 @property (nonatomic, retain) NSMutableArray* teachersArray;
+@property (nonatomic, retain) IBOutlet ListeningToolbar* listeningToolbar;
 @property (nonatomic, retain) IBOutlet UITableView* sentencesTableView;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* previousItem;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* nextItem;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* playItem;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* loopSingle;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* loopLesson;
 @property (nonatomic, retain) IBOutlet UISlider* progressBar;
 @property (nonatomic, retain) IBOutlet UISlider* volumBar;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* timepreces;
@@ -63,6 +56,7 @@ typedef NSInteger PLAY_LOOPTPYE;
 @property (nonatomic, retain) AVAudioPlayer* player;
 
 - (IBAction)onPrevious:(id)sender;
+- (IBAction)onOther:(id)sender;
 - (IBAction)onStart:(id)sender;
 - (IBAction)onNext:(id)sender;
 - (IBAction)onLoopLesson:(id)sender;

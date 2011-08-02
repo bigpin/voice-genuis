@@ -25,6 +25,9 @@
 		0D4D6AEC13DE3FE600F87B13 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6ADF13DE3FE600F87B13 /* CJSONSerializer.m */; };
 		0D4D6AED13DE3FE600F87B13 /* CSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6AE113DE3FE600F87B13 /* CSerializedJSONData.m */; };
 		0D4D6B0413DE410800F87B13 /* ScenesCoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */; };
+		0D8632CC13E8083200F934AF /* ListeningToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8632CB13E8083100F934AF /* ListeningToolbar.m */; };
+		0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8632DE13E8383400F934AF /* ListeningVolumView.m */; };
+		0D8632E113E8386500F934AF /* ListeningVolumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8632E013E8386500F934AF /* ListeningVolumView.xib */; };
 		0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162B13D471580005CD0F /* UIKit.framework */; };
 		0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162D13D471580005CD0F /* Foundation.framework */; };
 		0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162F13D471580005CD0F /* CoreGraphics.framework */; };
@@ -126,6 +129,11 @@
 		0D4D6AE113DE3FE600F87B13 /* CSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSerializedJSONData.m; sourceTree = "<group>"; };
 		0D4D6B0213DE410800F87B13 /* ScenesCoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenesCoverViewController.h; sourceTree = "<group>"; };
 		0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenesCoverViewController.m; sourceTree = "<group>"; };
+		0D8632CA13E8083100F934AF /* ListeningToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningToolbar.h; sourceTree = "<group>"; };
+		0D8632CB13E8083100F934AF /* ListeningToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeningToolbar.m; sourceTree = "<group>"; };
+		0D8632DD13E8383300F934AF /* ListeningVolumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningVolumView.h; sourceTree = "<group>"; };
+		0D8632DE13E8383400F934AF /* ListeningVolumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeningVolumView.m; sourceTree = "<group>"; };
+		0D8632E013E8386500F934AF /* ListeningVolumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListeningVolumView.xib; sourceTree = "<group>"; };
 		0D8E162713D471580005CD0F /* Voice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E162B13D471580005CD0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D8E162D13D471580005CD0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -409,6 +417,11 @@
 				0D8E166F13D471830005CD0F /* ListeningViewController.h */,
 				0D8E167013D471830005CD0F /* ListeningViewController.m */,
 				0D8E167113D471830005CD0F /* ListeningViewController.xib */,
+				0D8632CA13E8083100F934AF /* ListeningToolbar.h */,
+				0D8632CB13E8083100F934AF /* ListeningToolbar.m */,
+				0D8632DD13E8383300F934AF /* ListeningVolumView.h */,
+				0D8632DE13E8383400F934AF /* ListeningVolumView.m */,
+				0D8632E013E8386500F934AF /* ListeningVolumView.xib */,
 			);
 			path = Listening;
 			sourceTree = "<group>";
@@ -589,6 +602,7 @@
 				0D4D6ABF13DE3D7600F87B13 /* TapkuLibrary.bundle in Resources */,
 				0D4D6AE213DE3FE600F87B13 /* LICENSE.txt in Resources */,
 				0D4D6AE313DE3FE600F87B13 /* README.txt in Resources */,
+				0D8632E113E8386500F934AF /* ListeningVolumView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +667,8 @@
 				0D4D6AED13DE3FE600F87B13 /* CSerializedJSONData.m in Sources */,
 				0D4D6B0413DE410800F87B13 /* ScenesCoverViewController.m in Sources */,
 				0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */,
+				0D8632CC13E8083200F934AF /* ListeningToolbar.m in Sources */,
+				0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,16 +12,13 @@
 #import "Teacher.h"
 #import "UACellBackgroundView.h"
 #import "BubbleCell.h"
+#import "ListeningVolumView.h"
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
 @synthesize teachersArray = _teachersArray;
 @synthesize sentencesTableView = _sentencesTableView;
-@synthesize previousItem;
-@synthesize nextItem;
-@synthesize playItem;
-@synthesize loopLesson;
-@synthesize loopSingle;
+@synthesize listeningToolbar = _listeningToolbar;
 @synthesize progressBar;
 @synthesize volumBar;
 @synthesize timepreces;
@@ -47,7 +44,6 @@
        
         updateTimer = nil;
         timeStart = 12.0;
-
         nPosition = 0;
     }
     return self;
@@ -55,6 +51,7 @@
 
 - (void)dealloc
 {
+    [self.listeningToolbar release];
     [self.sentencesArray release];
     [self.teachersArray release];
     [progressBar release];
@@ -77,16 +74,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSString* stringResource = @"Image";
-    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
-    self.previousItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/previous.png", resourcePath]];
-    self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
-    self.nextItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/next.png", resourcePath]];
-    self.loopSingle.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/loopsingle.png", resourcePath]];
-    self.loopLesson.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
-
-   // Uncomment the following line to preserve selection between presentations.
+    [self.listeningToolbar loadItems:self];
+   // self.navigationController.navigationBar.hidden = YES;
+    //self.sentencesTableView.contentOffset = CGPointMake(0, 44);
+    // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // init the player
@@ -150,6 +141,11 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 {
+    ListeningVolumView* volumView = (ListeningVolumView*)[self.view viewWithTag:(NSInteger)VOLUMNVIEW_TAG];
+    if (volumView != nil) {
+        [volumView removeFromSuperview];
+    }
+
     [self.sentencesTableView reloadData];
 }
 
@@ -329,6 +325,26 @@
 }
 
 #pragma Action
+- (IBAction)onOther:(id)sender;
+{
+    ListeningVolumView* volumView = (ListeningVolumView*)[self.view viewWithTag:(NSInteger)VOLUMNVIEW_TAG];
+    if (volumView != nil) {
+        return;
+    }
+    
+    NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"ListeningVolumView" owner:self options:NULL];
+    if ([array count] > 0) {
+        volumView = [array objectAtIndex:0];
+        volumView.frame = self.view.frame;
+        volumView.centerView.center = volumView.center;
+        volumView.center = self.view.center;
+        volumView.viewDelegate = (id)self;
+        [volumView loadResource];
+        volumView.tag = VOLUMNVIEW_TAG;
+        [self.view addSubview:volumView];
+    }
+}
+
 - (IBAction)onPrevious:(id)sender;
 {
     int index = [self getSentenceIndex:self.player.currentTime];
@@ -358,6 +374,8 @@
 
 - (IBAction)onLoopLesson:(id)sender;
 {
+    //    self.loopLesson.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
+
     looptype = PLAY_LOOPTYPE_LESSON;
     loopstarttime = 0.0;
     loopendtime = self.player.duration;
@@ -424,10 +442,10 @@
     NSString* stringResource = @"Image";
     resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
     if (!bStart) {
-        self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
         updateTimer = nil;
     } else {
-        self.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
         updateTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCurrentTime) userInfo:player repeats:YES];
     }
     if (bStart) {
@@ -437,6 +455,30 @@
     }
     else {
         [self.player pause];
+    }
+}
+
+- (void)removeView:(ListeningVolumView*)volumnView;
+{
+ 	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+	[UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelegate:self];
+	[UIView setAnimationDidStopSelector:@selector(finishedRemovePromptAnimation:finished:context:)];
+	CGAffineTransform transform = CGAffineTransformMakeScale(1.0, 1.0);
+	volumnView.transform = transform;
+	transform = CGAffineTransformMakeScale(0.1, 0.1);
+	volumnView.transform = transform;
+	[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:volumnView cache:NO];
+	[UIView commitAnimations]; 
+    
+}
+
+- (void)finishedRemovePromptAnimation:(NSString*)animationID finished:(BOOL)finished context:(void *)context {
+    [UIView setAnimationDelegate:nil];
+    ListeningVolumView* volumView = (ListeningVolumView*)[self.view viewWithTag:(NSInteger)VOLUMNVIEW_TAG];
+    if (volumView != nil) {
+        [volumView removeFromSuperview];
     }
 }
 
