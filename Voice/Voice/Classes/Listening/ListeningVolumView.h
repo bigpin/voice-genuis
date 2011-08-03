@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@interface ListeningVolumProgressView : UIProgressView {
+    
+}
+@end
+
 @class ListeningVolumView;
 @protocol ListeningVolumViewDelegate <NSObject>
 
@@ -20,6 +25,7 @@
     UIButton* _volumndown;
     UIButton* _volumnup;
     UIImageView* _volumImage;
+    UIProgressView* _volumProgress;
     id<ListeningVolumViewDelegate>viewDelegate;
 }
 
@@ -27,6 +33,7 @@
 @property(nonatomic, retain) IBOutlet UIButton* volumndown;
 @property(nonatomic, retain) IBOutlet UIButton* volumnup;
 @property(nonatomic, retain) IBOutlet UIImageView* volumImage;
+@property(nonatomic, retain) IBOutlet UIProgressView* volumProgress;
 @property(nonatomic, assign) id<ListeningVolumViewDelegate>viewDelegate;
 
 - (void)loadResource;

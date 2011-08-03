@@ -25,8 +25,8 @@ typedef NSInteger PLAY_LOOPTPYE;
     
     UISlider* progressBar;
     UISlider* volumBar;
-    UIBarButtonItem* timepreces;
-    UIBarButtonItem* timelast;
+    UILabel* timepreces;
+    UILabel* timelast;
     NSTimer* updateTimer;
     BOOL bStart;
     
@@ -49,8 +49,8 @@ typedef NSInteger PLAY_LOOPTPYE;
 @property (nonatomic, retain) IBOutlet UITableView* sentencesTableView;
 @property (nonatomic, retain) IBOutlet UISlider* progressBar;
 @property (nonatomic, retain) IBOutlet UISlider* volumBar;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* timepreces;
-@property (nonatomic, retain) IBOutlet UIBarButtonItem* timelast;
+@property (nonatomic, retain) IBOutlet UILabel* timepreces;
+@property (nonatomic, retain) IBOutlet UILabel* timelast;
 @property (nonatomic, retain) NSTimer* updataeTimer;
 @property (nonatomic, retain) NSString* wavefile;
 @property (nonatomic, retain) AVAudioPlayer* player;

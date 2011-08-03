@@ -116,7 +116,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<object class="IBUISlider" id="573764320">
 						<reference key="NSNextResponder" ref="228218858"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{30, 444}, {258, 23}}</string>
+						<string key="NSFrame">{{37, 441}, {245, 23}}</string>
 						<reference key="NSSuperview" ref="228218858"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="910902880"/>
@@ -129,7 +129,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<object class="IBUILabel" id="981043393">
 						<reference key="NSNextResponder" ref="228218858"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{0, 444}, {31, 21}}</string>
+						<string key="NSFrame">{{2, 439}, {31, 21}}</string>
 						<reference key="NSSuperview" ref="228218858"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="573764320"/>
@@ -150,7 +150,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 					<object class="IBUILabel" id="910902880">
 						<reference key="NSNextResponder" ref="228218858"/>
 						<int key="NSvFlags">265</int>
-						<string key="NSFrame">{{292, 448}, {28, 18}}</string>
+						<string key="NSFrame">{{288, 439}, {31, 21}}</string>
 						<reference key="NSSuperview" ref="228218858"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -216,6 +216,30 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 						<reference key="destination" ref="592066015"/>
 					</object>
 					<int key="connectionID">77</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">timepreces</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="981043393"/>
+					</object>
+					<int key="connectionID">86</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">timelast</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="910902880"/>
+					</object>
+					<int key="connectionID">87</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">progressBar</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="573764320"/>
+					</object>
+					<int key="connectionID">88</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -323,7 +347,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">85</int>
+			<int key="maxID">88</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -337,9 +361,9 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>loopItem</string>
 							<string>nextItem</string>
-							<string>otherItem</string>
 							<string>playItem</string>
 							<string>previousItem</string>
+							<string>volumItem</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -356,9 +380,9 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>loopItem</string>
 							<string>nextItem</string>
-							<string>otherItem</string>
 							<string>playItem</string>
 							<string>previousItem</string>
+							<string>volumItem</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -371,15 +395,15 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">otherItem</string>
-								<string key="candidateClassName">UIBarButtonItem</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">playItem</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">previousItem</string>
+								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">volumItem</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
 						</object>
@@ -468,8 +492,8 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>ListeningToolbar</string>
 							<string>UISlider</string>
 							<string>UITableView</string>
-							<string>UIBarButtonItem</string>
-							<string>UIBarButtonItem</string>
+							<string>UILabel</string>
+							<string>UILabel</string>
 							<string>UISlider</string>
 						</object>
 					</object>
@@ -500,11 +524,11 @@ AAMAAAABAAEAAAFTAAMAAAAEAAACAgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">timelast</string>
-								<string key="candidateClassName">UIBarButtonItem</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">timepreces</string>
-								<string key="candidateClassName">UIBarButtonItem</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">volumBar</string>
