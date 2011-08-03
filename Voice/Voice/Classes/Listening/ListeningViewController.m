@@ -336,8 +336,7 @@
     if ([array count] > 0) {
         volumView = [array objectAtIndex:0];
         volumView.frame = self.view.frame;
-        volumView.centerView.center = volumView.center;
-        volumView.center = self.view.center;
+        volumView.centerView.center = CGPointMake(self.view.center.x, self.view.center.y - 25);
         volumView.viewDelegate = (id)self;
         [volumView loadResource];
         volumView.tag = VOLUMNVIEW_TAG;
