@@ -39,7 +39,7 @@
         progressBar.maximumValue = 10.0;
         
         updateTimer = nil;
-        timeStart = 12.0;
+        timeStart = 0.0;
         nPosition = 0;
     }
     return self;
@@ -129,6 +129,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     bStart = NO;
+    timeStart = 0.0;
     [self updateViewForPlayer];
 
     [super viewWillDisappear:animated];
