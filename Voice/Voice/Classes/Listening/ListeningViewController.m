@@ -20,7 +20,6 @@
 @synthesize sentencesTableView = _sentencesTableView;
 @synthesize listeningToolbar = _listeningToolbar;
 @synthesize progressBar;
-@synthesize volumBar;
 @synthesize timepreces;
 @synthesize timelast;
 @synthesize updataeTimer;
@@ -39,9 +38,6 @@
         progressBar.minimumValue = 0.0;
         progressBar.maximumValue = 10.0;
         
-        volumBar.minimumValue = 0.0;
-        volumBar.maximumValue = 1.0;
-       
         updateTimer = nil;
         timeStart = 12.0;
         nPosition = 0;
@@ -104,7 +100,7 @@
     [timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration ]];
     loopstarttime = 0.0;
     loopendtime = self.player.duration;
-    [volumBar setValue:0.8];
+    fVolumn = 0.8;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -346,6 +342,7 @@
         volumView.centerView.center = CGPointMake(self.view.center.x, self.view.center.y - 25);
         volumView.viewDelegate = (id)self;
         [volumView loadResource];
+        [volumView setVolumnDisplay:fVolumn];
         volumView.tag = VOLUMNVIEW_TAG;
         [self.view addSubview:volumView];
     }
@@ -404,7 +401,7 @@
 {
 //    NSLog(@"%f, volume:%f", p.currentTime, volumBar.value);
 // 	currentTime.text = [NSString stringWithFormat:@"%d:%02d", (int)p.currentTime / 60, (int)p.currentTime % 60, nil];
-    p.volume = volumBar.value;
+    p.volume = fVolumn;
 	progressBar.value = p.currentTime;
 //   NSLog(@"%f, %f === %f",p.currentTime, loopstarttime, loopendtime);
     if (p.currentTime > loopendtime + 0.1 || p.currentTime < loopstarttime - 0.1) {
@@ -480,9 +477,9 @@
     
 }
 
-- (void)setVolumn:(NSInteger)nVolumn;
+- (void)setVolumn:(CGFloat)fV;
 {
-    
+    fVolumn = fV;
 }
 
 - (void)finishedRemovePromptAnimation:(NSString*)animationID finished:(BOOL)finished context:(void *)context {

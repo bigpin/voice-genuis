@@ -14,7 +14,7 @@
 #define DEFALUT_VOLUM_LEVEL 5
 
 @implementation ListeningVolumProgressView
-@synthesize nMaxLevel, nCurrentLevel;
+@synthesize nMaxLevel, nCurrentLevel, bDisabledVolumn;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -43,12 +43,17 @@
      CGFloat fHeight = (self.frame.size.height * (1 - 1/nPosCountY)) / ((nMaxLevel+1));
      if (context != nil) {
           for (NSInteger i = 0; i < nMaxLevel; i++) {
-              if (i <= nCurrentLevel) {
-                  UIColor* c = [UIColor whiteColor];
-                  CGContextSetFillColorWithColor(context, [c CGColor]);
-              } else {
+              if (bDisabledVolumn) {
                   UIColor* c = [UIColor grayColor];
                   CGContextSetFillColorWithColor(context, [c CGColor]);
+              } else {
+                   if (i <= (nCurrentLevel - 1)) {
+                      UIColor* c = [UIColor whiteColor];
+                      CGContextSetFillColorWithColor(context, [c CGColor]);
+                  } else {
+                      UIColor* c = [UIColor grayColor];
+                      CGContextSetFillColorWithColor(context, [c CGColor]);
+                  }
               }
 
              CGRect rc = CGRectMake(i * (fWidth + fSpace), self.frame.size.height - (fStartHeight + i * fHeight), fWidth, fStartHeight + i * fHeight);
@@ -76,6 +81,7 @@
 @synthesize volumProgress = _volumProgress;
 
 @synthesize viewDelegate;
+@synthesize bDisabeldVolumn;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -110,9 +116,19 @@
     NSString* stringResource = @"Image";
     resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
 
-    self.volumImage.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/volumn.png", resourcePath]];
+    [self.volumImage setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/volumn.png", resourcePath]] forState:UIControlStateNormal];
     [self.volumnup setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/icon_volume_up.png", resourcePath]] forState:UIControlStateNormal];
     [self.volumndown setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/icon_volume_down.png", resourcePath]] forState:UIControlStateNormal];
+    self.volumProgress.nCurrentLevel = 2;
+    self.volumProgress.nMaxLevel = DEFALUT_VOLUM_LEVEL;
+    self.bDisabeldVolumn = NO;
+    self.volumProgress.bDisabledVolumn = self.bDisabeldVolumn;
+    [self.volumProgress setNeedsDisplay];
+}
+
+- (void)setVolumnDisplay:(CGFloat)fv;
+{
+    self.volumProgress.nCurrentLevel = self.volumProgress.nMaxLevel*fv;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -123,6 +139,47 @@
     } else {
         [viewDelegate removeView:self];
     }
+}
+
+- (IBAction)onIncreaseVolumn;
+{
+    if (self.bDisabeldVolumn) {
+        return;
+    }
+    self.volumProgress.nCurrentLevel++;
+    if (self.volumProgress.nCurrentLevel > self.volumProgress.nMaxLevel) {
+        self.volumProgress.nCurrentLevel = self.volumProgress.nMaxLevel;
+    }
+    [self.volumProgress setNeedsDisplay];
+
+}
+
+- (IBAction)onDisableVolumn;
+{
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    if (!bDisabeldVolumn) {
+        [self.volumImage setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/volumn_disable.png", resourcePath]] forState:UIControlStateNormal];
+    } else {
+        [self.volumImage setImage:[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/volumn.png", resourcePath]] forState:UIControlStateNormal];
+    }
+    self.bDisabeldVolumn = !self.bDisabeldVolumn;
+    self.volumProgress.bDisabledVolumn = self.bDisabeldVolumn;
+    [self.volumProgress setNeedsDisplay];
+    
+}
+
+- (IBAction)onDecreseVolumn;
+{
+    if (self.bDisabeldVolumn) {
+        return;
+    }
+    self.volumProgress.nCurrentLevel--;
+    if (self.volumProgress.nCurrentLevel < 1) {
+        self.volumProgress.nCurrentLevel = 1;
+    }
+    [self.volumProgress setNeedsDisplay];
 }
 
 @end

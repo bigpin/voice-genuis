@@ -24,7 +24,6 @@ typedef NSInteger PLAY_LOOPTPYE;
     ListeningToolbar* _listeningToolbar;
     
     UISlider* progressBar;
-    UISlider* volumBar;
     UILabel* timepreces;
     UILabel* timelast;
     NSTimer* updateTimer;
@@ -41,6 +40,7 @@ typedef NSInteger PLAY_LOOPTPYE;
     NSTimeInterval timeStart;       // 起始时间
     
     NSInteger nPosition;            // 滚动位置
+    CGFloat fVolumn;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
@@ -48,7 +48,6 @@ typedef NSInteger PLAY_LOOPTPYE;
 @property (nonatomic, retain) IBOutlet ListeningToolbar* listeningToolbar;
 @property (nonatomic, retain) IBOutlet UITableView* sentencesTableView;
 @property (nonatomic, retain) IBOutlet UISlider* progressBar;
-@property (nonatomic, retain) IBOutlet UISlider* volumBar;
 @property (nonatomic, retain) IBOutlet UILabel* timepreces;
 @property (nonatomic, retain) IBOutlet UILabel* timelast;
 @property (nonatomic, retain) NSTimer* updataeTimer;
