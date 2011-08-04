@@ -75,6 +75,13 @@
 {
     [super viewDidLoad];
     [self.listeningToolbar loadItems:self];
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    
+    UIImage* imageThumb = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-handle.png", resourcePath]];
+   
+    [self.progressBar setThumbImage:imageThumb forState:UIControlStateNormal];
    // self.navigationController.navigationBar.hidden = YES;
     //self.sentencesTableView.contentOffset = CGPointMake(0, 44);
     // Uncomment the following line to preserve selection between presentations.
@@ -94,7 +101,7 @@
     progressBar.value = timeStart;
     self.player.currentTime = timeStart;
     [timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
-    [timelast setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime - self.player.duration]];
+    [timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration ]];
     loopstarttime = 0.0;
     loopendtime = self.player.duration;
     [volumBar setValue:0.8];
@@ -404,7 +411,7 @@
         p.currentTime = loopstarttime;
     }
     [timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
-    [timelast setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime - self.player.duration]];
+    [timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration]];
 }
 
 - (void)updateCurrentTime
@@ -470,6 +477,11 @@
 	volumnView.transform = transform;
 	[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:volumnView cache:NO];
 	[UIView commitAnimations]; 
+    
+}
+
+- (void)setVolumn:(NSInteger)nVolumn;
+{
     
 }
 

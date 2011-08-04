@@ -11,39 +11,63 @@
 #define kCustomProgressViewFillOffsetX 1
 #define kCustomProgressViewFillOffsetTopY 1
 #define kCustomProgressViewFillOffsetBottomY 3
-
+#define DEFALUT_VOLUM_LEVEL 5
 
 @implementation ListeningVolumProgressView
-- (void)drawRect:(CGRect)rect {
-    
-    CGSize backgroundStretchPoints = {4, 9}, fillStretchPoints = {3, 8};
-    
-    // Initialize the stretchable images.
-    UIImage *background = [[UIImage imageNamed:@"progress-bar-bg.png"] stretchableImageWithLeftCapWidth:backgroundStretchPoints.width topCapHeight:backgroundStretchPoints.height];     
-    UIImage *fill = [[UIImage imageNamed:@"progress-bar-fill.png"] stretchableImageWithLeftCapWidth:fillStretchPoints.width topCapHeight:fillStretchPoints.height];    // Draw the background in the current rect
-    [background drawInRect:rect];
-    
-    // Compute the max width in pixels for the fill.  Max width being how
-    // wide the fill should be at 100% progress.
-    NSInteger maxWidth = rect.size.width - (2 * kCustomProgressViewFillOffsetX);
-    
-    // Compute the width for the current progress value, 0.0 - 1.0 corresponding 
-    // to 0% and 100% respectively.
-    NSInteger curWidth = floor([self progress] * maxWidth);
-    
-    // Create the rectangle for our fill image accounting for the position offsets,
-    // 1 in the X direction and 1, 3 on the top and bottom for the Y.
-    CGRect fillRect = CGRectMake(rect.origin.x + kCustomProgressViewFillOffsetX,
-                                 rect.origin.y + kCustomProgressViewFillOffsetTopY,
-                                 curWidth,
-                                 rect.size.height - kCustomProgressViewFillOffsetBottomY);
-    
-    // Draw the fill
-    [fill drawInRect:fillRect];
+@synthesize nMaxLevel, nCurrentLevel;
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        nMaxLevel = DEFALUT_VOLUM_LEVEL;
+        nCurrentLevel = 2;
+    }
+    return self;
+}
+
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+     // Drawing code
+     if (nMaxLevel == 0) {
+         nMaxLevel = DEFALUT_VOLUM_LEVEL;
+     }
+     CGContextRef context = UIGraphicsGetCurrentContext();
+     CGFloat fSpace = 12;
+     CGFloat fWidth = (self.frame.size.width - ((nMaxLevel - 1) * fSpace))/ nMaxLevel;
+     NSInteger nPosCountY = 5;
+     CGFloat fStartHeight = self.frame.size.height / nPosCountY;
+     CGFloat fHeight = (self.frame.size.height * (1 - 1/nPosCountY)) / ((nMaxLevel+1));
+     if (context != nil) {
+          for (NSInteger i = 0; i < nMaxLevel; i++) {
+              if (i <= nCurrentLevel) {
+                  UIColor* c = [UIColor whiteColor];
+                  CGContextSetFillColorWithColor(context, [c CGColor]);
+              } else {
+                  UIColor* c = [UIColor grayColor];
+                  CGContextSetFillColorWithColor(context, [c CGColor]);
+              }
+
+             CGRect rc = CGRectMake(i * (fWidth + fSpace), self.frame.size.height - (fStartHeight + i * fHeight), fWidth, fStartHeight + i * fHeight);
+             CGContextFillRect(context, rc);
+         }
+     }
+     UIGraphicsEndImageContext();
+ }
+
+
+- (void)dealloc
+{
+    [super dealloc];
 }
 
 @end
 
+
+//////////////////////////////////////////////////////
 @implementation ListeningVolumView
 @synthesize centerView = _centerView;
 @synthesize volumndown = _volumndown;
@@ -93,8 +117,12 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
-    [viewDelegate removeView:self];
+    UITouch *touch = [[event allTouches] anyObject];
+    CGPoint pt = [touch locationInView:self];
+    if ((pt.x > self.centerView.frame.origin.x && pt.y > self.centerView.frame.origin.y && pt.x < (self.centerView.frame.size.width + self.centerView.frame.origin.x) && pt.y < (self.centerView.frame.size.height + self.centerView.frame.origin.y))) {
+    } else {
+        [viewDelegate removeView:self];
+    }
 }
 
 @end
