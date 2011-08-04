@@ -78,6 +78,10 @@
     UIImage* imageThumb = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-handle.png", resourcePath]];
    
     [self.progressBar setThumbImage:imageThumb forState:UIControlStateNormal];
+
+    UIImage* imageTrack = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-track-right.png", resourcePath]];
+    [self.progressBar setMaximumTrackImage:imageTrack forState:UIControlStateNormal];
+    [self.progressBar setMinimumTrackImage:imageTrack forState:UIControlStateNormal];
    // self.navigationController.navigationBar.hidden = YES;
     //self.sentencesTableView.contentOffset = CGPointMake(0, 44);
     // Uncomment the following line to preserve selection between presentations.
