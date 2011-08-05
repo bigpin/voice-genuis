@@ -11,6 +11,30 @@
 #import "ScenesCoverViewController.h"
 #import "FavorViewController.h"
 #import "SettingViewController.h"
+#define NAVI_COLOR_R    42.0/255.0
+#define NAVI_COLOR_G    57.0/255.0
+#define NAVI_COLOR_B    21.0/255.0
+
+@implementation CustomUITabBarController
+
+- (id)init
+{
+    self = [super init];
+    CGRect frame = CGRectMake(0.0, 0, self.view.bounds.size.width, 48);
+    
+    UIView *v = [[UIView alloc] initWithFrame:frame];
+    
+    [v setBackgroundColor:[[UIColor alloc] initWithRed:NAVI_COLOR_R
+                                                 green:NAVI_COLOR_G
+                                                  blue:NAVI_COLOR_B
+                                                 alpha:0.2]];
+    
+    [self.tabBar insertSubview:v atIndex:0];
+    [v release];
+
+    return self;
+}
+@end
 
 @implementation VoiceAppDelegate
 
@@ -19,7 +43,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UITabBarController* tb = [[UITabBarController alloc] init];
+    CustomUITabBarController* tb = [[CustomUITabBarController alloc] init];
     NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString* stringResource = @"Image";
@@ -39,11 +63,12 @@
     [nav release];*/
     ScenesCoverViewController* scenes = [[ScenesCoverViewController alloc] init];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:scenes];
-    nav.navigationBar.tintColor = [UIColor blackColor];
-    scenes.title = @"Scenes root";
+
+    nav.navigationBar.tintColor = [UIColor colorWithRed:NAVI_COLOR_R green:NAVI_COLOR_G blue:NAVI_COLOR_B alpha:1.0];
+    //scenes.title = @"Scenes root";
 	scenes.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/world.png", resourcePath]];
     
-    nav.title = @"Scenes";
+    scenes.tabBarItem.title = @"Scenes";
     [viewControllers addObject:nav];
     
     [scenes release];
@@ -57,8 +82,8 @@
     nav = [[UINavigationController alloc] initWithRootViewController:favor];
     nav.navigationBar.tintColor = [UIColor blackColor];
     [viewControllers addObject:nav];
-    favor.title = @"Favor root";
-    nav.title = @"Favor";
+    favor.title = @"Favorite";
+    favor.tabBarItem.title = @"Favorite";
     [favor release];
     [nav release];
     
@@ -69,8 +94,8 @@
     nav = [[UINavigationController alloc] initWithRootViewController:setting];
     nav.navigationBar.tintColor = [UIColor blackColor];
     [viewControllers addObject:nav];
-    setting.title = @"Setting root";
-    nav.title = @"Setting";
+    setting.title = @"Setting";
+    setting.tabBarItem.title = @"Setting";
     [setting release];
     [nav release];
     

@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@interface CustomUITabBarController: UITabBarController {
+}
+@end
+
 @interface VoiceAppDelegate : NSObject <UIApplicationDelegate> {
-    UITabBarController* _tabBar;
+    CustomUITabBarController* _tabBar;
 }
 
-@property (nonatomic, retain) IBOutlet UITabBarController *tabBar;
+@property (nonatomic, retain) IBOutlet CustomUITabBarController *tabBar;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @end
