@@ -86,14 +86,14 @@
 	
 	
 	
-    UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/loopsingle.png", resourcePath]];
+    UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
 
 	// Loop
 	[items addObject:itemFlexedSpace];
 	UIBarButtonItem* itemLoop = [[UIBarButtonItem alloc] initWithImage:loopImage
 																	style:UIBarButtonItemStylePlain
 																   target:delegate
-																   action:@selector(onLoopLesson:)];
+																   action:@selector(onLoop:)];
 	[items addObject:itemLoop];
 	self.loopItem = itemLoop;
 	[itemLoop release];

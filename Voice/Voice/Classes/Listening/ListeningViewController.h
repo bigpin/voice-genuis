@@ -28,6 +28,7 @@ typedef NSInteger PLAY_LOOPTPYE;
     UILabel* timelast;
     NSTimer* updateTimer;
     BOOL bStart;
+    BOOL bLoopLessons;
     
     NSString* wavefile;             // 音频文件
     AVAudioPlayer *player;
@@ -58,8 +59,7 @@ typedef NSInteger PLAY_LOOPTPYE;
 - (IBAction)onOther:(id)sender;
 - (IBAction)onStart:(id)sender;
 - (IBAction)onNext:(id)sender;
-- (IBAction)onLoopLesson:(id)sender;
-- (IBAction)onLoopSentence:(id)sender;
+- (IBAction)onLoop:(id)sender;
 
 - (void)updateCurrentTime;
 - (void)updateViewForPlayer;
