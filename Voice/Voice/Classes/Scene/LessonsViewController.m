@@ -180,7 +180,7 @@
     detailViewController.sentencesArray = lesson.setences;
     detailViewController.teachersArray = lesson.teachers;
     detailViewController.wavefile = lesson.wavfile;
-    detailViewController.title = lesson.title; 
+    detailViewController.navigationItem.title = lesson.title; 
     [self.navigationController pushViewController:detailViewController animated:YES];
 
     [detailViewController release];

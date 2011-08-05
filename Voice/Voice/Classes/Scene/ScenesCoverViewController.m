@@ -69,7 +69,7 @@
 	[self.view addSubview:coverflow];
 	
     // label
-	UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.navigationController.view.bounds.size.height - 50, self.view.bounds.size.width, 60)];
+	/*UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, self.navigationController.view.bounds.size.height - 50, self.view.bounds.size.width, 60)];
 
     label.backgroundColor = [UIColor clearColor];
     label.textColor = [UIColor whiteColor];
@@ -78,7 +78,7 @@
     [self.navigationController.view addSubview:label];
     [self.navigationController.view bringSubviewToFront:label];
     self.scenesLabel = label;
-    [label release];
+    [label release];*/
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -116,7 +116,7 @@
 
 - (void) viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-    self.scenesLabel.hidden = NO;
+    //self.scenesLabel.hidden = NO;
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque]; 
 }
 - (void) viewDidAppear:(BOOL)animated{
@@ -126,7 +126,7 @@
 }
 - (void) viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
-    self.scenesLabel.hidden = YES;
+    //self.scenesLabel.hidden = YES;
 
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
@@ -184,7 +184,8 @@
     NSInteger nMod = index % nCount;
     if (nMod < nCount) {
         NSLog(@"%@", [self.scenesArray objectAtIndex:nMod]);
-        self.scenesLabel.text = [self.scenesArray objectAtIndex:nMod];
+        //self.scenesLabel.text = [self.scenesArray objectAtIndex:nMod];
+        self.navigationItem.title = [self.scenesArray objectAtIndex:nMod];
     }
 	NSLog(@"Front %d",index);
 }
@@ -219,7 +220,7 @@
         LessonsViewController* lesson = [[LessonsViewController alloc] initWithNibName:@"LessonsViewController" bundle:nil];
         NSString* scenes = [[NSString alloc] initWithString:[self.scenesArray objectAtIndex:nMod]];
         lesson.scenesName = scenes;
-        lesson.title = scenes;
+        lesson.navigationItem.title = scenes;
         [scenes release];
         [self.navigationController pushViewController:lesson animated:YES];
         [lesson release];
