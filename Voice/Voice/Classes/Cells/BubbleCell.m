@@ -9,6 +9,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BubbleCell.h"
 #define TEXTLABLETAG    2003
+#define SELECTED_COLOR_R    43.0/255.0
+#define SELECTED_COLOR_G    184.0/255.0
+#define SELECTED_COLOR_B    236.0/255.0
+
 @implementation BubbleImageView
 @synthesize imgName;
 
@@ -90,6 +94,38 @@
 
 @end
 
+
+@implementation BubbleLabel
+@synthesize bUnderline;
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        bUnderline = NO;
+    }
+    return self;
+}
+
+/*- (void)drawRect:(CGRect)rect {
+    if (!bUnderline) {
+        [super drawRect:rect];  
+       return;
+    }
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    CGContextSetRGBStrokeColor(ctx, 207.0f/255.0f, 91.0f/255.0f, 44.0f/255.0f, 1.0f); // RGBA
+    CGContextSetLineWidth(ctx, 1.0f);
+    
+    CGContextMoveToPoint(ctx, 0, self.bounds.size.height - 1);
+    CGContextAddLineToPoint(ctx, self.bounds.size.width, self.bounds.size.height - 1);
+    
+    CGContextStrokePath(ctx);
+    
+    [super drawRect:rect];  
+}
+*/
+@end
+
 @implementation BubbleCell
 
 @synthesize msgText;
@@ -132,9 +168,55 @@
 {
     bHighlight = b;
     if (bHighlight) {
-        textContent.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.5];
+        // change bubble view color to blue
+        UIView* bubbleParent = bubbleView.superview;
+        [bubbleView removeFromSuperview];
+        bubbleView = nil;
+        BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, textSize.width + 35, textSize.height + 18)];
+        
+        [newImage setBurnColor:SELECTED_COLOR_R withGreen:SELECTED_COLOR_G withBlue:SELECTED_COLOR_B];
+
+        newImage.imgName = self.imgName;
+        
+        [bubbleParent addSubview:newImage];
+        bubbleView = newImage;
+        
+        // set text color
+        textContent.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        textContent.bUnderline = YES;
+        [textContent setNeedsDisplay];
+        
+        // set the microphone position
+        microphone.hidden = NO;
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:microphone cache:YES];
+        [UIView setAnimationDuration:0.5];
+        [UIView commitAnimations];
     } else {
-        textContent.backgroundColor = [UIColor clearColor];
+        UIView* bubbleParent = bubbleView.superview;
+        [bubbleView removeFromSuperview];
+        bubbleView = nil;
+        BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, textSize.width + 35, textSize.height + 18)];
+        
+        [newImage setBurnColor:bgRed withGreen:bgGreen withBlue:bgBlue];
+        newImage.imgName = self.imgName;
+        
+        [bubbleParent addSubview:newImage];
+        bubbleView = newImage;
+       
+        // set text color
+        textContent.textColor         = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
+        textContent.bUnderline = NO;
+        [textContent setNeedsDisplay];
+        
+        // set the microphone position
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:microphone cache:NO];
+        [UIView setAnimationDuration:0.5];
+        microphone.hidden = YES;
+        [UIView commitAnimations];
     }
 
 }
@@ -144,7 +226,7 @@
     CGFloat space = 0.9;
     CGFloat width = self.frame.size.width * space - startDis;
     CGSize size           = [BubbleCell calcTextHeight:self.msgText withWidth:width ];
-      
+    textSize = size;
     CGFloat bubbleImageHeight = size.height + 18;
     CGFloat iconY = bubbleImageHeight < startDis ? 0 : bubbleImageHeight - startDis;
     UIImageView* iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, iconY, startDis, startDis)];
@@ -159,7 +241,7 @@
     UIView *newView       = [[UIView alloc] initWithFrame:CGRectMake(startDis, 0.0, width, self.frame.size.height)];
     newView.backgroundColor = [UIColor clearColor];
     newView.backgroundColor = nil;
-    UILabel *txtLabel = [[UILabel alloc] initWithFrame:CGRectMake(15 + startDis, 8, size.width, size.height)];
+    BubbleLabel *txtLabel = [[BubbleLabel alloc] initWithFrame:CGRectMake(15 + startDis, 8, size.width, size.height)];
 
     txtLabel.lineBreakMode   = UILineBreakModeWordWrap;
     txtLabel.numberOfLines   = 0;
@@ -175,10 +257,21 @@
     [txtLabel sizeToFit];
 
     [newView addSubview:newImage];
-
+    bubbleView = newImage;
     [self setBackgroundView:newView];
     [self.contentView addSubview:txtLabel];
     textContent = txtLabel;
+    
+    UIImageView* micro = [[UIImageView alloc] initWithFrame:CGRectMake(iconImage.frame.origin.x + iconImage.frame.size.width - 12, iconImage.frame.origin.y + iconImage.frame.size.height - 24, 24, 24)];
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    UIImage* microimage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/microphone.png",  resourcePath]];
+    micro.image = microimage;
+    [self.contentView addSubview:micro];
+    microphone = micro;
+    [micro release];
+    [microphone setHidden:YES];
     [txtLabel release];
 
     [newImage release];

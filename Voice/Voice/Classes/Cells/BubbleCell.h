@@ -25,6 +25,14 @@
 - (UIImage*)getBurnImage;
 @end
 
+/////////////////////////////////////////////////
+@interface BubbleLabel : UILabel {
+    BOOL bUnderline;
+}
+@property (nonatomic) BOOL bUnderline;
+@end
+
+/////////////////////////////////////////////////
 @interface BubbleCell : UITableViewCell {
     NSString *msgText;
     NSString *imgName;
@@ -36,7 +44,10 @@
     CGFloat textGreen;
     CGFloat textBlue;
     BOOL    bHighlight;
-    UILabel *textContent;
+    BubbleLabel *textContent;
+    UIImageView* microphone;
+    BubbleImageView* bubbleView;
+    CGSize textSize;
 }
 
 @property (nonatomic, retain) NSString *msgText;

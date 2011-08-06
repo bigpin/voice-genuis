@@ -465,6 +465,13 @@
         cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
         [cell setIsHighlightText:NO];
         nPosition = nCurrentIndex;
+    } else if (nCurrentIndex == 0 && nPosition == 0) {
+        NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
+        [_sentencesTableView scrollToRowAtIndexPath:path
+                                   atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
+        [cell setIsHighlightText:YES];
+        
     }
 }
 
