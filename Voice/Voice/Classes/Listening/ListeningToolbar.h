@@ -14,12 +14,14 @@
     UIBarButtonItem* _previousItem;
     UIBarButtonItem* _nextItem;
     UIBarButtonItem* _playItem;
+    UIBarButtonItem* _lessonItem;
     UIBarButtonItem* _loopItem;
 }
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* previousItem;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* volumItem;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* nextItem;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* playItem;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* lessonItem;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem* loopItem;
 
 - (void)loadItems:(id)delegate;

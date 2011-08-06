@@ -41,7 +41,8 @@
         updateTimer = nil;
         timeStart = 0.0;
         nPosition = 0;
-        bLoopLessons = YES;
+        bLoop = YES;
+        bLesson = YES;
     }
     return self;
 }
@@ -381,12 +382,29 @@
     }
 }
 
+- (IBAction)onLesson:(id)sender;
+{
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    if (bLesson) {
+        UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/sentence.png", resourcePath]];
+        [self.listeningToolbar.lessonItem setImage:lessonImage];
+        
+    } else {
+        UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/lesson.png", resourcePath]];
+        [self.listeningToolbar.lessonItem setImage:lessonImage];
+    }
+    bLesson = !bLesson;
+   
+}
+
 - (IBAction)onLoop:(id)sender;
 {
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString* stringResource = @"Image";
     resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
-    if (bLoopLessons) {
+    if (bLoop) {
         looptype = PLAY_LOOPTYPE_SENTENCE;
         int index = [self getSentenceIndex:self.player.currentTime];
         if (index < [_sentencesArray count]) {
@@ -404,7 +422,7 @@
         UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
         [self.listeningToolbar.loopItem setImage:loopImage];
    }
-    bLoopLessons = !bLoopLessons;
+    bLoop = !bLoop;
 }
 
 #pragma mark - Update timer

@@ -28,8 +28,8 @@ typedef NSInteger PLAY_LOOPTPYE;
     UILabel* timelast;
     NSTimer* updateTimer;
     BOOL bStart;
-    BOOL bLoopLessons;
-    
+    BOOL bLoop;
+    BOOL bLesson;
     NSString* wavefile;             // 音频文件
     AVAudioPlayer *player;
     

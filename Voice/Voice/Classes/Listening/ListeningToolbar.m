@@ -16,6 +16,7 @@
 @synthesize nextItem = _nextItem;
 @synthesize playItem = _playItem;
 @synthesize loopItem = _loopItem;
+@synthesize lessonItem = _lessonItem;
 
 - (void)loadItems:(id)delegate;
 {
@@ -33,7 +34,7 @@
 	// Flexed Space
 	UIBarButtonItem* itemFlexedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
     
-    itemFlexedSpace.width = 20.0;
+    itemFlexedSpace.width = 15.0;
 	/*itemFlexedSpace.width = [[UIDevice currentDevice] userInterfaceIdiom] == [UIUserInterfaceIdiomPad]? 35.0 : 20.0;*/
 	
     [items addObject:itemFlexedSpaceSmall];
@@ -86,9 +87,21 @@
 	
 	
 	
-    UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
+    // lessons/sentense
+    UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/lesson.png", resourcePath]];
+    
+    [items addObject:itemFlexedSpace];
+	UIBarButtonItem* itemlesson = [[UIBarButtonItem alloc] initWithImage:lessonImage
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:delegate
+                                                                action:@selector(onLesson:)];
+	[items addObject:itemlesson];
+	self.lessonItem = itemlesson;
+	[itemlesson release];
 
 	// Loop
+    UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
+    
 	[items addObject:itemFlexedSpace];
 	UIBarButtonItem* itemLoop = [[UIBarButtonItem alloc] initWithImage:loopImage
 																	style:UIBarButtonItemStylePlain
