@@ -198,27 +198,37 @@
     resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
     NSString* iconPath = resourcePath;
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
+    CGFloat colorvalue = 247.0/255.0;
+    CGFloat colorvalueBlue = 99.0/255.0;
     if ([self.teachersArray count] > 0) {
         Teacher* teacher = [self.teachersArray objectAtIndex:0];
         if ([teacher.teacherid isEqualToString:sentence.techerid]) {
-            resourcePath = [NSString stringWithFormat:@"%@/purple.png", resourcePath];
-            iconPath = [NSString stringWithFormat:@"%@/t1.png", iconPath];
-        } else {
+             iconPath = [NSString stringWithFormat:@"%@/t1.png", iconPath];
             resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
-            iconPath = [NSString stringWithFormat:@"%@/t2.png", iconPath];
+            [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
+            [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
+        } else {
+             iconPath = [NSString stringWithFormat:@"%@/t2.png", iconPath];
+            resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+            [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
+            [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
         }
     } else {
         if (indexPath.section % 2 == 0) {
-            resourcePath = [NSString stringWithFormat:@"%@/purple.png", resourcePath];
             iconPath = [NSString stringWithFormat:@"%@/t1.png", iconPath];
-        } else {
             resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+            [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
+            [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
+      } else {
             iconPath = [NSString stringWithFormat:@"%@/t2.png", iconPath];
-        }
-        
+            resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+            [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
+          [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
+      }
+       
     }
      cell.imgName = resourcePath;
-    cell.imgIcon = iconPath;
+     cell.imgIcon = iconPath;
      cell.msgText = sentence.orintext;
     return cell;
 }
