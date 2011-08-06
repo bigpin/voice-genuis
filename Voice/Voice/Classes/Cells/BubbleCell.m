@@ -8,7 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "BubbleCell.h"
-
+#define TEXTLABLETAG    2003
 @implementation BubbleImageView
 @synthesize imgName;
 
@@ -50,18 +50,12 @@
 
 - (UIImage*)getSrcImage
 {
- 	CGSize sz = balloonImageView.bounds.size;
-	CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-	CGContextRef ctx = CGBitmapContextCreate(nil, sz.width, sz.height, 8, 4 * (int)sz.width, colorSpaceRef, kCGImageAlphaPremultipliedLast);
-	CGContextTranslateCTM(ctx, 0.0, sz.height);
-	CGContextScaleCTM(ctx, 1.0, -1.0);
+    UIGraphicsBeginImageContext(self.frame.size);
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
 	CALayer *l = balloonImageView.layer;
     [l renderInContext:ctx];
-	CGImageRef cgImage = CGBitmapContextCreateImage(ctx);
-	UIImage *image = [UIImage imageWithCGImage:cgImage];
-	CGColorSpaceRelease(colorSpaceRef);
-	CGImageRelease(cgImage);
-	CGContextRelease(ctx);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     return image;
 }
 
@@ -110,6 +104,7 @@
     self.accessoryType   = UITableViewCellAccessoryNone;
     self.backgroundColor = [UIColor clearColor];
       textRed = textGreen = textBlue = 0.0;
+      bHighlight = NO;
   }
   
   return self;
@@ -131,8 +126,19 @@
     textRed = r;
     textGreen = g;
     textBlue = b;
+}
+
+- (void)setIsHighlightText:(BOOL)b;
+{
+    bHighlight = b;
+    if (bHighlight) {
+        textContent.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.5];
+    } else {
+        textContent.backgroundColor = [UIColor clearColor];
+    }
 
 }
+
 - (void)layoutSubviews {
     CGFloat startDis = 44;
     CGFloat space = 0.9;
@@ -158,17 +164,21 @@
     txtLabel.lineBreakMode   = UILineBreakModeWordWrap;
     txtLabel.numberOfLines   = 0;
     txtLabel.text            = msgText;
-    txtLabel.textColor = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
-    txtLabel.backgroundColor = [UIColor clearColor];
+    txtLabel.textColor         = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
+    if (bHighlight) {
+        txtLabel.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.5];
+    } else {
+        txtLabel.backgroundColor = [UIColor clearColor];
+    }
     txtLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
-
+    txtLabel.tag             = TEXTLABLETAG;
     [txtLabel sizeToFit];
 
     [newView addSubview:newImage];
 
     [self setBackgroundView:newView];
     [self.contentView addSubview:txtLabel];
-
+    textContent = txtLabel;
     [txtLabel release];
 
     [newImage release];

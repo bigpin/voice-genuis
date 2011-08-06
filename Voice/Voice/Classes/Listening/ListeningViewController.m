@@ -456,8 +456,14 @@
 	[self updateCurrentTimeForPlayer:self.player];
     int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
     if (nCurrentIndex != nPosition) {
-        [_sentencesTableView scrollToRowAtIndexPath:[NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex]
+        NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
+        [_sentencesTableView scrollToRowAtIndexPath:path
                                    atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
+        [cell setIsHighlightText:YES];
+         NSIndexPath * lastpath = [NSIndexPath indexPathForRow:0  inSection:nPosition];
+        cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
+        [cell setIsHighlightText:NO];
         nPosition = nCurrentIndex;
     }
 }

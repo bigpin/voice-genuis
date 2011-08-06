@@ -35,7 +35,8 @@
     CGFloat textRed;
     CGFloat textGreen;
     CGFloat textBlue;
-
+    BOOL    bHighlight;
+    UILabel *textContent;
 }
 
 @property (nonatomic, retain) NSString *msgText;
@@ -43,6 +44,7 @@
 @property (nonatomic, retain) NSString *imgIcon;
 - (void)setBurnColor:(CGFloat)r withGreen:(CGFloat)g withBlue:(CGFloat)b;
 - (void)setTextColor:(CGFloat)r withGreen:(CGFloat)g withBlue:(CGFloat)b;
+- (void)setIsHighlightText:(BOOL)bHighlight;
 
 + (CGSize)calcTextHeight:(NSString *)str withWidth:(CGFloat)width;
 
