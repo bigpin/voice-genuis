@@ -7,8 +7,8 @@
 //
 
 #import "SettingViewController.h"
-
-
+#import "SettingPauseTimeCell.h"
+#import "SettingBubbleColorCell.h"
 @implementation SettingViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -85,28 +85,56 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    if (section == 0) {
+        return 1;
+    } else {
+        return 3;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;    // fixed font style. use custom view (UILabel) if 
+{
+    if (section == 0) {
+        return STRING_SETTING_READING;
+    } else {
+        return STRING_SETTING_BUBBLE;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    NSInteger nRow = indexPath.row;
+	NSInteger nSection = indexPath.section;
+    if (nSection == 0) {
+        SettingPauseTimeCell *cell = (SettingPauseTimeCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingPauseTimeCell"];
+        
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingPauseTimeCell" owner:self options:nil];
+        cell = [array objectAtIndex:0];
+        cell.label.text = STRING_SETTING_TIME;
+        return cell;
+    } else {
+        SettingBubbleColorCell *cell = (SettingBubbleColorCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingBubbleColorCell"];
+        
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingBubbleColorCell" owner:self options:nil];
+        cell = [array objectAtIndex:0];
+        if (nRow == 0) {
+            cell.label.text = STRING_COLOR_1;
+        } else if (nRow == 1) {
+            cell.label.text = STRING_COLOR_2;
+        } else {
+            cell.label.text = STRING_COLOR_3;
+        }
+
+        return cell;
     }
-    
-    cell.textLabel.text = @"Settings";
     // Configure the cell...
     
-    return cell;
 }
 
 /*

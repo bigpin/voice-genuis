@@ -71,7 +71,8 @@
     //scenes.title = @"Scenes root";
 	scenes.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/world.png", resourcePath]];
     
-    scenes.tabBarItem.title = @"Scenes";
+    NSString* scenetitle = STRING_SCENE_TITLE;
+    scenes.tabBarItem.title = scenetitle;
     [viewControllers addObject:nav];
     
     [scenes release];
@@ -97,8 +98,9 @@
     nav = [[UINavigationController alloc] initWithRootViewController:setting];
     nav.navigationBar.tintColor = [UIColor blackColor];
     [viewControllers addObject:nav];
-    setting.title = @"Setting";
-    setting.tabBarItem.title = @"Setting";
+    NSString* settingTitle = STRING_SETTING_TITLE;
+    setting.title = settingTitle;
+    setting.tabBarItem.title = settingTitle;
     [setting release];
     [nav release];
     

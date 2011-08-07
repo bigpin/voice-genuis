@@ -62,6 +62,10 @@
 		0D90ABD513D69F2C005FA104 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D90AA2F13D69F2C005FA104 /* Data */; };
 		0D90ABD613D69F2C005FA104 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 0D90ABD213D69F2C005FA104 /* Image */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
+		0DF7F8C413EEF3D5008A885A /* SettingPauseTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C313EEF3D4008A885A /* SettingPauseTimeCell.m */; };
+		0DF7F8C613EEF3ED008A885A /* SettingPauseTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingPauseTimeCell.xib */; };
+		0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */; };
+		0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */; };
 		E222057C13D5B89F006BA2A4 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E222056E13D5B89F006BA2A4 /* Course.m */; };
 		E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057013D5B89F006BA2A4 /* CourseParser.m */; };
 		E222057E13D5B89F006BA2A4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057213D5B89F006BA2A4 /* Lesson.m */; };
@@ -152,7 +156,7 @@
 		0D8E162F13D471580005CD0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0D8E163313D471580005CD0F /* Voice-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Voice-Info.plist"; sourceTree = "<group>"; };
 		0D8E163513D471580005CD0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0D8E163713D471580005CD0F /* Voice-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Voice-Prefix.pch"; sourceTree = "<group>"; };
+		0D8E163713D471580005CD0F /* Voice-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Voice-Prefix.pch"; sourceTree = "<group>"; };
 		0D8E163813D471580005CD0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0D8E163A13D471580005CD0F /* VoiceAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoiceAppDelegate.h; sourceTree = "<group>"; };
 		0D8E163B13D471580005CD0F /* VoiceAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoiceAppDelegate.m; sourceTree = "<group>"; };
@@ -188,6 +192,12 @@
 		0DC0218D13E45825007170F3 /* BubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BubbleCell.m; path = Cells/BubbleCell.m; sourceTree = "<group>"; };
 		0DC0218E13E45825007170F3 /* BubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleCell.h; path = Cells/BubbleCell.h; sourceTree = "<group>"; };
 		0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Voice/TapKu/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
+		0DF7F8C213EEF3D4008A885A /* SettingPauseTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPauseTimeCell.h; sourceTree = "<group>"; };
+		0DF7F8C313EEF3D4008A885A /* SettingPauseTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPauseTimeCell.m; sourceTree = "<group>"; };
+		0DF7F8C513EEF3ED008A885A /* SettingPauseTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingPauseTimeCell.xib; sourceTree = "<group>"; };
+		0DFB4A6613EEF6B4007B6ACE /* SettingBubbleColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBubbleColorCell.h; sourceTree = "<group>"; };
+		0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBubbleColorCell.m; sourceTree = "<group>"; };
+		0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingBubbleColorCell.xib; sourceTree = "<group>"; };
 		E222056D13D5B89F006BA2A4 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E222056E13D5B89F006BA2A4 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		E222056F13D5B89F006BA2A4 /* CourseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseParser.h; sourceTree = "<group>"; };
@@ -482,6 +492,12 @@
 				0D8E167A13D471830005CD0F /* SettingViewController.h */,
 				0D8E167B13D471830005CD0F /* SettingViewController.m */,
 				0D8E167C13D471830005CD0F /* SettingViewController.xib */,
+				0DF7F8C213EEF3D4008A885A /* SettingPauseTimeCell.h */,
+				0DF7F8C313EEF3D4008A885A /* SettingPauseTimeCell.m */,
+				0DF7F8C513EEF3ED008A885A /* SettingPauseTimeCell.xib */,
+				0DFB4A6613EEF6B4007B6ACE /* SettingBubbleColorCell.h */,
+				0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */,
+				0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -641,6 +657,8 @@
 				0D8632E113E8386500F934AF /* ListeningVolumView.xib in Resources */,
 				0D872D7713EE78BC00361672 /* DataBase in Resources */,
 				0D872DA913EEDA9000361672 /* RecordingViewController.xib in Resources */,
+				0DF7F8C613EEF3ED008A885A /* SettingPauseTimeCell.xib in Resources */,
+				0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +727,8 @@
 				0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */,
 				0D872D7B13EE7A0B00361672 /* Database.m in Sources */,
 				0D872DA813EEDA9000361672 /* RecordingViewController.m in Sources */,
+				0DF7F8C413EEF3D5008A885A /* SettingPauseTimeCell.m in Sources */,
+				0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
