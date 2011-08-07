@@ -306,7 +306,7 @@
     for (int i = 0; i < [_sentencesArray count]; i++) {
         sentence = [_sentencesArray objectAtIndex:i];
         if (time < [sentence endTime]) {
-            NSLog(@"%d", i);
+           // NSLog(@"%d", i);
             return i;
         }
     }
@@ -371,7 +371,7 @@
     if (index > 0) {
         Sentence* sentence = [_sentencesArray objectAtIndex:index - 1];
         player.currentTime = [sentence startTime];
-        NSLog(@"%d, %f", index - 1, player.currentTime);
+       // NSLog(@"%d, %f", index - 1, player.currentTime);
     }
 }
 
@@ -388,7 +388,7 @@
     if (index < [_sentencesArray count] - 1) {
         Sentence* sentence = [_sentencesArray objectAtIndex:index + 1];
         player.currentTime = [sentence startTime];
-        NSLog(@"%d,%f", index + 1, player.currentTime);
+       // NSLog(@"%d,%f", index + 1, player.currentTime);
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Database.h"
 
 @interface CustomUITabBarController: UITabBarController {
 }
@@ -14,6 +15,7 @@
 
 @interface VoiceAppDelegate : NSObject <UIApplicationDelegate> {
     CustomUITabBarController* _tabBar;
+    Database* databaseQuery;
 }
 
 @property (nonatomic, retain) IBOutlet CustomUITabBarController *tabBar;

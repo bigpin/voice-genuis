@@ -19,3 +19,6 @@
 
 #define STRING_RESOURCE_DATA @"Data"
 #define STRING_LESSONS_INDEX_XML @"index.xml"
+#define PATH_USERDATA @"/UserData"
+#define DIR_DATABASE @"Data"
+#define DATABASE_NAME @"database1_0.sqlite"

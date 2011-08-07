@@ -28,7 +28,7 @@
 {
 	// Load and parse the index.xml file
     NSString* fullFilename = [resourcePath stringByAppendingPathComponent:filename];
-    NSLog(@"%@", fullFilename);
+    //NSLog(@"%@", fullFilename);
     NSData* filedata = [NSData dataWithContentsOfFile:fullFilename];
 	tbxml = [[TBXML tbxmlWithXMLData:filedata] retain];
 	
@@ -117,7 +117,7 @@
 		// load file
         NSString* fullFilename = [resourcePath stringByAppendingPathComponent:lesson.path];
         fullFilename = [fullFilename stringByAppendingPathComponent:lesson.file];
-        NSLog(@"%@", fullFilename);
+       // NSLog(@"%@", fullFilename);
         NSData* filedata = [NSData dataWithContentsOfFile:fullFilename];
         tbxml = [[TBXML tbxmlWithXMLData:filedata] retain];
 		
