@@ -43,9 +43,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    if (databaseQuery == nil) {
+    /*if (databaseQuery == nil) {
         databaseQuery = [Database database];
-    }
+    }*/
     CustomUITabBarController* tb = [[CustomUITabBarController alloc] init];
     NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];

@@ -13,12 +13,14 @@
 #import "UACellBackgroundView.h"
 #import "BubbleCell.h"
 #import "ListeningVolumView.h"
+#import "RecordingViewController.h"
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
 @synthesize teachersArray = _teachersArray;
 @synthesize sentencesTableView = _sentencesTableView;
 @synthesize listeningToolbar = _listeningToolbar;
+@synthesize recordingItem = _recordingItem;
 @synthesize progressBar;
 @synthesize timepreces;
 @synthesize timelast;
@@ -43,6 +45,7 @@
         nPosition = 0;
         bLoop = YES;
         bLesson = YES;
+        bRecording = NO;
     }
     return self;
 }
@@ -107,6 +110,13 @@
     loopstarttime = 0.0;
     loopendtime = self.player.duration;
     fVolumn = 0.8;
+    
+     UIImage* recordingImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/recording.png",  resourcePath]];
+    UIBarButtonItem* recordingItem = [[UIBarButtonItem alloc] initWithImage:recordingImage style:UIBarButtonItemStyleBordered target:self action:@selector(onRecording)];
+    self.navigationItem.rightBarButtonItem = recordingItem;
+    self.recordingItem = recordingItem;
+     [recordingItem release];
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -116,6 +126,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    [self.recordingItem release];
+    self.recordingItem = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -315,34 +327,37 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Sentence* sentence = [_sentencesArray objectAtIndex:indexPath.row];
-    switch (looptype) {
-        case PLAY_LOOPTYPE_LESSON:
-//            loopstarttime = [sentence startTime];
-//            loopendtime = self.player.duration;
-            break;
-            
-        case PLAY_LOOPTYPE_SENTENCE:
-            loopstarttime = [sentence startTime];
-            loopendtime = [sentence endTime];
-            break;
-            
-        default:
-            break;
+    if (bRecording) {
+        RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
+        // ...
+        // Pass the selected object to the new view controller.
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        [detailViewController release];
+
+    } else {
+        Sentence* sentence = [_sentencesArray objectAtIndex:indexPath.row];
+        switch (looptype) {
+            case PLAY_LOOPTYPE_LESSON:
+                //            loopstarttime = [sentence startTime];
+                //            loopendtime = self.player.duration;
+                break;
+                
+            case PLAY_LOOPTYPE_SENTENCE:
+                loopstarttime = [sentence startTime];
+                loopendtime = [sentence endTime];
+                break;
+                
+            default:
+                break;
+        }
+        player.currentTime = [sentence startTime];
+        bStart = YES;
+        [self updateViewForPlayer];
+        
+
     }
-    player.currentTime = [sentence startTime];
-    bStart = YES;
-    [self updateViewForPlayer];
-    
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
-}
+
+ }
 
 #pragma Action
 - (IBAction)onOther:(id)sender;
@@ -433,6 +448,11 @@
         [self.listeningToolbar.loopItem setImage:loopImage];
    }
     bLoop = !bLoop;
+}
+
+- (void)onRecording;
+{
+    bRecording = !bRecording;
 }
 
 #pragma mark - Update timer

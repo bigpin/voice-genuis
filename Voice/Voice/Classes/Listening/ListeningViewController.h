@@ -22,7 +22,7 @@ typedef NSInteger PLAY_LOOPTPYE;
     NSMutableArray* _teachersArray;
     UITableView* _sentencesTableView;
     ListeningToolbar* _listeningToolbar;
-    
+    UIBarButtonItem* _recordingItem;
     UISlider* progressBar;
     UILabel* timepreces;
     UILabel* timelast;
@@ -30,6 +30,7 @@ typedef NSInteger PLAY_LOOPTPYE;
     BOOL bStart;
     BOOL bLoop;
     BOOL bLesson;
+    BOOL bRecording;
     NSString* wavefile;             // 音频文件
     AVAudioPlayer *player;
     
@@ -49,6 +50,7 @@ typedef NSInteger PLAY_LOOPTPYE;
 @property (nonatomic, retain) IBOutlet ListeningToolbar* listeningToolbar;
 @property (nonatomic, retain) IBOutlet UITableView* sentencesTableView;
 @property (nonatomic, retain) IBOutlet UISlider* progressBar;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem* recordingItem;
 @property (nonatomic, retain) IBOutlet UILabel* timepreces;
 @property (nonatomic, retain) IBOutlet UILabel* timelast;
 @property (nonatomic, retain) NSTimer* updataeTimer;
@@ -60,7 +62,7 @@ typedef NSInteger PLAY_LOOPTPYE;
 - (IBAction)onStart:(id)sender;
 - (IBAction)onNext:(id)sender;
 - (IBAction)onLoop:(id)sender;
-
+- (void)onRecording;
 - (void)updateCurrentTime;
 - (void)updateViewForPlayer;
 

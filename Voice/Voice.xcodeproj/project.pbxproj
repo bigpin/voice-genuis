@@ -31,6 +31,8 @@
 		0D872D7713EE78BC00361672 /* DataBase in Resources */ = {isa = PBXBuildFile; fileRef = 0D872D7613EE78BC00361672 /* DataBase */; };
 		0D872D7B13EE7A0B00361672 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D872D7A13EE7A0B00361672 /* Database.m */; };
 		0D872D8513EE7DFF00361672 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */; };
+		0D872DA813EEDA9000361672 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D872DA613EEDA9000361672 /* RecordingViewController.m */; };
+		0D872DA913EEDA9000361672 /* RecordingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D872DA713EEDA9000361672 /* RecordingViewController.xib */; };
 		0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162B13D471580005CD0F /* UIKit.framework */; };
 		0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162D13D471580005CD0F /* Foundation.framework */; };
 		0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162F13D471580005CD0F /* CoreGraphics.framework */; };
@@ -141,6 +143,9 @@
 		0D872D7913EE7A0B00361672 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = Database/Database.h; sourceTree = "<group>"; };
 		0D872D7A13EE7A0B00361672 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = Database/Database.m; sourceTree = "<group>"; };
 		0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		0D872DA513EEDA9000361672 /* RecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordingViewController.h; path = Recording/RecordingViewController.h; sourceTree = "<group>"; };
+		0D872DA613EEDA9000361672 /* RecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordingViewController.m; path = Recording/RecordingViewController.m; sourceTree = "<group>"; };
+		0D872DA713EEDA9000361672 /* RecordingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordingViewController.xib; path = Recording/RecordingViewController.xib; sourceTree = "<group>"; };
 		0D8E162713D471580005CD0F /* Voice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E162B13D471580005CD0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D8E162D13D471580005CD0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -303,6 +308,16 @@
 			name = DataBase;
 			sourceTree = "<group>";
 		};
+		0D872DA413EEDA3700361672 /* Recording */ = {
+			isa = PBXGroup;
+			children = (
+				0D872DA513EEDA9000361672 /* RecordingViewController.h */,
+				0D872DA613EEDA9000361672 /* RecordingViewController.m */,
+				0D872DA713EEDA9000361672 /* RecordingViewController.xib */,
+			);
+			name = Recording;
+			sourceTree = "<group>";
+		};
 		0D8E161C13D471580005CD0F = {
 			isa = PBXGroup;
 			children = (
@@ -408,6 +423,7 @@
 		0D8E166913D471830005CD0F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0D872DA413EEDA3700361672 /* Recording */,
 				0D872D7813EE799700361672 /* DataBase */,
 				0D3B8C9E13DC0892005898CD /* Cells */,
 				E222056C13D5B89F006BA2A4 /* CourseParser */,
@@ -624,6 +640,7 @@
 				0D4D6AE313DE3FE600F87B13 /* README.txt in Resources */,
 				0D8632E113E8386500F934AF /* ListeningVolumView.xib in Resources */,
 				0D872D7713EE78BC00361672 /* DataBase in Resources */,
+				0D872DA913EEDA9000361672 /* RecordingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -691,6 +708,7 @@
 				0D8632CC13E8083200F934AF /* ListeningToolbar.m in Sources */,
 				0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */,
 				0D872D7B13EE7A0B00361672 /* Database.m in Sources */,
+				0D872DA813EEDA9000361672 /* RecordingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
