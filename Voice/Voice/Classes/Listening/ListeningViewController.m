@@ -213,17 +213,43 @@
     CGFloat colorvalue = 247.0/255.0;
     CGFloat colorvalueBlue = 99.0/255.0;
     if ([self.teachersArray count] > 0) {
-        Teacher* teacher = [self.teachersArray objectAtIndex:0];
-        if ([teacher.teacherid isEqualToString:sentence.techerid]) {
-             iconPath = [NSString stringWithFormat:@"%@/t1.png", iconPath];
-            resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
-            [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
-            [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
+        if ([self.teachersArray count] == 2) {
+            Teacher* teacher = [self.teachersArray objectAtIndex:0];
+            if ([teacher.teacherid isEqualToString:sentence.techerid]) {
+                iconPath = [NSString stringWithFormat:@"%@/t1.png", iconPath];
+                resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+                [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
+                [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
+            } else {
+                iconPath = [NSString stringWithFormat:@"%@/t2.png", iconPath];
+                resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+                [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
+                [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
+            }
         } else {
-             iconPath = [NSString stringWithFormat:@"%@/t2.png", iconPath];
-            resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
-            [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
-            [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
+            if ([self.teachersArray count] == 3) {
+                Teacher* teacher1 = [self.teachersArray objectAtIndex:0];
+                Teacher* teacher2 = [self.teachersArray objectAtIndex:0];
+                if ([teacher1.teacherid isEqualToString:sentence.techerid]) {
+                    iconPath = [NSString stringWithFormat:@"%@/t1.png", iconPath];
+                    resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+                    [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
+                    [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
+                } else if ([teacher2.teacherid isEqualToString:sentence.techerid]) {
+                    iconPath = [NSString stringWithFormat:@"%@/t2.png", iconPath];
+                    resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+                    [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
+                    [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
+                } else {
+                    iconPath = [NSString stringWithFormat:@"%@/t2.png", iconPath];
+                    resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+                    [cell setBurnColor:0.92 withGreen:0.92 withBlue:0.92];
+                    [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
+                   
+                }
+              
+            }
+          
         }
     } else {
         if (indexPath.section % 2 == 0) {
@@ -327,15 +353,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    Sentence* sentence = [_sentencesArray objectAtIndex:indexPath.row];
     if (bRecording) {
         RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
+        detailViewController.recordingdelegate = (id)self;
+        detailViewController.sentence = sentence;
         // ...
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:detailViewController animated:YES];
         [detailViewController release];
 
     } else {
-        Sentence* sentence = [_sentencesArray objectAtIndex:indexPath.row];
         switch (looptype) {
             case PLAY_LOOPTYPE_LESSON:
                 //            loopstarttime = [sentence startTime];

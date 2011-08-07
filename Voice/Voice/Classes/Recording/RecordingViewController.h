@@ -7,10 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Sentence.h"
 
+@protocol RecordingDelegate <NSObject>
+@optional
+
+@end
 
 @interface RecordingViewController : UIViewController {
-    
+    id<RecordingDelegate> recordingdelegate;
+    Sentence* _sentence;
+    UITextView* _sentenceView;
 }
 
+@property (nonatomic, assign) id<RecordingDelegate> recordingdelegate;
+@property (nonatomic, retain) Sentence* sentence;
+@property (nonatomic, retain) IBOutlet UITextView* sentenceView;
 @end

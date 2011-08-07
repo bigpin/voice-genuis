@@ -79,7 +79,7 @@
     
     
     // favor
-    FavorViewController* favor = [[FavorViewController alloc] initWithNibName:@"FavorViewController" bundle:nil];
+    /*FavorViewController* favor = [[FavorViewController alloc] initWithNibName:@"FavorViewController" bundle:nil];
     
 	favor.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/clock.png", resourcePath]];
     nav = [[UINavigationController alloc] initWithRootViewController:favor];
@@ -88,7 +88,7 @@
     favor.title = @"Favorite";
     favor.tabBarItem.title = @"Favorite";
     [favor release];
-    [nav release];
+    [nav release];*/
     
     // settings
     SettingViewController* setting = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
