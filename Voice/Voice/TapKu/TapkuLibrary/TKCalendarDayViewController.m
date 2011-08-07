@@ -77,7 +77,7 @@
 	return [NSArray arrayWithObjects:eventViewFirst, eventViewSecond, nil];
 }
 - (void)calendarDayTimelineView:(TKCalendarDayTimelineView*)calendarDayTimeline eventViewWasSelected:(TKCalendarDayEventView *)eventView{
-	//NSLog(@"CalendarDayTimelineView: EventViewWasSelected");
+	NSLog(@"CalendarDayTimelineView: EventViewWasSelected");
 }
 
 

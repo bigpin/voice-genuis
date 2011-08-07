@@ -7,7 +7,6 @@
 //
 
 #import "FavorViewController.h"
-#import "VoiceAppDelegate.h"
 
 @implementation FavorViewController
 
@@ -38,8 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //VoiceAppDelegate *appDelegate = (VoiceAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

@@ -28,9 +28,6 @@
 		0D8632CC13E8083200F934AF /* ListeningToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8632CB13E8083100F934AF /* ListeningToolbar.m */; };
 		0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8632DE13E8383400F934AF /* ListeningVolumView.m */; };
 		0D8632E113E8386500F934AF /* ListeningVolumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8632E013E8386500F934AF /* ListeningVolumView.xib */; };
-		0D872D7713EE78BC00361672 /* DataBase in Resources */ = {isa = PBXBuildFile; fileRef = 0D872D7613EE78BC00361672 /* DataBase */; };
-		0D872D7B13EE7A0B00361672 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D872D7A13EE7A0B00361672 /* Database.m */; };
-		0D872D8513EE7DFF00361672 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */; };
 		0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162B13D471580005CD0F /* UIKit.framework */; };
 		0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162D13D471580005CD0F /* Foundation.framework */; };
 		0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162F13D471580005CD0F /* CoreGraphics.framework */; };
@@ -137,10 +134,6 @@
 		0D8632DD13E8383300F934AF /* ListeningVolumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningVolumView.h; sourceTree = "<group>"; };
 		0D8632DE13E8383400F934AF /* ListeningVolumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeningVolumView.m; sourceTree = "<group>"; };
 		0D8632E013E8386500F934AF /* ListeningVolumView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListeningVolumView.xib; sourceTree = "<group>"; };
-		0D872D7613EE78BC00361672 /* DataBase */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DataBase; path = Voice/Resources/DataBase; sourceTree = "<group>"; };
-		0D872D7913EE7A0B00361672 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Database.h; path = Database/Database.h; sourceTree = "<group>"; };
-		0D872D7A13EE7A0B00361672 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = Database/Database.m; sourceTree = "<group>"; };
-		0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		0D8E162713D471580005CD0F /* Voice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E162B13D471580005CD0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0D8E162D13D471580005CD0F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -205,7 +198,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D872D8513EE7DFF00361672 /* libsqlite3.0.dylib in Frameworks */,
 				0D4D6AC713DE3E1B00F87B13 /* libTapkuLibrary.a in Frameworks */,
 				0D4D6AC313DE3DB300F87B13 /* MapKit.framework in Frameworks */,
 				0D4D6AC113DE3DAB00F87B13 /* QuartzCore.framework in Frameworks */,
@@ -294,19 +286,9 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
-		0D872D7813EE799700361672 /* DataBase */ = {
-			isa = PBXGroup;
-			children = (
-				0D872D7913EE7A0B00361672 /* Database.h */,
-				0D872D7A13EE7A0B00361672 /* Database.m */,
-			);
-			name = DataBase;
-			sourceTree = "<group>";
-		};
 		0D8E161C13D471580005CD0F = {
 			isa = PBXGroup;
 			children = (
-				0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */,
 				0D90AA2E13D69F13005FA104 /* Resources */,
 				0D8E166913D471830005CD0F /* Classes */,
 				0D8E163113D471580005CD0F /* Voice */,
@@ -408,7 +390,6 @@
 		0D8E166913D471830005CD0F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0D872D7813EE799700361672 /* DataBase */,
 				0D3B8C9E13DC0892005898CD /* Cells */,
 				E222056C13D5B89F006BA2A4 /* CourseParser */,
 				0D8E166A13D471830005CD0F /* Favor */,
@@ -474,7 +455,6 @@
 			isa = PBXGroup;
 			children = (
 				0D90AA2F13D69F2C005FA104 /* Data */,
-				0D872D7613EE78BC00361672 /* DataBase */,
 				0D90ABD213D69F2C005FA104 /* Image */,
 			);
 			name = Resources;
@@ -623,7 +603,6 @@
 				0D4D6AE213DE3FE600F87B13 /* LICENSE.txt in Resources */,
 				0D4D6AE313DE3FE600F87B13 /* README.txt in Resources */,
 				0D8632E113E8386500F934AF /* ListeningVolumView.xib in Resources */,
-				0D872D7713EE78BC00361672 /* DataBase in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,7 +669,6 @@
 				0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */,
 				0D8632CC13E8083200F934AF /* ListeningToolbar.m in Sources */,
 				0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */,
-				0D872D7B13EE7A0B00361672 /* Database.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

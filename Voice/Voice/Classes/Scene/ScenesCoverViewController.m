@@ -148,7 +148,7 @@
 	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:cover cache:YES];
 	[UIView commitAnimations];
 	nCoverIndex = index;
-	//NSLog(@"Index: %d",index);
+	NSLog(@"Index: %d",index);
 
 }
 
@@ -183,11 +183,11 @@
     NSInteger nCount = [self.scenesArray count];
     NSInteger nMod = index % nCount;
     if (nMod < nCount) {
-       // NSLog(@"%@", [self.scenesArray objectAtIndex:nMod]);
+        NSLog(@"%@", [self.scenesArray objectAtIndex:nMod]);
         //self.scenesLabel.text = [self.scenesArray objectAtIndex:nMod];
         self.navigationItem.title = [self.scenesArray objectAtIndex:nMod];
     }
-	//NSLog(@"Front %d",index);
+	NSLog(@"Front %d",index);
 }
 
 - (TKCoverflowCoverView*) coverflowView:(TKCoverflowView*)coverflowView coverAtIndex:(int)index{
