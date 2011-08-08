@@ -9,6 +9,8 @@
 #import "SettingViewController.h"
 #import "SettingPauseTimeCell.h"
 #import "SettingBubbleColorCell.h"
+#import "BubbleCell.h"
+
 @implementation SettingViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -107,6 +109,12 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    //NSInteger nRow = indexPath.row;
+    return 60.0;
+ }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSInteger nRow = indexPath.row;
@@ -117,19 +125,37 @@
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingPauseTimeCell" owner:self options:nil];
         cell = [array objectAtIndex:0];
         cell.label.text = STRING_SETTING_TIME;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else {
         SettingBubbleColorCell *cell = (SettingBubbleColorCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingBubbleColorCell"];
         
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingBubbleColorCell" owner:self options:nil];
         cell = [array objectAtIndex:0];
+        BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, cell.bubbleView.frame.size.width, cell.bubbleView.frame.size.height)];
+        
+        //[newImage setBurnColor:1.0 withGreen:SELECTED_COLOR_G withBlue:SELECTED_COLOR_B];
+        
+        NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+        NSString* stringResource = @"Image";
+        resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+        resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+        newImage.imgName = resourcePath;
+        [cell.bubbleView addSubview:newImage];
+        [newImage release];
+
         if (nRow == 0) {
             cell.label.text = STRING_COLOR_1;
+            cell.bubbleText.text = STRING_COLOR_1;
         } else if (nRow == 1) {
             cell.label.text = STRING_COLOR_2;
+            cell.bubbleText.text = STRING_COLOR_2;
         } else {
             cell.label.text = STRING_COLOR_3;
+            cell.bubbleText.text = STRING_COLOR_3;
         }
+        [cell.bubbleView bringSubviewToFront:cell.bubbleText];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         return cell;
     }

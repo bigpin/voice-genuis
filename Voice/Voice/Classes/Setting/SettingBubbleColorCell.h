@@ -11,8 +11,11 @@
 
 @interface SettingBubbleColorCell : UITableViewCell {
     UILabel* _label;
-
+    UIView* _bubbleView;
+    UILabel* _bubbleText;
 }
 @property(nonatomic, retain) IBOutlet UILabel* label;
+@property(nonatomic, retain) IBOutlet UIView* bubbleView;
+@property(nonatomic, retain) IBOutlet UILabel* bubbleText;
 
 @end

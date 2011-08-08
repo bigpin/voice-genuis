@@ -11,6 +11,8 @@
 
 @implementation SettingBubbleColorCell
 @synthesize label = _label;
+@synthesize bubbleView = _bubbleView;
+@synthesize bubbleText = _bubbleText;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
