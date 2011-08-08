@@ -22,8 +22,9 @@
 @synthesize listeningToolbar = _listeningToolbar;
 @synthesize recordingItem = _recordingItem;
 @synthesize progressBar;
-@synthesize timepreces;
-@synthesize timelast;
+//@synthesize timepreces;
+//@synthesize timelast;
+@synthesize senCount;
 @synthesize updataeTimer;
 @synthesize wavefile;
 @synthesize player;
@@ -57,6 +58,7 @@
     [self.teachersArray release];
     [progressBar release];
     [updateTimer release];
+    [self.senCount release];
     [self.player stop];
     [self.player release];
     [super dealloc];
@@ -105,8 +107,9 @@
     progressBar.maximumValue = [self.player duration];
     progressBar.value = timeStart;
     self.player.currentTime = timeStart;
-    [timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
-    [timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration ]];
+    self.senCount.text = [NSString stringWithFormat:@"%d / %d ", nPosition, [self.sentencesArray count]];
+    //[timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
+    //[timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration ]];
     loopstarttime = 0.0;
     loopendtime = self.player.duration;
     fVolumn = 0.8;
@@ -495,8 +498,9 @@
     if (p.currentTime > loopendtime + 0.1 || p.currentTime < loopstarttime - 0.1) {
         p.currentTime = loopstarttime;
     }
-    [timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
-    [timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration]];
+    self.senCount.text = [NSString stringWithFormat:@"%d / %d ", nPosition, [self.sentencesArray count]];
+    //[timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
+    //[timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration]];
 }
 
 - (void)updateCurrentTime
