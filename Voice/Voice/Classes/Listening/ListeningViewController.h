@@ -28,7 +28,6 @@ typedef NSInteger PLAY_TPYE;
     //UILabel* timelast;
     UILabel* senCount;
     NSTimer* updateTimer;
-    BOOL bStart;
     BOOL bLoop;
     BOOL bLesson;
     BOOL bRecording;

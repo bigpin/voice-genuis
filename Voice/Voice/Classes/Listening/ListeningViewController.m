@@ -36,7 +36,6 @@
         // Custom initialization
         self.hidesBottomBarWhenPushed = YES;
 
-        bStart = NO;
         looptype = PLAY_TYPE_SINGLE;
         progressBar.minimumValue = 0.0;
         progressBar.maximumValue = 10.0;
@@ -47,7 +46,11 @@
         bLoop = YES;
         bLesson = YES;
         bRecording = NO;
+<<<<<<< HEAD
         resourcePath = [[NSString alloc] initWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"];
+=======
+        resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
+>>>>>>> 修正了上次修改的错误。
     }
     return self;
 }
@@ -62,6 +65,7 @@
     [progressBar release];
     [updateTimer release];
     [self.senCount release];
+    [resourcePath release];
     [self.player stop];
     [self.player release];
     [super dealloc];
@@ -145,7 +149,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    bStart = NO;
     timeStart = 0.0;
     [self updateViewForPlayer];
 
@@ -208,8 +211,7 @@
        
     }
     
-    NSString* iconPath = nil;
-    NSString* sentenceBackground = nil;
+    int nTeacher = 0;
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
     CGFloat colorvalue = 247.0/255.0;
     CGFloat colorvalueBlue = 99.0/255.0;
@@ -217,13 +219,11 @@
         if ([self.teachersArray count] == 2) {
             Teacher* teacher = [self.teachersArray objectAtIndex:0];
             if ([teacher.teacherid isEqualToString:sentence.techerid]) {
-                iconPath = [resourcePath stringByAppendingPathComponent:@"t1.png"];
-                sentenceBackground = [resourcePath stringByAppendingPathComponent:@"aqua.png"];
+                nTeacher = 1;
                 [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
                 [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
             } else {
-                iconPath = [resourcePath stringByAppendingPathComponent:@"t2.png"];
-                sentenceBackground = [resourcePath stringByAppendingPathComponent:@"aqua.png"];
+                nTeacher = 2;
                 [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
                 [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
             }
@@ -232,18 +232,15 @@
                 Teacher* teacher1 = [self.teachersArray objectAtIndex:0];
                 Teacher* teacher2 = [self.teachersArray objectAtIndex:0];
                 if ([teacher1.teacherid isEqualToString:sentence.techerid]) {
-                    iconPath = [NSString stringWithFormat:@"%@/t1.png", resourcePath];
-                    sentenceBackground = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+                    nTeacher = 1;
                     [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
                     [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
                 } else if ([teacher2.teacherid isEqualToString:sentence.techerid]) {
-                    iconPath = [NSString stringWithFormat:@"%@/t2.png", resourcePath];
-                    sentenceBackground = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+                    nTeacher = 2;
                     [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
                     [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
                 } else {
-                    iconPath = [NSString stringWithFormat:@"%@/t2.png", resourcePath];
-                    sentenceBackground = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+                    nTeacher = 2;
                     [cell setBurnColor:0.92 withGreen:0.92 withBlue:0.92];
                     [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
                    
@@ -254,20 +251,28 @@
         }
     } else {
         if (indexPath.section % 2 == 0) {
-            iconPath = [NSString stringWithFormat:@"%@/t1.png", resourcePath];
-            sentenceBackground = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+            nTeacher = 1;
             [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
             [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
       } else {
-            iconPath = [NSString stringWithFormat:@"%@/t2.png", resourcePath];
-            sentenceBackground = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
+            nTeacher = 2;
             [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
           [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
       }
        
     }
-     cell.imgName = sentenceBackground;
-     cell.imgIcon = iconPath;
+    switch (nTeacher) {
+        case 1:
+            cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"t1.png"]];;
+            break;
+        case 2:
+            cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"t2.png"]];;
+            break;
+        default:
+            break;
+    }
+    
+     cell.imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"aqua.png"]];
      cell.msgText = sentence.orintext;
     return cell;
 }
@@ -354,7 +359,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Sentence* sentence = [_sentencesArray objectAtIndex:indexPath.row];
+    Sentence* sentence = [self.sentencesArray objectAtIndex:indexPath.row];
     if (bRecording) {
         RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
         detailViewController.recordingdelegate = (id)self;
@@ -370,7 +375,6 @@
             loopendtime = [sentence endTime];
         }
         player.currentTime = [sentence startTime];
-        bStart = YES;
         [self updateViewForPlayer];
     }
 
@@ -409,8 +413,11 @@
 
 - (IBAction)onStart:(id)sender;
 {
-    bStart = !bStart;
-    
+    if (player.playing) {
+        [player pause];
+    } else {
+        [player play];
+    }
     [self updateViewForPlayer];
 }
 
@@ -429,18 +436,17 @@
     if (bLesson) {
         UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/sentence.png", resourcePath]];
         [self.listeningToolbar.lessonItem setImage:lessonImage];
-        // 设置起始终止时间
-        loopstarttime = 0.0;
-        loopendtime = self.player.duration;
-        
-    } else {
-        UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/lesson.png", resourcePath]];
-        [self.listeningToolbar.lessonItem setImage:lessonImage];
         // 设置单句起始和终止时间
         int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
         Sentence* sentence = [_sentencesArray objectAtIndex:nCurrentIndex];
         loopstarttime = [sentence startTime];
-        loopendtime = [sentence endTime];
+        loopendtime = [sentence endTime];      
+    } else {
+        UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/lesson.png", resourcePath]];
+        [self.listeningToolbar.lessonItem setImage:lessonImage];
+        // 设置起始终止时间
+        loopstarttime = 0.0;
+        loopendtime = self.player.duration;
     }
     bLesson = !bLesson;
 }
@@ -547,15 +553,6 @@
 		[updateTimer invalidate];
 
     updateTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCurrentTime) userInfo:player repeats:YES];
-
-    if (bStart) {
-        if (![self.player isPlaying]) {
-            [self.player play];
-        }
-    }
-    else {
-        [self.player pause];
-    }
 }
 
 - (void)removeView:(ListeningVolumView*)volumnView;
