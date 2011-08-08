@@ -46,11 +46,7 @@
         bLoop = YES;
         bLesson = YES;
         bRecording = NO;
-<<<<<<< HEAD
-        resourcePath = [[NSString alloc] initWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"];
-=======
         resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
->>>>>>> 修正了上次修改的错误。
     }
     return self;
 }
@@ -503,7 +499,7 @@
         }
     }
     
-    if (self.player.playing) {
+    if (!self.player.playing) {
         self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
     } else {
         self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
