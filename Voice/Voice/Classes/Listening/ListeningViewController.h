@@ -58,7 +58,6 @@ typedef NSInteger PLAY_TPYE;
 @property (nonatomic, retain) IBOutlet UILabel* senCount;
 @property (nonatomic, retain) NSTimer* updataeTimer;
 @property (nonatomic, retain) NSString* wavefile;
-@property (nonatomic, retain) NSString* resourcePath;
 @property (nonatomic, retain) AVAudioPlayer* player;
 
 - (IBAction)onPrevious:(id)sender;

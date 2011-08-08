@@ -27,7 +27,6 @@
 @synthesize senCount;
 @synthesize updataeTimer;
 @synthesize wavefile;
-@synthesize resourcePath;
 @synthesize player;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,13 +47,15 @@
         bLoop = YES;
         bLesson = YES;
         bRecording = NO;
-        resourcePath = [NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"];
+        resourcePath = [[NSString alloc] initWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [resourcePath release];
+    resourcePath = nil;
     [self.listeningToolbar release];
     [self.sentencesArray release];
     [self.teachersArray release];
