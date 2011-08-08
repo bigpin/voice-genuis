@@ -12,10 +12,10 @@
 
 #define VOLUMNVIEW_TAG  50001
 enum {
-    PLAY_LOOPTYPE_LESSON    = 1,
-    PLAY_LOOPTYPE_SENTENCE  = 2,
+    PLAY_TYPE_SINGLE    = 1,
+    PLAY_TYPE_LOOP      = 2,
 };
-typedef NSInteger PLAY_LOOPTPYE;
+typedef NSInteger PLAY_TPYE;
 
 @interface ListeningViewController : UIViewController {
     NSMutableArray* _sentencesArray;
@@ -33,10 +33,11 @@ typedef NSInteger PLAY_LOOPTPYE;
     BOOL bLesson;
     BOOL bRecording;
     NSString* wavefile;             // 音频文件
+    NSString* resourcePath;
     AVAudioPlayer *player;
     
     // 循环控制
-    PLAY_LOOPTPYE looptype;         // 循环类型
+    PLAY_TPYE looptype;         // 循环类型
     NSTimeInterval loopstarttime;   // 循环开始时间
     NSTimeInterval loopendtime;     // 循环结束时间
     
@@ -57,6 +58,7 @@ typedef NSInteger PLAY_LOOPTPYE;
 @property (nonatomic, retain) IBOutlet UILabel* senCount;
 @property (nonatomic, retain) NSTimer* updataeTimer;
 @property (nonatomic, retain) NSString* wavefile;
+@property (nonatomic, retain) NSString* resourcePath;
 @property (nonatomic, retain) AVAudioPlayer* player;
 
 - (IBAction)onPrevious:(id)sender;
