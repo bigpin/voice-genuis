@@ -12,13 +12,17 @@
 // bubble image colored
 @interface BubbleImageView: UIView {
     NSString *imgName;
+    NSString *_selectedImgName;
     UIImageView* balloonImageView;
     CGFloat red;
     CGFloat green;
     CGFloat blue;
+    BOOL bColored;
 }
 
 @property (nonatomic, retain) NSString *imgName;
+@property (nonatomic, retain) NSString *selectedImgName;
+@property (nonatomic, assign) BOOL bColored;
 
 - (void)setBurnColor:(CGFloat)r withGreen:(CGFloat)g withBlue:(CGFloat)b;
 - (UIImage*)getSrcImage;
@@ -36,6 +40,7 @@
 @interface BubbleCell : UITableViewCell {
     NSString *msgText;
     NSString *imgName;
+    NSString *_selectedImgName;
     NSString *imgIcon;
     CGFloat bgRed;
     CGFloat bgGreen;
@@ -47,11 +52,13 @@
     BubbleLabel *textContent;
     UIImageView* microphone;
     BubbleImageView* bubbleView;
+    UIView* selectedView;
     CGSize textSize;
 }
 
 @property (nonatomic, retain) NSString *msgText;
 @property (nonatomic, retain) NSString *imgName;
+@property (nonatomic, retain) NSString *selectedImgName;
 @property (nonatomic, retain) NSString *imgIcon;
 - (void)setBurnColor:(CGFloat)r withGreen:(CGFloat)g withBlue:(CGFloat)b;
 - (void)setTextColor:(CGFloat)r withGreen:(CGFloat)g withBlue:(CGFloat)b;

@@ -209,52 +209,59 @@
     
     int nTeacher = 0;
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
-    CGFloat colorvalue = 247.0/255.0;
-    CGFloat colorvalueBlue = 99.0/255.0;
+    CGFloat colorvalueR = 0.83;
+    CGFloat colorvalueG = 0.83;
+    CGFloat colorvalueBlue = 0.83;
+    CGFloat r = 159.0/255.0;
+    CGFloat g = 208.0/255.0;
+    CGFloat b = 54.0/255.0;
+    CGFloat txtColor1 = 0.0;
+    CGFloat txtColor2 = 0.0;
     if ([self.teachersArray count] > 0) {
         if ([self.teachersArray count] == 2) {
             Teacher* teacher = [self.teachersArray objectAtIndex:0];
             if ([teacher.teacherid isEqualToString:sentence.techerid]) {
                 nTeacher = 1;
-                [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
-                [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
+                [cell setBurnColor:colorvalueR withGreen:colorvalueG withBlue:colorvalueBlue];
+                [cell setTextColor:txtColor1 withGreen:txtColor1 withBlue:txtColor1];
             } else {
                 nTeacher = 2;
-                [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
-                [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
-            }
+                [cell setBurnColor:r withGreen:g withBlue:b];
+                [cell setTextColor:txtColor2 withGreen:txtColor2 withBlue:txtColor2];
+             }
+
         } else {
             if ([self.teachersArray count] == 3) {
                 Teacher* teacher1 = [self.teachersArray objectAtIndex:0];
                 Teacher* teacher2 = [self.teachersArray objectAtIndex:0];
                 if ([teacher1.teacherid isEqualToString:sentence.techerid]) {
                     nTeacher = 1;
-                    [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
-                    [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
+                    [cell setBurnColor:colorvalueR withGreen:colorvalueG withBlue:colorvalueBlue];
+                    [cell setTextColor:txtColor1 withGreen:txtColor1 withBlue:txtColor1];
                 } else if ([teacher2.teacherid isEqualToString:sentence.techerid]) {
                     nTeacher = 2;
-                    [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
-                    [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
+                    [cell setBurnColor:r withGreen:b withBlue:b];
+                    [cell setTextColor:txtColor2 withGreen:txtColor2 withBlue:txtColor2];
                 } else {
                     nTeacher = 2;
                     [cell setBurnColor:0.92 withGreen:0.92 withBlue:0.92];
-                    [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
-                   
+                    [cell setTextColor:txtColor1 withGreen:txtColor1 withBlue:txtColor1];
+                 
                 }
-              
+
             }
           
         }
     } else {
         if (indexPath.section % 2 == 0) {
             nTeacher = 1;
-            [cell setBurnColor:colorvalue withGreen:colorvalue withBlue:colorvalueBlue];
-            [cell setTextColor:0.0 withGreen:0.0 withBlue:0.0];
-      } else {
+            [cell setBurnColor:colorvalueR withGreen:colorvalueG withBlue:colorvalueBlue];
+            [cell setTextColor:txtColor1 withGreen:txtColor1 withBlue:txtColor1];
+        } else {
             nTeacher = 2;
-            [cell setBurnColor:0.0 withGreen:0.6 withBlue:0.0];
-          [cell setTextColor:0.92 withGreen:0.92 withBlue:0.92];
-      }
+            [cell setBurnColor:r withGreen:b withBlue:b];
+            [cell setTextColor:txtColor2 withGreen:txtColor2 withBlue:txtColor2];
+       }
        
     }
     switch (nTeacher) {
@@ -267,8 +274,10 @@
         default:
             break;
     }
-    
-     cell.imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"aqua.png"]];
+    NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"aqua.png"]];
+    cell.selectedImgName = [NSString stringWithFormat:@"%@/aqua_playing.png", resourcePath];
+    cell.imgName = imgName;
+    [imgName release];
      cell.msgText = sentence.orintext;
     return cell;
 }
@@ -516,7 +525,7 @@
             [cell setIsHighlightText:YES];
             NSIndexPath * lastpath = [NSIndexPath indexPathForRow:0  inSection:nPosition];
             cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
-            [cell setIsHighlightText:NO];
+           [cell setIsHighlightText:NO];
             nPosition = nCurrentIndex;
         } else if (nCurrentIndex == 0 && nPosition == 0) {
             NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];

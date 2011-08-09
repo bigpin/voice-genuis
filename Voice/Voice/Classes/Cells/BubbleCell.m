@@ -14,13 +14,16 @@
 #define SELECTED_COLOR_B    236.0/255.0
 
 @implementation BubbleImageView
+@synthesize selectedImgName = _selectedImgName;
 @synthesize imgName;
+@synthesize bColored;
 
 - (id)initWithFrame:(CGRect)frame 
 {
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        bColored = YES;
         red = green = blue = 1.0;
         //self.backgroundColor = nil;
     }
@@ -41,7 +44,7 @@
     balloonImageView = [[UIImageView alloc] initWithFrame:self.frame];
     balloonImageView.backgroundColor = [UIColor clearColor];
     balloonImageView.image = balloon;
-    UIImage* burn = [self getBurnImage];
+    UIImage* burn = bColored ? [self getBurnImage] : [self getSrcImage];
     UIImageView* v = [[UIImageView alloc] initWithFrame:self.frame];
     v.image = burn;
     [self addSubview:v];
@@ -77,7 +80,7 @@
     CGContextScaleCTM(context, 1.0, -1.0);
     
     // set the blend mode to color burn, and the original image
-    CGContextSetBlendMode(context, kCGBlendModeColorBurn);
+    CGContextSetBlendMode(context, kCGBlendModeColorDodge);
     CGRect rect = CGRectMake(0, 0, img.size.width, img.size.height);
     CGContextDrawImage(context, rect, img.CGImage);
     
@@ -131,7 +134,7 @@
 @synthesize msgText;
 @synthesize imgName;
 @synthesize imgIcon;
-
+@synthesize selectedImgName = _selectedImgName;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
   if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
@@ -170,21 +173,23 @@
     if (bHighlight) {
         // change bubble view color to blue
         UIView* bubbleParent = bubbleView.superview;
-        [bubbleView removeFromSuperview];
-        bubbleView = nil;
-        BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, textSize.width + 35, textSize.height + 18)];
-        
-        [newImage setBurnColor:SELECTED_COLOR_R withGreen:SELECTED_COLOR_G withBlue:SELECTED_COLOR_B];
+        if (selectedView == nil) {
+            BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, textSize.width + 35, textSize.height + 18)];
+            newImage.bColored = NO;
+            [newImage setBurnColor:1.0 withGreen:1.0 withBlue:1.0];
+            // [newImage setBurnColor:SELECTED_COLOR_R withGreen:SELECTED_COLOR_G withBlue:SELECTED_COLOR_B];
+            
+            newImage.imgName = self.selectedImgName;
+            selectedView = newImage;
+            [bubbleParent addSubview:newImage];
+            [bubbleParent sendSubviewToBack:newImage];
+            [newImage release];
 
-        newImage.imgName = self.imgName;
-        
-        [bubbleParent addSubview:newImage];
-        bubbleView = newImage;
-        
+        }
         // set text color
-        textContent.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        /*textContent.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         textContent.bUnderline = YES;
-        [textContent setNeedsDisplay];
+        [textContent setNeedsDisplay];*/
         
         // set the microphone position
         microphone.hidden = NO;
@@ -194,21 +199,10 @@
         [UIView setAnimationDuration:0.5];
         [UIView commitAnimations];
     } else {
-        UIView* bubbleParent = bubbleView.superview;
-        [bubbleView removeFromSuperview];
-        bubbleView = nil;
-        BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, textSize.width + 35, textSize.height + 18)];
-        
-        [newImage setBurnColor:bgRed withGreen:bgGreen withBlue:bgBlue];
-        newImage.imgName = self.imgName;
-        
-        [bubbleParent addSubview:newImage];
-        bubbleView = newImage;
-       
-        // set text color
-        textContent.textColor         = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
-        textContent.bUnderline = NO;
-        [textContent setNeedsDisplay];
+        if (selectedView != nil) {
+            [selectedView removeFromSuperview];
+            selectedView = nil;
+        }
         
         // set the microphone position
         [UIView beginAnimations:nil context:nil];
@@ -222,13 +216,13 @@
 }
 
 - (void)layoutSubviews {
-    CGFloat startDis = 44;
+    CGFloat startDis = 24;
     CGFloat space = 0.9;
     CGFloat width = self.frame.size.width * space - startDis;
     CGSize size           = [BubbleCell calcTextHeight:self.msgText withWidth:width ];
     textSize = size;
     CGFloat bubbleImageHeight = size.height + 18;
-    CGFloat iconY = bubbleImageHeight < startDis ? 0 : bubbleImageHeight - startDis;
+    CGFloat iconY = bubbleImageHeight < startDis ? 0 : (bubbleImageHeight - startDis)/2;
     UIImageView* iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, iconY, startDis, startDis)];
     iconImage.image = [UIImage imageWithContentsOfFile:self.imgIcon];
     [self.contentView addSubview:iconImage];
@@ -247,11 +241,7 @@
     txtLabel.numberOfLines   = 0;
     txtLabel.text            = msgText;
     txtLabel.textColor         = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
-    if (bHighlight) {
-        txtLabel.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.5];
-    } else {
-        txtLabel.backgroundColor = [UIColor clearColor];
-    }
+    txtLabel.backgroundColor = [UIColor clearColor];
     txtLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
     txtLabel.tag             = TEXTLABLETAG;
     [txtLabel sizeToFit];
@@ -289,6 +279,7 @@
 }
 
 - (void)dealloc {
+    [self.selectedImgName release];
     [msgText release];
     [imgName release];
     [imgIcon release];
