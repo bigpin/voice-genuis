@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "Sentence.h"
 
 @protocol RecordingDelegate <NSObject>
@@ -18,9 +19,19 @@
     id<RecordingDelegate> recordingdelegate;
     Sentence* _sentence;
     UITextView* _sentenceView;
+    
+    AVAudioRecorder* recorder;
+    NSMutableDictionary* recordSetting;
+    NSString* recorderFilePath;
 }
 
 @property (nonatomic, assign) id<RecordingDelegate> recordingdelegate;
 @property (nonatomic, retain) Sentence* sentence;
 @property (nonatomic, retain) IBOutlet UITextView* sentenceView;
+
+- (void) prepareToRecord;
+- (void)startrecorder;
+- (void) stopRecording;
+
+- (void) updateAudioDisplay;
 @end

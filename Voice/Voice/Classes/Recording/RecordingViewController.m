@@ -20,6 +20,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        recorder = nil;
+        recordSetting = nil;
+        recorderFilePath = nil;
     }
     return self;
 }
@@ -61,6 +64,117 @@
     // Return YES for supported orientations
     return YES;
     //return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Record
+
+- (void) prepareToRecord  
+
+{  
+    
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];  
+    NSError *err = nil;  
+    [audioSession setCategory :AVAudioSessionCategoryPlayAndRecord error:&err];  
+    
+    if(err){ 
+        NSLog(@"audioSession: %@ %d %@", [err domain], [err code], [[err userInfo] description]);  
+        return;  
+    }  
+    
+    [audioSession setActive:YES error:&err]; 
+    err = nil;  
+    if(err){  
+        NSLog(@"audioSession: %@ %d %@", [err domain], [err code], [[err userInfo] description]);  
+        return;  
+    }  
+    
+    recordSetting = [[NSMutableDictionary alloc] init];  
+    [recordSetting setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];  
+    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];   
+    [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];  
+    [recordSetting setValue :[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];  
+    [recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];  
+    [recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];  
+    
+    // Create a new dated file  
+    NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];  
+    NSString *caldate = [now description];  
+    recorderFilePath = [[NSString stringWithFormat:@"%@/%@.caf", NSHomeDirectory(), caldate] retain];  
+    NSURL *url = [NSURL fileURLWithPath:recorderFilePath];  
+    err = nil;  
+    recorder = [[ AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:&err];  
+    if(!recorder){  
+        NSLog(@"recorder: %@ %d %@", [err domain], [err code], [[err userInfo] description]);  
+        UIAlertView *alert =  
+        [[UIAlertView alloc] initWithTitle: @"Warning"  
+                                   message: [err localizedDescription]  
+                                  delegate: nil  
+                         cancelButtonTitle: @"OK"  
+                         otherButtonTitles: nil];  
+        [alert show];  
+        [alert release];  
+        return;  
+    }  
+    //prepare to record  
+    [recorder setDelegate:self];  
+    [recorder prepareToRecord];  
+    recorder.meteringEnabled = YES;  
+    BOOL audioHWAvailable = audioSession.inputIsAvailable;  
+    if (! audioHWAvailable) {  
+        UIAlertView *cantRecordAlert =  
+        [[UIAlertView alloc] initWithTitle: @"Warning"  
+                                   message: @"Audio input hardware not available"  
+                                  delegate: nil  
+                         cancelButtonTitle: @"OK"  
+                         otherButtonTitles: nil];  
+        [cantRecordAlert show];  
+        [cantRecordAlert release];   
+        return;  
+    }  
+} 
+
+
+- (void)startrecorder  
+{  
+    [recorder record];  
+}
+
+- (void) stopRecording
+{  
+    [recorder stop];  
+} 
+
+- (void) updateAudioDisplay 
+{  
+    
+        //START:code.RecordViewController.setlevelmeters  
+        
+        [recorder updateMeters];  
+        
+//        [leftLevelMeter setPower: [recorder averagePowerForChannel:0]  
+//                            peak: [recorder peakPowerForChannel: 0]];  
+
+}  
+
+
+#pragma mark - Delegate
+
+- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *) aRecorder successfully:(BOOL)flag  
+{  
+    NSLog(@"recorder successfully");  
+    UIAlertView *recorderSuccessful = [[UIAlertView alloc] initWithTitle:@"" message:@"录音成功"
+                                                                delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];  
+    [recorderSuccessful show];  
+    [recorderSuccessful release];  
+}  
+
+- (void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)arecorder error:(NSError *)error  
+{  
+    // btnRecorder.enabled = NO;  
+    UIAlertView *recorderFailed = [[UIAlertView alloc] initWithTitle:@"" message:@"发生错误"
+                                                            delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];  
+    [recorderFailed show];  
+    [recorderFailed release];  
 }
 
 @end
