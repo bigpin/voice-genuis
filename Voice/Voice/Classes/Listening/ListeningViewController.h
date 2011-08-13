@@ -17,6 +17,13 @@ enum {
 };
 typedef NSInteger PLAY_TPYE;
 
+typedef enum {
+	PLAY_STATUS_NONE = 0,
+	PLAY_STATUS_PLAYING,
+	PLAY_STATUS_PAUSING,
+	PLAY_STATUS_PAUSING_END
+} PLAY_STATUS;
+
 @interface ListeningViewController : UIViewController {
     NSMutableArray* _sentencesArray;
     NSMutableArray* _teachersArray;
@@ -45,6 +52,8 @@ typedef NSInteger PLAY_TPYE;
     
     NSInteger nPosition;            // 滚动位置
     CGFloat fVolumn;
+    PLAY_STATUS ePlayStatus;
+    CGFloat dTimeInterval;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;

@@ -47,6 +47,8 @@
         bLoop = YES;
         bLesson = YES;
         bRecording = NO;
+        ePlayStatus = PLAY_STATUS_NONE;
+        dTimeInterval = 2.0;
         resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
     }
     return self;
@@ -433,14 +435,40 @@
 
 - (IBAction)onStart:(id)sender;
 {
-    if (player.playing) {
+    switch (ePlayStatus) {
+        case PLAY_STATUS_NONE:
+        {
+            if (bLoop == PLAY_TYPE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
+                player.currentTime = loopstarttime;
+            }
+           ePlayStatus = PLAY_STATUS_PLAYING;
+            [player play];
+        }
+            break;
+        case PLAY_STATUS_PLAYING:
+            ePlayStatus = PLAY_STATUS_PAUSING;
+            [player pause];
+            break;
+        case PLAY_STATUS_PAUSING:
+        {
+            ePlayStatus = PLAY_STATUS_PLAYING;
+            if (bLoop == PLAY_TYPE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
+                player.currentTime = loopstarttime;
+            }
+            [player play];
+        }
+            break;
+        default:
+            break;
+    }
+    /*if (player.playing) {
         [player pause];
     } else {
         if (bLoop == PLAY_TYPE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
             player.currentTime = loopstarttime;
         }
         [player play];
-    }
+    }*/
     [self updateViewForPlayer];
 }
 
@@ -513,7 +541,7 @@
 
 - (void)updateCurrentTime
 {
-    if (!self.player.isPlaying) {
+    if (ePlayStatus != PLAY_STATUS_PLAYING) {
         return;
     }
     
@@ -541,14 +569,24 @@
             cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
             [cell setIsHighlightText:NO];
             nPosition = nCurrentIndex;
+            // set the time 
+            [player pause];
+            [NSTimer scheduledTimerWithTimeInterval:dTimeInterval target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
         } else if (nCurrentIndex == 0 && nPosition == 0) {
             NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
             [_sentencesTableView scrollToRowAtIndexPath:path
                                        atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
             BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
             [cell setIsHighlightText:YES];
-        }
+         }
 
+    }
+}
+
+- (void)continueReading
+{
+    if (ePlayStatus == PLAY_STATUS_PLAYING) {
+        [player play];
     }
 }
 
@@ -579,7 +617,7 @@
             break;
     }
     
-    if (!self.player.playing) {
+    if (ePlayStatus == PLAY_STATUS_PAUSING) {
         self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
     } else {
         self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
