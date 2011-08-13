@@ -117,7 +117,7 @@
     fVolumn = 0.8;
     
     UIImage* recordingImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/recording.png",  resourcePath]];
-    UIBarButtonItem* recordingItem = [[UIBarButtonItem alloc] initWithImage:recordingImage style:UIBarButtonItemStyleBordered target:self action:@selector(onRecording)];
+    UIBarButtonItem* recordingItem = [[UIBarButtonItem alloc] initWithImage:recordingImage style:UIBarButtonItemStyleDone target:self action:@selector(onRecording)];
     self.navigationItem.rightBarButtonItem = recordingItem;
     self.recordingItem = recordingItem;
      [recordingItem release];
@@ -497,7 +497,14 @@
 {
     bRecording = !bRecording;
     if (bRecording) {
+        UIImage* recordingImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/record.png",  resourcePath]];
+        self.recordingItem.image = recordingImage;
+        self.recordingItem.style = UIBarButtonItemStyleDone;
         [self.player pause];
+    } else {
+        UIImage* recordingImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/recording.png",  resourcePath]];
+        self.recordingItem.image = recordingImage;
+        self.recordingItem.style = UIBarButtonItemStyleBordered;
     }
 
 }

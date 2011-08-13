@@ -192,12 +192,12 @@
         [textContent setNeedsDisplay];*/
         
         // set the microphone position
-        microphone.hidden = NO;
+        /*microphone.hidden = NO;
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:microphone cache:YES];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:microphone cache:NO];
         [UIView setAnimationDuration:0.5];
-        [UIView commitAnimations];
+        [UIView commitAnimations];*/
     } else {
         if (selectedView != nil) {
             [selectedView removeFromSuperview];
@@ -205,12 +205,12 @@
         }
         
         // set the microphone position
-        [UIView beginAnimations:nil context:nil];
+        /*[UIView beginAnimations:nil context:nil];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:microphone cache:NO];
         [UIView setAnimationDuration:0.5];
         microphone.hidden = YES;
-        [UIView commitAnimations];
+        [UIView commitAnimations];*/
     }
 
 }
@@ -252,16 +252,16 @@
     [self.contentView addSubview:txtLabel];
     textContent = txtLabel;
     
-    UIImageView* micro = [[UIImageView alloc] initWithFrame:CGRectMake(iconImage.frame.origin.x + iconImage.frame.size.width - 12, iconImage.frame.origin.y + iconImage.frame.size.height - 24, 24, 24)];
+    /*UIImageView* micro = [[UIImageView alloc] initWithFrame:CGRectMake(iconImage.frame.origin.x + iconImage.frame.size.width - 12, iconImage.frame.origin.y + iconImage.frame.size.height - 24, 24, 24)];
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString* stringResource = @"Image";
     resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
-    UIImage* microimage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/microphone.png",  resourcePath]];
+   UIImage* microimage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/microphone.png",  resourcePath]];
     micro.image = microimage;
     [self.contentView addSubview:micro];
     microphone = micro;
     [micro release];
-    [microphone setHidden:YES];
+    [microphone setHidden:YES];*/
     [txtLabel release];
 
     [newImage release];
@@ -279,6 +279,8 @@
 }
 
 - (void)dealloc {
+    selectedView = nil;
+    bubbleView = nil;
     [self.selectedImgName release];
     [msgText release];
     [imgName release];
