@@ -33,4 +33,17 @@
     return [self transTotime:endtime];
 }
 
+- (void) setOrintext:(NSString *)text
+{
+    NSRange range = [text rangeOfString:@"]:"];
+    NSString* temp = nil;
+    if (range.length > 0) {
+        temp = [text substringFromIndex:(range.location + range.length)];
+    }
+    else {
+        temp = text;
+    }
+     orintext = [[NSString alloc] initWithString:temp];
+}
+
 @end
