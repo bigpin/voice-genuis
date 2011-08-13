@@ -41,6 +41,7 @@
         progressBar.maximumValue = 10.0;
         
         updateTimer = nil;
+        updataUI = nil;
         timeStart = 0.0;
         nPosition = 0;
         bLoop = YES;
@@ -60,6 +61,7 @@
     [self.teachersArray release];
     [progressBar release];
     [updateTimer release];
+    [updataUI release];
     [self.senCount release];
     [resourcePath release];
     [self.player stop];
@@ -364,7 +366,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Sentence* sentence = [self.sentencesArray objectAtIndex:indexPath.row];
+    Sentence* sentence = [self.sentencesArray objectAtIndex:indexPath.section];
+  
+    NSIndexPath * lastpath = [NSIndexPath indexPathForRow:0  inSection:nPosition];
+    BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
+    [cell setIsHighlightText:NO];
+    nPosition = indexPath.section;
+    
+    [_sentencesTableView scrollToRowAtIndexPath:indexPath
+                               atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:indexPath];
+    [cell setIsHighlightText:YES];
+    
     if (bRecording) {
         RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
         detailViewController.recordingdelegate = (id)self;
@@ -380,6 +393,7 @@
             loopendtime = [sentence endTime];
         }
         player.currentTime = [sentence startTime];
+        [self.player play];
         [self updateViewForPlayer];
     }
 
@@ -421,6 +435,9 @@
     if (player.playing) {
         [player pause];
     } else {
+        if (bLoop == PLAY_TYPE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
+            player.currentTime = loopstarttime;
+        }
         [player play];
     }
     [self updateViewForPlayer];
@@ -482,37 +499,22 @@
 
 #pragma mark - Update timer
 
-- (void)updateCurrentTimeForPlayer:(AVAudioPlayer *)p
-{
-//    NSLog(@"%f, volume:%f", p.currentTime, volumBar.value);
-// 	currentTime.text = [NSString stringWithFormat:@"%d:%02d", (int)p.currentTime / 60, (int)p.currentTime % 60, nil];
-    p.volume = fVolumn;
-	progressBar.value = p.currentTime;
-//   NSLog(@"%f, %f === %f",p.currentTime, loopstarttime, loopendtime);
-
-    self.senCount.text = [NSString stringWithFormat:@"%d / %d ", nPosition + 1, [self.sentencesArray count]];
-    //[timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
-    //[timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration]];
-}
-
 - (void)updateCurrentTime
 {
-	[self updateCurrentTimeForPlayer:self.player];
+    if (!self.player.isPlaying) {
+        return;
+    }
     
     if (self.player.currentTime > loopendtime + 0.1 || self.player.currentTime < loopstarttime - 0.1) {
         if (looptype == PLAY_TYPE_SINGLE) {
             [self.player pause];
+            self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
         }
         else {
             self.player.currentTime = loopstarttime;
         }
     }
     
-    if (!self.player.playing) {
-        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
-    } else {
-        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
-    }
     int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
     
     // 如果是不是单句循环才滚动
@@ -525,7 +527,7 @@
             [cell setIsHighlightText:YES];
             NSIndexPath * lastpath = [NSIndexPath indexPathForRow:0  inSection:nPosition];
             cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
-           [cell setIsHighlightText:NO];
+            [cell setIsHighlightText:NO];
             nPosition = nCurrentIndex;
         } else if (nCurrentIndex == 0 && nPosition == 0) {
             NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
@@ -536,6 +538,19 @@
         }
 
     }
+}
+
+- (void)updateUI
+{
+    //    NSLog(@"%f, volume:%f", p.currentTime, volumBar.value);
+    // 	currentTime.text = [NSString stringWithFormat:@"%d:%02d", (int)p.currentTime / 60, (int)p.currentTime % 60, nil];
+    self.player.volume = fVolumn;
+	progressBar.value = self.player.currentTime;
+    //   NSLog(@"%f, %f === %f",p.currentTime, loopstarttime, loopendtime);
+    
+    self.senCount.text = [NSString stringWithFormat:@"%d / %d ", nPosition + 1, [self.sentencesArray count]];
+    //[timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
+    //[timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration]];
 }
 
 - (void)updateViewForPlayer
@@ -552,12 +567,21 @@
             break;
     }
     
-	[self updateCurrentTimeForPlayer:self.player];
-    
+    if (!self.player.playing) {
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
+    } else {
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
+    }
+       
 	if (updateTimer) 
 		[updateTimer invalidate];
 
-    updateTimer = [NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCurrentTime) userInfo:player repeats:YES];
+    updateTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(updateCurrentTime) userInfo:nil repeats:YES];
+    
+    if (updataUI) 
+		[updataUI invalidate];
+    
+    updataUI = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(updateUI) userInfo:nil repeats:YES];
 }
 
 - (void)removeView:(ListeningVolumView*)volumnView;

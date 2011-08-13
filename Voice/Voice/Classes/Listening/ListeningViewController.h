@@ -28,6 +28,7 @@ typedef NSInteger PLAY_TPYE;
     //UILabel* timelast;
     UILabel* senCount;
     NSTimer* updateTimer;
+    NSTimer* updataUI;
     BOOL bLoop;
     BOOL bLesson;
     BOOL bRecording;
@@ -67,6 +68,7 @@ typedef NSInteger PLAY_TPYE;
 - (void)onRecording;
 - (void)updateCurrentTime;
 - (void)updateViewForPlayer;
+- (void)updateUI;
 
 - (int)getSentenceIndex:(NSTimeInterval)time;
 
