@@ -72,6 +72,8 @@
 		0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */; };
 		95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9398A13F662F5006F4D61 /* VoicePlayer.m */; };
 		95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9398C13F66432006F4D61 /* AudioToolbox.framework */; };
+		95B9399513F6793E006F4D61 /* libMobClickLibrary_1.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9399313F6793E006F4D61 /* libMobClickLibrary_1.6.4.a */; };
+		95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9399613F67990006F4D61 /* SystemConfiguration.framework */; };
 		E222057C13D5B89F006BA2A4 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E222056E13D5B89F006BA2A4 /* Course.m */; };
 		E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057013D5B89F006BA2A4 /* CourseParser.m */; };
 		E222057E13D5B89F006BA2A4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057213D5B89F006BA2A4 /* Lesson.m */; };
@@ -211,6 +213,9 @@
 		95B9398913F662F5006F4D61 /* VoicePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoicePlayer.h; sourceTree = "<group>"; };
 		95B9398A13F662F5006F4D61 /* VoicePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoicePlayer.m; sourceTree = "<group>"; };
 		95B9398C13F66432006F4D61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		95B9399313F6793E006F4D61 /* libMobClickLibrary_1.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_1.6.4.a; sourceTree = "<group>"; };
+		95B9399413F6793E006F4D61 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		95B9399613F67990006F4D61 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E222056D13D5B89F006BA2A4 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E222056E13D5B89F006BA2A4 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		E222056F13D5B89F006BA2A4 /* CourseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseParser.h; sourceTree = "<group>"; };
@@ -233,6 +238,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */,
 				95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */,
 				0D872D8513EE7DFF00361672 /* libsqlite3.0.dylib in Frameworks */,
 				0D4D6AC713DE3E1B00F87B13 /* libTapkuLibrary.a in Frameworks */,
@@ -242,6 +248,7 @@
 				0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */,
 				0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */,
 				0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */,
+				95B9399513F6793E006F4D61 /* libMobClickLibrary_1.6.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +352,7 @@
 		0D8E161C13D471580005CD0F = {
 			isa = PBXGroup;
 			children = (
+				95B9399213F6791C006F4D61 /* UMeng */,
 				0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */,
 				0D90AA2E13D69F13005FA104 /* Resources */,
 				0D8E166913D471830005CD0F /* Classes */,
@@ -367,6 +375,7 @@
 		0D8E162A13D471580005CD0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95B9399613F67990006F4D61 /* SystemConfiguration.framework */,
 				95B9398C13F66432006F4D61 /* AudioToolbox.framework */,
 				0D4D6AC613DE3E1B00F87B13 /* libTapkuLibrary.a */,
 				0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */,
@@ -548,6 +557,15 @@
 				0DD5619413DE3D2900F928E6 /* LogicTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		95B9399213F6791C006F4D61 /* UMeng */ = {
+			isa = PBXGroup;
+			children = (
+				95B9399313F6793E006F4D61 /* libMobClickLibrary_1.6.4.a */,
+				95B9399413F6793E006F4D61 /* MobClick.h */,
+			);
+			name = UMeng;
 			sourceTree = "<group>";
 		};
 		E222056C13D5B89F006BA2A4 /* CourseParser */ = {
@@ -837,7 +855,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_LDFLAGS = "-lz";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -853,7 +871,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lz";
 				SDKROOT = iphoneos;

@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "Database.h"
+#import "MobClick.h"
 
 @interface CustomUITabBarController: UITabBarController {
 }
 @end
 
-@interface VoiceAppDelegate : NSObject <UIApplicationDelegate> {
+@interface VoiceAppDelegate : NSObject <UIApplicationDelegate, MobClickDelegate> {
     CustomUITabBarController* _tabBar;
     Database* databaseQuery;
 }
