@@ -479,14 +479,14 @@
         looptype = PLAY_TYPE_LOOP;
         self.player.numberOfLoops = -1;
         
-        UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/loopsingle.png", resourcePath]];
+        UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
         [self.listeningToolbar.loopItem setImage:loopImage];
 
     } else {
         looptype = PLAY_TYPE_SINGLE;
         self.player.numberOfLoops = 1;
         
-        UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
+        UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/loopsingle.png", resourcePath]];
         [self.listeningToolbar.loopItem setImage:loopImage];
    }
     bLoop = !bLoop;
@@ -495,6 +495,10 @@
 - (void)onRecording;
 {
     bRecording = !bRecording;
+    if (bRecording) {
+        [self.player pause];
+    }
+
 }
 
 #pragma mark - Update timer
