@@ -382,6 +382,7 @@
         RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
         detailViewController.recordingdelegate = (id)self;
         detailViewController.sentence = sentence;
+        detailViewController.wavefile = wavefile;
         // ...
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:detailViewController animated:YES];

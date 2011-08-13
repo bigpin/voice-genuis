@@ -70,6 +70,8 @@
 		0DF7F8C613EEF3ED008A885A /* SettingPauseTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingPauseTimeCell.xib */; };
 		0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */; };
 		0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */; };
+		95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9398A13F662F5006F4D61 /* VoicePlayer.m */; };
+		95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9398C13F66432006F4D61 /* AudioToolbox.framework */; };
 		E222057C13D5B89F006BA2A4 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E222056E13D5B89F006BA2A4 /* Course.m */; };
 		E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057013D5B89F006BA2A4 /* CourseParser.m */; };
 		E222057E13D5B89F006BA2A4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057213D5B89F006BA2A4 /* Lesson.m */; };
@@ -206,6 +208,9 @@
 		0DFB4A6613EEF6B4007B6ACE /* SettingBubbleColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBubbleColorCell.h; sourceTree = "<group>"; };
 		0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBubbleColorCell.m; sourceTree = "<group>"; };
 		0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingBubbleColorCell.xib; sourceTree = "<group>"; };
+		95B9398913F662F5006F4D61 /* VoicePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoicePlayer.h; sourceTree = "<group>"; };
+		95B9398A13F662F5006F4D61 /* VoicePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoicePlayer.m; sourceTree = "<group>"; };
+		95B9398C13F66432006F4D61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E222056D13D5B89F006BA2A4 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E222056E13D5B89F006BA2A4 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		E222056F13D5B89F006BA2A4 /* CourseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseParser.h; sourceTree = "<group>"; };
@@ -228,6 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */,
 				0D872D8513EE7DFF00361672 /* libsqlite3.0.dylib in Frameworks */,
 				0D4D6AC713DE3E1B00F87B13 /* libTapkuLibrary.a in Frameworks */,
 				0D4D6AC313DE3DB300F87B13 /* MapKit.framework in Frameworks */,
@@ -361,6 +367,7 @@
 		0D8E162A13D471580005CD0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95B9398C13F66432006F4D61 /* AudioToolbox.framework */,
 				0D4D6AC613DE3E1B00F87B13 /* libTapkuLibrary.a */,
 				0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */,
 				0D4D6AC213DE3DB300F87B13 /* MapKit.framework */,
@@ -475,6 +482,8 @@
 				0D8632DD13E8383300F934AF /* ListeningVolumView.h */,
 				0D8632DE13E8383400F934AF /* ListeningVolumView.m */,
 				0D8632E013E8386500F934AF /* ListeningVolumView.xib */,
+				95B9398913F662F5006F4D61 /* VoicePlayer.h */,
+				95B9398A13F662F5006F4D61 /* VoicePlayer.m */,
 			);
 			path = Listening;
 			sourceTree = "<group>";
@@ -753,6 +762,7 @@
 				0D872DA813EEDA9000361672 /* RecordingViewController.m in Sources */,
 				0DF7F8C413EEF3D5008A885A /* SettingPauseTimeCell.m in Sources */,
 				0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */,
+				95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

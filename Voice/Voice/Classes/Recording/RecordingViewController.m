@@ -8,12 +8,13 @@
 
 #import "RecordingViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "VoicePlayer.h"
 
 @implementation RecordingViewController
 @synthesize recordingdelegate;
 @synthesize sentence = _sentence;
 @synthesize sentenceView = _sentenceView;
+@synthesize wavefile;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,6 +51,9 @@
     // Do any additional setup after loading the view from its nib.
     self.sentenceView.layer.cornerRadius = 10;
     self.sentenceView.text = self.sentence.orintext;
+    
+//    VoicePlayer* player = [[VoicePlayer alloc] init];
+//    [player play:(CFURLRef)[NSURL fileURLWithPath:self.wavefile]];
 }
 
 - (void)viewDidUnload

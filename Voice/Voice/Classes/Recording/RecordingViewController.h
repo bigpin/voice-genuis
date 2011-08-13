@@ -19,6 +19,7 @@
     id<RecordingDelegate> recordingdelegate;
     Sentence* _sentence;
     UITextView* _sentenceView;
+    NSString* wavefile;
     
     AVAudioRecorder* recorder;
     NSMutableDictionary* recordSetting;
@@ -28,6 +29,7 @@
 @property (nonatomic, assign) id<RecordingDelegate> recordingdelegate;
 @property (nonatomic, retain) Sentence* sentence;
 @property (nonatomic, retain) IBOutlet UITextView* sentenceView;
+@property (nonatomic, retain) NSString* wavefile;
 
 - (void) prepareToRecord;
 - (void)startrecorder;
