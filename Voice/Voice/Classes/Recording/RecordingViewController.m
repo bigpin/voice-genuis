@@ -120,7 +120,7 @@
         return;  
     }  
     //prepare to record  
-    [recorder setDelegate:self];  
+    [recorder setDelegate:(id)self];  
     [recorder prepareToRecord];  
     recorder.meteringEnabled = YES;  
     BOOL audioHWAvailable = audioSession.inputIsAvailable;  

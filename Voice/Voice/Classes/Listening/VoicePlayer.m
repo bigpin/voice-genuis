@@ -22,7 +22,7 @@ static UInt32 gBufferSizeBytes = 0x10000;
     }
     
     for(int i = 0; i < NUM_BUFFERS; i++) {
-        AudioQueueEnqueueBuffer(queue, buffers, 0, nil);
+        AudioQueueEnqueueBuffer(queue, (AudioQueueBufferRef)buffers, 0, nil);
     }
     return self;
 }
@@ -125,12 +125,12 @@ static void BufferCallback(void *inUserData, AudioQueueRef inAQ,
     
     // 创建并分配缓存空间
     packetIndex = 0;
-    
+    AudioQueueBufferRef ref = (AudioQueueBufferRef)buffers;
     for (i = 0; i < NUM_BUFFERS; i++) {
-        AudioQueueAllocateBuffer(queue, gBufferSizeBytes, &buffers);
+        AudioQueueAllocateBuffer(queue, gBufferSizeBytes, &ref);
         
         //读取包数据
-        if ([self readPacketsIntoBuffer:buffers] == 0) {
+        if ([self readPacketsIntoBuffer:(AudioQueueBufferRef)buffers] == 0) {
             break;
         }
     }

@@ -67,4 +67,3 @@ static void BufferCallback(void *inUserData, AudioQueueRef inAQ,
 - (UInt32)readPacketsIntoBuffer:(AudioQueueBufferRef)buffer;
 
 @end
-@end
