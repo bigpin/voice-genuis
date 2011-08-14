@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SettingData.h"
 
 @interface SettingViewController : UITableViewController {
-    
+    SettingData* settingData;
 }
 
 @end

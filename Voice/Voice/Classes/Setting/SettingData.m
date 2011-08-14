@@ -22,7 +22,7 @@
 {
     self = [super init];
     if (self) {
-        
+        [self initSettingData];
     }
     return self;
 }
@@ -39,7 +39,7 @@
 
 - (void)initSettingData;
 {
-    
+    self.dTimeInterval = 2.0;
 }
 
 - (void)loadSettingData;
@@ -66,24 +66,40 @@
 		[fileManager createFileAtPath:settingPList contents:nil attributes:nil];
 		[self saveSettingData];
 	} else {
-		NSMutableArray *arrOptions = [NSMutableArray arrayWithContentsOfFile:settingPList];
-        
-		int count = [arrOptions count];
-		// if only one element, must be Apabi Reader v1.0.2.
-		if (count == 0) {
-            [self saveSettingData];
-        } else {
-            NSDictionary * tempsetting = [arrOptions objectAtIndex:0];
+		 NSMutableDictionary * tempsetting = [NSMutableDictionary dictionaryWithContentsOfFile:settingPList];
 			NSNumber *timerValueTemp = [tempsetting objectForKey:kSettingTimeInterval];
 			self.dTimeInterval = [timerValueTemp floatValue];
-		} 
 	}
-	
 }
 
 - (void)saveSettingData;
 {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+	NSString *documentDirectory = [paths objectAtIndex:0];
+	NSString *path = [documentDirectory stringByAppendingString:PATH_USERDATA];
+	if (![fileManager fileExistsAtPath:path isDirectory:nil])  
+		[fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];	
+	
+	path = [path stringByAppendingPathComponent:DIR_SETTING];
+	if (![fileManager fileExistsAtPath:path isDirectory:nil])  
+		[fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];	
+	
+	path = [path stringByAppendingPathComponent:FILE_SETTING_PLIST];
+	
+	BOOL hasFile = [fileManager fileExistsAtPath:path];
+	if (!hasFile) {
+		[fileManager createFileAtPath:path contents:nil attributes:nil];
+	}
     
+    NSMutableDictionary * settingdictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+    if (settingdictionary == nil) {
+        settingdictionary = [[NSMutableDictionary alloc] init];
+    }
+    
+    [settingdictionary setObject:[NSNumber numberWithFloat:self.dTimeInterval] forKey:kSettingTimeInterval];
+	[settingdictionary writeToFile:path atomically:YES];
+
 }
 
 @end

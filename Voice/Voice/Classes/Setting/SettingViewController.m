@@ -41,6 +41,9 @@
 {
     [super viewDidLoad];
 
+    if (settingData == nil) {
+        settingData = [[SettingData alloc] init];
+    }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -126,6 +129,7 @@
         cell = [array objectAtIndex:0];
         cell.label.text = STRING_SETTING_TIME;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.delegate = (id)self;
         return cell;
     } else {
         SettingBubbleColorCell *cell = (SettingBubbleColorCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingBubbleColorCell"];
@@ -216,4 +220,9 @@
      */
 }
 
+- (void)didSettingTimeInterval:(CGFloat)dTimeInterval;
+{
+    settingData.dTimeInterval = dTimeInterval;
+    [settingData saveSettingData];
+}
 @end

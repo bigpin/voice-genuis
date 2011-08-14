@@ -12,7 +12,8 @@
 @implementation SettingPauseTimeCell
 @synthesize label = _label;
 @synthesize slider = _slider;
-
+@synthesize timeLabel = _timeLabel;
+@synthesize delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -31,7 +32,23 @@
 
 - (void)dealloc
 {
+    [self.label release];
+    [self.slider release];
+    [self.timeLabel release];
     [super dealloc];
+}
+
+- (IBAction)onSettingTimeInterval;
+{
+    [delegate didSettingTimeInterval:self.slider.value];
+    self.timeLabel.text = [NSString stringWithFormat:@"%0.1fs", self.slider.value];
+    
+}
+
+- (IBAction)onChangedTimeInterval;
+{
+    self.timeLabel.text = [NSString stringWithFormat:@"%0.1fs", self.slider.value];
+  
 }
 
 @end
