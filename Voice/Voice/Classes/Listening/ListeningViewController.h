@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "ListeningToolbar.h"
+#import "SettingData.h"
 
 #define VOLUMNVIEW_TAG  50001
 enum {
@@ -53,7 +54,7 @@ typedef enum {
     NSInteger nPosition;            // 滚动位置
     CGFloat fVolumn;
     PLAY_STATUS ePlayStatus;
-    CGFloat dTimeInterval;
+    SettingData* settingData;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;

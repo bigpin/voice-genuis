@@ -43,6 +43,7 @@
 
     if (settingData == nil) {
         settingData = [[SettingData alloc] init];
+        [settingData loadSettingData];
     }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -127,7 +128,9 @@
         
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingPauseTimeCell" owner:self options:nil];
         cell = [array objectAtIndex:0];
+        cell.slider.value = settingData.dTimeInterval;
         cell.label.text = STRING_SETTING_TIME;
+        cell.timeLabel.text = [NSString stringWithFormat:@"%0.1fs", cell.slider.value];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.delegate = (id)self;
         return cell;
@@ -224,5 +227,10 @@
 {
     settingData.dTimeInterval = dTimeInterval;
     [settingData saveSettingData];
+}
+
+- (SettingData*)getSettingData;
+{
+    return settingData;
 }
 @end

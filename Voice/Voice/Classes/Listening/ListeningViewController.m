@@ -14,6 +14,7 @@
 #import "BubbleCell.h"
 #import "ListeningVolumView.h"
 #import "RecordingViewController.h"
+//#import "SettingViewController.h"
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
@@ -48,7 +49,10 @@
         bLesson = YES;
         bRecording = NO;
         ePlayStatus = PLAY_STATUS_NONE;
-        dTimeInterval = 2.0;
+        //SettingViewController* setting = (SettingViewController*)[self.tabBarController.viewControllers objectAtIndex:1];
+        
+        settingData = [[SettingData alloc] init];
+        [settingData loadSettingData];
         resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
     }
     return self;
@@ -56,6 +60,8 @@
 
 - (void)dealloc
 {
+    [settingData release];
+    settingData = nil;
     [resourcePath release];
     resourcePath = nil;
     [self.listeningToolbar release];
@@ -84,7 +90,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.listeningToolbar loadItems:self];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(settingChanged:) name:NOTI_CHANGED_SETTING_VALUE object:nil]; 
+   [self.listeningToolbar loadItems:self];
     
     UIImage* imageThumb = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-handle.png", resourcePath]];
    
@@ -133,6 +141,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:NOTI_CHANGED_SETTING_VALUE object:nil]; 
     [self.recordingItem release];
     self.recordingItem = nil;
 }
@@ -560,6 +570,7 @@
     // 如果是不是单句循环才滚动
     if (bLesson) {
         if (nCurrentIndex != nPosition) {
+            // scroll to cell
             NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
             [_sentencesTableView scrollToRowAtIndexPath:path
                                        atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
@@ -569,10 +580,12 @@
             cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
             [cell setIsHighlightText:NO];
             nPosition = nCurrentIndex;
-            // set the time 
+            
+            // set the time Interval
             [player pause];
-            [NSTimer scheduledTimerWithTimeInterval:dTimeInterval target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:settingData.dTimeInterval target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
         } else if (nCurrentIndex == 0 && nPosition == 0) {
+            // scroll to cell
             NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
             [_sentencesTableView scrollToRowAtIndexPath:path
                                        atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
@@ -663,4 +676,9 @@
     }
 }
 
+#pragma Notifications
+- (void)settingChanged:(NSNotification *)aNotification
+{
+    [settingData loadSettingData];
+}
 @end

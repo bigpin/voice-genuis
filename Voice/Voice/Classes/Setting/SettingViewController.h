@@ -13,4 +13,5 @@
     SettingData* settingData;
 }
 
+- (SettingData*)getSettingData;
 @end

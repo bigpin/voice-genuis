@@ -99,7 +99,7 @@
     
     [settingdictionary setObject:[NSNumber numberWithFloat:self.dTimeInterval] forKey:kSettingTimeInterval];
 	[settingdictionary writeToFile:path atomically:YES];
-
+	[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
 }
 
 @end

@@ -72,10 +72,10 @@
 							<object class="IBUISlider" id="564823238">
 								<reference key="NSNextResponder" ref="189729218"/>
 								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{137, 19}, {146, 23}}</string>
+								<string key="NSFrame">{{137, 19}, {138, 23}}</string>
 								<reference key="NSSuperview" ref="189729218"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="377631176"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
@@ -85,10 +85,11 @@
 							</object>
 							<object class="IBUILabel" id="377631176">
 								<reference key="NSNextResponder" ref="189729218"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{265, 20}, {39, 21}}</string>
+								<int key="NSvFlags">289</int>
+								<string key="NSFrame">{{281, 20}, {34, 21}}</string>
 								<reference key="NSSuperview" ref="189729218"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
