@@ -137,6 +137,7 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+	[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_WILLENTERFOREGROUND object:nil];
     [MobClick setDelegate:self];
     [MobClick appLaunched];
     /*

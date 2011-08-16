@@ -53,6 +53,9 @@
         
         settingData = [[SettingData alloc] init];
         [settingData loadSettingData];
+		NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+		[center addObserver:self selector:@selector(willEnterToBackground:) name:NOTI_WILLENTERFOREGROUND object:nil]; 
+
         resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
     }
     return self;
@@ -161,8 +164,13 @@
 {
     timeStart = 0.0;
     [self updateViewForPlayer];
-
-    [super viewWillDisappear:animated];
+    if (ePlayStatus == PLAY_STATUS_PLAYING) {
+        // if playing, pause.
+        [self onStart:nil];
+    }
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self name:NOTI_CHANGED_SETTING_VALUE object:nil];
+     [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -292,7 +300,9 @@
     cell.selectedImgName = [NSString stringWithFormat:@"%@/aqua_playing.png", resourcePath];
     cell.imgName = imgName;
     [imgName release];
-     cell.msgText = sentence.orintext;
+    cell.msgText = sentence.orintext;
+    cell.transText = sentence.transtext;
+    cell.bShowTranslation = settingData.isShowTranslation;
     return cell;
 }
 
@@ -300,10 +310,14 @@
 {
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
    	NSString *aMsg = sentence.orintext;
+    NSString *transText = sentence.transtext;
     CGFloat divide = 0.9;
     CGFloat width = self.view.bounds.size.width * divide - 44;
 	CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
-    
+    if (settingData.isShowTranslation && sentence.transtext != nil) {
+        CGSize szTrans = [BubbleCell calcTextHeight:transText withWidth:width];
+        size = CGSizeMake(size.width, size.height + szTrans.height + 2);
+    }
 	size.height += 5;
 	
 	CGFloat height = (size.height < 44) ? 44 : size.height;
@@ -578,7 +592,10 @@
             [cell setIsHighlightText:YES];
             NSIndexPath * lastpath = [NSIndexPath indexPathForRow:0  inSection:nPosition];
             cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
-            [cell setIsHighlightText:NO];
+            if (cell != nil && [cell isKindOfClass:[BubbleCell class]]) {
+                // interrupted somtimes.
+                [cell setIsHighlightText:NO];
+            }
             nPosition = nCurrentIndex;
             
             // set the time Interval
@@ -586,7 +603,7 @@
             [NSTimer scheduledTimerWithTimeInterval:settingData.dTimeInterval target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
         } else if (nCurrentIndex == 0 && nPosition == 0) {
             // scroll to cell
-            NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
+           NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
             [_sentencesTableView scrollToRowAtIndexPath:path
                                        atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
             BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
@@ -681,4 +698,12 @@
 {
     [settingData loadSettingData];
 }
+
+- (void)willEnterToBackground:(NSNotification *)aNotification
+{
+    if (ePlayStatus == PLAY_STATUS_PLAYING) {
+        [self onStart:nil];
+    }
+}
+
 @end

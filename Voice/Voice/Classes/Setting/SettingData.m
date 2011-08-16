@@ -11,6 +11,7 @@
 @implementation SettingData
 
 @synthesize dTimeInterval;
+@synthesize isShowTranslation;
 @synthesize clrBubbleBg1 = _clrBubbleBg1;
 @synthesize clrBubbleBg2 = _clrBubbleBg2;
 @synthesize clrBubbleBg3 = _clrBubbleBg3;
@@ -40,6 +41,7 @@
 - (void)initSettingData;
 {
     self.dTimeInterval = 2.0;
+    self.isShowTranslation = YES;
 }
 
 - (void)loadSettingData;
@@ -66,9 +68,16 @@
 		[fileManager createFileAtPath:settingPList contents:nil attributes:nil];
 		[self saveSettingData];
 	} else {
-		 NSMutableDictionary * tempsetting = [NSMutableDictionary dictionaryWithContentsOfFile:settingPList];
-			NSNumber *timerValueTemp = [tempsetting objectForKey:kSettingTimeInterval];
+        NSMutableDictionary * tempsetting = [NSMutableDictionary dictionaryWithContentsOfFile:settingPList];
+        NSNumber *timerValueTemp = [tempsetting objectForKey:kSettingTimeInterval];
+        if (timerValueTemp != nil) {
 			self.dTimeInterval = [timerValueTemp floatValue];
+        }
+        
+        NSNumber *showTranslationTemp = [tempsetting objectForKey:kSettingisShowTranslation];
+        if (showTranslationTemp != nil) {
+			self.isShowTranslation = [showTranslationTemp boolValue];
+        }
 	}
 }
 
@@ -92,14 +101,16 @@
 		[fileManager createFileAtPath:path contents:nil attributes:nil];
 	}
     
-    NSMutableDictionary * settingdictionary = [NSMutableDictionary dictionaryWithContentsOfFile:path];
+    NSMutableDictionary * settingdictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     if (settingdictionary == nil) {
         settingdictionary = [[NSMutableDictionary alloc] init];
     }
     
     [settingdictionary setObject:[NSNumber numberWithFloat:self.dTimeInterval] forKey:kSettingTimeInterval];
+    [settingdictionary setObject:[NSNumber numberWithBool:self.isShowTranslation] forKey:kSettingisShowTranslation];
 	[settingdictionary writeToFile:path atomically:YES];
 	[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
+    [settingdictionary release];
 }
 
 @end

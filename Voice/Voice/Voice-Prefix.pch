@@ -17,6 +17,7 @@
 #define CELL_CONTENT_MARGIN 10.0f
 
 #define NOTI_CHANGED_SETTING_VALUE      @"ChangedSettingValueNotification"
+#define NOTI_WILLENTERFOREGROUND        @"WillEnterForegroundNotification"
 #define STRING_RESOURCE_DATA            @"Data"
 #define STRING_LESSONS_INDEX_XML        @"index.xml"
 #define PATH_USERDATA                   @"/UserData"
@@ -32,3 +33,4 @@
 #define STRING_COLOR_1                  @"对话一"
 #define STRING_COLOR_2                  @"对话二"
 #define STRING_COLOR_3                  @"对话三"
+#define STRING_SHOW_TRANSLATION         @"显示译文"

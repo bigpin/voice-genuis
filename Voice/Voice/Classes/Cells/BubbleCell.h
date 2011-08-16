@@ -39,6 +39,7 @@
 /////////////////////////////////////////////////
 @interface BubbleCell : UITableViewCell {
     NSString *msgText;
+    NSString *_transText;
     NSString *imgName;
     NSString *_selectedImgName;
     NSString *imgIcon;
@@ -53,10 +54,13 @@
     UIImageView* microphone;
     BubbleImageView* bubbleView;
     UIView* selectedView;
-    CGSize textSize;
+    CGSize bubbleSize;
+    BOOL bShowTranslation;
 }
 
+@property (nonatomic, assign) BOOL bShowTranslation;
 @property (nonatomic, retain) NSString *msgText;
+@property (nonatomic, retain) NSString *transText;
 @property (nonatomic, retain) NSString *imgName;
 @property (nonatomic, retain) NSString *selectedImgName;
 @property (nonatomic, retain) NSString *imgIcon;

@@ -9,6 +9,7 @@
 #import "SettingViewController.h"
 #import "SettingPauseTimeCell.h"
 #import "SettingBubbleColorCell.h"
+#import "SettingShowTranslationCell.h"
 #import "BubbleCell.h"
 
 @implementation SettingViewController
@@ -98,7 +99,7 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 1;
+        return 2;
     } else {
         return 3;
     }
@@ -124,16 +125,29 @@
     NSInteger nRow = indexPath.row;
 	NSInteger nSection = indexPath.section;
     if (nSection == 0) {
-        SettingPauseTimeCell *cell = (SettingPauseTimeCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingPauseTimeCell"];
-        
-        NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingPauseTimeCell" owner:self options:nil];
-        cell = [array objectAtIndex:0];
-        cell.slider.value = settingData.dTimeInterval;
-        cell.label.text = STRING_SETTING_TIME;
-        cell.timeLabel.text = [NSString stringWithFormat:@"%0.1fs", cell.slider.value];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.delegate = (id)self;
-        return cell;
+        if (nRow == 0) {
+            SettingPauseTimeCell *cell = (SettingPauseTimeCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingPauseTimeCell"];
+            
+            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingPauseTimeCell" owner:self options:nil];
+            cell = [array objectAtIndex:0];
+            cell.slider.value = settingData.dTimeInterval;
+            cell.label.text = STRING_SETTING_TIME;
+            cell.timeLabel.text = [NSString stringWithFormat:@"%0.1fs", cell.slider.value];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.delegate = (id)self;
+            return cell;
+        } else {
+            SettingShowTranslationCell *cell = (SettingShowTranslationCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingShowTranslationCell"];
+            
+            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingShowTranslationCell" owner:self options:nil];
+            cell = [array objectAtIndex:0];
+            cell.label.text = STRING_SHOW_TRANSLATION;
+            cell.switchControll.on = settingData.isShowTranslation;
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.delegate = (id)self;
+            return cell;
+           
+        }
     } else {
         SettingBubbleColorCell *cell = (SettingBubbleColorCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingBubbleColorCell"];
         
@@ -223,14 +237,21 @@
      */
 }
 
+- (SettingData*)getSettingData;
+{
+    return settingData;
+}
+
 - (void)didSettingTimeInterval:(CGFloat)dTimeInterval;
 {
     settingData.dTimeInterval = dTimeInterval;
     [settingData saveSettingData];
 }
 
-- (SettingData*)getSettingData;
+- (void)isOn:(BOOL)isOn
 {
-    return settingData;
+    settingData.isShowTranslation = isOn;
+    [settingData saveSettingData];
+    
 }
 @end

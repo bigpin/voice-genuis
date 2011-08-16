@@ -131,10 +131,13 @@
 
 @implementation BubbleCell
 
+@synthesize bShowTranslation;
 @synthesize msgText;
 @synthesize imgName;
 @synthesize imgIcon;
 @synthesize selectedImgName = _selectedImgName;
+@synthesize transText = _transText;
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
   if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
@@ -174,7 +177,7 @@
         // change bubble view color to blue
         UIView* bubbleParent = bubbleView.superview;
         if (selectedView == nil) {
-            BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, textSize.width + 35, textSize.height + 18)];
+            BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, bubbleSize.width + 35, bubbleSize.height + 18)];
             newImage.bColored = NO;
             [newImage setBurnColor:1.0 withGreen:1.0 withBlue:1.0];
             // [newImage setBurnColor:SELECTED_COLOR_R withGreen:SELECTED_COLOR_G withBlue:SELECTED_COLOR_B];
@@ -219,8 +222,14 @@
     CGFloat startDis = 24;
     CGFloat space = 0.9;
     CGFloat width = self.frame.size.width * space - startDis;
-    CGSize size           = [BubbleCell calcTextHeight:self.msgText withWidth:width ];
-    textSize = size;
+    CGSize size   = [BubbleCell calcTextHeight:self.msgText withWidth:width ];
+    CGSize szText = size;
+    CGSize szTrans = CGSizeZero;
+    if (self.transText != nil && bShowTranslation) {
+        szTrans = [BubbleCell calcTextHeight:self.transText withWidth:width];
+        size = CGSizeMake(size.width, size.height + szTrans.height + 2);
+    }
+    bubbleSize = size;
     CGFloat bubbleImageHeight = size.height + 18;
     CGFloat iconY = bubbleImageHeight < startDis ? 0 : (bubbleImageHeight - startDis)/2;
     UIImageView* iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, iconY, startDis, startDis)];
@@ -235,7 +244,7 @@
     UIView *newView       = [[UIView alloc] initWithFrame:CGRectMake(startDis, 0.0, width, self.frame.size.height)];
     newView.backgroundColor = [UIColor clearColor];
     newView.backgroundColor = nil;
-    BubbleLabel *txtLabel = [[BubbleLabel alloc] initWithFrame:CGRectMake(15 + startDis, 8, size.width, size.height)];
+    BubbleLabel *txtLabel = [[BubbleLabel alloc] initWithFrame:CGRectMake(15 + startDis, 8, szText.width, szText.height)];
 
     txtLabel.lineBreakMode   = UILineBreakModeWordWrap;
     txtLabel.numberOfLines   = 0;
@@ -250,6 +259,22 @@
     bubbleView = newImage;
     [self setBackgroundView:newView];
     [self.contentView addSubview:txtLabel];
+    
+    if (bShowTranslation) {
+        UILabel *transLabel = [[UILabel alloc] initWithFrame:CGRectMake(txtLabel.frame.origin.x, txtLabel.frame.origin.y + txtLabel.frame.size.height + 2, szTrans.width, szTrans.height)];
+        transLabel.lineBreakMode   = UILineBreakModeWordWrap;
+        transLabel.numberOfLines   = 0;
+        transLabel.text            = self.transText;
+        transLabel.textColor         = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
+        transLabel.backgroundColor = [UIColor clearColor];
+        transLabel.font            = [UIFont boldSystemFontOfSize:FONT_SIZE_BUBBLE];//[UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
+        [transLabel sizeToFit];
+        [self.contentView addSubview:transLabel];
+        [transLabel release];
+
+    }
+    
+ 
     textContent = txtLabel;
     
     /*UIImageView* micro = [[UIImageView alloc] initWithFrame:CGRectMake(iconImage.frame.origin.x + iconImage.frame.size.width - 12, iconImage.frame.origin.y + iconImage.frame.size.height - 24, 24, 24)];
