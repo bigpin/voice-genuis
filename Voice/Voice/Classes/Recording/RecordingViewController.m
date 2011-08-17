@@ -185,7 +185,7 @@
 
 - (void) onRecording:(id)sender;
 {
-    
+    [self startrecorder];
 }
 
 - (void) onPlaying:(id)sender;
@@ -262,6 +262,7 @@
 - (void)startrecorder  
 {  
     [recorder record];  
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateAudioDisplay) userInfo:nil repeats:YES];
 }
 
 - (void) stopRecording
@@ -276,9 +277,10 @@
         
         [recorder updateMeters];  
         
-//        [leftLevelMeter setPower: [recorder averagePowerForChannel:0]  
-//                            peak: [recorder peakPowerForChannel: 0]];  
+        //[leftLevelMeter setPower: [recorder averagePowerForChannel:0]  
+                           // peak: [recorder peakPowerForChannel: 0]];  
 
+    [self.waveView setPower:[recorder averagePowerForChannel:0] peak:[recorder peakPowerForChannel: 0]]; 
 }  
 
 

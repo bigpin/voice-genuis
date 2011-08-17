@@ -316,7 +316,7 @@
 	CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
     if (settingData.isShowTranslation && sentence.transtext != nil) {
         CGSize szTrans = [BubbleCell calcTextHeight:transText withWidth:width];
-        size = CGSizeMake(size.width, size.height + szTrans.height + 2);
+        size = CGSizeMake(size.width, size.height + szTrans.height + MAGIN_OF_TEXTANDTRANSLATE);
     }
 	size.height += 5;
 	

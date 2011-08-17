@@ -15,6 +15,7 @@
 
 #define FONT_SIZE 18.0f
 #define CELL_CONTENT_MARGIN 10.0f
+#define MAGIN_OF_TEXTANDTRANSLATE 2.0
 
 #define NOTI_CHANGED_SETTING_VALUE      @"ChangedSettingValueNotification"
 #define NOTI_WILLENTERFOREGROUND        @"WillEnterForegroundNotification"

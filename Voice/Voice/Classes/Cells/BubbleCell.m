@@ -227,7 +227,7 @@
     CGSize szTrans = CGSizeZero;
     if (self.transText != nil && bShowTranslation) {
         szTrans = [BubbleCell calcTextHeight:self.transText withWidth:width];
-        size = CGSizeMake(size.width, size.height + szTrans.height + 2);
+        size = CGSizeMake(size.width, size.height + szTrans.height + MAGIN_OF_TEXTANDTRANSLATE);
     }
     bubbleSize = size;
     CGFloat bubbleImageHeight = size.height + 18;
@@ -261,7 +261,7 @@
     [self.contentView addSubview:txtLabel];
     
     if (bShowTranslation) {
-        UILabel *transLabel = [[UILabel alloc] initWithFrame:CGRectMake(txtLabel.frame.origin.x, txtLabel.frame.origin.y + txtLabel.frame.size.height + 2, szTrans.width, szTrans.height)];
+        UILabel *transLabel = [[UILabel alloc] initWithFrame:CGRectMake(txtLabel.frame.origin.x, txtLabel.frame.origin.y + txtLabel.frame.size.height + MAGIN_OF_TEXTANDTRANSLATE, szTrans.width, szTrans.height)];
         transLabel.lineBreakMode   = UILineBreakModeWordWrap;
         transLabel.numberOfLines   = 0;
         transLabel.text            = self.transText;
