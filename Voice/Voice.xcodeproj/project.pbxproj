@@ -61,6 +61,7 @@
 		0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167C13D471830005CD0F /* SettingViewController.xib */; };
 		0D90ABD513D69F2C005FA104 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D90AA2F13D69F2C005FA104 /* Data */; };
 		0D90ABD613D69F2C005FA104 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 0D90ABD213D69F2C005FA104 /* Image */; };
+		0D98A60F13FB3AFB00FCB3FE /* WaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D98A60E13FB3AFB00FCB3FE /* WaveView.m */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
 		0DCDA64613FAB98D0094E159 /* SettingShowTranslationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDA64513FAB98D0094E159 /* SettingShowTranslationCell.m */; };
 		0DCDA64813FAB9AA0094E159 /* SettingShowTranslationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DCDA64713FAB9AA0094E159 /* SettingShowTranslationCell.xib */; };
@@ -200,6 +201,8 @@
 		0D8E167C13D471830005CD0F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		0D90AA2F13D69F2C005FA104 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = Voice/Resources/Data; sourceTree = "<group>"; };
 		0D90ABD213D69F2C005FA104 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Voice/Resources/Image; sourceTree = "<group>"; };
+		0D98A60D13FB3AFB00FCB3FE /* WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveView.h; path = Recording/WaveView.h; sourceTree = "<group>"; };
+		0D98A60E13FB3AFB00FCB3FE /* WaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaveView.m; path = Recording/WaveView.m; sourceTree = "<group>"; };
 		0DC0218D13E45825007170F3 /* BubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BubbleCell.m; path = Cells/BubbleCell.m; sourceTree = "<group>"; };
 		0DC0218E13E45825007170F3 /* BubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleCell.h; path = Cells/BubbleCell.h; sourceTree = "<group>"; };
 		0DCDA64413FAB98D0094E159 /* SettingShowTranslationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingShowTranslationCell.h; sourceTree = "<group>"; };
@@ -353,6 +356,8 @@
 				0D872DA513EEDA9000361672 /* RecordingViewController.h */,
 				0D872DA613EEDA9000361672 /* RecordingViewController.m */,
 				0D872DA713EEDA9000361672 /* RecordingViewController.xib */,
+				0D98A60D13FB3AFB00FCB3FE /* WaveView.h */,
+				0D98A60E13FB3AFB00FCB3FE /* WaveView.m */,
 			);
 			name = Recording;
 			sourceTree = "<group>";
@@ -797,6 +802,7 @@
 				95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */,
 				0DF16A8E13F6DD78008C103D /* SettingData.m in Sources */,
 				0DCDA64613FAB98D0094E159 /* SettingShowTranslationCell.m in Sources */,
+				0D98A60F13FB3AFB00FCB3FE /* WaveView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
