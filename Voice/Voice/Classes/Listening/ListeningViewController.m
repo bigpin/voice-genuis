@@ -420,6 +420,7 @@
             loopendtime = [sentence endTime];
         }
         player.currentTime = [sentence startTime];
+        ePlayStatus = PLAY_STATUS_PLAYING;
         [self.player play];
         [self updateViewForPlayer];
     }
