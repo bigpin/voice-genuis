@@ -156,6 +156,18 @@
   [super setSelected:selected animated:animated];
 }
 
+- (void)cleanUp;
+{
+    self.backgroundView = nil;
+    while ([[self.contentView subviews] count] > 0) {
+        UIView *sub = [[self.contentView subviews] objectAtIndex:0];
+        if (sub != nil) {
+            [sub removeFromSuperview];
+        }
+    } 
+    textContent = nil;
+}
+
 - (void)setBurnColor:(CGFloat)r withGreen:(CGFloat)g withBlue:(CGFloat)b;
 {
     bgRed = r;
@@ -175,7 +187,7 @@
     bHighlight = b;
     if (bHighlight) {
         // change bubble view color to blue
-        UIView* bubbleParent = bubbleView.superview;
+        /*UIView* bubbleParent = bubbleView.superview;
         if (selectedView == nil) {
             BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, bubbleSize.width + 35, bubbleSize.height + 18)];
             newImage.bColored = NO;
@@ -188,7 +200,9 @@
             [bubbleParent sendSubviewToBack:newImage];
             [newImage release];
 
-        }
+        }*/
+        textContent.textColor         = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:1.0];
+        [textContent setNeedsDisplay];
         // set text color
         /*textContent.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         textContent.bUnderline = YES;
@@ -206,7 +220,9 @@
             [selectedView removeFromSuperview];
             selectedView = nil;
         }
-        
+        textContent.textColor         = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
+        [textContent setNeedsDisplay];
+       
         // set the microphone position
         /*[UIView beginAnimations:nil context:nil];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
@@ -219,15 +235,18 @@
 }
 
 - (void)layoutSubviews {
-    CGFloat startDis = 24;
+    if (textContent != nil) {
+        return;
+    }
+    CGFloat startDis = MAGIN_OF_BUBBLE_ICON_START;
     CGFloat space = 0.9;
-    CGFloat width = self.frame.size.width * space - startDis;
+    CGFloat width = self.frame.size.width * space - 2*MAGIN_OF_BUBBLE_TEXT_START;
     CGSize size   = [BubbleCell calcTextHeight:self.msgText withWidth:width ];
     CGSize szText = size;
     CGSize szTrans = CGSizeZero;
     if (self.transText != nil && bShowTranslation) {
         szTrans = [BubbleCell calcTextHeight:self.transText withWidth:width];
-        size = CGSizeMake(size.width, size.height + szTrans.height + MAGIN_OF_TEXTANDTRANSLATE);
+        size = CGSizeMake(size.width, size.height + szTrans.height + 2*MAGIN_OF_TEXTANDTRANSLATE);
     }
     bubbleSize = size;
     CGFloat bubbleImageHeight = size.height + 18;
@@ -237,14 +256,15 @@
     [self.contentView addSubview:iconImage];
     [iconImage release];
     
-    BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, size.width + 35, bubbleImageHeight)];
-
+    CGFloat bubbleWidth = self.frame.size.width * space;//size.width + 35;
+    BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, bubbleWidth, bubbleImageHeight)];
+    newImage.bColored = NO;
     [newImage setBurnColor:bgRed withGreen:bgGreen withBlue:bgBlue];
     newImage.imgName = self.imgName;
     UIView *newView       = [[UIView alloc] initWithFrame:CGRectMake(startDis, 0.0, width, self.frame.size.height)];
     newView.backgroundColor = [UIColor clearColor];
     newView.backgroundColor = nil;
-    BubbleLabel *txtLabel = [[BubbleLabel alloc] initWithFrame:CGRectMake(15 + startDis, 8, szText.width, szText.height)];
+    BubbleLabel *txtLabel = [[BubbleLabel alloc] initWithFrame:CGRectMake(MAGIN_OF_BUBBLE_TEXT_START + startDis, 8, szText.width, szText.height)];
 
     txtLabel.lineBreakMode   = UILineBreakModeWordWrap;
     txtLabel.numberOfLines   = 0;
@@ -267,7 +287,7 @@
         transLabel.text            = self.transText;
         transLabel.textColor         = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
         transLabel.backgroundColor = [UIColor clearColor];
-        transLabel.font            = [UIFont boldSystemFontOfSize:FONT_SIZE_BUBBLE];//[UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
+        transLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
         [transLabel sizeToFit];
         [self.contentView addSubview:transLabel];
         [transLabel release];

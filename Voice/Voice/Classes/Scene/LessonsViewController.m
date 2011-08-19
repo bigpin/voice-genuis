@@ -8,6 +8,8 @@
 
 #import "LessonsViewController.h"
 #import "ListeningViewController.h"
+#import "LessonCell.h"
+#import "BubbleCell.h"
 
 
 @implementation LessonsViewController
@@ -99,35 +101,55 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    /* static NSString *CellIdentifier = @"Cell";
+     
+     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+     if (cell == nil) {
+     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+     }
+     
+     if (indexPath.row < [_courseParser.course.lessons count]) {
+     Lesson * lesson = [_courseParser.course.lessons objectAtIndex:indexPath.row];
+     cell.textLabel.text = lesson.title;
+     cell.textLabel.numberOfLines = 0;
+     cell.textLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
+     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+     }*/
+    // Configure the cell...
+    static NSString *CellIdentifier = @"LessonCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    LessonCell *cell = (LessonCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[LessonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }else {
+        [cell cleanUp];
     }
     
     if (indexPath.row < [_courseParser.course.lessons count]) {
         Lesson * lesson = [_courseParser.course.lessons objectAtIndex:indexPath.row];
-        cell.textLabel.text = lesson.title;
-        cell.textLabel.numberOfLines = 0;
-        cell.textLabel.font = [UIFont systemFontOfSize:FONT_SIZE];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-   }
-     // Configure the cell...
+        cell.lessonTitle = lesson.title;
+        cell.useDarkBackground = (indexPath.row % 2 == 0);
+        cell.nIndex = indexPath.row;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    }
     
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell=[self tableView: tableView cellForRowAtIndexPath: indexPath];
-    
-    CGSize constraint = CGSizeMake(cell.frame.size.width - CELL_CONTENT_MARGIN*2, 20000.0f);
-    
-    CGSize size = [cell.textLabel.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    
-    CGFloat height = MAX(size.height, 44.0f);
-    return (height + CELL_CONTENT_MARGIN*2);
+    LessonCell *cell = (LessonCell*)[self tableView: tableView cellForRowAtIndexPath: indexPath];
+    /*
+     CGSize constraint = CGSizeMake(cell.frame.size.width - CELL_CONTENT_MARGIN*2, 20000.0f);
+     
+     CGSize size = [cell.textLabel.text sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+     
+     CGFloat height = MAX(size.height, 44.0f);
+     return (height + CELL_CONTENT_MARGIN*2);*/
+    CGSize size   = [BubbleCell calcTextHeight:cell.lessonTitle withWidth:cell.frame.size.width  - CELL_CONTENT_MARGIN*2 - MAGIN_OF_LESSON_TITLE - MAGIN_OF_RIGHT];
+    return size.height + 44;
 }
+
 
 /*
 // Override to support conditional editing of the table view.

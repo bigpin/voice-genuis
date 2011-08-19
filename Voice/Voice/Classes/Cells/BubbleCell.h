@@ -64,6 +64,9 @@
 @property (nonatomic, retain) NSString *imgName;
 @property (nonatomic, retain) NSString *selectedImgName;
 @property (nonatomic, retain) NSString *imgIcon;
+
+- (void)cleanUp;
+
 - (void)setBurnColor:(CGFloat)r withGreen:(CGFloat)g withBlue:(CGFloat)b;
 - (void)setTextColor:(CGFloat)r withGreen:(CGFloat)g withBlue:(CGFloat)b;
 - (void)setIsHighlightText:(BOOL)bHighlight;

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D16D70E13FE468B00BCFC29 /* LessonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D16D70B13FE468B00BCFC29 /* LessonCell.xib */; };
+		0D16D70F13FE468B00BCFC29 /* LessonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D16D70C13FE468B00BCFC29 /* LessonCell.m */; };
+		0D16D71213FE477F00BCFC29 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D16D71013FE477F00BCFC29 /* RatingView.m */; };
 		0D3B8CA113DC08B1005898CD /* UACellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B8CA013DC08B1005898CD /* UACellBackgroundView.m */; };
 		0D4D6ABF13DE3D7600F87B13 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0D4D6ABE13DE3D7600F87B13 /* TapkuLibrary.bundle */; };
 		0D4D6AC113DE3DAB00F87B13 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4D6AC013DE3DAB00F87B13 /* QuartzCore.framework */; };
@@ -121,6 +124,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D16D70B13FE468B00BCFC29 /* LessonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LessonCell.xib; path = Cells/LessonCell.xib; sourceTree = "<group>"; };
+		0D16D70C13FE468B00BCFC29 /* LessonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonCell.m; path = Cells/LessonCell.m; sourceTree = "<group>"; };
+		0D16D70D13FE468B00BCFC29 /* LessonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonCell.h; path = Cells/LessonCell.h; sourceTree = "<group>"; };
+		0D16D71013FE477F00BCFC29 /* RatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RatingView.m; path = Cells/RatingView.m; sourceTree = "<group>"; };
+		0D16D71113FE477F00BCFC29 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RatingView.h; path = Cells/RatingView.h; sourceTree = "<group>"; };
 		0D3B8C9F13DC08B1005898CD /* UACellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UACellBackgroundView.h; path = Cells/UACellBackgroundView.h; sourceTree = "<group>"; };
 		0D3B8CA013DC08B1005898CD /* UACellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UACellBackgroundView.m; path = Cells/UACellBackgroundView.m; sourceTree = "<group>"; };
 		0D4D6ABE13DE3D7600F87B13 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Voice/TapKu/TapkuLibrary.bundle; sourceTree = SOURCE_ROOT; };
@@ -282,6 +290,11 @@
 		0D3B8C9E13DC0892005898CD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0D16D71013FE477F00BCFC29 /* RatingView.m */,
+				0D16D71113FE477F00BCFC29 /* RatingView.h */,
+				0D16D70B13FE468B00BCFC29 /* LessonCell.xib */,
+				0D16D70C13FE468B00BCFC29 /* LessonCell.m */,
+				0D16D70D13FE468B00BCFC29 /* LessonCell.h */,
 				0DC0218E13E45825007170F3 /* BubbleCell.h */,
 				0DC0218D13E45825007170F3 /* BubbleCell.m */,
 				0D3B8C9F13DC08B1005898CD /* UACellBackgroundView.h */,
@@ -742,6 +755,7 @@
 				0DD478E913F129250054E726 /* icon_small.png in Resources */,
 				0DD478EA13F129250054E726 /* icon_72.png in Resources */,
 				0DCDA64813FAB9AA0094E159 /* SettingShowTranslationCell.xib in Resources */,
+				0D16D70E13FE468B00BCFC29 /* LessonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +831,8 @@
 				0DCDA64613FAB98D0094E159 /* SettingShowTranslationCell.m in Sources */,
 				95B9657813FE13C2002F6087 /* WaveView.mm in Sources */,
 				95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */,
+				0D16D70F13FE468B00BCFC29 /* LessonCell.m in Sources */,
+				0D16D71213FE477F00BCFC29 /* RatingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

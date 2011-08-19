@@ -93,6 +93,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    UIImage* bkimage = [[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/background_gray.png", resourcePath]] stretchableImageWithLeftCapWidth:24 topCapHeight:15];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:bkimage];
+    
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(settingChanged:) name:NOTI_CHANGED_SETTING_VALUE object:nil]; 
    [self.listeningToolbar loadItems:self];
@@ -211,22 +215,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     NSString *CellIdentifier = @"MsgListCell";
+    NSString *CellIdentifier = @"MsgListCell";
     
     BubbleCell *cell = (BubbleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[[BubbleCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     } else {
-        cell.backgroundView = nil;
- 		while ([[cell.contentView subviews] count] > 0) {
-			UIView *sub = [[cell.contentView subviews] objectAtIndex:0];
-			if (sub != nil) {
-				[sub removeFromSuperview];
-			}
-			
-		}
-       
+        [cell cleanUp];
     }
     
     int nTeacher = 0;
@@ -250,8 +246,8 @@
                 nTeacher = 2;
                 [cell setBurnColor:r withGreen:g withBlue:b];
                 [cell setTextColor:txtColor2 withGreen:txtColor2 withBlue:txtColor2];
-             }
-
+            }
+            
         } else {
             if ([self.teachersArray count] == 3) {
                 Teacher* teacher1 = [self.teachersArray objectAtIndex:0];
@@ -268,11 +264,11 @@
                     nTeacher = 2;
                     [cell setBurnColor:0.92 withGreen:0.92 withBlue:0.92];
                     [cell setTextColor:txtColor1 withGreen:txtColor1 withBlue:txtColor1];
-                 
+                    
                 }
-
+                
             }
-          
+            
         }
     } else {
         if (indexPath.section % 2 == 0) {
@@ -283,23 +279,36 @@
             nTeacher = 2;
             [cell setBurnColor:r withGreen:b withBlue:b];
             [cell setTextColor:txtColor2 withGreen:txtColor2 withBlue:txtColor2];
-       }
-       
+        }
+        
     }
     switch (nTeacher) {
         case 1:
+        { 
             cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"t1.png"]];;
+            
+            NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"bubble1.png"]];
+            cell.imgName = imgName;
+            [imgName release];
+        }
+            
             break;
         case 2:
+        {
             cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"t2.png"]];;
+            NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"bubble2.png"]];
+            cell.imgName = imgName;
+            [imgName release];
             break;
+        }
         default:
             break;
     }
-    NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"aqua.png"]];
+    /*NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"aqua.png"]];
+     cell.imgName = imgName;
+     [imgName release];
+     */
     cell.selectedImgName = [NSString stringWithFormat:@"%@/aqua_playing.png", resourcePath];
-    cell.imgName = imgName;
-    [imgName release];
     cell.msgText = sentence.orintext;
     cell.transText = sentence.transtext;
     cell.bShowTranslation = settingData.isShowTranslation;
@@ -312,7 +321,7 @@
    	NSString *aMsg = sentence.orintext;
     NSString *transText = sentence.transtext;
     CGFloat divide = 0.9;
-    CGFloat width = self.view.bounds.size.width * divide - 44;
+    CGFloat width = self.view.bounds.size.width * divide - 2*MAGIN_OF_BUBBLE_TEXT_START;
 	CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
     if (settingData.isShowTranslation && sentence.transtext != nil) {
         CGSize szTrans = [BubbleCell calcTextHeight:transText withWidth:width];

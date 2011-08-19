@@ -16,6 +16,14 @@
 #define FONT_SIZE 18.0f
 #define CELL_CONTENT_MARGIN 10.0f
 #define MAGIN_OF_TEXTANDTRANSLATE 2.0
+#define MAX_RATING 5.0
+#define MAGIN_OF_BUBBLE_ICON_START 24.0
+#define MAGIN_OF_BUBBLE_TEXT_START 15.0
+
+#define MAGIN_OF_LESSON_TITLE  64
+#define MAGIN_OF_RIGHT         40
+#define DARK_BACKGROUND  [UIColor colorWithRed:151.0/255.0 green:152.0/255.0 blue:155.0/255.0 alpha:1.0]
+#define LIGHT_BACKGROUND [UIColor colorWithRed:172.0/255.0 green:173.0/255.0 blue:175.0/255.0 alpha:1.0]
 
 #define NOTI_CHANGED_SETTING_VALUE      @"ChangedSettingValueNotification"
 #define NOTI_WILLENTERFOREGROUND        @"WillEnterForegroundNotification"
@@ -35,3 +43,4 @@
 #define STRING_COLOR_2                  @"对话二"
 #define STRING_COLOR_3                  @"对话三"
 #define STRING_SHOW_TRANSLATION         @"显示译文"
+#define STRING_SCORE_STRING             @"(%.1f 分)"
