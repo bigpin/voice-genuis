@@ -11,6 +11,10 @@
 
 @implementation WaveView
 
+@synthesize wavefilename;
+@synthesize starttime;
+@synthesize endtime;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -30,6 +34,35 @@
         _points = nil;
     }
     [super dealloc];
+}
+
+- (bool)loadwavedata
+{
+    // 波形图宽高
+    int nWidth = 100;
+    int nHeight = 100;
+    
+    char strtemp[256];
+    [wavefilename getCString:strtemp maxLength:256 encoding:NSUTF8StringEncoding];
+    if (!wavefile) {
+        wavefile = new CWaveFile();
+    }
+    wavefile->Open(strtemp);
+    WAVEFORMATEX waveformatex = wavefile->GetWaveFormat();
+    
+    unsigned char* pBuffer = nil;
+//    unsigned long nBufferSize = 0;
+    wavefile->ReadWaveData(starttime, endtime, pBuffer, buffertotal);
+//   unsigned long bytesperHDR = (waveformatex.nAvgBytesPerSec / 10) * 2;
+    dwavesecond = (double)buffertotal / (double)waveformatex.nAvgBytesPerSec;
+    
+    unsigned long wavesecond = (unsigned long)dwavesecond + 1;
+    dwWidPerSencond = nWidth / wavesecond;
+    
+    waveSampleVector.clear();
+    GetWaveSample(waveformatex, pBuffer, buffertotal, dwWidPerSencond, nHeight, waveSampleVector);
+    
+    return true;
 }
 
 // Only override drawRect: if you perform custom drawing.

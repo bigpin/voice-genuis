@@ -60,6 +60,11 @@
     self.sentenceView.layer.cornerRadius = 10;
     self.sentenceView.text = self.sentence.orintext;
     
+//    self.waveView.starttime = [_sentence startTime] * 1000;
+//    self.waveView.endtime = [_sentence endTime] *1000;
+//    self.waveView.wavefilename = wavefile;
+//    [self.waveView loadwavedata];
+    
 //    VoicePlayer* player = [[VoicePlayer alloc] init];
 //    [player play:(CFURLRef)[NSURL fileURLWithPath:self.wavefile]];
 }
@@ -280,7 +285,7 @@
         //[leftLevelMeter setPower: [recorder averagePowerForChannel:0]  
                            // peak: [recorder peakPowerForChannel: 0]];  
 
-    [self.waveView setPower:[recorder averagePowerForChannel:0] peak:[recorder peakPowerForChannel: 0]]; 
+    // [self.waveView setPower:[recorder averagePowerForChannel:0] peak:[recorder peakPowerForChannel: 0]]; 
 }  
 
 
