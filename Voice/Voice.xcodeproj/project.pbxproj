@@ -31,7 +31,7 @@
 		0D872D7713EE78BC00361672 /* DataBase in Resources */ = {isa = PBXBuildFile; fileRef = 0D872D7613EE78BC00361672 /* DataBase */; };
 		0D872D7B13EE7A0B00361672 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D872D7A13EE7A0B00361672 /* Database.m */; };
 		0D872D8513EE7DFF00361672 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */; };
-		0D872DA813EEDA9000361672 /* RecordingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D872DA613EEDA9000361672 /* RecordingViewController.m */; };
+		0D872DA813EEDA9000361672 /* RecordingViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D872DA613EEDA9000361672 /* RecordingViewController.mm */; };
 		0D872DA913EEDA9000361672 /* RecordingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D872DA713EEDA9000361672 /* RecordingViewController.xib */; };
 		0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162B13D471580005CD0F /* UIKit.framework */; };
 		0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E162D13D471580005CD0F /* Foundation.framework */; };
@@ -51,7 +51,7 @@
 		0D8E166013D471580005CD0F /* VoiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E165F13D471580005CD0F /* VoiceTests.m */; };
 		0D8E167D13D471830005CD0F /* FavorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E166C13D471830005CD0F /* FavorViewController.m */; };
 		0D8E167E13D471830005CD0F /* FavorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E166D13D471830005CD0F /* FavorViewController.xib */; };
-		0D8E167F13D471830005CD0F /* ListeningViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E167013D471830005CD0F /* ListeningViewController.m */; };
+		0D8E167F13D471830005CD0F /* ListeningViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E167013D471830005CD0F /* ListeningViewController.mm */; };
 		0D8E168013D471830005CD0F /* ListeningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167113D471830005CD0F /* ListeningViewController.xib */; };
 		0D8E168113D471830005CD0F /* LessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E167413D471830005CD0F /* LessonsViewController.m */; };
 		0D8E168213D471830005CD0F /* LessonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167513D471830005CD0F /* LessonsViewController.xib */; };
@@ -61,7 +61,6 @@
 		0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167C13D471830005CD0F /* SettingViewController.xib */; };
 		0D90ABD513D69F2C005FA104 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D90AA2F13D69F2C005FA104 /* Data */; };
 		0D90ABD613D69F2C005FA104 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 0D90ABD213D69F2C005FA104 /* Image */; };
-		0D98A60F13FB3AFB00FCB3FE /* WaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D98A60E13FB3AFB00FCB3FE /* WaveView.m */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
 		0DCDA64613FAB98D0094E159 /* SettingShowTranslationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDA64513FAB98D0094E159 /* SettingShowTranslationCell.m */; };
 		0DCDA64813FAB9AA0094E159 /* SettingShowTranslationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DCDA64713FAB9AA0094E159 /* SettingShowTranslationCell.xib */; };
@@ -76,8 +75,10 @@
 		0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */; };
 		95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9398A13F662F5006F4D61 /* VoicePlayer.m */; };
 		95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9398C13F66432006F4D61 /* AudioToolbox.framework */; };
-		95B9399513F6793E006F4D61 /* libMobClickLibrary_1.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9399313F6793E006F4D61 /* libMobClickLibrary_1.6.4.a */; };
 		95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9399613F67990006F4D61 /* SystemConfiguration.framework */; };
+		95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */; };
+		95B9657813FE13C2002F6087 /* WaveView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657713FE13C2002F6087 /* WaveView.mm */; };
+		95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657913FE1499002F6087 /* WaveFile.cpp */; };
 		E222057C13D5B89F006BA2A4 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E222056E13D5B89F006BA2A4 /* Course.m */; };
 		E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057013D5B89F006BA2A4 /* CourseParser.m */; };
 		E222057E13D5B89F006BA2A4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057213D5B89F006BA2A4 /* Lesson.m */; };
@@ -160,7 +161,7 @@
 		0D872D7A13EE7A0B00361672 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Database.m; path = Database/Database.m; sourceTree = "<group>"; };
 		0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		0D872DA513EEDA9000361672 /* RecordingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordingViewController.h; path = Recording/RecordingViewController.h; sourceTree = "<group>"; };
-		0D872DA613EEDA9000361672 /* RecordingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecordingViewController.m; path = Recording/RecordingViewController.m; sourceTree = "<group>"; };
+		0D872DA613EEDA9000361672 /* RecordingViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RecordingViewController.mm; path = Recording/RecordingViewController.mm; sourceTree = "<group>"; };
 		0D872DA713EEDA9000361672 /* RecordingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordingViewController.xib; path = Recording/RecordingViewController.xib; sourceTree = "<group>"; };
 		0D8E162713D471580005CD0F /* Voice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E162B13D471580005CD0F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -188,7 +189,7 @@
 		0D8E166C13D471830005CD0F /* FavorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavorViewController.m; sourceTree = "<group>"; };
 		0D8E166D13D471830005CD0F /* FavorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavorViewController.xib; sourceTree = "<group>"; };
 		0D8E166F13D471830005CD0F /* ListeningViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningViewController.h; sourceTree = "<group>"; };
-		0D8E167013D471830005CD0F /* ListeningViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeningViewController.m; sourceTree = "<group>"; };
+		0D8E167013D471830005CD0F /* ListeningViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ListeningViewController.mm; sourceTree = "<group>"; };
 		0D8E167113D471830005CD0F /* ListeningViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListeningViewController.xib; sourceTree = "<group>"; };
 		0D8E167313D471830005CD0F /* LessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonsViewController.h; sourceTree = "<group>"; };
 		0D8E167413D471830005CD0F /* LessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonsViewController.m; sourceTree = "<group>"; };
@@ -202,7 +203,6 @@
 		0D90AA2F13D69F2C005FA104 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = Voice/Resources/Data; sourceTree = "<group>"; };
 		0D90ABD213D69F2C005FA104 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Voice/Resources/Image; sourceTree = "<group>"; };
 		0D98A60D13FB3AFB00FCB3FE /* WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveView.h; path = Recording/WaveView.h; sourceTree = "<group>"; };
-		0D98A60E13FB3AFB00FCB3FE /* WaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaveView.m; path = Recording/WaveView.m; sourceTree = "<group>"; };
 		0DC0218D13E45825007170F3 /* BubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BubbleCell.m; path = Cells/BubbleCell.m; sourceTree = "<group>"; };
 		0DC0218E13E45825007170F3 /* BubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleCell.h; path = Cells/BubbleCell.h; sourceTree = "<group>"; };
 		0DCDA64413FAB98D0094E159 /* SettingShowTranslationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingShowTranslationCell.h; sourceTree = "<group>"; };
@@ -224,9 +224,12 @@
 		95B9398913F662F5006F4D61 /* VoicePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoicePlayer.h; sourceTree = "<group>"; };
 		95B9398A13F662F5006F4D61 /* VoicePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoicePlayer.m; sourceTree = "<group>"; };
 		95B9398C13F66432006F4D61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		95B9399313F6793E006F4D61 /* libMobClickLibrary_1.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary_1.6.4.a; sourceTree = "<group>"; };
-		95B9399413F6793E006F4D61 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		95B9399613F67990006F4D61 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary_1.6.4.a; path = Voice/UMeng/libMobClickLibrary_1.6.4.a; sourceTree = "<group>"; };
+		95B9656F13FE08F5002F6087 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobClick.h; path = Voice/UMeng/MobClick.h; sourceTree = "<group>"; };
+		95B9657513FE0962002F6087 /* WaveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveFile.h; path = Voice/WaveDecode/WaveFile.h; sourceTree = "<group>"; };
+		95B9657713FE13C2002F6087 /* WaveView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WaveView.mm; path = Recording/WaveView.mm; sourceTree = "<group>"; };
+		95B9657913FE1499002F6087 /* WaveFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveFile.cpp; path = Voice/WaveDecode/WaveFile.cpp; sourceTree = "<group>"; };
 		E222056D13D5B89F006BA2A4 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E222056E13D5B89F006BA2A4 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		E222056F13D5B89F006BA2A4 /* CourseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseParser.h; sourceTree = "<group>"; };
@@ -259,7 +262,7 @@
 				0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */,
 				0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */,
 				0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */,
-				95B9399513F6793E006F4D61 /* libMobClickLibrary_1.6.4.a in Frameworks */,
+				95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,10 +357,10 @@
 			isa = PBXGroup;
 			children = (
 				0D872DA513EEDA9000361672 /* RecordingViewController.h */,
-				0D872DA613EEDA9000361672 /* RecordingViewController.m */,
+				0D872DA613EEDA9000361672 /* RecordingViewController.mm */,
 				0D872DA713EEDA9000361672 /* RecordingViewController.xib */,
 				0D98A60D13FB3AFB00FCB3FE /* WaveView.h */,
-				0D98A60E13FB3AFB00FCB3FE /* WaveView.m */,
+				95B9657713FE13C2002F6087 /* WaveView.mm */,
 			);
 			name = Recording;
 			sourceTree = "<group>";
@@ -365,8 +368,8 @@
 		0D8E161C13D471580005CD0F = {
 			isa = PBXGroup;
 			children = (
+				95B9657313FE094C002F6087 /* WaveDecode */,
 				95B9399213F6791C006F4D61 /* UMeng */,
-				0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */,
 				0D90AA2E13D69F13005FA104 /* Resources */,
 				0D8E166913D471830005CD0F /* Classes */,
 				0D8E163113D471580005CD0F /* Voice */,
@@ -388,6 +391,7 @@
 		0D8E162A13D471580005CD0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */,
 				95B9399613F67990006F4D61 /* SystemConfiguration.framework */,
 				95B9398C13F66432006F4D61 /* AudioToolbox.framework */,
 				0D4D6AC613DE3E1B00F87B13 /* libTapkuLibrary.a */,
@@ -497,7 +501,7 @@
 			isa = PBXGroup;
 			children = (
 				0D8E166F13D471830005CD0F /* ListeningViewController.h */,
-				0D8E167013D471830005CD0F /* ListeningViewController.m */,
+				0D8E167013D471830005CD0F /* ListeningViewController.mm */,
 				0D8E167113D471830005CD0F /* ListeningViewController.xib */,
 				0D8632CA13E8083100F934AF /* ListeningToolbar.h */,
 				0D8632CB13E8083100F934AF /* ListeningToolbar.m */,
@@ -580,10 +584,19 @@
 		95B9399213F6791C006F4D61 /* UMeng */ = {
 			isa = PBXGroup;
 			children = (
-				95B9399313F6793E006F4D61 /* libMobClickLibrary_1.6.4.a */,
-				95B9399413F6793E006F4D61 /* MobClick.h */,
+				95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */,
+				95B9656F13FE08F5002F6087 /* MobClick.h */,
 			);
 			name = UMeng;
+			sourceTree = "<group>";
+		};
+		95B9657313FE094C002F6087 /* WaveDecode */ = {
+			isa = PBXGroup;
+			children = (
+				95B9657913FE1499002F6087 /* WaveFile.cpp */,
+				95B9657513FE0962002F6087 /* WaveFile.h */,
+			);
+			name = WaveDecode;
 			sourceTree = "<group>";
 		};
 		E222056C13D5B89F006BA2A4 /* CourseParser */ = {
@@ -769,7 +782,7 @@
 				0D8E164013D471580005CD0F /* VoiceAppDelegate_iPhone.m in Sources */,
 				0D8E164713D471580005CD0F /* VoiceAppDelegate_iPad.m in Sources */,
 				0D8E167D13D471830005CD0F /* FavorViewController.m in Sources */,
-				0D8E167F13D471830005CD0F /* ListeningViewController.m in Sources */,
+				0D8E167F13D471830005CD0F /* ListeningViewController.mm in Sources */,
 				0D8E168113D471830005CD0F /* LessonsViewController.m in Sources */,
 				0D8E168313D471830005CD0F /* ScenesViewController.m in Sources */,
 				0D8E168513D471830005CD0F /* SettingViewController.m in Sources */,
@@ -796,13 +809,14 @@
 				0D8632CC13E8083200F934AF /* ListeningToolbar.m in Sources */,
 				0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */,
 				0D872D7B13EE7A0B00361672 /* Database.m in Sources */,
-				0D872DA813EEDA9000361672 /* RecordingViewController.m in Sources */,
+				0D872DA813EEDA9000361672 /* RecordingViewController.mm in Sources */,
 				0DF7F8C413EEF3D5008A885A /* SettingPauseTimeCell.m in Sources */,
 				0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */,
 				95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */,
 				0DF16A8E13F6DD78008C103D /* SettingData.m in Sources */,
 				0DCDA64613FAB98D0094E159 /* SettingShowTranslationCell.m in Sources */,
-				0D98A60F13FB3AFB00FCB3FE /* WaveView.m in Sources */,
+				95B9657813FE13C2002F6087 /* WaveView.mm in Sources */,
+				95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,6 +928,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Voice/UMeng\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -937,6 +952,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Voice/UMeng\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
