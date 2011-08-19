@@ -14,7 +14,7 @@
 #import "BubbleCell.h"
 #import "ListeningVolumView.h"
 #import "RecordingViewController.h"
-//#import "SettingViewController.h"
+#import "SettingViewController.h"
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
@@ -37,7 +37,7 @@
         // Custom initialization
         self.hidesBottomBarWhenPushed = YES;
 
-        looptype = PLAY_TYPE_SINGLE;
+        looptype = PLAY_LOOP_TPYE_SINGLE;
         progressBar.minimumValue = 0.0;
         progressBar.maximumValue = 10.0;
         
@@ -45,10 +45,11 @@
         updataUI = nil;
         timeStart = 0.0;
         nPosition = 0;
-        bLoop = YES;
-        bLesson = YES;
+        looptype = PLAY_LOOP_TPYE_NONE;
+        nLesson = PLAY_LESSON_TYPE_NONE;
         bRecording = NO;
         ePlayStatus = PLAY_STATUS_NONE;
+        bFirstToolbar = YES;
         //SettingViewController* setting = (SettingViewController*)[self.tabBarController.viewControllers objectAtIndex:1];
         
         settingData = [[SettingData alloc] init];
@@ -424,7 +425,7 @@
         [detailViewController release];
 
     } else {
-        if (!bLesson) {
+        if (nLesson != 1) {
             loopstarttime = [sentence startTime];
             loopendtime = [sentence endTime];
         }
@@ -472,7 +473,7 @@
     switch (ePlayStatus) {
         case PLAY_STATUS_NONE:
         {
-            if (bLoop == PLAY_TYPE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
+            if (looptype == PLAY_LOOP_TPYE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
                 player.currentTime = loopstarttime;
             }
            ePlayStatus = PLAY_STATUS_PLAYING;
@@ -486,7 +487,7 @@
         case PLAY_STATUS_PAUSING:
         {
             ePlayStatus = PLAY_STATUS_PLAYING;
-            if (bLoop == PLAY_TYPE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
+            if (looptype == PLAY_LOOP_TPYE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
                 player.currentTime = loopstarttime;
             }
             [player play];
@@ -498,7 +499,7 @@
     /*if (player.playing) {
         [player pause];
     } else {
-        if (bLoop == PLAY_TYPE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
+        if (bLoop == PLAY_LOOP_TPYE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
             player.currentTime = loopstarttime;
         }
         [player play];
@@ -518,42 +519,42 @@
 
 - (IBAction)onLesson:(id)sender;
 {
-    if (bLesson) {
+    if (nLesson == PLAY_LESSON) {
         UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/sentence.png", resourcePath]];
         [self.listeningToolbar.lessonItem setImage:lessonImage];
         // 设置单句起始和终止时间
         int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
         Sentence* sentence = [_sentencesArray objectAtIndex:nCurrentIndex];
         loopstarttime = [sentence startTime];
-        loopendtime = [sentence endTime];      
+        loopendtime = [sentence endTime];    
+        nLesson = PLAY_SENTENCE;
     } else {
         UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/lesson.png", resourcePath]];
         [self.listeningToolbar.lessonItem setImage:lessonImage];
         // 设置起始终止时间
         loopstarttime = 0.0;
         loopendtime = self.player.duration;
+        nLesson = PLAY_LESSON;
     }
-    bLesson = !bLesson;
 }
 
 - (IBAction)onLoop:(id)sender;
 {
-    if (bLoop) {
-        looptype = PLAY_TYPE_LOOP;
+    if (looptype == PLAY_LOOP_TPYE_SINGLE) {
+        looptype = PLAY_LOOP_TPYE_LOOP;
         self.player.numberOfLoops = -1;
         
         UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
         [self.listeningToolbar.loopItem setImage:loopImage];
 
     } else {
-        looptype = PLAY_TYPE_SINGLE;
+        looptype = PLAY_LOOP_TPYE_SINGLE;
         self.player.numberOfLoops = 1;
         
         UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/loopsingle.png", resourcePath]];
         [self.listeningToolbar.loopItem setImage:loopImage];
    }
-    bLoop = !bLoop;
-}
+ }
 
 - (void)onRecording;
 {
@@ -571,6 +572,26 @@
 
 }
 
+- (IBAction)onMore:(id)sender;
+{
+    if (bFirstToolbar) {
+        [self.listeningToolbar loadMoreItems:self];
+    } else {
+        [self.listeningToolbar loadItems:self];
+    }
+    bFirstToolbar = !bFirstToolbar;
+}
+
+- (IBAction)onSetting:(id)sender;
+{
+    SettingViewController* setting = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
+    
+    NSString* settingTitle = STRING_SETTING_TITLE;
+    setting.title = settingTitle;
+    [self.navigationController pushViewController:setting animated:YES];
+    [setting release];
+}
+
 #pragma mark - Update timer
 
 - (void)updateCurrentTime
@@ -580,7 +601,7 @@
     }
     
     if (self.player.currentTime > loopendtime + 0.1 || self.player.currentTime < loopstarttime - 0.1) {
-        if (looptype == PLAY_TYPE_SINGLE) {
+        if (looptype == PLAY_LOOP_TPYE_SINGLE) {
             [self.player pause];
             self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
         }
@@ -592,7 +613,7 @@
     int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
     
     // 如果是不是单句循环才滚动
-    if (bLesson) {
+    if (nLesson == PLAY_LESSON) {
         if (nCurrentIndex != nPosition) {
             // scroll to cell
             NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
@@ -646,10 +667,10 @@
 - (void)updateViewForPlayer
 {
     switch (looptype) {
-        case PLAY_TYPE_SINGLE:
+        case PLAY_LOOP_TPYE_SINGLE:
             self.player.numberOfLoops = 1;    // Loop playback until invoke stop method
             break;
-        case PLAY_TYPE_LOOP:
+        case PLAY_LOOP_TPYE_LOOP:
             self.player.numberOfLoops = -1;
             break;
             
@@ -714,6 +735,22 @@
     if (ePlayStatus == PLAY_STATUS_PLAYING) {
         [self onStart:nil];
     }
+}
+
+#pragma Toolbar
+- (BOOL)isPlaying
+{
+    return (ePlayStatus == PLAY_STATUS_PLAYING);
+}
+
+- (BOOL)isLesson
+{
+    return (nLesson == PLAY_LESSON);
+}
+
+- (BOOL)isLoop
+{
+    return (looptype == PLAY_LOOP_TPYE_SINGLE);
 }
 
 @end

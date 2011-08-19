@@ -13,10 +13,18 @@
 
 #define VOLUMNVIEW_TAG  50001
 enum {
-    PLAY_TYPE_SINGLE    = 1,
-    PLAY_TYPE_LOOP      = 2,
+    PLAY_LOOP_TPYE_NONE      = 0,
+    PLAY_LOOP_TPYE_SINGLE    = 1,
+    PLAY_LOOP_TPYE_LOOP      = 2,
 };
-typedef NSInteger PLAY_TPYE;
+typedef NSInteger PLAY_LOOP_TPYE;
+
+enum {
+    PLAY_LESSON_TYPE_NONE = 0,
+    PLAY_LESSON = 1,
+    PLAY_SENTENCE = 2,
+};
+typedef NSInteger PLAY_LESSON_TYPE;
 
 typedef enum {
 	PLAY_STATUS_NONE = 0,
@@ -37,15 +45,14 @@ typedef enum {
     UILabel* senCount;
     NSTimer* updateTimer;
     NSTimer* updataUI;
-    BOOL bLoop;
-    BOOL bLesson;
+    int nLesson;
     BOOL bRecording;
     NSString* wavefile;             // 音频文件
     NSString* resourcePath;
     AVAudioPlayer *player;
     
     // 循环控制
-    PLAY_TPYE looptype;         // 循环类型
+    PLAY_LOOP_TPYE looptype;         // 循环类型
     NSTimeInterval loopstarttime;   // 循环开始时间
     NSTimeInterval loopendtime;     // 循环结束时间
     
@@ -55,6 +62,7 @@ typedef enum {
     CGFloat fVolumn;
     PLAY_STATUS ePlayStatus;
     SettingData* settingData;
+    BOOL bFirstToolbar;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
@@ -75,6 +83,8 @@ typedef enum {
 - (IBAction)onStart:(id)sender;
 - (IBAction)onNext:(id)sender;
 - (IBAction)onLoop:(id)sender;
+- (IBAction)onMore:(id)sender;
+- (IBAction)onSetting:(id)sender;
 - (void)onRecording;
 - (void)updateCurrentTime;
 - (void)updateViewForPlayer;
