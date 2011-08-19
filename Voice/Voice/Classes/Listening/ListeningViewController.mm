@@ -227,6 +227,9 @@
     }
     
     int nTeacher = 0;
+    Teacher* teacher1 = nil;
+    Teacher* teacher2 = nil;
+    Teacher* teacher3 = nil;
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
     CGFloat colorvalueR = 0.83;
     CGFloat colorvalueG = 0.83;
@@ -238,8 +241,8 @@
     CGFloat txtColor2 = 0.0;
     if ([self.teachersArray count] > 0) {
         if ([self.teachersArray count] == 2) {
-            Teacher* teacher = [self.teachersArray objectAtIndex:0];
-            if ([teacher.teacherid isEqualToString:sentence.techerid]) {
+            teacher1 = [self.teachersArray objectAtIndex:0];
+            if ([teacher1.teacherid isEqualToString:sentence.techerid]) {
                 nTeacher = 1;
                 [cell setBurnColor:colorvalueR withGreen:colorvalueG withBlue:colorvalueBlue];
                 [cell setTextColor:txtColor1 withGreen:txtColor1 withBlue:txtColor1];
@@ -251,8 +254,9 @@
             
         } else {
             if ([self.teachersArray count] == 3) {
-                Teacher* teacher1 = [self.teachersArray objectAtIndex:0];
-                Teacher* teacher2 = [self.teachersArray objectAtIndex:0];
+                teacher1 = [self.teachersArray objectAtIndex:0];
+                teacher2 = [self.teachersArray objectAtIndex:1];
+                teacher3 = [self.teachersArray objectAtIndex:2];
                 if ([teacher1.teacherid isEqualToString:sentence.techerid]) {
                     nTeacher = 1;
                     [cell setBurnColor:colorvalueR withGreen:colorvalueG withBlue:colorvalueBlue];
@@ -286,8 +290,13 @@
     switch (nTeacher) {
         case 1:
         { 
-            cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"t1.png"]];;
+            if ([[teacher1 gender] isEqualToString:@"female"]) {
+                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/female1.png"]];;
+            } else {
+                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/male1.png"]];;
+            }
             
+             
             NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"bubble1.png"]];
             cell.imgName = imgName;
             [imgName release];
@@ -296,7 +305,18 @@
             break;
         case 2:
         {
-            cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"t2.png"]];;
+            if ([[teacher1 gender] isEqualToString:@"female"]) {
+                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/female1.png"]];;
+            } else {
+                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/male1.png"]];;
+            }
+
+            if ([[teacher2 gender] isEqualToString:@"female"]) {
+                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/female2.png"]];;
+            } else {
+                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/male2.png"]];;
+            }
+
             NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"bubble2.png"]];
             cell.imgName = imgName;
             [imgName release];

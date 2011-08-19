@@ -85,32 +85,20 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
-
+    NSString* imagepath = nil;
+    NSString* stringResource = @"Image/coverflow";
 	if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone){
-        NSString* stringResource = @"Image/coverflow_iphone";
         resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
-        NSString* imagepath1 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_4.jpg"];
-        NSString* imagepath2 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_4.jpg"];
-        NSString* imagepath3 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_4.jpg"];
-        NSString* imagepath4 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_4.jpg"];
-        NSString* imagepath5 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_4.jpg"];
-		covers = [[NSArray alloc] initWithObjects:
-				  [UIImage imageWithContentsOfFile:imagepath1],[UIImage imageWithContentsOfFile:imagepath2],
-				  [UIImage imageWithContentsOfFile:imagepath3],[UIImage imageWithContentsOfFile:imagepath4],
-				  [UIImage imageWithContentsOfFile:imagepath5],nil];
+        
+        imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iPhone.jpg"];
 	}else{
-        NSString* stringResource = @"Image/coverflow_ipad";
         resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
-        NSString* imagepath1 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"ipadcover_1.jpg"];
-        NSString* imagepath2 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"ipadcover_1.jpg"];
-        NSString* imagepath3 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"ipadcover_1.jpg"];
-        NSString* imagepath4 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"ipadcover_1.jpg"];
-        NSString* imagepath5 = [NSString stringWithFormat:@"%@/%@", resourcePath, @"ipadcover_1.jpg"];
-		covers = [[NSArray alloc] initWithObjects:
-				  [UIImage imageWithContentsOfFile:imagepath1],[UIImage imageWithContentsOfFile:imagepath2],
-				  [UIImage imageWithContentsOfFile:imagepath3],[UIImage imageWithContentsOfFile:imagepath4],
-				  [UIImage imageWithContentsOfFile:imagepath5],nil];
+        imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iPad.jpg"];
 	}
+    covers = [[NSArray alloc] initWithObjects:
+              [UIImage imageWithContentsOfFile:imagepath],[UIImage imageWithContentsOfFile:imagepath],
+              [UIImage imageWithContentsOfFile:imagepath],[UIImage imageWithContentsOfFile:imagepath],
+              [UIImage imageWithContentsOfFile:imagepath],nil];
 	[coverflow setNumberOfCovers:[self.scenesArray count]];
 }
 

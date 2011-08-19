@@ -58,8 +58,6 @@
 		0D8E168013D471830005CD0F /* ListeningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167113D471830005CD0F /* ListeningViewController.xib */; };
 		0D8E168113D471830005CD0F /* LessonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E167413D471830005CD0F /* LessonsViewController.m */; };
 		0D8E168213D471830005CD0F /* LessonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167513D471830005CD0F /* LessonsViewController.xib */; };
-		0D8E168313D471830005CD0F /* ScenesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E167713D471830005CD0F /* ScenesViewController.m */; };
-		0D8E168413D471830005CD0F /* ScenesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167813D471830005CD0F /* ScenesViewController.xib */; };
 		0D8E168513D471830005CD0F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E167B13D471830005CD0F /* SettingViewController.m */; };
 		0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167C13D471830005CD0F /* SettingViewController.xib */; };
 		0D90ABD513D69F2C005FA104 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D90AA2F13D69F2C005FA104 /* Data */; };
@@ -202,9 +200,6 @@
 		0D8E167313D471830005CD0F /* LessonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonsViewController.h; sourceTree = "<group>"; };
 		0D8E167413D471830005CD0F /* LessonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonsViewController.m; sourceTree = "<group>"; };
 		0D8E167513D471830005CD0F /* LessonsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LessonsViewController.xib; sourceTree = "<group>"; };
-		0D8E167613D471830005CD0F /* ScenesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenesViewController.h; sourceTree = "<group>"; };
-		0D8E167713D471830005CD0F /* ScenesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenesViewController.m; sourceTree = "<group>"; };
-		0D8E167813D471830005CD0F /* ScenesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenesViewController.xib; sourceTree = "<group>"; };
 		0D8E167A13D471830005CD0F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		0D8E167B13D471830005CD0F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		0D8E167C13D471830005CD0F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
@@ -533,9 +528,6 @@
 				0D8E167313D471830005CD0F /* LessonsViewController.h */,
 				0D8E167413D471830005CD0F /* LessonsViewController.m */,
 				0D8E167513D471830005CD0F /* LessonsViewController.xib */,
-				0D8E167613D471830005CD0F /* ScenesViewController.h */,
-				0D8E167713D471830005CD0F /* ScenesViewController.m */,
-				0D8E167813D471830005CD0F /* ScenesViewController.xib */,
 				0D4D6B0213DE410800F87B13 /* ScenesCoverViewController.h */,
 				0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */,
 			);
@@ -738,7 +730,6 @@
 				0D8E167E13D471830005CD0F /* FavorViewController.xib in Resources */,
 				0D8E168013D471830005CD0F /* ListeningViewController.xib in Resources */,
 				0D8E168213D471830005CD0F /* LessonsViewController.xib in Resources */,
-				0D8E168413D471830005CD0F /* ScenesViewController.xib in Resources */,
 				0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */,
 				0D90ABD513D69F2C005FA104 /* Data in Resources */,
 				0D90ABD613D69F2C005FA104 /* Image in Resources */,
@@ -798,7 +789,6 @@
 				0D8E167D13D471830005CD0F /* FavorViewController.m in Sources */,
 				0D8E167F13D471830005CD0F /* ListeningViewController.mm in Sources */,
 				0D8E168113D471830005CD0F /* LessonsViewController.m in Sources */,
-				0D8E168313D471830005CD0F /* ScenesViewController.m in Sources */,
 				0D8E168513D471830005CD0F /* SettingViewController.m in Sources */,
 				E222057C13D5B89F006BA2A4 /* Course.m in Sources */,
 				E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */,
