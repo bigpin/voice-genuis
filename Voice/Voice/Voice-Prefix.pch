@@ -44,3 +44,5 @@
 #define STRING_COLOR_3                  @"对话三"
 #define STRING_SHOW_TRANSLATION         @"显示译文"
 #define STRING_SCORE_STRING             @"(%.1f 分)"
+#define STRING_RECORDING                @"录音"
+#define STRING_LISTENING                @"朗读"

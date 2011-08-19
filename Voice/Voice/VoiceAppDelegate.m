@@ -7,7 +7,6 @@
 //
 
 #import "VoiceAppDelegate.h"
-#import "ScenesViewController.h"
 #import "ScenesCoverViewController.h"
 #import "FavorViewController.h"
 #import "SettingViewController.h"

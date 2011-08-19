@@ -91,5 +91,5 @@ typedef enum {
 - (void)updateUI;
 
 - (int)getSentenceIndex:(NSTimeInterval)time;
-
+- (void)reloadTableView;
 @end

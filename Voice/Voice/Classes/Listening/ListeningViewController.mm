@@ -134,8 +134,8 @@
     loopendtime = self.player.duration;
     fVolumn = 0.8;
     
-    UIImage* recordingImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/recording.png",  resourcePath]];
-    UIBarButtonItem* recordingItem = [[UIBarButtonItem alloc] initWithImage:recordingImage style:UIBarButtonItemStyleDone target:self action:@selector(onRecording)];
+    NSString* recordingTitle = STRING_LISTENING;
+    UIBarButtonItem* recordingItem = [[UIBarButtonItem alloc] initWithTitle:recordingTitle style:UIBarButtonItemStyleDone target:self action:@selector(onRecording)];
     self.navigationItem.rightBarButtonItem = recordingItem;
     self.recordingItem = recordingItem;
      [recordingItem release];
@@ -198,6 +198,7 @@
     }
 
     [self.sentencesTableView reloadData];
+    [self reloadTableView];
 }
 
 #pragma mark - Table view data source
@@ -497,6 +498,7 @@
                 player.currentTime = loopstarttime;
             }
            ePlayStatus = PLAY_STATUS_PLAYING;
+            nLesson = PLAY_LESSON;
             [player play];
         }
             break;
@@ -580,13 +582,13 @@
 {
     bRecording = !bRecording;
     if (bRecording) {
-        UIImage* recordingImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/record.png",  resourcePath]];
-        self.recordingItem.image = recordingImage;
+        NSString* t = STRING_RECORDING;
+        self.recordingItem.title = t;
         self.recordingItem.style = UIBarButtonItemStyleDone;
         [self.player pause];
     } else {
-        UIImage* recordingImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/recording.png",  resourcePath]];
-        self.recordingItem.image = recordingImage;
+        NSString* t = STRING_LISTENING;
+        self.recordingItem.title = t;
         self.recordingItem.style = UIBarButtonItemStyleBordered;
     }
 
@@ -748,6 +750,7 @@
 - (void)settingChanged:(NSNotification *)aNotification
 {
     [settingData loadSettingData];
+    [self reloadTableView];
 }
 
 - (void)willEnterToBackground:(NSNotification *)aNotification
@@ -773,4 +776,13 @@
     return (looptype == PLAY_LOOP_TPYE_SINGLE);
 }
 
+- (void)reloadTableView;
+{
+    [self.sentencesTableView reloadData];
+    NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nPosition];
+    [_sentencesTableView scrollToRowAtIndexPath:path
+                               atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
+    [cell setIsHighlightText:YES];
+}
 @end
