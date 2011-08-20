@@ -9,6 +9,7 @@
 #import "RecordingViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "VoicePlayer.h"
+#import "BubbleCell.h"
 
 @implementation RecordingViewController
 @synthesize recordingdelegate;
@@ -22,6 +23,8 @@
 @synthesize costTimelabel = _costTimelabel;
 @synthesize totalTimelabel = _totalTimelabel;
 @synthesize timeSlider = _timeSlider;
+@synthesize recordingTableView = _recordingTableView;
+@synthesize resourcePath;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -57,14 +60,16 @@
     [super viewDidLoad];
     [self loadToolbar];
     // Do any additional setup after loading the view from its nib.
-    self.sentenceView.layer.cornerRadius = 10;
-    self.sentenceView.text = self.sentence.orintext;
     
-//    self.waveView.starttime = [_sentence startTime] * 1000;
-//    self.waveView.endtime = [_sentence endTime] *1000;
-//    self.waveView.wavefilename = wavefile;
-//    [self.waveView loadwavedata];
-    
+    /*self.waveView.starttime = [_sentence startTime] * 1000;
+    self.waveView.endtime = [_sentence endTime] *1000;
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+    wavefile = [[NSString alloc] initWithFormat:@"%@/%@.caf", documentsDirectory, @"2011-08-20 09/31/06 +0000"];  
+    self.waveView.wavefilename = wavefile;
+    [self.waveView loadwavedata];*/
+  
+    [self.recordingTableView reloadData];
 //    VoicePlayer* player = [[VoicePlayer alloc] init];
 //    [player play:(CFURLRef)[NSURL fileURLWithPath:self.wavefile]];
 }
@@ -85,9 +90,6 @@
 
 - (void) loadToolbar;
 {
-    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSString* stringResource = @"Image";
-    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
     NSMutableArray *items = [[NSMutableArray alloc] init];
 	// Flexible Space
 	UIBarButtonItem* itemFlexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
@@ -184,13 +186,14 @@
 	[itemFlexedSpaceSmall release];
 	[self.toolbar setItems:items animated:YES];
 	[items release];
-
 }
 
 
 - (void) onRecording:(id)sender;
 {
-    [self startrecorder];
+    if ([self prepareToRecord]) {
+        [self startrecorder];
+    }
 }
 
 - (void) onPlaying:(id)sender;
@@ -200,7 +203,7 @@
 
 #pragma mark - Record
 
-- (void) prepareToRecord  
+- (BOOL) prepareToRecord  
 {  
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];  
     NSError *err = nil;  
@@ -208,14 +211,14 @@
     
     if(err){ 
         NSLog(@"audioSession: %@ %d %@", [err domain], [err code], [[err userInfo] description]);  
-        return;  
+        return NO;  
     }  
     
     [audioSession setActive:YES error:&err]; 
     err = nil;  
     if(err){  
         NSLog(@"audioSession: %@ %d %@", [err domain], [err code], [[err userInfo] description]);  
-        return;  
+        return NO;  
     }  
     
     recordSetting = [[NSMutableDictionary alloc] init];  
@@ -229,7 +232,9 @@
     // Create a new dated file  
     NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];  
     NSString *caldate = [now description];  
-    recorderFilePath = [[NSString stringWithFormat:@"%@/%@.caf", NSHomeDirectory(), caldate] retain];  
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+    recorderFilePath = [[NSString stringWithFormat:@"%@/%@.caf", documentsDirectory, caldate] retain];  
     NSURL *url = [NSURL fileURLWithPath:recorderFilePath];  
     err = nil;  
     recorder = [[ AVAudioRecorder alloc] initWithURL:url settings:recordSetting error:&err];  
@@ -243,7 +248,7 @@
                          otherButtonTitles: nil];  
         [alert show];  
         [alert release];  
-        return;  
+        return NO;  
     }  
     //prepare to record  
     [recorder setDelegate:(id)self];  
@@ -259,15 +264,16 @@
                          otherButtonTitles: nil];  
         [cantRecordAlert show];  
         [cantRecordAlert release];   
-        return;  
+        return NO;  
     }  
+    return YES;
 } 
 
 
 - (void)startrecorder  
 {  
     [recorder record];  
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateAudioDisplay) userInfo:nil repeats:YES];
+    /*[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateAudioDisplay) userInfo:nil repeats:YES];*/
 }
 
 - (void) stopRecording
@@ -309,4 +315,100 @@
     [recorderFailed release];  
 }
 
+
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
+{
+    
+    [self.recordingTableView reloadData];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        NSString *CellIdentifier = @"MsgListCell";
+        
+        BubbleCell *cell = (BubbleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[[BubbleCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        } else {
+            [cell cleanUp];
+        }
+        cell.imgName = [NSString stringWithFormat:@"%@/bubble2.png", resourcePath];
+        cell.msgText = self.sentence.orintext;
+        cell.transText = self.sentence.transtext;
+        cell.bShowTranslation = YES;
+        return cell;
+    } else {
+        NSString *CellIdentifier = @"cell";
+        
+        UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        } else {
+            UIView* v = [cell.contentView viewWithTag:100];
+            if (v != nil) {
+                [v removeFromSuperview];
+            }
+        }
+        WaveView *waveview = [[WaveView alloc] initWithFrame:CGRectMake(10, 10, cell.frame.size.width - 40, 160)];
+        [cell.contentView addSubview:waveview];
+        waveview.tag = 100;
+        self.waveView = waveview;
+        [waveview release];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        return cell;
+
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        NSString *aMsg = self.sentence.orintext;
+        NSString *transText = self.sentence.transtext;
+        CGFloat divide = 0.9;
+        CGFloat width = self.view.bounds.size.width * divide - 2*MAGIN_OF_BUBBLE_TEXT_START;
+        CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
+        if (self.sentence.transtext != nil) {
+            CGSize szTrans = [BubbleCell calcTextHeight:transText withWidth:width];
+            size = CGSizeMake(size.width, size.height + szTrans.height + MAGIN_OF_TEXTANDTRANSLATE);
+        }
+        size.height += 5;
+        
+        CGFloat height = (size.height < 44) ? 44 : size.height;
+        
+        return height;
+
+    } else {
+        return 200;
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	
+    // create the parent view that will hold header Label
+	UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(2, 0.0, self.view.bounds.size.width, 5.0)] autorelease];
+    return customView;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	return 5.0;
+}
 @end

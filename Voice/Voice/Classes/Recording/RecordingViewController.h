@@ -17,6 +17,7 @@
 @end
 
 @interface RecordingViewController : UIViewController {
+    UITableView*            _recordingTableView;
     id<RecordingDelegate>   recordingdelegate;
     Sentence*               _sentence;
     UITextView*             _sentenceView;
@@ -33,8 +34,10 @@
     UISlider*               _timeSlider;
     UILabel*                _costTimelabel;
     UILabel*                _totalTimelabel;
+    NSString*               resourcePath;
 }
-
+@property (nonatomic, assign) NSString* resourcePath;
+@property (nonatomic, retain) IBOutlet UITableView* recordingTableView;
 @property (nonatomic, assign) id<RecordingDelegate> recordingdelegate;
 @property (nonatomic, retain) Sentence* sentence;
 @property (nonatomic, retain) IBOutlet UITextView* sentenceView;
@@ -48,7 +51,7 @@
 @property (nonatomic, retain) UISlider*        timeSlider;
 
 - (void) loadToolbar;
-- (void) prepareToRecord;
+- (BOOL) prepareToRecord;
 - (void) startrecorder;
 - (void) stopRecording;
 

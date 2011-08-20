@@ -19,6 +19,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         // Initialization code
         if (_points == nil) {
             _points = [[NSMutableArray alloc] init];
@@ -59,9 +60,9 @@
     unsigned long wavesecond = (unsigned long)dwavesecond + 1;
     dwWidPerSencond = nWidth / wavesecond;
     
-    waveSampleVector.clear();
+    //waveSampleVector.clear();
     GetWaveSample(waveformatex, pBuffer, buffertotal, dwWidPerSencond, nHeight, waveSampleVector);
-    
+    [self setNeedsDisplay];
     return true;
 }
 
@@ -73,7 +74,7 @@
     CGContextRef context = UIGraphicsGetCurrentContext();    
     UIColor* c = [UIColor blackColor];
     CGContextSetStrokeColorWithColor(context, [c CGColor]);
-    CGPathRef halfPath = [self giveAPath];
+    /*CGPathRef halfPath = [self giveAPath];
     
     // Build the destination path
     CGMutablePathRef path = CGPathCreateMutable();
@@ -97,7 +98,21 @@
     // Add the transformed path to the destination path
     CGPathAddPath( path, &xf, halfPath );
     CGContextStrokePath(context);
+    
     CGPathRelease( halfPath ); // clean up!
+     */
+    if (waveSampleVector.size() > 0) {
+        int x = waveSampleVector[0].first;
+        int y = waveSampleVector[0].second;
+        for(size_t i = 1; i < waveSampleVector.size(); i++)
+        {
+            CGContextMoveToPoint(context, x, y);
+            CGContextAddLineToPoint(context, waveSampleVector[i].first, waveSampleVector[i].second);
+            x = waveSampleVector[i].first;
+            y = waveSampleVector[i].second;
+        }
+    }
+
     UIGraphicsEndImageContext();
 }
 

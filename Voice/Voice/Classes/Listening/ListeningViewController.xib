@@ -93,7 +93,7 @@
 							<object class="IBUISlider" id="573764320">
 								<reference key="NSNextResponder" ref="1037051785"/>
 								<int key="NSvFlags">266</int>
-								<string key="NSFrame">{{-2, 0}, {246, 23}}</string>
+								<string key="NSFrame">{{-2, -1}, {246, 23}}</string>
 								<reference key="NSSuperview" ref="1037051785"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="910902880"/>
@@ -105,10 +105,9 @@
 							<object class="IBUILabel" id="910902880">
 								<reference key="NSNextResponder" ref="1037051785"/>
 								<int key="NSvFlags">265</int>
-								<string key="NSFrame">{{257, 0}, {58, 21}}</string>
+								<string key="NSFrame">{{257, -1}, {58, 21}}</string>
 								<reference key="NSSuperview" ref="1037051785"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -332,13 +331,17 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>lessonItem</string>
 							<string>loopItem</string>
+							<string>moreItem</string>
 							<string>nextItem</string>
 							<string>playItem</string>
 							<string>previousItem</string>
+							<string>settingItem</string>
 							<string>volumItem</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIBarButtonItem</string>
+							<string>UIBarButtonItem</string>
 							<string>UIBarButtonItem</string>
 							<string>UIBarButtonItem</string>
 							<string>UIBarButtonItem</string>
@@ -353,9 +356,11 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>lessonItem</string>
 							<string>loopItem</string>
+							<string>moreItem</string>
 							<string>nextItem</string>
 							<string>playItem</string>
 							<string>previousItem</string>
+							<string>settingItem</string>
 							<string>volumItem</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -369,6 +374,10 @@
 								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
+								<string key="name">moreItem</string>
+								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
 								<string key="name">nextItem</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
@@ -378,6 +387,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">previousItem</string>
+								<string key="candidateClassName">UIBarButtonItem</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">settingItem</string>
 								<string key="candidateClassName">UIBarButtonItem</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -399,13 +412,17 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>onLoop:</string>
+							<string>onMore:</string>
 							<string>onNext:</string>
 							<string>onOther:</string>
 							<string>onPrevious:</string>
+							<string>onSetting:</string>
 							<string>onStart:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -418,15 +435,21 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>onLoop:</string>
+							<string>onMore:</string>
 							<string>onNext:</string>
 							<string>onOther:</string>
 							<string>onPrevious:</string>
+							<string>onSetting:</string>
 							<string>onStart:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">onLoop:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">onMore:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -439,6 +462,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">onPrevious:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">onSetting:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

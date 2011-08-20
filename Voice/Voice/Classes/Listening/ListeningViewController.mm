@@ -440,6 +440,7 @@
         detailViewController.recordingdelegate = (id)self;
         detailViewController.sentence = sentence;
         detailViewController.wavefile = wavefile;
+        detailViewController.resourcePath = resourcePath;
         // ...
         // Pass the selected object to the new view controller.
         [self.navigationController pushViewController:detailViewController animated:YES];
@@ -700,10 +701,10 @@
             break;
     }
     
-    if (ePlayStatus == PLAY_STATUS_PAUSING) {
-        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
-    } else {
+    if (ePlayStatus == PLAY_STATUS_PLAYING) {
         self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
+    } else {
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
     }
        
 	if (updateTimer) 
