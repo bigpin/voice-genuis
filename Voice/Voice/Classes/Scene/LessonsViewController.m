@@ -44,6 +44,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSString* backString = STRING_BACK;
+    UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithTitle:backString style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
+    [backItem release];
     [self loadCourses];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

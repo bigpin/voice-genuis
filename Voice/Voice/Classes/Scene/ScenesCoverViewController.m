@@ -85,6 +85,10 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     
+    NSString* backString = STRING_BACK;
+    UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithTitle:backString style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
+    [backItem release];
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString* imagepath = nil;
     NSString* stringResource = @"Image/coverflow";

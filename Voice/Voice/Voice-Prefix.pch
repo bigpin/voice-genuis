@@ -46,3 +46,6 @@
 #define STRING_SCORE_STRING             @"(%.1f 分)"
 #define STRING_RECORDING                @"录音"
 #define STRING_LISTENING                @"朗读"
+#define STRING_BACK                     @"返回"
+
+
