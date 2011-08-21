@@ -40,8 +40,8 @@
 - (bool)loadwavedata
 {
     // 波形图宽高
-    int nWidth = 100;
-    int nHeight = 100;
+    int nWidth = self.frame.size.width;
+    int nHeight = self.frame.size.height;
     
     char strtemp[256];
     [wavefilename getCString:strtemp maxLength:256 encoding:NSUTF8StringEncoding];
@@ -57,8 +57,8 @@
 //   unsigned long bytesperHDR = (waveformatex.nAvgBytesPerSec / 10) * 2;
     dwavesecond = (double)buffertotal / (double)waveformatex.nAvgBytesPerSec;
     
-    unsigned long wavesecond = (unsigned long)dwavesecond + 1;
-    dwWidPerSencond = nWidth / wavesecond;
+    unsigned long wavesecondtemp = (unsigned long)dwavesecond + 1;
+    dwWidPerSencond = nWidth / wavesecondtemp;
     
     //waveSampleVector.clear();
     GetWaveSample(waveformatex, pBuffer, buffertotal, dwWidPerSencond, nHeight, waveSampleVector);
@@ -102,15 +102,12 @@
     CGPathRelease( halfPath ); // clean up!
      */
     if (waveSampleVector.size() > 0) {
-        int x = waveSampleVector[0].first;
-        int y = waveSampleVector[0].second;
-        for(size_t i = 1; i < waveSampleVector.size(); i++)
+         for(size_t i = 1; i < waveSampleVector.size(); i++)
         {
-            CGContextMoveToPoint(context, x, y);
-            CGContextAddLineToPoint(context, waveSampleVector[i].first, waveSampleVector[i].second);
-            x = waveSampleVector[i].first;
-            y = waveSampleVector[i].second;
+            CGContextMoveToPoint(context, i, waveSampleVector[i].first);
+            CGContextAddLineToPoint(context, i, waveSampleVector[i].second);
         }
+        CGContextStrokePath(context);
     }
 
     UIGraphicsEndImageContext();

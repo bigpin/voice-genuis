@@ -84,16 +84,17 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString* imagepath = nil;
     NSString* stringResource = @"Image/coverflow";
 	if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone){
         resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
         
-        imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iPhone.jpg"];
+        imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iPhone.png"];
 	}else{
         resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
-        imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iPad.jpg"];
+        imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iPad.png"];
 	}
     covers = [[NSArray alloc] initWithObjects:
               [UIImage imageWithContentsOfFile:imagepath],[UIImage imageWithContentsOfFile:imagepath],

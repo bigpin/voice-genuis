@@ -185,7 +185,7 @@ void GetWaveSample(const WAVEFORMATEX sWaveFormatEx,
 
 				while(pTempWaveData>=pWaveData && pTempWaveData <pEdWaveData)
 				{
-					int minvalue = 32767, maxvalue = -32767;
+					short minvalue = 32767, maxvalue = -32767;
 					bool hasvalue = false;
 					for(int i=0; i<den; i++)
 					{
@@ -194,7 +194,7 @@ void GetWaveSample(const WAVEFORMATEX sWaveFormatEx,
 							break;
 
 						hasvalue = true;
-						int waveeng = (int)((pTempWaveData[0] & 0xff) | (pTempWaveData[1] << 8));
+						short waveeng = (short)((pTempWaveData[0] & 0xff) | (pTempWaveData[1] << 8));
 
 						if(waveeng < minvalue) minvalue = waveeng;
 						if(waveeng > maxvalue) maxvalue = waveeng;

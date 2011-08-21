@@ -370,6 +370,10 @@
         [cell.contentView addSubview:waveview];
         waveview.tag = 100;
         self.waveView = waveview;
+        self.waveView.starttime = [_sentence startTime] * 1000;
+        self.waveView.endtime = [_sentence endTime] *1000;
+        self.waveView.wavefilename = wavefile;
+        [self.waveView loadwavedata];
         [waveview release];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
