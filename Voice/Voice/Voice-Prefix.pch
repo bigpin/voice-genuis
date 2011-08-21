@@ -13,6 +13,9 @@
     #import <Foundation/Foundation.h>
 #endif
 
+#define TAG_OF_TIME_INTEVAL 40000
+#define TAG_OF_READING_COUNT 40001
+
 #define FONT_SIZE 18.0f
 #define CELL_CONTENT_MARGIN 10.0f
 #define MAGIN_OF_TEXTANDTRANSLATE 2.0
@@ -47,5 +50,17 @@
 #define STRING_RECORDING                @"录音"
 #define STRING_LISTENING                @"朗读"
 #define STRING_BACK                     @"返回"
+
+#define STRING_TRANING_MODE             @"训练模式设置"
+#define STRING_SHOW_MODE                @"显示设置"
+#define STRING_WHOLE_LESSON_MODE        @"全文试听"
+#define STRING_SENTENCE_MODE            @"跟读训练"
+#define STRING_READING_COUNT            @"跟读次数"
+#define STRING_READING_COUNT_FORMAT     @"%d次"
+#define STRING_TIME_DE_COUNT_FORMAT     @"%.1f秒"
+
+#define STRING_SHOW_SRC_TEXT            @"显示原文"
+#define STRING_SHOW_SRCANDTRANS_TEXT    @"显示原文和译文"
+#define STRING_SHOW_NO_TEXT             @"不显示"
 
 

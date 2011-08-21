@@ -7,9 +7,8 @@
 //
 
 #import "SettingViewController.h"
-#import "SettingPauseTimeCell.h"
+#import "SettingTrainingModeCell.h"
 #import "SettingBubbleColorCell.h"
-#import "SettingShowTranslationCell.h"
 #import "BubbleCell.h"
 
 @implementation SettingViewController
@@ -92,7 +91,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -108,17 +107,21 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;    // fixed font style. use custom view (UILabel) if 
 {
     if (section == 0) {
-        return STRING_SETTING_READING;
+        return STRING_TRANING_MODE;
     } else {
-        return STRING_SETTING_BUBBLE;
+        return STRING_SHOW_MODE;
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    //NSInteger nRow = indexPath.row;
-    return 60.0;
- }
+    if (indexPath.section == 0) {
+        return 80; 
+    } else {
+        return 60;
+        
+    }
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -126,58 +129,67 @@
 	NSInteger nSection = indexPath.section;
     if (nSection == 0) {
         if (nRow == 0) {
-            SettingPauseTimeCell *cell = (SettingPauseTimeCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingPauseTimeCell"];
+            SettingTrainingModeCell *cell = (SettingTrainingModeCell *)[tableView dequeueReusableCellWithIdentifier:@"WholeModeCell"];
             
-            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingPauseTimeCell" owner:self options:nil];
+            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingTrainingModeCell" owner:self options:nil];
             cell = [array objectAtIndex:0];
+            cell.slider.tag = TAG_OF_TIME_INTEVAL;
+            cell.slider.minimumValue = 0.0;
+            cell.slider.maximumValue = 10.0;
             cell.slider.value = settingData.dTimeInterval;
-            cell.label.text = STRING_SETTING_TIME;
-            cell.timeLabel.text = [NSString stringWithFormat:@"%0.1fs", cell.slider.value];
+            cell.label.text = STRING_WHOLE_LESSON_MODE;
+            cell.sliderText.text = STRING_SETTING_TIME;
+            NSString* str = STRING_TIME_DE_COUNT_FORMAT;
+            cell.timeLabel.text = [NSString stringWithFormat:str, cell.slider.value];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = (id)self;
             return cell;
         } else {
-            SettingShowTranslationCell *cell = (SettingShowTranslationCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingShowTranslationCell"];
+            SettingTrainingModeCell *cell = (SettingTrainingModeCell *)[tableView dequeueReusableCellWithIdentifier:@"ReadingFollowCell"];
             
-            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingShowTranslationCell" owner:self options:nil];
+            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingTrainingModeCell" owner:self options:nil];
             cell = [array objectAtIndex:0];
-            cell.label.text = STRING_SHOW_TRANSLATION;
-            cell.switchControll.on = settingData.isShowTranslation;
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.slider.tag = TAG_OF_READING_COUNT;
             cell.delegate = (id)self;
+            cell.slider.minimumValue = 1;
+            cell.slider.maximumValue = 10;
+            cell.slider.value = settingData.nReadingCount;
+            cell.label.text = STRING_SENTENCE_MODE;
+            cell.sliderText.text = STRING_READING_COUNT;
+            NSString* str = STRING_READING_COUNT_FORMAT;
+            cell.timeLabel.text = [NSString stringWithFormat:str, settingData.nReadingCount];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
-           
         }
     } else {
-        SettingBubbleColorCell *cell = (SettingBubbleColorCell *)[tableView dequeueReusableCellWithIdentifier:@"SettingBubbleColorCell"];
-        
-        NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingBubbleColorCell" owner:self options:nil];
-        cell = [array objectAtIndex:0];
-        BubbleImageView *newImage = [[BubbleImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, cell.bubbleView.frame.size.width, cell.bubbleView.frame.size.height)];
-        
-        //[newImage setBurnColor:1.0 withGreen:SELECTED_COLOR_G withBlue:SELECTED_COLOR_B];
-        
-        NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
-        NSString* stringResource = @"Image";
-        resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
-        resourcePath = [NSString stringWithFormat:@"%@/aqua.png", resourcePath];
-        newImage.imgName = resourcePath;
-        [cell.bubbleView addSubview:newImage];
-        [newImage release];
-
-        if (nRow == 0) {
-            cell.label.text = STRING_COLOR_1;
-            cell.bubbleText.text = STRING_COLOR_1;
-        } else if (nRow == 1) {
-            cell.label.text = STRING_COLOR_2;
-            cell.bubbleText.text = STRING_COLOR_2;
-        } else {
-            cell.label.text = STRING_COLOR_3;
-            cell.bubbleText.text = STRING_COLOR_3;
+        static NSString *cellName = @"showModeCell";
+       UITableViewCell * cell =  (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellName];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName] autorelease];
         }
-        [cell.bubbleView bringSubviewToFront:cell.bubbleText];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        switch (nRow) {
+            case 0:
+                cell.textLabel.text = STRING_SHOW_SRC_TEXT;
+                break;
+            case 1:
+                cell.textLabel.text = STRING_SHOW_SRCANDTRANS_TEXT;
+                break;
+            case 2:
+                cell.textLabel.text = STRING_SHOW_NO_TEXT;
+                break;
+                
+            default:
+                break;
+        }
 
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        if (settingData.eShowTextType == nRow) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            pathShowText = indexPath;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
         return cell;
     }
     // Configure the cell...
@@ -227,14 +239,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    if (indexPath.section == 1) {
+        NSInteger nRow = indexPath.row;
+        if (nRow != (NSInteger)pathShowText.row) {
+            UITableViewCell* cellOld = [self.tableView cellForRowAtIndexPath:pathShowText];
+            cellOld.accessoryType = UITableViewCellAccessoryNone;
+            pathShowText = indexPath;
+
+            UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            settingData.eShowTextType = nRow;
+
+            [settingData saveSettingData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
+        }
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (SettingData*)getSettingData;
@@ -242,16 +262,16 @@
     return settingData;
 }
 
-- (void)didSettingTimeInterval:(CGFloat)dTimeInterval;
+- (void)didSettingTimeInterval:(CGFloat)dTimeInterval withTag:(NSInteger)tag;
 {
-    settingData.dTimeInterval = dTimeInterval;
+    if (tag == TAG_OF_TIME_INTEVAL) {
+        settingData.dTimeInterval = dTimeInterval;
+    } else {
+        settingData.nReadingCount = dTimeInterval;
+    }
+    
     [settingData saveSettingData];
+	[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
 }
 
-- (void)isOn:(BOOL)isOn
-{
-    settingData.isShowTranslation = isOn;
-    [settingData saveSettingData];
-    
-}
 @end

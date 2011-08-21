@@ -1,15 +1,15 @@
 //
-//  SettingPauseTimeCell.m
+//  SettingTrainingModeCell.m
 //  Voice
 //
 //  Created by JiaLi on 11-8-8.
 //  Copyright 2011年 __MyCompanyName__. All rights reserved.
 //
 
-#import "SettingPauseTimeCell.h"
+#import "SettingTrainingModeCell.h"
 
 
-@implementation SettingPauseTimeCell
+@implementation SettingTrainingModeCell
 @synthesize label = _label;
 @synthesize slider = _slider;
 @synthesize timeLabel = _timeLabel;

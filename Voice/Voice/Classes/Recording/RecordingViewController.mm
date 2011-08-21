@@ -351,7 +351,7 @@
         cell.imgName = [NSString stringWithFormat:@"%@/bubble2.png", resourcePath];
         cell.msgText = self.sentence.orintext;
         cell.transText = self.sentence.transtext;
-        cell.bShowTranslation = YES;
+        cell.nShowTextStyle = YES;
         return cell;
     } else {
         NSString *CellIdentifier = @"cell";

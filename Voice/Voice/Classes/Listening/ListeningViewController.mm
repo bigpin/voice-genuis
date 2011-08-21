@@ -49,8 +49,7 @@
         nLesson = PLAY_LESSON_TYPE_NONE;
         bRecording = NO;
         ePlayStatus = PLAY_STATUS_NONE;
-        bFirstToolbar = YES;
-        //SettingViewController* setting = (SettingViewController*)[self.tabBarController.viewControllers objectAtIndex:1];
+         //SettingViewController* setting = (SettingViewController*)[self.tabBarController.viewControllers objectAtIndex:1];
         
         settingData = [[SettingData alloc] init];
         [settingData loadSettingData];
@@ -100,7 +99,7 @@
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(settingChanged:) name:NOTI_CHANGED_SETTING_VALUE object:nil]; 
-   [self.listeningToolbar loadItems:self];
+   [self.listeningToolbar loadToolbar:self];
     
     UIImage* imageThumb = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-handle.png", resourcePath]];
    
@@ -173,9 +172,7 @@
         // if playing, pause.
         [self onStart:nil];
     }
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self name:NOTI_CHANGED_SETTING_VALUE object:nil];
-     [super viewWillDisappear:animated];
+    [super viewWillDisappear:animated];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -333,7 +330,7 @@
     cell.selectedImgName = [NSString stringWithFormat:@"%@/aqua_playing.png", resourcePath];
     cell.msgText = sentence.orintext;
     cell.transText = sentence.transtext;
-    cell.bShowTranslation = settingData.isShowTranslation;
+    cell.nShowTextStyle = settingData.eShowTextType;
     return cell;
 }
 
@@ -345,7 +342,7 @@
     CGFloat divide = 0.9;
     CGFloat width = self.view.bounds.size.width * divide - 2*MAGIN_OF_BUBBLE_TEXT_START;
 	CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
-    if (settingData.isShowTranslation && sentence.transtext != nil) {
+    if (settingData.eShowTextType == 1 && sentence.transtext != nil) {
         CGSize szTrans = [BubbleCell calcTextHeight:transText withWidth:width];
         size = CGSizeMake(size.width, size.height + szTrans.height + MAGIN_OF_TEXTANDTRANSLATE);
     }
@@ -593,16 +590,6 @@
         self.recordingItem.style = UIBarButtonItemStyleBordered;
     }
 
-}
-
-- (IBAction)onMore:(id)sender;
-{
-    if (bFirstToolbar) {
-        [self.listeningToolbar loadMoreItems:self];
-    } else {
-        [self.listeningToolbar loadItems:self];
-    }
-    bFirstToolbar = !bFirstToolbar;
 }
 
 - (IBAction)onSetting:(id)sender;

@@ -7,12 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+
+#define KSettingVersion      @"Version"
 #define kSettingTimeInterval @"TimeInterval"
-#define kSettingisShowTranslation @"ShowTranslation"
+#define kSettingReadingCount @"ReadingCount"
+#define kSettingisShowTranslation @"ShowTextType"
+
+typedef enum {
+	SHOW_TEXT_TYPE_SRC = 0,
+	SHOW_TEXT_TYPE_SRCANDTRANS,
+	SHOW_TEXT_TYPE_NONE
+} SHOW_TEXT_TYPE;
+
 
 @interface SettingData : NSObject {
     CGFloat dTimeInterval;
-    BOOL isShowTranslation;
+    NSInteger nReadingCount;
+    SHOW_TEXT_TYPE eShowTextType;
     UIColor* _clrBubbleBg1;
     UIColor* _clrBubbleBg2;
     UIColor* _clrBubbleBg3;
@@ -22,7 +33,8 @@
 }
 
 @property (nonatomic, assign) CGFloat dTimeInterval;
-@property (nonatomic, assign) BOOL isShowTranslation;
+@property (nonatomic, assign) NSInteger nReadingCount;
+@property (nonatomic, assign) SHOW_TEXT_TYPE eShowTextType;
 @property (nonatomic, retain) UIColor* clrBubbleBg1;
 @property (nonatomic, retain) UIColor* clrBubbleBg2;
 @property (nonatomic, retain) UIColor* clrBubbleBg3;

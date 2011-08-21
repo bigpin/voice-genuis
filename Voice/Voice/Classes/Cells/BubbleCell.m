@@ -131,7 +131,7 @@
 
 @implementation BubbleCell
 
-@synthesize bShowTranslation;
+@synthesize nShowTextStyle;
 @synthesize msgText;
 @synthesize imgName;
 @synthesize imgIcon;
@@ -244,7 +244,7 @@
     CGSize size   = [BubbleCell calcTextHeight:self.msgText withWidth:width ];
     CGSize szText = size;
     CGSize szTrans = CGSizeZero;
-    if (self.transText != nil && bShowTranslation) {
+    if (self.transText != nil && nShowTextStyle == 1) {
         szTrans = [BubbleCell calcTextHeight:self.transText withWidth:width];
         size = CGSizeMake(size.width, size.height + szTrans.height + 2*MAGIN_OF_TEXTANDTRANSLATE);
     }
@@ -269,6 +269,9 @@
     txtLabel.lineBreakMode   = UILineBreakModeWordWrap;
     txtLabel.numberOfLines   = 0;
     txtLabel.text            = msgText;
+
+    txtLabel.hidden = (nShowTextStyle == 2);
+
     txtLabel.textColor         = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
     txtLabel.backgroundColor = [UIColor clearColor];
     txtLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
@@ -280,7 +283,7 @@
     [self setBackgroundView:newView];
     [self.contentView addSubview:txtLabel];
     
-    if (bShowTranslation) {
+    if (nShowTextStyle == 1) {
         UILabel *transLabel = [[UILabel alloc] initWithFrame:CGRectMake(txtLabel.frame.origin.x, txtLabel.frame.origin.y + txtLabel.frame.size.height + MAGIN_OF_TEXTANDTRANSLATE, szTrans.width, szTrans.height)];
         transLabel.lineBreakMode   = UILineBreakModeWordWrap;
         transLabel.numberOfLines   = 0;

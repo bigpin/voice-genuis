@@ -1,5 +1,5 @@
 //
-//  SettingPauseTimeCell.h
+//  SettingTrainingModeCell.h
 //  Voice
 //
 //  Created by JiaLi on 11-8-8.
@@ -10,12 +10,13 @@
 
 @protocol SettingPauseTimeDelegate <NSObject>
 
-- (void)didSettingTimeInterval:(CGFloat)dTimeInterval;
+- (void)didSettingTimeInterval:(CGFloat)dTimeInterval withTag:(NSInteger)tag;
 
 @end
 
-@interface SettingPauseTimeCell : UITableViewCell {
+@interface SettingTrainingModeCell : UITableViewCell {
     UILabel* _label;
+    UILabel* _sliderText;
     UISlider* _slider;
     UILabel* _timeLabel;
     id<SettingPauseTimeDelegate> delegate;
@@ -23,6 +24,7 @@
 
 @property(nonatomic, retain) IBOutlet UILabel* label;
 @property(nonatomic, retain) IBOutlet UILabel* timeLabel;
+@property(nonatomic, retain) IBOutlet UILabel* sliderText;
 @property(nonatomic, retain) IBOutlet UISlider* slider;
 @property(nonatomic, assign) id<SettingPauseTimeDelegate> delegate;
 

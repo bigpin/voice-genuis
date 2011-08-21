@@ -11,13 +11,14 @@
 @implementation SettingData
 
 @synthesize dTimeInterval;
-@synthesize isShowTranslation;
 @synthesize clrBubbleBg1 = _clrBubbleBg1;
 @synthesize clrBubbleBg2 = _clrBubbleBg2;
 @synthesize clrBubbleBg3 = _clrBubbleBg3;
 @synthesize clrBubbleText1 = _clrBubbleText1;
 @synthesize clrBubbleText2 = _clrBubbleText2;
 @synthesize clrBubbleText3 = _clrBubbleText3;
+@synthesize nReadingCount;
+@synthesize eShowTextType;
 
 - (id)init
 {
@@ -40,8 +41,9 @@
 
 - (void)initSettingData;
 {
-    self.dTimeInterval = 2.0;
-    self.isShowTranslation = YES;
+    self.dTimeInterval = 0.5;
+    self.nReadingCount = 1.0;
+    self.eShowTextType = SHOW_TEXT_TYPE_SRC;
 }
 
 - (void)loadSettingData;
@@ -73,10 +75,15 @@
         if (timerValueTemp != nil) {
 			self.dTimeInterval = [timerValueTemp floatValue];
         }
-        
+
+        NSNumber *readingCountTemp = [tempsetting objectForKey:kSettingReadingCount];
+        if (readingCountTemp != nil) {
+			self.nReadingCount = [readingCountTemp intValue];
+        }
+
         NSNumber *showTranslationTemp = [tempsetting objectForKey:kSettingisShowTranslation];
         if (showTranslationTemp != nil) {
-			self.isShowTranslation = [showTranslationTemp boolValue];
+			self.eShowTextType = [showTranslationTemp intValue];
         }
 	}
 }
@@ -105,11 +112,11 @@
     if (settingdictionary == nil) {
         settingdictionary = [[NSMutableDictionary alloc] init];
     }
-    
+    [settingdictionary setObject:[NSNumber numberWithFloat:1.0] forKey:KSettingVersion];
     [settingdictionary setObject:[NSNumber numberWithFloat:self.dTimeInterval] forKey:kSettingTimeInterval];
-    [settingdictionary setObject:[NSNumber numberWithBool:self.isShowTranslation] forKey:kSettingisShowTranslation];
+    [settingdictionary setObject:[NSNumber numberWithInt:self.nReadingCount] forKey:kSettingReadingCount];
+    [settingdictionary setObject:[NSNumber numberWithInt:self.eShowTextType] forKey:kSettingisShowTranslation];
 	[settingdictionary writeToFile:path atomically:YES];
-	[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
     [settingdictionary release];
 }
 

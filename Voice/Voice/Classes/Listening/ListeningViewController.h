@@ -62,7 +62,6 @@ typedef enum {
     CGFloat fVolumn;
     PLAY_STATUS ePlayStatus;
     SettingData* settingData;
-    BOOL bFirstToolbar;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
@@ -83,7 +82,6 @@ typedef enum {
 - (IBAction)onStart:(id)sender;
 - (IBAction)onNext:(id)sender;
 - (IBAction)onLoop:(id)sender;
-- (IBAction)onMore:(id)sender;
 - (IBAction)onSetting:(id)sender;
 - (void)onRecording;
 - (void)updateCurrentTime;

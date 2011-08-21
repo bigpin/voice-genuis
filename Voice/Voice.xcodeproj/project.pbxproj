@@ -63,15 +63,13 @@
 		0D90ABD513D69F2C005FA104 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D90AA2F13D69F2C005FA104 /* Data */; };
 		0D90ABD613D69F2C005FA104 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 0D90ABD213D69F2C005FA104 /* Image */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
-		0DCDA64613FAB98D0094E159 /* SettingShowTranslationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCDA64513FAB98D0094E159 /* SettingShowTranslationCell.m */; };
-		0DCDA64813FAB9AA0094E159 /* SettingShowTranslationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DCDA64713FAB9AA0094E159 /* SettingShowTranslationCell.xib */; };
 		0DD478E713F129250054E726 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E313F129250054E726 /* icon@2x.png */; };
 		0DD478E813F129250054E726 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E413F129250054E726 /* icon.png */; };
 		0DD478E913F129250054E726 /* icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E513F129250054E726 /* icon_small.png */; };
 		0DD478EA13F129250054E726 /* icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E613F129250054E726 /* icon_72.png */; };
 		0DF16A8E13F6DD78008C103D /* SettingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF16A8D13F6DD78008C103D /* SettingData.m */; };
-		0DF7F8C413EEF3D5008A885A /* SettingPauseTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C313EEF3D4008A885A /* SettingPauseTimeCell.m */; };
-		0DF7F8C613EEF3ED008A885A /* SettingPauseTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingPauseTimeCell.xib */; };
+		0DF7F8C413EEF3D5008A885A /* SettingTrainingModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */; };
+		0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */; };
 		0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */; };
 		0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */; };
 		95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9398A13F662F5006F4D61 /* VoicePlayer.m */; };
@@ -208,9 +206,6 @@
 		0D98A60D13FB3AFB00FCB3FE /* WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveView.h; path = Recording/WaveView.h; sourceTree = "<group>"; };
 		0DC0218D13E45825007170F3 /* BubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BubbleCell.m; path = Cells/BubbleCell.m; sourceTree = "<group>"; };
 		0DC0218E13E45825007170F3 /* BubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleCell.h; path = Cells/BubbleCell.h; sourceTree = "<group>"; };
-		0DCDA64413FAB98D0094E159 /* SettingShowTranslationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingShowTranslationCell.h; sourceTree = "<group>"; };
-		0DCDA64513FAB98D0094E159 /* SettingShowTranslationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingShowTranslationCell.m; sourceTree = "<group>"; };
-		0DCDA64713FAB9AA0094E159 /* SettingShowTranslationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingShowTranslationCell.xib; sourceTree = "<group>"; };
 		0DD478E313F129250054E726 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Voice/Resources/Other/icon@2x.png"; sourceTree = "<group>"; };
 		0DD478E413F129250054E726 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Voice/Resources/Other/icon.png; sourceTree = "<group>"; };
 		0DD478E513F129250054E726 /* icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_small.png; path = Voice/Resources/Other/icon_small.png; sourceTree = "<group>"; };
@@ -218,9 +213,9 @@
 		0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Voice/TapKu/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		0DF16A8C13F6DD78008C103D /* SettingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingData.h; sourceTree = "<group>"; };
 		0DF16A8D13F6DD78008C103D /* SettingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingData.m; sourceTree = "<group>"; };
-		0DF7F8C213EEF3D4008A885A /* SettingPauseTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingPauseTimeCell.h; sourceTree = "<group>"; };
-		0DF7F8C313EEF3D4008A885A /* SettingPauseTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingPauseTimeCell.m; sourceTree = "<group>"; };
-		0DF7F8C513EEF3ED008A885A /* SettingPauseTimeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingPauseTimeCell.xib; sourceTree = "<group>"; };
+		0DF7F8C213EEF3D4008A885A /* SettingTrainingModeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTrainingModeCell.h; sourceTree = "<group>"; };
+		0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTrainingModeCell.m; sourceTree = "<group>"; };
+		0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTrainingModeCell.xib; sourceTree = "<group>"; };
 		0DFB4A6613EEF6B4007B6ACE /* SettingBubbleColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBubbleColorCell.h; sourceTree = "<group>"; };
 		0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBubbleColorCell.m; sourceTree = "<group>"; };
 		0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingBubbleColorCell.xib; sourceTree = "<group>"; };
@@ -542,15 +537,12 @@
 				0D8E167A13D471830005CD0F /* SettingViewController.h */,
 				0D8E167B13D471830005CD0F /* SettingViewController.m */,
 				0D8E167C13D471830005CD0F /* SettingViewController.xib */,
-				0DF7F8C213EEF3D4008A885A /* SettingPauseTimeCell.h */,
-				0DF7F8C313EEF3D4008A885A /* SettingPauseTimeCell.m */,
-				0DF7F8C513EEF3ED008A885A /* SettingPauseTimeCell.xib */,
+				0DF7F8C213EEF3D4008A885A /* SettingTrainingModeCell.h */,
+				0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */,
+				0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */,
 				0DFB4A6613EEF6B4007B6ACE /* SettingBubbleColorCell.h */,
 				0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */,
 				0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */,
-				0DCDA64413FAB98D0094E159 /* SettingShowTranslationCell.h */,
-				0DCDA64513FAB98D0094E159 /* SettingShowTranslationCell.m */,
-				0DCDA64713FAB9AA0094E159 /* SettingShowTranslationCell.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -739,13 +731,12 @@
 				0D8632E113E8386500F934AF /* ListeningVolumView.xib in Resources */,
 				0D872D7713EE78BC00361672 /* DataBase in Resources */,
 				0D872DA913EEDA9000361672 /* RecordingViewController.xib in Resources */,
-				0DF7F8C613EEF3ED008A885A /* SettingPauseTimeCell.xib in Resources */,
+				0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */,
 				0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */,
 				0DD478E713F129250054E726 /* icon@2x.png in Resources */,
 				0DD478E813F129250054E726 /* icon.png in Resources */,
 				0DD478E913F129250054E726 /* icon_small.png in Resources */,
 				0DD478EA13F129250054E726 /* icon_72.png in Resources */,
-				0DCDA64813FAB9AA0094E159 /* SettingShowTranslationCell.xib in Resources */,
 				0D16D70E13FE468B00BCFC29 /* LessonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -814,11 +805,10 @@
 				0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */,
 				0D872D7B13EE7A0B00361672 /* Database.m in Sources */,
 				0D872DA813EEDA9000361672 /* RecordingViewController.mm in Sources */,
-				0DF7F8C413EEF3D5008A885A /* SettingPauseTimeCell.m in Sources */,
+				0DF7F8C413EEF3D5008A885A /* SettingTrainingModeCell.m in Sources */,
 				0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */,
 				95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */,
 				0DF16A8E13F6DD78008C103D /* SettingData.m in Sources */,
-				0DCDA64613FAB98D0094E159 /* SettingShowTranslationCell.m in Sources */,
 				95B9657813FE13C2002F6087 /* WaveView.mm in Sources */,
 				95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */,
 				0D16D70F13FE468B00BCFC29 /* LessonCell.m in Sources */,

@@ -11,6 +11,7 @@
 
 @interface SettingViewController : UITableViewController {
     SettingData* settingData;
+    NSIndexPath* pathShowText;
 }
 
 - (SettingData*)getSettingData;

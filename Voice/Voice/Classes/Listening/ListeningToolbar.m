@@ -19,7 +19,86 @@
 @synthesize moreItem = _moreItem;
 @synthesize settingItem = _settingItem;
 
-- (void)loadItems:(id)delegate;
+- (void)loadToolbar:(id)delegate;
+{
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    // Flexible Space
+    UIBarButtonItem* itemFlexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    // Flexed Space
+    UIBarButtonItem* itemFlexedSpaceSmall = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
+    itemFlexedSpaceSmall.width = 10;
+    
+    // Flexed Space
+    UIBarButtonItem* itemFlexedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
+    
+    itemFlexedSpace.width = 25.0;
+    /*itemFlexedSpace.width = [[UIDevice currentDevice] userInterfaceIdiom] == [UIUserInterfaceIdiomPad]? 35.0 : 20.0;*/
+    
+    [items addObject:itemFlexibleSpace];
+    
+    // Previous
+    UIImage* previousImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/previous.png", resourcePath]];
+    [items addObject:itemFlexedSpaceSmall];
+    UIBarButtonItem* itemPrevious = [[UIBarButtonItem alloc] initWithImage:previousImage
+                                                                     style:UIBarButtonItemStylePlain
+                                                                    target:delegate
+                                                                    action:@selector(onPrevious:)];
+    [items addObject:itemPrevious];
+    self.previousItem = itemPrevious;
+    [itemPrevious release];
+    
+    // playImage
+    NSString* imageName = [delegate isPlaying] ? @"%@/pause.png" : @"%@/play.png";
+    UIImage *playImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:imageName, resourcePath]];
+    [items addObject:itemFlexedSpace];
+    
+    UIBarButtonItem* itemPlay = [[UIBarButtonItem alloc] initWithImage:playImage
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:delegate
+                                                                action:@selector(onStart:)];
+    [items addObject:itemPlay];
+    self.playItem = itemPlay;
+    [itemPlay release];
+    
+    // nextImage
+    UIImage *nextImage =  [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/next.png", resourcePath]];
+    [items addObject:itemFlexedSpace];
+    UIBarButtonItem* itemNext = [[UIBarButtonItem alloc] initWithImage:nextImage
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:delegate
+                                                                action:@selector(onNext:)];
+    [items addObject:itemNext];
+    self.nextItem = itemNext;
+    [itemNext release];
+    
+    
+    // setting
+    UIImage *settingImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/preferences.png", resourcePath]];
+    [items addObject:itemFlexedSpace];
+    
+    UIBarButtonItem* itemSetting = [[UIBarButtonItem alloc] initWithImage:settingImage
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:delegate
+                                                                   action:@selector(onSetting:)];
+    [items addObject:itemSetting];
+    self.settingItem = itemSetting;
+    [itemSetting release];
+    
+    [items addObject:itemFlexedSpaceSmall];
+    [items addObject:itemFlexibleSpace];
+    
+    [itemFlexibleSpace release];
+    [itemFlexedSpace release];
+    [itemFlexedSpaceSmall release];
+    [self setItems:items animated:YES];
+    [items release];
+}
+    
+/*- (void)loadItems:(id)delegate;
 {
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString* stringResource = @"Image";
@@ -36,7 +115,6 @@
 	UIBarButtonItem* itemFlexedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
     
     itemFlexedSpace.width = 25.0;
-	/*itemFlexedSpace.width = [[UIDevice currentDevice] userInterfaceIdiom] == [UIUserInterfaceIdiomPad]? 35.0 : 20.0;*/
 	
 	[items addObject:itemFlexibleSpace];
  	
@@ -128,7 +206,6 @@
 	UIBarButtonItem* itemFlexedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:self action:nil];
     
     itemFlexedSpace.width = 30.0;
-	/*itemFlexedSpace.width = [[UIDevice currentDevice] userInterfaceIdiom] == [UIUserInterfaceIdiomPad]? 35.0 : 20.0;*/
 	
 	[items addObject:itemFlexibleSpace];
     
@@ -192,5 +269,5 @@
 	[items release];
     
 }
-
+*/
 @end

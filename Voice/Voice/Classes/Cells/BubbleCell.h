@@ -55,10 +55,10 @@
     BubbleImageView* bubbleView;
     UIView* selectedView;
     CGSize bubbleSize;
-    BOOL bShowTranslation;
+    int nShowTextStyle;
 }
 
-@property (nonatomic, assign) BOOL bShowTranslation;
+@property (nonatomic, assign) int nShowTextStyle;
 @property (nonatomic, retain) NSString *msgText;
 @property (nonatomic, retain) NSString *transText;
 @property (nonatomic, retain) NSString *imgName;
