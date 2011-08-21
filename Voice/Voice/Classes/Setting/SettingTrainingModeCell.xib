@@ -54,7 +54,7 @@
 								<string key="NSFrame">{{0, 18}, {320, 21}}</string>
 								<reference key="NSSuperview" ref="189729218"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="57538504"/>
+								<reference key="NSNextKeyView" ref="427216757"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -71,10 +71,10 @@
 								<float key="IBUIMinimumFontSize">10</float>
 								<int key="IBUITextAlignment">1</int>
 							</object>
-							<object class="IBUILabel" id="57538504">
+							<object class="IBUILabel" id="427216757">
 								<reference key="NSNextResponder" ref="189729218"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{20, 49}, {69, 21}}</string>
+								<string key="NSFrame">{{12, 53}, {69, 21}}</string>
 								<reference key="NSSuperview" ref="189729218"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="564823238"/>
@@ -91,8 +91,8 @@
 							</object>
 							<object class="IBUISlider" id="564823238">
 								<reference key="NSNextResponder" ref="189729218"/>
-								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{110, 49}, {138, 23}}</string>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{10, 78}, {196, 23}}</string>
 								<reference key="NSSuperview" ref="189729218"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="377631176"/>
@@ -106,7 +106,7 @@
 							<object class="IBUILabel" id="377631176">
 								<reference key="NSNextResponder" ref="189729218"/>
 								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{256, 49}, {34, 21}}</string>
+								<string key="NSFrame">{{244, 78}, {34, 21}}</string>
 								<reference key="NSSuperview" ref="189729218"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -127,7 +127,7 @@
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 						</object>
-						<string key="NSFrameSize">{320, 85}</string>
+						<string key="NSFrameSize">{320, 120}</string>
 						<reference key="NSSuperview" ref="439655597"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="669034435"/>
@@ -142,7 +142,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{320, 85}</string>
+				<string key="NSFrameSize">{320, 120}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="189729218"/>
@@ -205,7 +205,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">sliderText</string>
 						<reference key="source" ref="439655597"/>
-						<reference key="destination" ref="57538504"/>
+						<reference key="destination" ref="427216757"/>
 					</object>
 					<int key="connectionID">13</int>
 				</object>
@@ -237,7 +237,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="669034435"/>
 							<reference ref="564823238"/>
-							<reference ref="57538504"/>
+							<reference ref="427216757"/>
 							<reference ref="377631176"/>
 						</object>
 						<reference key="parent" ref="0"/>
@@ -259,7 +259,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">12</int>
-						<reference key="object" ref="57538504"/>
+						<reference key="object" ref="427216757"/>
 						<reference key="parent" ref="439655597"/>
 					</object>
 				</object>

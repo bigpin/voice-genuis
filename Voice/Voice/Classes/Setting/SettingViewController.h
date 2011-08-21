@@ -12,6 +12,7 @@
 @interface SettingViewController : UITableViewController {
     SettingData* settingData;
     NSIndexPath* pathShowText;
+    NSIndexPath* pathReadingMode;
 }
 
 - (SettingData*)getSettingData;

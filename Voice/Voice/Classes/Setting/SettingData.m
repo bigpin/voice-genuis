@@ -19,6 +19,7 @@
 @synthesize clrBubbleText3 = _clrBubbleText3;
 @synthesize nReadingCount;
 @synthesize eShowTextType;
+@synthesize eReadingMode;
 
 - (id)init
 {
@@ -85,6 +86,11 @@
         if (showTranslationTemp != nil) {
 			self.eShowTextType = [showTranslationTemp intValue];
         }
+        NSNumber *readingModeTemp = [tempsetting objectForKey:kSettingReadingMode];
+        if (readingModeTemp != nil) {
+			self.eReadingMode = [readingModeTemp intValue];
+        }
+    
 	}
 }
 
@@ -115,6 +121,7 @@
     [settingdictionary setObject:[NSNumber numberWithFloat:1.0] forKey:KSettingVersion];
     [settingdictionary setObject:[NSNumber numberWithFloat:self.dTimeInterval] forKey:kSettingTimeInterval];
     [settingdictionary setObject:[NSNumber numberWithInt:self.nReadingCount] forKey:kSettingReadingCount];
+    [settingdictionary setObject:[NSNumber numberWithInt:self.eReadingMode] forKey:kSettingReadingMode];
     [settingdictionary setObject:[NSNumber numberWithInt:self.eShowTextType] forKey:kSettingisShowTranslation];
 	[settingdictionary writeToFile:path atomically:YES];
     [settingdictionary release];

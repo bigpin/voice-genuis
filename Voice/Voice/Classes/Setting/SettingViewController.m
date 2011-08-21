@@ -91,7 +91,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -99,6 +99,8 @@
     // Return the number of rows in the section.
     if (section == 0) {
         return 2;
+    } else if (section == 1) {
+        return 1;
     } else {
         return 3;
     }
@@ -108,6 +110,8 @@
 {
     if (section == 0) {
         return STRING_TRANING_MODE;
+    } else if (section == 1){
+        return STRING_CONTROL_SETTING;
     } else {
         return STRING_SHOW_MODE;
     }
@@ -116,7 +120,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     if (indexPath.section == 0) {
-        return 80; 
+        return 120; 
     } else {
         return 60;
         
@@ -143,7 +147,15 @@
             cell.timeLabel.text = [NSString stringWithFormat:str, cell.slider.value];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = (id)self;
+            if (settingData.eReadingMode == nRow) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                pathReadingMode = indexPath;
+            } else {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
             return cell;
+        } else if (nSection == 1) {
+        
         } else {
             SettingTrainingModeCell *cell = (SettingTrainingModeCell *)[tableView dequeueReusableCellWithIdentifier:@"ReadingFollowCell"];
             
@@ -159,6 +171,12 @@
             NSString* str = STRING_READING_COUNT_FORMAT;
             cell.timeLabel.text = [NSString stringWithFormat:str, settingData.nReadingCount];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            if (settingData.eReadingMode == nRow) {
+                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                pathReadingMode = indexPath;
+           } else {
+                cell.accessoryType = UITableViewCellAccessoryNone;
+            }
             return cell;
         }
     } else {
@@ -239,7 +257,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
+        NSInteger nRow = indexPath.row;
+        if (nRow != (NSInteger)pathReadingMode.row) {
+            UITableViewCell* cellOld = [self.tableView cellForRowAtIndexPath:pathReadingMode];
+            cellOld.accessoryType = UITableViewCellAccessoryNone;
+            pathReadingMode = indexPath;
+            
+            UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            settingData.eReadingMode = nRow;
+            
+            [settingData saveSettingData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
+        }
+    } else if (indexPath.section == 2) {
         NSInteger nRow = indexPath.row;
         if (nRow != (NSInteger)pathShowText.row) {
             UITableViewCell* cellOld = [self.tableView cellForRowAtIndexPath:pathShowText];

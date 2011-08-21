@@ -11,6 +11,7 @@
 #define KSettingVersion      @"Version"
 #define kSettingTimeInterval @"TimeInterval"
 #define kSettingReadingCount @"ReadingCount"
+#define kSettingReadingMode @"ReadingMode"
 #define kSettingisShowTranslation @"ShowTextType"
 
 typedef enum {
@@ -19,10 +20,15 @@ typedef enum {
 	SHOW_TEXT_TYPE_NONE
 } SHOW_TEXT_TYPE;
 
+typedef enum {
+	READING_MODE_WHOLE_TEXT = 0,
+	READING_MODE_SENTENCE,
+} READING_MODE;
 
 @interface SettingData : NSObject {
     CGFloat dTimeInterval;
     NSInteger nReadingCount;
+    READING_MODE eReadingMode;
     SHOW_TEXT_TYPE eShowTextType;
     UIColor* _clrBubbleBg1;
     UIColor* _clrBubbleBg2;
@@ -34,6 +40,7 @@ typedef enum {
 
 @property (nonatomic, assign) CGFloat dTimeInterval;
 @property (nonatomic, assign) NSInteger nReadingCount;
+@property (nonatomic, assign) READING_MODE eReadingMode;
 @property (nonatomic, assign) SHOW_TEXT_TYPE eShowTextType;
 @property (nonatomic, retain) UIColor* clrBubbleBg1;
 @property (nonatomic, retain) UIColor* clrBubbleBg2;

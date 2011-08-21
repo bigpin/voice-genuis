@@ -72,6 +72,8 @@
 		0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */; };
 		0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */; };
 		0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */; };
+		0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */; };
+		0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */; };
 		95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9398A13F662F5006F4D61 /* VoicePlayer.m */; };
 		95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9398C13F66432006F4D61 /* AudioToolbox.framework */; };
 		95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9399613F67990006F4D61 /* SystemConfiguration.framework */; };
@@ -219,6 +221,9 @@
 		0DFB4A6613EEF6B4007B6ACE /* SettingBubbleColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBubbleColorCell.h; sourceTree = "<group>"; };
 		0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBubbleColorCell.m; sourceTree = "<group>"; };
 		0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingBubbleColorCell.xib; sourceTree = "<group>"; };
+		0DFCFF6C14016A5100B1050E /* SettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingSwitchCell.h; sourceTree = "<group>"; };
+		0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingSwitchCell.m; sourceTree = "<group>"; };
+		0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
 		95B9398913F662F5006F4D61 /* VoicePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoicePlayer.h; sourceTree = "<group>"; };
 		95B9398A13F662F5006F4D61 /* VoicePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoicePlayer.m; sourceTree = "<group>"; };
 		95B9398C13F66432006F4D61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -543,6 +548,9 @@
 				0DFB4A6613EEF6B4007B6ACE /* SettingBubbleColorCell.h */,
 				0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */,
 				0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */,
+				0DFCFF6C14016A5100B1050E /* SettingSwitchCell.h */,
+				0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */,
+				0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -738,6 +746,7 @@
 				0DD478E913F129250054E726 /* icon_small.png in Resources */,
 				0DD478EA13F129250054E726 /* icon_72.png in Resources */,
 				0D16D70E13FE468B00BCFC29 /* LessonCell.xib in Resources */,
+				0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +822,7 @@
 				95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */,
 				0D16D70F13FE468B00BCFC29 /* LessonCell.m in Sources */,
 				0D16D71213FE477F00BCFC29 /* RatingView.m in Sources */,
+				0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

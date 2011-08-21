@@ -52,6 +52,7 @@
 #define STRING_BACK                     @"返回"
 
 #define STRING_TRANING_MODE             @"训练模式设置"
+#define STRING_CONTROL_SETTING          @"控制设置"
 #define STRING_SHOW_MODE                @"显示设置"
 #define STRING_WHOLE_LESSON_MODE        @"全文试听"
 #define STRING_SENTENCE_MODE            @"跟读训练"
