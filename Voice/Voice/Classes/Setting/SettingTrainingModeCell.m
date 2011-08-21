@@ -13,6 +13,8 @@
 @synthesize label = _label;
 @synthesize slider = _slider;
 @synthesize timeLabel = _timeLabel;
+@synthesize sliderText = _sliderText;
+
 @synthesize delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -40,15 +42,25 @@
 
 - (IBAction)onSettingTimeInterval;
 {
-    [delegate didSettingTimeInterval:self.slider.value];
-    self.timeLabel.text = [NSString stringWithFormat:@"%0.1fs", self.slider.value];
-    
+    [delegate didSettingTimeInterval:self.slider.value withTag:self.slider.tag];
+    if (self.slider.tag == TAG_OF_TIME_INTEVAL) {
+        NSString* str = STRING_TIME_DE_COUNT_FORMAT;
+        self.timeLabel.text = [NSString stringWithFormat:str, self.slider.value];
+    } else {
+        NSString* str = STRING_READING_COUNT_FORMAT;
+        self.timeLabel.text = [NSString stringWithFormat:str, (NSInteger)(self.slider.value)];
+    }
 }
 
 - (IBAction)onChangedTimeInterval;
 {
-    self.timeLabel.text = [NSString stringWithFormat:@"%0.1fs", self.slider.value];
-  
+    if (self.slider.tag == TAG_OF_TIME_INTEVAL) {
+        NSString* str = STRING_TIME_DE_COUNT_FORMAT;
+        self.timeLabel.text = [NSString stringWithFormat:str, self.slider.value];
+    } else {
+        NSString* str = STRING_READING_COUNT_FORMAT;
+        self.timeLabel.text = [NSString stringWithFormat:str, (NSInteger)(self.slider.value)];
+    }
 }
 
 @end
