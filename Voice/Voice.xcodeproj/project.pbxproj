@@ -62,6 +62,8 @@
 		0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167C13D471830005CD0F /* SettingViewController.xib */; };
 		0D9043911401DC4B00684A04 /* SettingAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D90438F1401DC4A00684A04 /* SettingAboutViewController.m */; };
 		0D9043921401DC4B00684A04 /* SettingAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9043901401DC4A00684A04 /* SettingAboutViewController.xib */; };
+		0D9043A91402333700684A04 /* RecordingWaveCell.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0D9043A81402333700684A04 /* RecordingWaveCell.mm */; };
+		0D9043AB1402335200684A04 /* RecordingWaveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9043AA1402335200684A04 /* RecordingWaveCell.xib */; };
 		0D90ABD513D69F2C005FA104 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D90AA2F13D69F2C005FA104 /* Data */; };
 		0D90ABD613D69F2C005FA104 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 0D90ABD213D69F2C005FA104 /* Image */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
@@ -206,6 +208,9 @@
 		0D90438E1401DC4A00684A04 /* SettingAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingAboutViewController.h; sourceTree = "<group>"; };
 		0D90438F1401DC4A00684A04 /* SettingAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingAboutViewController.m; sourceTree = "<group>"; };
 		0D9043901401DC4A00684A04 /* SettingAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingAboutViewController.xib; sourceTree = "<group>"; };
+		0D9043A71402333700684A04 /* RecordingWaveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecordingWaveCell.h; path = Recording/RecordingWaveCell.h; sourceTree = "<group>"; };
+		0D9043A81402333700684A04 /* RecordingWaveCell.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = RecordingWaveCell.mm; path = Recording/RecordingWaveCell.mm; sourceTree = "<group>"; };
+		0D9043AA1402335200684A04 /* RecordingWaveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecordingWaveCell.xib; path = Recording/RecordingWaveCell.xib; sourceTree = "<group>"; };
 		0D90AA2F13D69F2C005FA104 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = Voice/Resources/Data; sourceTree = "<group>"; };
 		0D90ABD213D69F2C005FA104 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Voice/Resources/Image; sourceTree = "<group>"; };
 		0D98A60D13FB3AFB00FCB3FE /* WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveView.h; path = Recording/WaveView.h; sourceTree = "<group>"; };
@@ -369,6 +374,9 @@
 				0D872DA713EEDA9000361672 /* RecordingViewController.xib */,
 				0D98A60D13FB3AFB00FCB3FE /* WaveView.h */,
 				95B9657713FE13C2002F6087 /* WaveView.mm */,
+				0D9043A71402333700684A04 /* RecordingWaveCell.h */,
+				0D9043A81402333700684A04 /* RecordingWaveCell.mm */,
+				0D9043AA1402335200684A04 /* RecordingWaveCell.xib */,
 			);
 			name = Recording;
 			sourceTree = "<group>";
@@ -747,6 +755,7 @@
 				0D16D70E13FE468B00BCFC29 /* LessonCell.xib in Resources */,
 				0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */,
 				0D9043921401DC4B00684A04 /* SettingAboutViewController.xib in Resources */,
+				0D9043AB1402335200684A04 /* RecordingWaveCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,6 +832,7 @@
 				0D16D71213FE477F00BCFC29 /* RatingView.m in Sources */,
 				0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */,
 				0D9043911401DC4B00684A04 /* SettingAboutViewController.m in Sources */,
+				0D9043A91402333700684A04 /* RecordingWaveCell.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

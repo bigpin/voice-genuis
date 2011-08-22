@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "VoicePlayer.h"
 #import "BubbleCell.h"
+#import "RecordingWaveCell.h"
 
 @implementation RecordingViewController
 @synthesize recordingdelegate;
@@ -333,7 +334,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    if (section == 0) {
+        return 1;
+    }else {
+        return 2;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -354,31 +359,42 @@
         cell.nShowTextStyle = YES;
         return cell;
     } else {
-        NSString *CellIdentifier = @"cell";
-        
-        UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil) {
-            cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-        } else {
-            UIView* v = [cell.contentView viewWithTag:100];
-            if (v != nil) {
-                [v removeFromSuperview];
+        if (indexPath.row == 0) {
+            
+            NSString *CellIdentifier = @"srcVoiceCell";
+            
+            RecordingWaveCell *cell = (RecordingWaveCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (cell == nil) {
+                NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"RecordingWaveCell" owner:self options:nil];
+                cell = [array objectAtIndex:0];
             }
+            cell.waveView.starttime = [_sentence startTime] * 1000;
+            cell.waveView.endtime = [_sentence endTime] *1000;
+            cell.waveView.wavefilename = wavefile;
+            [cell.waveView loadwavedata];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
+            
+
+        } else {
+            NSString *CellIdentifier = @"recordingVoiceCell";
+            
+            RecordingWaveCell *cell = (RecordingWaveCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            if (cell == nil) {
+                NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"RecordingWaveCell" owner:self options:nil];
+                cell = [array objectAtIndex:0];
+            }
+           /*cell.waveView.starttime = [_sentence startTime] * 1000;
+            cell.waveView.endtime = [_sentence endTime] *1000;
+            cell.waveView.wavefilename = wavefile;
+            [cell.waveView loadwavedata];*/
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
         }
-        WaveView *waveview = [[WaveView alloc] initWithFrame:CGRectMake(10, 10, cell.frame.size.width - 40, 160)];
-        [cell.contentView addSubview:waveview];
-        waveview.tag = 100;
-        self.waveView = waveview;
-        self.waveView.starttime = [_sentence startTime] * 1000;
-        self.waveView.endtime = [_sentence endTime] *1000;
-        self.waveView.wavefilename = wavefile;
-        [self.waveView loadwavedata];
-        [waveview release];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-        return cell;
-
     }
 }
 
@@ -401,7 +417,7 @@
         return height;
 
     } else {
-        return 200;
+        return 134;
     }
 }
 
