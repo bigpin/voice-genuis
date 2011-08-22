@@ -369,6 +369,9 @@
                 NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"RecordingWaveCell" owner:self options:nil];
                 cell = [array objectAtIndex:0];
             }
+            UIImage* itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/WavPlay.png", resourcePath]];
+
+            [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
             cell.waveView.starttime = [_sentence startTime] * 1000;
             cell.waveView.endtime = [_sentence endTime] *1000;
             cell.waveView.wavefilename = wavefile;
@@ -387,7 +390,9 @@
                 NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"RecordingWaveCell" owner:self options:nil];
                 cell = [array objectAtIndex:0];
             }
-           /*cell.waveView.starttime = [_sentence startTime] * 1000;
+            UIImage* itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/WavPlay.png", resourcePath]];
+            [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
+          /*cell.waveView.starttime = [_sentence startTime] * 1000;
             cell.waveView.endtime = [_sentence endTime] *1000;
             cell.waveView.wavefilename = wavefile;
             [cell.waveView loadwavedata];*/
