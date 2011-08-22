@@ -10,6 +10,7 @@
 #import "SettingTrainingModeCell.h"
 #import "BubbleCell.h"
 #import "SettingSwitchCell.h"
+#import "SettingAboutViewController.h"
 
 @implementation SettingViewController
 
@@ -91,7 +92,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -101,8 +102,12 @@
         return 2;
     } else if (section == 1) {
         return 1;
-    } else {
+    } else if (section == 2) {
         return 3;
+    } else if (section == 3) {
+        return 1;
+    } else {
+        return 1;
     }
 }
 
@@ -191,7 +196,7 @@
             cell.delegate = (id)self;
             return cell;
         }
-    } else {
+    } else if (nSection == 2) {
         static NSString *cellName = @"showModeCell";
        UITableViewCell * cell =  (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellName];
         if (cell == nil) {
@@ -220,6 +225,14 @@
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        return cell;
+    } else if (nSection == 3) {
+        UITableViewCell * cell =  (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"otherAbout"];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"otherAbout"] autorelease];
+        }
+        cell.textLabel.text = STRING_ABOUT_US;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }
     // Configure the cell...
@@ -298,6 +311,10 @@
             [settingData saveSettingData];
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
         }
+    } else if (indexPath.section == 3) {
+        SettingAboutViewController* about = [[SettingAboutViewController alloc] initWithNibName:@"SettingAboutViewController" bundle:nil];
+        [self.navigationController pushViewController:about animated:YES];
+        [about release];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

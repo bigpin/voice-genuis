@@ -60,6 +60,8 @@
 		0D8E168213D471830005CD0F /* LessonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167513D471830005CD0F /* LessonsViewController.xib */; };
 		0D8E168513D471830005CD0F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E167B13D471830005CD0F /* SettingViewController.m */; };
 		0D8E168613D471830005CD0F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E167C13D471830005CD0F /* SettingViewController.xib */; };
+		0D9043911401DC4B00684A04 /* SettingAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D90438F1401DC4A00684A04 /* SettingAboutViewController.m */; };
+		0D9043921401DC4B00684A04 /* SettingAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9043901401DC4A00684A04 /* SettingAboutViewController.xib */; };
 		0D90ABD513D69F2C005FA104 /* Data in Resources */ = {isa = PBXBuildFile; fileRef = 0D90AA2F13D69F2C005FA104 /* Data */; };
 		0D90ABD613D69F2C005FA104 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 0D90ABD213D69F2C005FA104 /* Image */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
@@ -201,6 +203,9 @@
 		0D8E167A13D471830005CD0F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		0D8E167B13D471830005CD0F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		0D8E167C13D471830005CD0F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		0D90438E1401DC4A00684A04 /* SettingAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingAboutViewController.h; sourceTree = "<group>"; };
+		0D90438F1401DC4A00684A04 /* SettingAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingAboutViewController.m; sourceTree = "<group>"; };
+		0D9043901401DC4A00684A04 /* SettingAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingAboutViewController.xib; sourceTree = "<group>"; };
 		0D90AA2F13D69F2C005FA104 /* Data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Data; path = Voice/Resources/Data; sourceTree = "<group>"; };
 		0D90ABD213D69F2C005FA104 /* Image */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Image; path = Voice/Resources/Image; sourceTree = "<group>"; };
 		0D98A60D13FB3AFB00FCB3FE /* WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveView.h; path = Recording/WaveView.h; sourceTree = "<group>"; };
@@ -543,6 +548,9 @@
 				0DFCFF6C14016A5100B1050E /* SettingSwitchCell.h */,
 				0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */,
 				0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */,
+				0D90438E1401DC4A00684A04 /* SettingAboutViewController.h */,
+				0D90438F1401DC4A00684A04 /* SettingAboutViewController.m */,
+				0D9043901401DC4A00684A04 /* SettingAboutViewController.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -738,6 +746,7 @@
 				0DD478EA13F129250054E726 /* icon_72.png in Resources */,
 				0D16D70E13FE468B00BCFC29 /* LessonCell.xib in Resources */,
 				0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */,
+				0D9043921401DC4B00684A04 /* SettingAboutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +822,7 @@
 				0D16D70F13FE468B00BCFC29 /* LessonCell.m in Sources */,
 				0D16D71213FE477F00BCFC29 /* RatingView.m in Sources */,
 				0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */,
+				0D9043911401DC4B00684A04 /* SettingAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
