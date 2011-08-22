@@ -12,6 +12,8 @@
 @implementation RecordingWaveCell
 @synthesize playingButton = _recordingButton;
 @synthesize waveView = _waveView;
+@synthesize icon = _icon;
+@synthesize timelabel = _timelabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -31,6 +33,10 @@
 
 - (void)dealloc
 {
+    [self.playingButton release];
+    [self.waveView release];
+    [self.icon release];
+    [self.timelabel release];
     [super dealloc];
 }
 

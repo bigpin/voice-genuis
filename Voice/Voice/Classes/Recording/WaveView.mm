@@ -7,7 +7,7 @@
 //
 
 #import "WaveView.h"
-
+#import <QuartzCore/QuartzCore.h>
 
 @implementation WaveView
 
@@ -72,7 +72,9 @@
 {
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();    
-    UIColor* c = [UIColor blackColor];
+    
+
+    UIColor* c = [UIColor whiteColor];
     CGContextSetStrokeColorWithColor(context, [c CGColor]);
     /*CGPathRef halfPath = [self giveAPath];
     
@@ -109,6 +111,21 @@
         }
         CGContextStrokePath(context);
     }
+    
+    CGContextSetLineWidth(context, 1);
+     CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+    
+    CGContextMoveToPoint(context, 0, rect.size.height/2 - 1);
+    CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2 - 1);
+    CGContextStrokePath(context);
+
+    UIColor *clr = [UIColor colorWithRed:147.0/255.0 green:194.0/255.0 blue:34.0/255.0 alpha:1.0];
+    CGContextSetStrokeColorWithColor(context, [clr CGColor]);
+    
+    CGContextMoveToPoint(context, 0, rect.size.height/2);
+    CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2);
+    CGContextStrokePath(context);
+    
 
     UIGraphicsEndImageContext();
 }

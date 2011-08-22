@@ -346,17 +346,30 @@
     if (indexPath.section == 0) {
         NSString *CellIdentifier = @"MsgListCell";
         
-        BubbleCell *cell = (BubbleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        }
+        NSString* oritext = self.sentence.orintext;
+        if (self.sentence.transtext != nil) {
+            oritext = [NSString stringWithFormat:@"%@ %@", oritext, self.sentence.transtext];
+        }
+         cell.textLabel.text = oritext;
+        cell.textLabel.lineBreakMode   = UILineBreakModeWordWrap;
+        cell.textLabel.numberOfLines   = 0;
+        cell.textLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
+        /*BubbleCell *cell = (BubbleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         
         if (cell == nil) {
             cell = [[[BubbleCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
         } else {
             [cell cleanUp];
         }
-        cell.imgName = [NSString stringWithFormat:@"%@/bubble2.png", resourcePath];
+        cell.imgIcon = [NSString stringWithFormat:@"%@//teachers/t2.png", resourcePath];
+        cell.imgName = [NSString stringWithFormat:@"%@/cells/Register_TipBkg.png", resourcePath];
         cell.msgText = self.sentence.orintext;
         cell.transText = self.sentence.transtext;
-        cell.nShowTextStyle = YES;
+        cell.nShowTextStyle = YES;*/
         return cell;
     } else {
         if (indexPath.row == 0) {
@@ -372,10 +385,17 @@
             UIImage* itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/WavPlay.png", resourcePath]];
 
             [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
+            UIImage *iconImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/teachers/male1.png", resourcePath]];
+            CGFloat f = 211.0/255.0;
+            cell.waveView.layer.borderWidth = 1;
+            cell.waveView.layer.borderColor = [[UIColor whiteColor] CGColor];
+            cell.backgroundColor = [UIColor colorWithRed:f green:f blue:f alpha:1.0];
+            cell.icon.image = iconImage;
             cell.waveView.starttime = [_sentence startTime] * 1000;
             cell.waveView.endtime = [_sentence endTime] *1000;
             cell.waveView.wavefilename = wavefile;
             [cell.waveView loadwavedata];
+            cell.timelabel.text = [NSString stringWithFormat:@"Time:%@",_sentence.endtime];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             return cell;
@@ -390,9 +410,16 @@
                 NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"RecordingWaveCell" owner:self options:nil];
                 cell = [array objectAtIndex:0];
             }
-            UIImage* itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/WavPlay.png", resourcePath]];
+            CGFloat f = 211.0/255.0;
+            cell.waveView.layer.borderWidth = 1;
+            cell.waveView.layer.borderColor = [[UIColor whiteColor] CGColor];
+           cell.backgroundColor = [UIColor colorWithRed:f green:f blue:f alpha:1.0];
+           UIImage* itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/WavPlay.png", resourcePath]];
             [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
-          /*cell.waveView.starttime = [_sentence startTime] * 1000;
+            [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
+            UIImage *iconImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/recording.png", resourcePath]];
+            cell.icon.image = iconImage;
+         /*cell.waveView.starttime = [_sentence startTime] * 1000;
             cell.waveView.endtime = [_sentence endTime] *1000;
             cell.waveView.wavefilename = wavefile;
             [cell.waveView loadwavedata];*/

@@ -287,10 +287,10 @@
         UILabel *transLabel = [[UILabel alloc] initWithFrame:CGRectMake(txtLabel.frame.origin.x, txtLabel.frame.origin.y + txtLabel.frame.size.height + MAGIN_OF_TEXTANDTRANSLATE, szTrans.width, szTrans.height)];
         transLabel.lineBreakMode   = UILineBreakModeWordWrap;
         transLabel.numberOfLines   = 0;
+        transLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
         transLabel.text            = self.transText;
         transLabel.textColor         = [UIColor colorWithRed:textRed green:textGreen blue:textBlue alpha:1.0];
         transLabel.backgroundColor = [UIColor clearColor];
-        transLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
         [transLabel sizeToFit];
         [self.contentView addSubview:transLabel];
         [transLabel release];
