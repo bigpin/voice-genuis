@@ -537,27 +537,6 @@
     }
 }
 
-- (IBAction)onLesson:(id)sender;
-{
-    if (nLesson == PLAY_LESSON) {
-        UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/sentence.png", resourcePath]];
-        [self.listeningToolbar.lessonItem setImage:lessonImage];
-        // 设置单句起始和终止时间
-        int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
-        Sentence* sentence = [_sentencesArray objectAtIndex:nCurrentIndex];
-        loopstarttime = [sentence startTime];
-        loopendtime = [sentence endTime];    
-        nLesson = PLAY_SENTENCE;
-    } else {
-        UIImage* lessonImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/lesson.png", resourcePath]];
-        [self.listeningToolbar.lessonItem setImage:lessonImage];
-        // 设置起始终止时间
-        loopstarttime = 0.0;
-        loopendtime = self.player.duration;
-        nLesson = PLAY_LESSON;
-    }
-}
-
 - (void)onRecording;
 {
     bRecording = !bRecording;
@@ -726,6 +705,20 @@
     } else {
         looptype = PLAY_LOOP_TPYE_SINGLE;
         self.player.numberOfLoops = 1;
+    }
+    
+    if (settingData.eReadingMode == 0) {
+        // 设置起始终止时间
+        loopstarttime = 0.0;
+        loopendtime = self.player.duration;
+        nLesson = PLAY_LESSON;
+   } else {
+       // 设置单句起始和终止时间
+       int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
+       Sentence* sentence = [_sentencesArray objectAtIndex:nCurrentIndex];
+       loopstarttime = [sentence startTime];
+       loopendtime = [sentence endTime];    
+       nLesson = PLAY_SENTENCE;
     }
     [self reloadTableView];
 }
