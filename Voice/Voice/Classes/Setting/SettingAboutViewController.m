@@ -7,7 +7,7 @@
 //
 
 #import "SettingAboutViewController.h"
-
+#import "BubbleCell.h"
 
 @implementation SettingAboutViewController
 
@@ -85,7 +85,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -104,18 +104,38 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = STRING_ABOUT_VERSION;
-    if (cell.accessoryView == nil) {
-        UILabel* acv = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 44)];
-        acv.backgroundColor = [UIColor clearColor];
-        acv.textAlignment = UITextAlignmentCenter;
-        acv.textColor = [UIColor grayColor];
-        acv.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
-        cell.accessoryView = acv;
-        [acv release];
+    if (indexPath.section == 0) {
+        cell.textLabel.text = STRING_ABOUT_VERSION;
+        if (cell.accessoryView == nil) {
+            UILabel* acv = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 44)];
+            acv.backgroundColor = [UIColor clearColor];
+            acv.textAlignment = UITextAlignmentCenter;
+            acv.textColor = [UIColor grayColor];
+            acv.text = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+            cell.accessoryView = acv;
+            [acv release];
+        }
+    } else {
+        NSString* detail = STRING_ABOUT_DETAIL;
+        cell.textLabel.text = detail;
+        cell.textLabel.lineBreakMode   = UILineBreakModeWordWrap;
+        cell.textLabel.numberOfLines   = 0;
+        cell.textLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
     }
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        return 44;
+    } else {
+        UITableViewCell *cell = (UITableViewCell*)[self tableView: tableView cellForRowAtIndexPath: indexPath];
+        CGSize size   = [BubbleCell calcTextHeight:STRING_ABOUT_DETAIL withWidth:cell.frame.size.width  - CELL_CONTENT_MARGIN*2];
+        return size.height + 44;
+    }
+}
+
 
 /*
 // Override to support conditional editing of the table view.

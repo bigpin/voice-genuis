@@ -127,7 +127,7 @@
     if (indexPath.section == 0) {
         return 85; 
     } else {
-        return 60;
+        return 44;
         
     }
 }
