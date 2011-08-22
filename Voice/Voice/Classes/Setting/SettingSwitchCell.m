@@ -10,6 +10,9 @@
 
 
 @implementation SettingSwitchCell
+@synthesize label = _label;
+@synthesize switchControl = _switchControl;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -29,7 +32,13 @@
 
 - (void)dealloc
 {
+    [self.label release];
+    [self.switchControl release];
     [super dealloc];
 }
 
+- (IBAction)onClickSwitch:(id)sender;
+{
+    [delegate isOn:self.switchControl.on];
+}
 @end

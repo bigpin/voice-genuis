@@ -37,6 +37,7 @@
     [self.label release];
     [self.slider release];
     [self.timeLabel release];
+    [self.sliderText release];
     [super dealloc];
 }
 

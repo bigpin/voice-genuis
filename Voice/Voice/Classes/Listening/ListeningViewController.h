@@ -81,7 +81,6 @@ typedef enum {
 - (IBAction)onOther:(id)sender;
 - (IBAction)onStart:(id)sender;
 - (IBAction)onNext:(id)sender;
-- (IBAction)onLoop:(id)sender;
 - (IBAction)onSetting:(id)sender;
 - (void)onRecording;
 - (void)updateCurrentTime;

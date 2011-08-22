@@ -20,6 +20,7 @@
 @synthesize nReadingCount;
 @synthesize eShowTextType;
 @synthesize eReadingMode;
+@synthesize bLoop;
 
 - (id)init
 {
@@ -45,6 +46,7 @@
     self.dTimeInterval = 0.5;
     self.nReadingCount = 1.0;
     self.eShowTextType = SHOW_TEXT_TYPE_SRC;
+    self.bLoop = NO;
 }
 
 - (void)loadSettingData;
@@ -90,6 +92,11 @@
         if (readingModeTemp != nil) {
 			self.eReadingMode = [readingModeTemp intValue];
         }
+        
+        NSNumber* loopTemp = [tempsetting objectForKey:kSettingLoopReading];
+        if (loopTemp != nil) {
+            self.bLoop = [loopTemp boolValue];
+        }
     
 	}
 }
@@ -123,6 +130,7 @@
     [settingdictionary setObject:[NSNumber numberWithInt:self.nReadingCount] forKey:kSettingReadingCount];
     [settingdictionary setObject:[NSNumber numberWithInt:self.eReadingMode] forKey:kSettingReadingMode];
     [settingdictionary setObject:[NSNumber numberWithInt:self.eShowTextType] forKey:kSettingisShowTranslation];
+    [settingdictionary setObject:[NSNumber numberWithBool:self.bLoop] forKey:kSettingLoopReading];
 	[settingdictionary writeToFile:path atomically:YES];
     [settingdictionary release];
 }

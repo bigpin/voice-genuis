@@ -8,8 +8,8 @@
 
 #import "SettingViewController.h"
 #import "SettingTrainingModeCell.h"
-#import "SettingBubbleColorCell.h"
 #import "BubbleCell.h"
+#import "SettingSwitchCell.h"
 
 @implementation SettingViewController
 
@@ -120,7 +120,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     if (indexPath.section == 0) {
-        return 120; 
+        return 85; 
     } else {
         return 60;
         
@@ -135,8 +135,10 @@
         if (nRow == 0) {
             SettingTrainingModeCell *cell = (SettingTrainingModeCell *)[tableView dequeueReusableCellWithIdentifier:@"WholeModeCell"];
             
-            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingTrainingModeCell" owner:self options:nil];
-            cell = [array objectAtIndex:0];
+            if (cell == nil) {
+                NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingTrainingModeCell" owner:self options:nil];
+                cell = [array objectAtIndex:0];
+            }
             cell.slider.tag = TAG_OF_TIME_INTEVAL;
             cell.slider.minimumValue = 0.0;
             cell.slider.maximumValue = 10.0;
@@ -154,13 +156,13 @@
                 cell.accessoryType = UITableViewCellAccessoryNone;
             }
             return cell;
-        } else if (nSection == 1) {
-        
         } else {
             SettingTrainingModeCell *cell = (SettingTrainingModeCell *)[tableView dequeueReusableCellWithIdentifier:@"ReadingFollowCell"];
             
-            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingTrainingModeCell" owner:self options:nil];
-            cell = [array objectAtIndex:0];
+            if (cell == nil) {
+                NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingTrainingModeCell" owner:self options:nil];
+                cell = [array objectAtIndex:0];
+            }
             cell.slider.tag = TAG_OF_READING_COUNT;
             cell.delegate = (id)self;
             cell.slider.minimumValue = 1;
@@ -177,6 +179,16 @@
            } else {
                 cell.accessoryType = UITableViewCellAccessoryNone;
             }
+            return cell;
+        }
+    } else if (nSection == 1) {
+        SettingSwitchCell* cell = (SettingSwitchCell*)[tableView dequeueReusableCellWithIdentifier:@"SettingSwitchCell"];
+        if (cell == nil) {
+            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingSwitchCell" owner:self options:nil];
+            cell = [array objectAtIndex:0];
+            cell.label.text = STRING_SETTING_LOOP_TEXT;
+            cell.switchControl.on = settingData.bLoop;
+            cell.delegate = (id)self;
             return cell;
         }
     } else {
@@ -211,7 +223,8 @@
         return cell;
     }
     // Configure the cell...
-    
+    UITableViewCell * cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
+    return cell;
 }
 
 /*
@@ -304,6 +317,15 @@
     
     [settingData saveSettingData];
 	[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
+}
+
+- (void)isOn:(BOOL)bOn;
+{
+    if (settingData.bLoop != bOn) {
+        settingData.bLoop = bOn;
+        [settingData saveSettingData];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
+    }
 }
 
 @end

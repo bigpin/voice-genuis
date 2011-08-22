@@ -558,24 +558,6 @@
     }
 }
 
-- (IBAction)onLoop:(id)sender;
-{
-    if (looptype == PLAY_LOOP_TPYE_SINGLE) {
-        looptype = PLAY_LOOP_TPYE_LOOP;
-        self.player.numberOfLoops = -1;
-        
-        UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/looplesson.png", resourcePath]];
-        [self.listeningToolbar.loopItem setImage:loopImage];
-
-    } else {
-        looptype = PLAY_LOOP_TPYE_SINGLE;
-        self.player.numberOfLoops = 1;
-        
-        UIImage* loopImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/loopsingle.png", resourcePath]];
-        [self.listeningToolbar.loopItem setImage:loopImage];
-   }
- }
-
 - (void)onRecording;
 {
     bRecording = !bRecording;
@@ -738,6 +720,13 @@
 - (void)settingChanged:(NSNotification *)aNotification
 {
     [settingData loadSettingData];
+    if (settingData.bLoop) {
+        looptype = PLAY_LOOP_TPYE_LOOP;
+        self.player.numberOfLoops = -1;
+    } else {
+        looptype = PLAY_LOOP_TPYE_SINGLE;
+        self.player.numberOfLoops = 1;
+    }
     [self reloadTableView];
 }
 

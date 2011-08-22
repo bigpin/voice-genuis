@@ -13,6 +13,7 @@
 #define kSettingReadingCount @"ReadingCount"
 #define kSettingReadingMode @"ReadingMode"
 #define kSettingisShowTranslation @"ShowTextType"
+#define kSettingLoopReading @"LoopReading"
 
 typedef enum {
 	SHOW_TEXT_TYPE_SRC = 0,
@@ -36,12 +37,14 @@ typedef enum {
     UIColor* _clrBubbleText1;
     UIColor* _clrBubbleText2;
     UIColor* _clrBubbleText3;
+    BOOL bLoop;
 }
 
 @property (nonatomic, assign) CGFloat dTimeInterval;
 @property (nonatomic, assign) NSInteger nReadingCount;
 @property (nonatomic, assign) READING_MODE eReadingMode;
 @property (nonatomic, assign) SHOW_TEXT_TYPE eShowTextType;
+@property (nonatomic, assign) BOOL bLoop;
 @property (nonatomic, retain) UIColor* clrBubbleBg1;
 @property (nonatomic, retain) UIColor* clrBubbleBg2;
 @property (nonatomic, retain) UIColor* clrBubbleBg3;

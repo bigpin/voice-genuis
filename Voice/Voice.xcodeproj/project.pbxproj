@@ -70,8 +70,6 @@
 		0DF16A8E13F6DD78008C103D /* SettingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF16A8D13F6DD78008C103D /* SettingData.m */; };
 		0DF7F8C413EEF3D5008A885A /* SettingTrainingModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */; };
 		0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */; };
-		0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */; };
-		0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */; };
 		0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */; };
 		0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */; };
 		95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9398A13F662F5006F4D61 /* VoicePlayer.m */; };
@@ -218,9 +216,6 @@
 		0DF7F8C213EEF3D4008A885A /* SettingTrainingModeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTrainingModeCell.h; sourceTree = "<group>"; };
 		0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTrainingModeCell.m; sourceTree = "<group>"; };
 		0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTrainingModeCell.xib; sourceTree = "<group>"; };
-		0DFB4A6613EEF6B4007B6ACE /* SettingBubbleColorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingBubbleColorCell.h; sourceTree = "<group>"; };
-		0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingBubbleColorCell.m; sourceTree = "<group>"; };
-		0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingBubbleColorCell.xib; sourceTree = "<group>"; };
 		0DFCFF6C14016A5100B1050E /* SettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingSwitchCell.h; sourceTree = "<group>"; };
 		0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingSwitchCell.m; sourceTree = "<group>"; };
 		0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
@@ -545,9 +540,6 @@
 				0DF7F8C213EEF3D4008A885A /* SettingTrainingModeCell.h */,
 				0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */,
 				0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */,
-				0DFB4A6613EEF6B4007B6ACE /* SettingBubbleColorCell.h */,
-				0DFB4A6713EEF6B4007B6ACE /* SettingBubbleColorCell.m */,
-				0DFB4A6913EEF6CA007B6ACE /* SettingBubbleColorCell.xib */,
 				0DFCFF6C14016A5100B1050E /* SettingSwitchCell.h */,
 				0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */,
 				0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */,
@@ -740,7 +732,6 @@
 				0D872D7713EE78BC00361672 /* DataBase in Resources */,
 				0D872DA913EEDA9000361672 /* RecordingViewController.xib in Resources */,
 				0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */,
-				0DFB4A6A13EEF6CA007B6ACE /* SettingBubbleColorCell.xib in Resources */,
 				0DD478E713F129250054E726 /* icon@2x.png in Resources */,
 				0DD478E813F129250054E726 /* icon.png in Resources */,
 				0DD478E913F129250054E726 /* icon_small.png in Resources */,
@@ -815,7 +806,6 @@
 				0D872D7B13EE7A0B00361672 /* Database.m in Sources */,
 				0D872DA813EEDA9000361672 /* RecordingViewController.mm in Sources */,
 				0DF7F8C413EEF3D5008A885A /* SettingTrainingModeCell.m in Sources */,
-				0DFB4A6813EEF6B4007B6ACE /* SettingBubbleColorCell.m in Sources */,
 				95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */,
 				0DF16A8E13F6DD78008C103D /* SettingData.m in Sources */,
 				95B9657813FE13C2002F6087 /* WaveView.mm in Sources */,
