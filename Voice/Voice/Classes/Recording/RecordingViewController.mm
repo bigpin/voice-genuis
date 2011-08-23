@@ -293,8 +293,7 @@
                            // peak: [recorder peakPowerForChannel: 0]];  
 
     // [self.waveView setPower:[recorder averagePowerForChannel:0] peak:[recorder peakPowerForChannel: 0]]; 
-}  
-
+} 
 
 #pragma mark - Delegate
 
@@ -316,12 +315,6 @@
     [recorderFailed release];  
 }
 
-
-- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
-{
-    
-    [self.recordingTableView reloadData];
-}
 
 #pragma mark - Table view data source
 
@@ -385,6 +378,7 @@
             UIImage* itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/WavPlay.png", resourcePath]];
 
             [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
+            cell.playingButton.tag = PLAY_SRC_VOIDC_BUTTON_TAG;
             UIImage *iconImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/teachers/male1.png", resourcePath]];
             CGFloat f = 211.0/255.0;
             cell.waveView.layer.borderWidth = 1;
@@ -397,7 +391,7 @@
             [cell.waveView loadwavedata];
             cell.timelabel.text = [NSString stringWithFormat:@"Time:%@",_sentence.endtime];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
+            cell.delegate = (id)self;
             return cell;
             
 
@@ -416,10 +410,11 @@
            cell.backgroundColor = [UIColor colorWithRed:f green:f blue:f alpha:1.0];
            UIImage* itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/WavPlay.png", resourcePath]];
             [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
-            [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
+            cell.playingButton.tag = PLAY_USER_VOIDC_BUTTON_TAG;
             UIImage *iconImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/recording.png", resourcePath]];
             cell.icon.image = iconImage;
-         /*cell.waveView.starttime = [_sentence startTime] * 1000;
+            cell.delegate = (id)self;
+            /*cell.waveView.starttime = [_sentence startTime] * 1000;
             cell.waveView.endtime = [_sentence endTime] *1000;
             cell.waveView.wavefilename = wavefile;
             [cell.waveView loadwavedata];*/
@@ -460,7 +455,19 @@
     return customView;
 }
 
-- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+- (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
 	return 5.0;
 }
+
+#pragma RecordingWaveCell
+- (void)playing:(NSInteger)buttonTag;
+{
+    if (buttonTag == PLAY_USER_VOIDC_BUTTON_TAG) {
+        // play user recording voice
+    } else {
+        // play src voice
+    }
+}
+
 @end

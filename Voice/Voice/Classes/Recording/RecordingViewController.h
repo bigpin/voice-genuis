@@ -11,6 +11,9 @@
 #import "Sentence.h"
 #import "WaveView.h"
 
+#define PLAY_SRC_VOIDC_BUTTON_TAG 50001
+#define PLAY_USER_VOIDC_BUTTON_TAG 50002
+
 @protocol RecordingDelegate <NSObject>
 @optional
 

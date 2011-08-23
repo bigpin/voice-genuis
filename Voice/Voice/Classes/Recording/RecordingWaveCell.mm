@@ -14,6 +14,7 @@
 @synthesize waveView = _waveView;
 @synthesize icon = _icon;
 @synthesize timelabel = _timelabel;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -38,6 +39,11 @@
     [self.icon release];
     [self.timelabel release];
     [super dealloc];
+}
+
+- (IBAction)onPlaying:(id)sender;
+{
+    [delegate playing:self.playingButton.tag];
 }
 
 @end

@@ -157,6 +157,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self reloadTableView];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -194,7 +195,6 @@
         [volumView removeFromSuperview];
     }
 
-    [self.sentencesTableView reloadData];
     [self reloadTableView];
 }
 
@@ -749,10 +749,12 @@
 - (void)reloadTableView;
 {
     [self.sentencesTableView reloadData];
-    NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nPosition];
-    [_sentencesTableView scrollToRowAtIndexPath:path
-                               atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-    BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
-    [cell setIsHighlightText:YES];
+    if (ePlayStatus != PLAY_STATUS_NONE) {
+        NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nPosition];
+        [_sentencesTableView scrollToRowAtIndexPath:path
+                                   atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
+        [cell setIsHighlightText:YES];
+    }
 }
 @end
