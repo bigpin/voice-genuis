@@ -385,10 +385,14 @@
             cell.waveView.layer.borderColor = [[UIColor whiteColor] CGColor];
             cell.backgroundColor = [UIColor colorWithRed:f green:f blue:f alpha:1.0];
             cell.icon.image = iconImage;
-            cell.waveView.starttime = [_sentence startTime] * 1000;
-            cell.waveView.endtime = [_sentence endTime] *1000;
-            cell.waveView.wavefilename = wavefile;
-            [cell.waveView loadwavedata];
+            cell.waveView.starttime = 0;
+            cell.waveView.endtime = 1*1000;
+            cell.waveView.wavefilename = [NSString stringWithFormat:@"%@/recordedFile.wav", resourcePath];
+            
+            //cell.waveView.starttime = [_sentence startTime] * 1000;
+            //cell.waveView.endtime = [_sentence endTime] *1000;
+            //cell.waveView.wavefilename = wavefile;
+           [cell.waveView loadwavedata];
             cell.timelabel.text = [NSString stringWithFormat:@"Time:%@",_sentence.endtime];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = (id)self;

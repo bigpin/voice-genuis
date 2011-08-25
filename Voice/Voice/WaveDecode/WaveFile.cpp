@@ -159,6 +159,18 @@ bool CWaveFile::ReadWaveData(unsigned long dwStartMilli, unsigned long dwEndMill
 	return true;
 }
 
+bool CWaveFile::ReadAllWaveData(unsigned char* &pBuffer, unsigned long &nBufferSize)
+{
+	pBuffer = new unsigned char[m_dwDataChunkSize];
+	if (pBuffer != NULL)
+	{
+		fseek(m_wavFile, m_nDataStartFrom, SEEK_SET);
+		nBufferSize = ReadBytes(pBuffer, m_dwDataChunkSize);
+	}	
+
+	return true;
+}
+
 //===========================================================================
 
 void GetWaveSample(const WAVEFORMATEX sWaveFormatEx,
@@ -170,14 +182,14 @@ void GetWaveSample(const WAVEFORMATEX sWaveFormatEx,
 {
 	if (pWaveData != NULL && nWaveByte > 0)
 	{
-		if (sWaveFormatEx.nChannels == 1)
+		if (sWaveFormatEx.nChannels == 1 || sWaveFormatEx.nChannels == 2)
 		{
 			if(sWaveFormatEx.wBitsPerSample == 16)
 			{
 				unsigned char* pStWaveData = pWaveData;
 				unsigned char* pEdWaveData = pWaveData + nWaveByte;
 
-				float ratio = (float)nWindowHeight / 65536;
+				float ratio = (float)nWindowHeight / 10000;//65536;
 
 				int den = sWaveFormatEx.nSamplesPerSec / nSamplesPerSecond;
 

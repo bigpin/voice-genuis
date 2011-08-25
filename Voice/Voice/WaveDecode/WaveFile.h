@@ -145,7 +145,8 @@ public:
 	// 返回wave文件的formatex信息
 	WAVEFORMATEX GetWaveFormat() const { return m_format.waveFormatEx; }
 	bool ReadWaveData(unsigned long dwStartMilli, unsigned long dwEndMilli, unsigned char* &pBuffer, unsigned long &nBufferSize);
-
+	bool ReadAllWaveData(unsigned char* &pBuffer, unsigned long &nBufferSize);
+    
 private:
 	// 读取wave文件的Format信息，被Open调用来设置m_format
 	void ReadHeader();

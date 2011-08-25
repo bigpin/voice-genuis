@@ -53,7 +53,8 @@
     
     unsigned char* pBuffer = nil;
 //    unsigned long nBufferSize = 0;
-    wavefile->ReadWaveData(starttime, endtime, pBuffer, buffertotal);
+    wavefile->ReadAllWaveData(pBuffer, buffertotal);
+    //wavefile->ReadWaveData(starttime, endtime, pBuffer, buffertotal);
 //   unsigned long bytesperHDR = (waveformatex.nAvgBytesPerSec / 10) * 2;
     dwavesecond = (double)buffertotal / (double)waveformatex.nAvgBytesPerSec;
     
