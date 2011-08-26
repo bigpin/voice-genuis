@@ -189,7 +189,7 @@ void GetWaveSample(const WAVEFORMATEX sWaveFormatEx,
 				unsigned char* pStWaveData = pWaveData;
 				unsigned char* pEdWaveData = pWaveData + nWaveByte;
 
-				float ratio = (float)nWindowHeight / 10000;//65536;
+				float ratio = (float)nWindowHeight / 65536;
 
 				int den = sWaveFormatEx.nSamplesPerSec / nSamplesPerSecond;
 
