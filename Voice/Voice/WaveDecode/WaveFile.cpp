@@ -102,7 +102,7 @@ void CWaveFile::ReadHeader()
 			else
 			{
 				// ºöÂÔÆäËûchunk
-				nRead = fread(&chunkId, 1, sizeof(chunkSize), m_wavFile);
+				nRead = fread(&chunkSize, 1, sizeof(chunkSize), m_wavFile);
 
                 fseek(m_wavFile, chunkSize, SEEK_CUR);
 			}
