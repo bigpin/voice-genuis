@@ -72,6 +72,7 @@
 		0DD478E913F129250054E726 /* icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E513F129250054E726 /* icon_small.png */; };
 		0DD478EA13F129250054E726 /* icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E613F129250054E726 /* icon_72.png */; };
 		0DF16A8E13F6DD78008C103D /* SettingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF16A8D13F6DD78008C103D /* SettingData.m */; };
+		0DF270391407A5C10089FE31 /* PlayRecord in Resources */ = {isa = PBXBuildFile; fileRef = 0DF270381407A5C10089FE31 /* PlayRecord */; };
 		0DF7F8C413EEF3D5008A885A /* SettingTrainingModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */; };
 		0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */; };
 		0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */; };
@@ -223,6 +224,7 @@
 		0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Voice/TapKu/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		0DF16A8C13F6DD78008C103D /* SettingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingData.h; sourceTree = "<group>"; };
 		0DF16A8D13F6DD78008C103D /* SettingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingData.m; sourceTree = "<group>"; };
+		0DF270381407A5C10089FE31 /* PlayRecord */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PlayRecord; path = Recording/PlayRecord; sourceTree = "<group>"; };
 		0DF7F8C213EEF3D4008A885A /* SettingTrainingModeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTrainingModeCell.h; sourceTree = "<group>"; };
 		0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTrainingModeCell.m; sourceTree = "<group>"; };
 		0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTrainingModeCell.xib; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 		0D872DA413EEDA3700361672 /* Recording */ = {
 			isa = PBXGroup;
 			children = (
+				0DF270381407A5C10089FE31 /* PlayRecord */,
 				0D872DA513EEDA9000361672 /* RecordingViewController.h */,
 				0D872DA613EEDA9000361672 /* RecordingViewController.mm */,
 				0D872DA713EEDA9000361672 /* RecordingViewController.xib */,
@@ -756,6 +759,7 @@
 				0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */,
 				0D9043921401DC4B00684A04 /* SettingAboutViewController.xib in Resources */,
 				0D9043AB1402335200684A04 /* RecordingWaveCell.xib in Resources */,
+				0DF270391407A5C10089FE31 /* PlayRecord in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
