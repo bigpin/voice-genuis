@@ -8,6 +8,7 @@
 
 #import "RecordingViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "VoicePlayer.h"
 #import "BubbleCell.h"
 #import "RecordingWaveCell.h"
 
@@ -70,6 +71,8 @@
     [self.waveView loadwavedata];*/
   
     [self.recordingTableView reloadData];
+//    VoicePlayer* player = [[VoicePlayer alloc] init];
+//    [player play:(CFURLRef)[NSURL fileURLWithPath:self.wavefile]];
 }
 
 - (void)viewDidUnload
