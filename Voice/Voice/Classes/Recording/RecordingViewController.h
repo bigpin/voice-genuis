@@ -10,6 +10,8 @@
 #import <AVFoundation/AVFoundation.h>
 #import "Sentence.h"
 #import "WaveView.h"
+#import "AQRecorder.h"
+#import "AQPlayer.h"
 
 #define PLAY_SRC_VOIDC_BUTTON_TAG 50001
 #define PLAY_USER_VOIDC_BUTTON_TAG 50002
@@ -26,7 +28,8 @@
     UITextView*             _sentenceView;
     NSString*               wavefile;
     
-    AVAudioRecorder*        recorder;
+	AQPlayer*				player;
+	AQRecorder*				recorder;
     NSMutableDictionary*    recordSetting;
     NSString*               recorderFilePath;
     WaveView*               _waveView;
@@ -38,6 +41,10 @@
     UILabel*                _costTimelabel;
     UILabel*                _totalTimelabel;
     NSString*               resourcePath;
+    BOOL						playbackWasInterrupted;
+	BOOL						playbackWasPaused;
+	
+	CFStringRef					recordFilePath;	
 }
 @property (nonatomic, assign) NSString* resourcePath;
 @property (nonatomic, retain) IBOutlet UITableView* recordingTableView;
@@ -52,7 +59,11 @@
 @property (nonatomic, retain) UILabel*         costTimelabel;
 @property (nonatomic, retain) UILabel*         totalTimelabel;
 @property (nonatomic, retain) UISlider*        timeSlider;
+@property (readonly)			AQPlayer			*player;
+@property (readonly)			AQRecorder			*recorder;
+@property						BOOL				playbackWasInterrupted;
 
+- (void)initMembers;
 - (void) loadToolbar;
 - (BOOL) prepareToRecord;
 - (void) startrecorder;
@@ -62,4 +73,5 @@
 
 - (void) onRecording:(id)sender;
 - (void) onPlaying:(id)sender;
+
 @end

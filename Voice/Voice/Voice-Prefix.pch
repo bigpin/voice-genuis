@@ -12,6 +12,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+#define kBufferDurationSeconds .5
 
 #define TAG_OF_TIME_INTEVAL 40000
 #define TAG_OF_READING_COUNT 40001

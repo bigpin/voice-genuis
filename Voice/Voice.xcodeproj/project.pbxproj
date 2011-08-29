@@ -71,8 +71,12 @@
 		0DD478E813F129250054E726 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E413F129250054E726 /* icon.png */; };
 		0DD478E913F129250054E726 /* icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E513F129250054E726 /* icon_small.png */; };
 		0DD478EA13F129250054E726 /* icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E613F129250054E726 /* icon_72.png */; };
+		0DE9C222140BBDFD0025BDD2 /* AQRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C21E140BBDFD0025BDD2 /* AQRecorder.mm */; };
+		0DE9C223140BBDFD0025BDD2 /* AQPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C220140BBDFD0025BDD2 /* AQPlayer.mm */; };
+		0DE9C22C140BBE730025BDD2 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C226140BBE730025BDD2 /* CAXException.cpp */; };
+		0DE9C22D140BBE730025BDD2 /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C228140BBE730025BDD2 /* CAStreamBasicDescription.cpp */; };
+		0DE9C22E140BBE730025BDD2 /* CADebugMacros.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C22B140BBE730025BDD2 /* CADebugMacros.cpp */; };
 		0DF16A8E13F6DD78008C103D /* SettingData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF16A8D13F6DD78008C103D /* SettingData.m */; };
-		0DF270391407A5C10089FE31 /* PlayRecord in Resources */ = {isa = PBXBuildFile; fileRef = 0DF270381407A5C10089FE31 /* PlayRecord */; };
 		0DF7F8C413EEF3D5008A885A /* SettingTrainingModeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */; };
 		0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */; };
 		0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */; };
@@ -221,9 +225,19 @@
 		0DD478E513F129250054E726 /* icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_small.png; path = Voice/Resources/Other/icon_small.png; sourceTree = "<group>"; };
 		0DD478E613F129250054E726 /* icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_72.png; path = Voice/Resources/Other/icon_72.png; sourceTree = "<group>"; };
 		0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Voice/TapKu/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
+		0DE9C21E140BBDFD0025BDD2 /* AQRecorder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AQRecorder.mm; path = Recording/PlayRecord/AQRecorder.mm; sourceTree = "<group>"; };
+		0DE9C21F140BBDFD0025BDD2 /* AQRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQRecorder.h; path = Recording/PlayRecord/AQRecorder.h; sourceTree = "<group>"; };
+		0DE9C220140BBDFD0025BDD2 /* AQPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AQPlayer.mm; path = Recording/PlayRecord/AQPlayer.mm; sourceTree = "<group>"; };
+		0DE9C221140BBDFD0025BDD2 /* AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQPlayer.h; path = Recording/PlayRecord/AQPlayer.h; sourceTree = "<group>"; };
+		0DE9C225140BBE730025BDD2 /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAXException.h; path = iPublicUtility/CAXException.h; sourceTree = "<group>"; };
+		0DE9C226140BBE730025BDD2 /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CAXException.cpp; path = iPublicUtility/CAXException.cpp; sourceTree = "<group>"; };
+		0DE9C227140BBE730025BDD2 /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAStreamBasicDescription.h; path = iPublicUtility/CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		0DE9C228140BBE730025BDD2 /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CAStreamBasicDescription.cpp; path = iPublicUtility/CAStreamBasicDescription.cpp; sourceTree = "<group>"; };
+		0DE9C229140BBE730025BDD2 /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CAMath.h; path = iPublicUtility/CAMath.h; sourceTree = "<group>"; };
+		0DE9C22A140BBE730025BDD2 /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CADebugMacros.h; path = iPublicUtility/CADebugMacros.h; sourceTree = "<group>"; };
+		0DE9C22B140BBE730025BDD2 /* CADebugMacros.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CADebugMacros.cpp; path = iPublicUtility/CADebugMacros.cpp; sourceTree = "<group>"; };
 		0DF16A8C13F6DD78008C103D /* SettingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingData.h; sourceTree = "<group>"; };
 		0DF16A8D13F6DD78008C103D /* SettingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingData.m; sourceTree = "<group>"; };
-		0DF270381407A5C10089FE31 /* PlayRecord */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PlayRecord; path = Recording/PlayRecord; sourceTree = "<group>"; };
 		0DF7F8C213EEF3D4008A885A /* SettingTrainingModeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTrainingModeCell.h; sourceTree = "<group>"; };
 		0DF7F8C313EEF3D4008A885A /* SettingTrainingModeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTrainingModeCell.m; sourceTree = "<group>"; };
 		0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTrainingModeCell.xib; sourceTree = "<group>"; };
@@ -368,7 +382,7 @@
 		0D872DA413EEDA3700361672 /* Recording */ = {
 			isa = PBXGroup;
 			children = (
-				0DF270381407A5C10089FE31 /* PlayRecord */,
+				0DE9C21D140BBDF20025BDD2 /* AQPlayRecorder */,
 				0D872DA513EEDA9000361672 /* RecordingViewController.h */,
 				0D872DA613EEDA9000361672 /* RecordingViewController.mm */,
 				0D872DA713EEDA9000361672 /* RecordingViewController.xib */,
@@ -490,6 +504,7 @@
 		0D8E166913D471830005CD0F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0DE9C224140BBE630025BDD2 /* iPublicUtility */,
 				0D872DA413EEDA3700361672 /* Recording */,
 				0D872D7813EE799700361672 /* DataBase */,
 				0D3B8C9E13DC0892005898CD /* Cells */,
@@ -590,6 +605,31 @@
 				0DD5619413DE3D2900F928E6 /* LogicTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0DE9C21D140BBDF20025BDD2 /* AQPlayRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				0DE9C21E140BBDFD0025BDD2 /* AQRecorder.mm */,
+				0DE9C21F140BBDFD0025BDD2 /* AQRecorder.h */,
+				0DE9C220140BBDFD0025BDD2 /* AQPlayer.mm */,
+				0DE9C221140BBDFD0025BDD2 /* AQPlayer.h */,
+			);
+			name = AQPlayRecorder;
+			sourceTree = "<group>";
+		};
+		0DE9C224140BBE630025BDD2 /* iPublicUtility */ = {
+			isa = PBXGroup;
+			children = (
+				0DE9C225140BBE730025BDD2 /* CAXException.h */,
+				0DE9C226140BBE730025BDD2 /* CAXException.cpp */,
+				0DE9C227140BBE730025BDD2 /* CAStreamBasicDescription.h */,
+				0DE9C228140BBE730025BDD2 /* CAStreamBasicDescription.cpp */,
+				0DE9C229140BBE730025BDD2 /* CAMath.h */,
+				0DE9C22A140BBE730025BDD2 /* CADebugMacros.h */,
+				0DE9C22B140BBE730025BDD2 /* CADebugMacros.cpp */,
+			);
+			name = iPublicUtility;
 			sourceTree = "<group>";
 		};
 		95B9399213F6791C006F4D61 /* UMeng */ = {
@@ -754,7 +794,6 @@
 				0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */,
 				0D9043921401DC4B00684A04 /* SettingAboutViewController.xib in Resources */,
 				0D9043AB1402335200684A04 /* RecordingWaveCell.xib in Resources */,
-				0DF270391407A5C10089FE31 /* PlayRecord in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +870,11 @@
 				0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */,
 				0D9043911401DC4B00684A04 /* SettingAboutViewController.m in Sources */,
 				0D9043A91402333700684A04 /* RecordingWaveCell.mm in Sources */,
+				0DE9C222140BBDFD0025BDD2 /* AQRecorder.mm in Sources */,
+				0DE9C223140BBDFD0025BDD2 /* AQPlayer.mm in Sources */,
+				0DE9C22C140BBE730025BDD2 /* CAXException.cpp in Sources */,
+				0DE9C22D140BBE730025BDD2 /* CAStreamBasicDescription.cpp in Sources */,
+				0DE9C22E140BBE730025BDD2 /* CADebugMacros.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -898,7 +942,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
@@ -906,7 +950,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lz";
+				PREBINGDING = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -917,13 +963,14 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lz";
+				PREBINGDING = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -937,6 +984,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voice/Voice-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Voice/TapKu/";
 				INFOPLIST_FILE = "Voice/Voice-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

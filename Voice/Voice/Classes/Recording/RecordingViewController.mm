@@ -26,6 +26,72 @@
 @synthesize recordingTableView = _recordingTableView;
 @synthesize resourcePath;
 
+@synthesize player;
+@synthesize recorder;
+@synthesize playbackWasInterrupted;
+
+
+char *OSTypeToStr(char *buf, OSType t)
+{
+	char *p = buf;
+	char str[4], *q = str;
+	*(UInt32 *)str = CFSwapInt32(t);
+	for (int i = 0; i < 4; ++i) {
+		if (isprint(*q) && *q != '\\')
+			*p++ = *q++;
+		else {
+			sprintf(p, "\\x%02x", *q++);
+			p += 4;
+		}
+	}
+	*p = '\0';
+	return buf;
+}
+
+-(void)setFileDescriptionForFormat: (CAStreamBasicDescription)format withName:(NSString*)name
+{
+	char buf[5];
+	const char *dataFormat = OSTypeToStr(buf, format.mFormatID);
+	NSString* description = [[NSString alloc] initWithFormat:@"(%d ch. %s @ %g Hz)", format.NumberChannels(), dataFormat, format.mSampleRate, nil];
+	//fileDescription.text = description;
+	[description release];	
+}
+
+#pragma mark Playback routines
+
+-(void)stopPlayQueue
+{
+	player->StopQueue();
+	//[lvlMeter_in setAq: nil];
+	//btn_record.enabled = YES;
+}
+
+-(void)pausePlayQueue
+{
+	player->PauseQueue();
+	playbackWasPaused = YES;
+}
+
+- (void)stopRecord
+{
+	// Disconnect our level meter from the audio queue
+	//[lvlMeter_in setAq: nil];
+	
+	recorder->StopRecord();
+	
+	// dispose the previous playback queue
+	player->DisposeQueue(true);
+    
+	// now create a new queue for the recorded file
+	recordFilePath = (CFStringRef)[NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.wav"];
+	player->CreateQueueForFile(recordFilePath);
+    
+	// Set the button's state back to "record"
+	//btn_record.title = @"Record";
+	//btn_play.enabled = YES;
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,6 +106,11 @@
 
 - (void)dealloc
 {
+	delete player;
+    player = nil;
+	delete recorder;
+    recorder = nil;
+
     [self.sentence release];
     [self.sentenceView release];
     [super dealloc];
@@ -58,6 +129,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initMembers];
     [self loadToolbar];
     // Do any additional setup after loading the view from its nib.
     
@@ -117,7 +189,7 @@
 	
 	
 	// playing
-	[items addObject:itemFlexedSpace];
+	/*[items addObject:itemFlexedSpace];
     itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
 	UIBarButtonItem* playingItemTemp = [[UIBarButtonItem alloc] initWithImage:itemImage
                                                                      style:UIBarButtonItemStylePlain
@@ -126,7 +198,7 @@
 	[items addObject:playingItemTemp];
 	self.playingItem = playingItemTemp;
 	[playingItemTemp release];
-	
+	*/
     
 	// start time
 	//[items addObject:itemFlexedSpace];
@@ -189,20 +261,57 @@
 
 - (void) onRecording:(id)sender;
 {
-    if ([self prepareToRecord]) {
+    /*if ([self prepareToRecord]) {
         [self startrecorder];
-    }
+    }*/
+    if (recorder->IsRunning()) // If we are currently recording, stop and save the file.
+	{
+		[self stopRecord];
+	}
+	else // If we're not recording, start.
+	{
+		// btn_play.enabled = NO;	
+		
+		// Set the button's state to "stop"
+		// btn_record.title = @"Stop";
+        
+		// Start the recorder
+		recorder->StartRecord(CFSTR("recordedFile.wav"));
+		
+		[self setFileDescriptionForFormat:recorder->DataFormat() withName:@"Recorded File"];
+		
+		// Hook the level meter up to the Audio Queue for the recorder
+		//[lvlMeter_in setAq: recorder->Queue()];
+	}	
+
 }
 
 - (void) onPlaying:(id)sender;
 {
-    
+    if (player->IsRunning())
+	{
+		if (playbackWasPaused) {
+			OSStatus result = player->StartQueue(true);
+			if (result == noErr)
+				[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
+		}
+		else
+			[self stopPlayQueue];
+	}
+	else
+	{		
+		OSStatus result = player->StartQueue(false);
+		if (result == noErr)
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
+	}
+
 }
 
 #pragma mark - Record
 
 - (BOOL) prepareToRecord  
 {  
+    /*
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];  
     NSError *err = nil;  
     [audioSession setCategory :AVAudioSessionCategoryPlayAndRecord error:&err];  
@@ -263,20 +372,20 @@
         [cantRecordAlert show];  
         [cantRecordAlert release];   
         return NO;  
-    }  
+    }  */
     return YES;
 } 
 
 
 - (void)startrecorder  
 {  
-    [recorder record];  
+    //[recorder record];  
     /*[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateAudioDisplay) userInfo:nil repeats:YES];*/
 }
 
 - (void) stopRecording
 {  
-    [recorder stop];  
+    //[recorder stop];  
 } 
 
 - (void) updateAudioDisplay 
@@ -284,7 +393,7 @@
     
         //START:code.RecordViewController.setlevelmeters  
         
-        [recorder updateMeters];  
+        //[recorder updateMeters];  
         
         //[leftLevelMeter setPower: [recorder averagePowerForChannel:0]  
                            // peak: [recorder peakPowerForChannel: 0]];  
@@ -469,6 +578,151 @@
     } else {
         // play src voice
     }
+}
+
+#pragma mark AudioSession listeners
+void interruptionListener(	void *	inClientData,
+                          UInt32	inInterruptionState)
+{
+	RecordingViewController *THIS = (RecordingViewController*)inClientData;
+	if (inInterruptionState == kAudioSessionBeginInterruption)
+	{
+		if (THIS->recorder->IsRunning()) {
+			[THIS stopRecord];
+		}
+		else if (THIS->player->IsRunning()) {
+			//the queue will stop itself on an interruption, we just need to update the UI
+			[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueStopped" object:THIS];
+			THIS->playbackWasInterrupted = YES;
+		}
+	}
+	else if ((inInterruptionState == kAudioSessionEndInterruption) && THIS->playbackWasInterrupted)
+	{
+		// we were playing back when we were interrupted, so reset and resume now
+		THIS->player->StartQueue(true);
+		[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:THIS];
+		THIS->playbackWasInterrupted = NO;
+	}
+}
+
+void propListener(	void *                  inClientData,
+                  AudioSessionPropertyID	inID,
+                  UInt32                  inDataSize,
+                  const void *            inData)
+{
+	RecordingViewController *THIS = (RecordingViewController*)inClientData;
+	if (inID == kAudioSessionProperty_AudioRouteChange)
+	{
+		CFDictionaryRef routeDictionary = (CFDictionaryRef)inData;			
+		//CFShow(routeDictionary);
+		CFNumberRef reason = (CFNumberRef)CFDictionaryGetValue(routeDictionary, CFSTR(kAudioSession_AudioRouteChangeKey_Reason));
+		SInt32 reasonVal;
+		CFNumberGetValue(reason, kCFNumberSInt32Type, &reasonVal);
+		if (reasonVal != kAudioSessionRouteChangeReason_CategoryChange)
+		{
+			/*CFStringRef oldRoute = (CFStringRef)CFDictionaryGetValue(routeDictionary, CFSTR(kAudioSession_AudioRouteChangeKey_OldRoute));
+             if (oldRoute)	
+             {
+             printf("old route:\n");
+             CFShow(oldRoute);
+             }
+             else 
+             printf("ERROR GETTING OLD AUDIO ROUTE!\n");
+             
+             CFStringRef newRoute;
+             UInt32 size; size = sizeof(CFStringRef);
+             OSStatus error = AudioSessionGetProperty(kAudioSessionProperty_AudioRoute, &size, &newRoute);
+             if (error) printf("ERROR GETTING NEW AUDIO ROUTE! %d\n", error);
+             else
+             {
+             printf("new route:\n");
+             CFShow(newRoute);
+             }*/
+            
+			if (reasonVal == kAudioSessionRouteChangeReason_OldDeviceUnavailable)
+			{			
+				if (THIS->player->IsRunning()) {
+					[THIS pausePlayQueue];
+					[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueStopped" object:THIS];
+				}		
+			}
+            
+			// stop the queue if we had a non-policy route change
+			if (THIS->recorder->IsRunning()) {
+				[THIS stopRecord];
+			}
+		}	
+	}
+	else if (inID == kAudioSessionProperty_AudioInputAvailable)
+	{
+		if (inDataSize == sizeof(UInt32)) {
+			//UInt32 isAvailable = *(UInt32*)inData;
+			// disable recording if input is not available
+			//THIS->btn_record.enabled = (isAvailable > 0) ? YES : NO;
+		}
+	}
+}
+
+#pragma mark Initialization routines
+- (void)initMembers
+{		
+	// Allocate our singleton instance for the recorder & player object
+	recorder = new AQRecorder();
+	player = new AQPlayer();
+    
+	OSStatus error = AudioSessionInitialize(NULL, NULL, interruptionListener, self);
+	if (error) printf("ERROR INITIALIZING AUDIO SESSION! %ld\n", error);
+	else 
+	{
+		UInt32 category = kAudioSessionCategory_PlayAndRecord;	
+		error = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(category), &category);
+		if (error) printf("couldn't set audio category!");
+        
+		error = AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, propListener, self);
+		if (error) printf("ERROR ADDING AUDIO SESSION PROP LISTENER! %ld\n", error);
+		UInt32 inputAvailable = 0;
+		UInt32 size = sizeof(inputAvailable);
+		
+		// we do not want to allow recording if input is not available
+		error = AudioSessionGetProperty(kAudioSessionProperty_AudioInputAvailable, &size, &inputAvailable);
+		if (error) printf("ERROR GETTING INPUT AVAILABILITY! %ld\n", error);
+		// btn_record.enabled = (inputAvailable) ? YES : NO;
+		
+		// we also need to listen to see if input availability changes
+		error = AudioSessionAddPropertyListener(kAudioSessionProperty_AudioInputAvailable, propListener, self);
+		if (error) printf("ERROR ADDING AUDIO SESSION PROP LISTENER! %ld\n", error);
+        
+		error = AudioSessionSetActive(true); 
+		if (error) printf("AudioSessionSetActive (true) failed");
+	}
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackQueueStopped:) name:@"playbackQueueStopped" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playbackQueueResumed:) name:@"playbackQueueResumed" object:nil];
+    
+	UIColor *bgColor = [[UIColor alloc] initWithRed:.39 green:.44 blue:.57 alpha:.5];
+	// [lvlMeter_in setBackgroundColor:bgColor];
+	// [lvlMeter_in setBorderColor:bgColor];
+	[bgColor release];
+	
+	// disable the play button since we have no recording to play yet
+	// btn_play.enabled = NO;
+	// playbackWasInterrupted = NO;
+	// playbackWasPaused = NO;
+}
+
+# pragma mark Notification routines
+- (void)playbackQueueStopped:(NSNotification *)note
+{
+	// btn_play.title = @"Play";
+	// [lvlMeter_in setAq: nil];
+	// btn_record.enabled = YES;
+}
+
+- (void)playbackQueueResumed:(NSNotification *)note
+{
+	// btn_play.title = @"Stop";
+	// btn_record.enabled = NO;
+	// [lvlMeter_in setAq: player->Queue()];
 }
 
 @end
