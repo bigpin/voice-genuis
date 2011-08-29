@@ -77,7 +77,6 @@
 		0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */; };
 		0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */; };
 		0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */; };
-		95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B9398A13F662F5006F4D61 /* VoicePlayer.m */; };
 		95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9398C13F66432006F4D61 /* AudioToolbox.framework */; };
 		95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9399613F67990006F4D61 /* SystemConfiguration.framework */; };
 		95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */; };
@@ -231,8 +230,6 @@
 		0DFCFF6C14016A5100B1050E /* SettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingSwitchCell.h; sourceTree = "<group>"; };
 		0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingSwitchCell.m; sourceTree = "<group>"; };
 		0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
-		95B9398913F662F5006F4D61 /* VoicePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoicePlayer.h; sourceTree = "<group>"; };
-		95B9398A13F662F5006F4D61 /* VoicePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoicePlayer.m; sourceTree = "<group>"; };
 		95B9398C13F66432006F4D61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		95B9399613F67990006F4D61 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary_1.6.4.a; path = Voice/UMeng/libMobClickLibrary_1.6.4.a; sourceTree = "<group>"; };
@@ -527,8 +524,6 @@
 				0D8632DD13E8383300F934AF /* ListeningVolumView.h */,
 				0D8632DE13E8383400F934AF /* ListeningVolumView.m */,
 				0D8632E013E8386500F934AF /* ListeningVolumView.xib */,
-				95B9398913F662F5006F4D61 /* VoicePlayer.h */,
-				95B9398A13F662F5006F4D61 /* VoicePlayer.m */,
 			);
 			path = Listening;
 			sourceTree = "<group>";
@@ -828,7 +823,6 @@
 				0D872D7B13EE7A0B00361672 /* Database.m in Sources */,
 				0D872DA813EEDA9000361672 /* RecordingViewController.mm in Sources */,
 				0DF7F8C413EEF3D5008A885A /* SettingTrainingModeCell.m in Sources */,
-				95B9398B13F662F5006F4D61 /* VoicePlayer.m in Sources */,
 				0DF16A8E13F6DD78008C103D /* SettingData.m in Sources */,
 				95B9657813FE13C2002F6087 /* WaveView.mm in Sources */,
 				95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */,
