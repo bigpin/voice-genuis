@@ -38,7 +38,7 @@
 
 @implementation TKCoverflowCoverView
 @synthesize baseline,gradientLayer;
-
+@synthesize coverLabel = _coverLabel;
 
 - (id) initWithFrame:(CGRect)frame {
     if(!(self=[super initWithFrame:frame])) return nil;
@@ -46,10 +46,9 @@
     self.opaque = NO;
     self.backgroundColor = [UIColor clearColor];
     self.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    
+    CGFloat heightOfLabel = 20;
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
     [self addSubview:imageView];
-    
     reflected =  [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width)];
     reflected.transform = CGAffineTransformScale(reflected.transform, 1, -1);
     [self addSubview:reflected];
@@ -60,8 +59,14 @@
     gradientLayer.endPoint = CGPointMake(0,0.3);
     gradientLayer.frame = CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width);
     [self.layer addSublayer:gradientLayer];
-    
-    
+    UILabel* textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, imageView.frame.size.height - heightOfLabel, imageView.frame.size.width, heightOfLabel)];
+    textLabel.backgroundColor = [UIColor clearColor];
+    textLabel.textColor = [UIColor whiteColor];
+    textLabel.font = [UIFont boldSystemFontOfSize:17];
+    textLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
+    [self addSubview:textLabel];
+    self.coverLabel = textLabel;
+    [textLabel release];
     
     return self;
 }
@@ -89,6 +94,7 @@
 	reflected.frame = CGRectMake(0, y + h, w, h);
 	reflected.image = image;
 }
+
 - (UIImage*) image{
 	return imageView.image;
 }
@@ -97,10 +103,8 @@
 	[self setNeedsDisplay];
 }
 
-
-
-
 - (void) dealloc {
+    [self.coverLabel release];
 	[reflected release];
 	[imageView release];
     [super dealloc];

@@ -195,6 +195,11 @@
 		
 	}
 	cover.image = [covers objectAtIndex:index%[covers count]];
+    NSInteger nCount = [self.scenesArray count];
+    NSInteger nMod = index % nCount;
+    if (nMod < nCount) {
+        cover.coverLabel.text = [self.scenesArray objectAtIndex:nMod];
+    }
 	return cover;
 }
 

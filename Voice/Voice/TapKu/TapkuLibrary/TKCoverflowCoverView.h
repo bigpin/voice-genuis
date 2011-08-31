@@ -39,10 +39,12 @@
 	UIImageView *imageView;
 	UIImageView *reflected;
 	CAGradientLayer *gradientLayer;
+    UILabel* _coverLabel;
 }
 
 @property (retain,nonatomic) UIImage *image;
 @property (retain,nonatomic) CAGradientLayer *gradientLayer;
 @property (assign,nonatomic) float baseline; // set this property for displaying images w/ different heights
+@property (nonatomic, retain) UILabel* coverLabel;
 
 @end
