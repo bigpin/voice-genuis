@@ -107,9 +107,9 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void)dealloc
 {
 	delete player;
-    player = nil;
+    //player = nil;
 	delete recorder;
-    recorder = nil;
+    //recorder = nil;
 
     [self.sentence release];
     [self.sentenceView release];
@@ -288,23 +288,7 @@ char *OSTypeToStr(char *buf, OSType t)
 
 - (void) onPlaying:(id)sender;
 {
-    if (player->IsRunning())
-	{
-		if (playbackWasPaused) {
-			OSStatus result = player->StartQueue(true);
-			if (result == noErr)
-				[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
-		}
-		else
-			[self stopPlayQueue];
-	}
-	else
-	{		
-		OSStatus result = player->StartQueue(false);
-		if (result == noErr)
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
-	}
-
+ 
 }
 
 #pragma mark - Record
@@ -575,8 +559,26 @@ char *OSTypeToStr(char *buf, OSType t)
 {
     if (buttonTag == PLAY_USER_VOIDC_BUTTON_TAG) {
         // play user recording voice
+        /*if (player->IsRunning())
+        {
+            if (playbackWasPaused) {
+                OSStatus result = player->StartQueue(true);
+                if (result == noErr)
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
+            }
+            else
+                [self stopPlayQueue];
+        }
+        else
+        {		
+            OSStatus result = player->StartQueue(false);
+            if (result == noErr)
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
+        }*/
+        
     } else {
         // play src voice
+        
     }
 }
 

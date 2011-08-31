@@ -400,6 +400,7 @@
 			children = (
 				95B9657313FE094C002F6087 /* WaveDecode */,
 				95B9399213F6791C006F4D61 /* UMeng */,
+				0DE9C224140BBE630025BDD2 /* iPublicUtility */,
 				0D90AA2E13D69F13005FA104 /* Resources */,
 				0D8E166913D471830005CD0F /* Classes */,
 				0D8E163113D471580005CD0F /* Voice */,
@@ -504,7 +505,6 @@
 		0D8E166913D471830005CD0F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0DE9C224140BBE630025BDD2 /* iPublicUtility */,
 				0D872DA413EEDA3700361672 /* Recording */,
 				0D872D7813EE799700361672 /* DataBase */,
 				0D3B8C9E13DC0892005898CD /* Cells */,
@@ -630,6 +630,7 @@
 				0DE9C22B140BBE730025BDD2 /* CADebugMacros.cpp */,
 			);
 			name = iPublicUtility;
+			path = Voice/Classes;
 			sourceTree = "<group>";
 		};
 		95B9399213F6791C006F4D61 /* UMeng */ = {
