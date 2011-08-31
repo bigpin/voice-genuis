@@ -12,6 +12,7 @@
 #import "WaveView.h"
 #import "AQRecorder.h"
 #import "AQPlayer.h"
+#import "RecordingWaveCell.h"
 
 #define PLAY_SRC_VOIDC_BUTTON_TAG 50001
 #define PLAY_USER_VOIDC_BUTTON_TAG 50002
@@ -28,7 +29,7 @@
     UITextView*             _sentenceView;
     NSString*               wavefile;
     
-	AQPlayer*				player;
+	//AQPlayer*				player;
 	AQRecorder*				recorder;
     NSMutableDictionary*    recordSetting;
     NSString*               recorderFilePath;
@@ -41,11 +42,13 @@
     UILabel*                _costTimelabel;
     UILabel*                _totalTimelabel;
     NSString*               resourcePath;
-    BOOL						playbackWasInterrupted;
-	BOOL						playbackWasPaused;
+    BOOL					playbackWasInterrupted;
+	BOOL					playbackWasPaused;
 	
-	CFStringRef					recordFilePath;	
+	CFStringRef				recordFilePath;
+    RecordingWaveCell *     recordCell;
 }
+
 @property (nonatomic, assign) NSString* resourcePath;
 @property (nonatomic, retain) IBOutlet UITableView* recordingTableView;
 @property (nonatomic, assign) id<RecordingDelegate> recordingdelegate;
@@ -59,16 +62,12 @@
 @property (nonatomic, retain) UILabel*         costTimelabel;
 @property (nonatomic, retain) UILabel*         totalTimelabel;
 @property (nonatomic, retain) UISlider*        timeSlider;
-@property (readonly)			AQPlayer			*player;
+//@property (readonly)			AQPlayer			*player;
 @property (readonly)			AQRecorder			*recorder;
 @property						BOOL				playbackWasInterrupted;
 
 - (void)initMembers;
 - (void) loadToolbar;
-- (BOOL) prepareToRecord;
-- (void) startrecorder;
-- (void) stopRecording;
-
 - (void) updateAudioDisplay;
 
 - (void) onRecording:(id)sender;

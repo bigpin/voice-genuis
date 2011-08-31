@@ -34,5 +34,5 @@
 - (CGPathRef)giveAPath;
 
 - (bool)loadwavedata;
-
+- (void)clearwavedata;
 @end

@@ -123,7 +123,11 @@ AQRecorder::~AQRecorder()
 {
 	AudioQueueDispose(mQueue, TRUE);
 	AudioFileClose(mRecordFile);
-	if (mFileName) CFRelease(mFileName);
+	if (mFileName)
+	{
+		CFRelease(mFileName);
+		mFileName = NULL;
+	}
 }
 
 // ____________________________________________________________________________________
@@ -225,13 +229,14 @@ void AQRecorder::StartRecord(CFStringRef inRecordFile)
 										 &mRecordFormat, &size), "couldn't get queue's format");
 			
 		NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent: (NSString*)inRecordFile];	
-			
+        NSLog(@"%@", recordFile);
 		url = CFURLCreateWithString(kCFAllocatorDefault, (CFStringRef)recordFile, NULL);
 		
 		// create the audio file
 		XThrowIfError(AudioFileCreateWithURL(url, kAudioFileWAVEType, &mRecordFormat, kAudioFileFlags_EraseFile,
 										  &mRecordFile), "AudioFileCreateWithURL failed");
 		CFRelease(url);
+        url = NULL;
 		
 		// copy the cookie first to give the file object as much info as we can about the data going in
 		// not necessary for pcm, but required for some compressed audio
@@ -272,5 +277,6 @@ void AQRecorder::StopRecord()
 		mFileName = NULL;
 	}
 	AudioQueueDispose(mQueue, true);
+    mQueue = NULL;
 	AudioFileClose(mRecordFile);
 }

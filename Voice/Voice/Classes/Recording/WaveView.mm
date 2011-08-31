@@ -37,8 +37,22 @@
     [super dealloc];
 }
 
+- (void)clearwavedata;
+{
+    if (wavefile) {
+        delete wavefile;
+        wavefile = NULL;
+    }
+    
+    dwWidPerSencond = 0;
+    dwavesecond = 0;
+    buffertotal = 0;
+    waveSampleVector.clear();   
+}
+
 - (bool)loadwavedata
 {
+    [self clearwavedata];
     // 波形图宽高
     int nWidth = self.frame.size.width;
     int nHeight = self.frame.size.height;
@@ -77,33 +91,6 @@
 
     UIColor* c = [UIColor whiteColor];
     CGContextSetStrokeColorWithColor(context, [c CGColor]);
-    /*CGPathRef halfPath = [self giveAPath];
-    
-    // Build the destination path
-    CGMutablePathRef path = CGPathCreateMutable();
-    
-    // Transform to fit the waveform ([0,1] range) into the vertical space 
-    // ([halfHeight,height] range)
-    double halfHeight = floor(rect.size.height  / 2.0 );
-    CGAffineTransform xf = CGAffineTransformIdentity;
-    xf = CGAffineTransformTranslate( xf, 0.0, halfHeight );
-    xf = CGAffineTransformScale( xf, 1.0, halfHeight );
-    
-    // Add the transformed path to the destination path
-    CGPathAddPath( path, &xf, halfPath );
-    
-    // Transform to fit the waveform ([0,1] range) into the vertical space
-    // ([0,halfHeight] range), flipping the Y axis
-    xf = CGAffineTransformIdentity;
-    xf = CGAffineTransformTranslate( xf, 0.0, halfHeight );
-    xf = CGAffineTransformScale( xf, 1.0, -halfHeight );
-    
-    // Add the transformed path to the destination path
-    CGPathAddPath( path, &xf, halfPath );
-    CGContextStrokePath(context);
-    
-    CGPathRelease( halfPath ); // clean up!
-     */
     if (waveSampleVector.size() > 0) {
          for(size_t i = 1; i < waveSampleVector.size(); i++)
         {
