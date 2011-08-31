@@ -81,7 +81,8 @@
 		0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */; };
 		0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */; };
 		0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */; };
-		9585CB41140E368E006AF6FE /* libisaybio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9585CB40140E368E006AF6FE /* libisaybio.a */; };
+		9583C8A1140E4F3E0025BC2B /* libisaybio.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583C89F140E4F3E0025BC2B /* libisaybio.d.a */; };
+		9583C8A2140E4F3E0025BC2B /* libisaybio.s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */; };
 		95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9398C13F66432006F4D61 /* AudioToolbox.framework */; };
 		95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9399613F67990006F4D61 /* SystemConfiguration.framework */; };
 		95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */; };
@@ -245,8 +246,9 @@
 		0DFCFF6C14016A5100B1050E /* SettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingSwitchCell.h; sourceTree = "<group>"; };
 		0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingSwitchCell.m; sourceTree = "<group>"; };
 		0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
+		9583C89F140E4F3E0025BC2B /* libisaybio.d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.d.a; path = Voice/WaveDecode/libisaybio.d.a; sourceTree = "<group>"; };
+		9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.s.a; path = Voice/WaveDecode/libisaybio.s.a; sourceTree = "<group>"; };
 		9585CB3F140E3683006AF6FE /* isaybio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = isaybio.h; path = Voice/WaveDecode/isaybio.h; sourceTree = "<group>"; };
-		9585CB40140E368E006AF6FE /* libisaybio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.a; path = Voice/WaveDecode/libisaybio.a; sourceTree = "<group>"; };
 		95B9398C13F66432006F4D61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		95B9399613F67990006F4D61 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary_1.6.4.a; path = Voice/UMeng/libMobClickLibrary_1.6.4.a; sourceTree = "<group>"; };
@@ -287,7 +289,8 @@
 				0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */,
 				0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */,
 				95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.4.a in Frameworks */,
-				9585CB41140E368E006AF6FE /* libisaybio.a in Frameworks */,
+				9583C8A1140E4F3E0025BC2B /* libisaybio.d.a in Frameworks */,
+				9583C8A2140E4F3E0025BC2B /* libisaybio.s.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,7 +429,8 @@
 		0D8E162A13D471580005CD0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9585CB40140E368E006AF6FE /* libisaybio.a */,
+				9583C89F140E4F3E0025BC2B /* libisaybio.d.a */,
+				9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */,
 				0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */,
 				95B9399613F67990006F4D61 /* SystemConfiguration.framework */,
 				95B9398C13F66432006F4D61 /* AudioToolbox.framework */,

@@ -15,6 +15,7 @@
 #import "ListeningVolumView.h"
 #import "RecordingViewController.h"
 #import "SettingViewController.h"
+#import "isaybio.h"
 
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
@@ -117,6 +118,15 @@
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
     AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
     [fileURL release];
+    
+    char strtemp[256];
+    [wavefile getCString:strtemp maxLength:256 encoding:NSUTF8StringEncoding];
+    
+    char strout[256];
+    [wavefile getCString:strout maxLength:256 encoding:NSUTF8StringEncoding];
+    
+    if ([isaybio ISB_LoadFile:strtemp])
+        [isaybio ISB_SaveFile:strout];
     
     self.player = newPlayer;
     [player prepareToPlay];
