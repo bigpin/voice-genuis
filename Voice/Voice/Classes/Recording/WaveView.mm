@@ -81,6 +81,37 @@
     return true;
 }
 
+- (bool)loadwavedatafromTime;
+{
+    [self clearwavedata];
+    // 波形图宽高
+    int nWidth = self.frame.size.width;
+    int nHeight = self.frame.size.height;
+    
+    char strtemp[256];
+    [wavefilename getCString:strtemp maxLength:256 encoding:NSUTF8StringEncoding];
+    if (!wavefile) {
+        wavefile = new CWaveFile();
+    }
+    wavefile->Open(strtemp);
+    WAVEFORMATEX waveformatex = wavefile->GetWaveFormat();
+    
+    unsigned char* pBuffer = nil;
+    //    unsigned long nBufferSize = 0;
+    wavefile->ReadWaveData(starttime, endtime, pBuffer, buffertotal);
+    //   unsigned long bytesperHDR = (waveformatex.nAvgBytesPerSec / 10) * 2;
+    dwavesecond = (double)buffertotal / (double)waveformatex.nAvgBytesPerSec;
+    
+    unsigned long wavesecondtemp = (unsigned long)dwavesecond + 1;
+    dwWidPerSencond = nWidth / wavesecondtemp;
+    
+    //waveSampleVector.clear();
+    GetWaveSample(waveformatex, pBuffer, buffertotal, dwWidPerSencond, nHeight, waveSampleVector);
+    [self setNeedsDisplay];
+    return true;
+
+}
+
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect

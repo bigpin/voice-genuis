@@ -87,6 +87,12 @@ char *OSTypeToStr(char *buf, OSType t)
         recordCell.waveView.wavefilename = recordFile;
         [recordCell.waveView loadwavedata];
     }
+    NSFileManager *mgr = [NSFileManager defaultManager];
+    if ([mgr fileExistsAtPath:recordFile isDirectory:nil]) {
+        recordCell.playingButton.enabled = YES;
+    } else {
+        recordCell.playingButton.enabled = NO;
+    }
 	//recordFilePath = (CFStringRef)[NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.wav"];
 	//player->CreateQueueForFile(recordFilePath);
     
@@ -104,6 +110,7 @@ char *OSTypeToStr(char *buf, OSType t)
         recorder = nil;
         recordSetting = nil;
         recorderFilePath = nil;
+        isStopPlaySrc = NO;
     }
     return self;
 }
@@ -159,6 +166,11 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    if (player != nil) {
+        [player stop];
+        [player release];
+        player = nil;
+    }
     if (recorder != nil) {
         if (recorder->IsRunning()) // If we are currently recording, stop and save the file.
         {
@@ -218,7 +230,7 @@ char *OSTypeToStr(char *buf, OSType t)
     
 	// start time
 	//[items addObject:itemFlexedSpace];
-    UILabel* start = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
+    /*UILabel* start = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
     [start setBackgroundColor:[UIColor clearColor]];
     [start setTextColor:[UIColor whiteColor]];
     [start setFont:[UIFont systemFontOfSize:10]];
@@ -261,7 +273,7 @@ char *OSTypeToStr(char *buf, OSType t)
     self.totalTimelabel = total;
     self.totalTimelabel.text = [NSString stringWithString:@"00.00.00"];
     [total release];
-    [totalItemTemp release];
+    [totalItemTemp release];*/
 
  	[items addObject:itemFlexibleSpace];
 	
@@ -308,11 +320,6 @@ char *OSTypeToStr(char *buf, OSType t)
         self.recordingItem.title = start;
         [self stopRecord];
     }
-}
-
-- (void) onPlaying:(id)sender;
-{
- 
 }
 
 #pragma mark - Record
@@ -412,7 +419,7 @@ char *OSTypeToStr(char *buf, OSType t)
             UIImage* itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/WavPlay.png", resourcePath]];
 
             [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
-            cell.playingButton.tag = PLAY_SRC_VOIDC_BUTTON_TAG;
+            cell.playingButton.tag = PLAY_SRC_VOICE_BUTTON_TAG;
             UIImage *iconImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/teachers/male1.png", resourcePath]];
             CGFloat f = 211.0/255.0;
             cell.waveView.layer.borderWidth = 1;
@@ -426,7 +433,7 @@ char *OSTypeToStr(char *buf, OSType t)
             cell.waveView.starttime = [_sentence startTime] * 1000;
             cell.waveView.endtime = [_sentence endTime] *1000;
             cell.waveView.wavefilename = wavefile;
-            [cell.waveView loadwavedata];
+            [cell.waveView loadwavedatafromTime];
             cell.timelabel.text = [NSString stringWithFormat:@"Time:%@",_sentence.endtime];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = (id)self;
@@ -448,10 +455,18 @@ char *OSTypeToStr(char *buf, OSType t)
            cell.backgroundColor = [UIColor colorWithRed:f green:f blue:f alpha:1.0];
            UIImage* itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/WavPlay.png", resourcePath]];
             [cell.playingButton setImage:itemImage forState:UIControlStateNormal];
-            cell.playingButton.tag = PLAY_USER_VOIDC_BUTTON_TAG;
+            cell.playingButton.tag = PLAY_USER_VOICE_BUTTON_TAG;
             UIImage *iconImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/recording.png", resourcePath]];
             cell.icon.image = iconImage;
             cell.delegate = (id)self;
+            NSFileManager *mgr = [NSFileManager defaultManager];
+            NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
+            if ([mgr fileExistsAtPath:recordFile isDirectory:nil]) {
+                cell.playingButton.enabled = YES;
+            } else {
+                cell.playingButton.enabled = NO;
+            }
+
             /*cell.waveView.starttime = [_sentence startTime] * 1000;
             cell.waveView.endtime = [_sentence endTime] *1000;
             cell.waveView.wavefilename = wavefile;
@@ -501,28 +516,42 @@ char *OSTypeToStr(char *buf, OSType t)
 #pragma RecordingWaveCell
 - (void)playing:(NSInteger)buttonTag;
 {
-    if (buttonTag == PLAY_USER_VOIDC_BUTTON_TAG) {
+    if (buttonTag == PLAY_SRC_VOICE_BUTTON_TAG) {
         // play user recording voice
-        /*if (player->IsRunning())
-        {
-            if (playbackWasPaused) {
-                OSStatus result = player->StartQueue(true);
-                if (result == noErr)
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
-            }
-            else
-                [self stopPlayQueue];
+        if (player != nil) {
+            [player stop];
+            [player release];
+            player = nil;
         }
-        else
-        {		
-            OSStatus result = player->StartQueue(false);
-            if (result == noErr)
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueResumed" object:self];
-        }*/
+        NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
+        player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+        [fileURL release];
+        player.currentTime = [_sentence startTime];
+        [player play];
+        isStopPlaySrc = YES;
+        NSTimeInterval inter = [_sentence endTime] - [_sentence startTime];
+        [NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(stopPlayingSrcVoice) userInfo:nil repeats:NO];
         
     } else {
         // play src voice
-        
+        if (player != nil) {
+            [player stop];
+            [player release];
+            player = nil;
+        }
+        NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
+        NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: recordFile];
+        player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+        [fileURL release];
+        [player play];
+    }
+}
+
+- (void)stopPlayingSrcVoice
+{
+    if (isStopPlaySrc) {
+        isStopPlaySrc = NO;
+        [player stop];
     }
 }
 
@@ -530,6 +559,13 @@ char *OSTypeToStr(char *buf, OSType t)
 void interruptionListener(	void *	inClientData,
                           UInt32	inInterruptionState)
 {
+    RecordingViewController *THIS = (RecordingViewController*)inClientData;
+	if (inInterruptionState == kAudioSessionBeginInterruption)
+	{
+		if (THIS->recorder->IsRunning()) {
+			[THIS stopRecord];
+		}
+	}
 	/*RecordingViewController *THIS = (RecordingViewController*)inClientData;
 	if (inInterruptionState == kAudioSessionBeginInterruption)
 	{
@@ -566,33 +602,6 @@ void propListener(	void *                  inClientData,
 		CFNumberGetValue(reason, kCFNumberSInt32Type, &reasonVal);
 		if (reasonVal != kAudioSessionRouteChangeReason_CategoryChange)
 		{
-			/*CFStringRef oldRoute = (CFStringRef)CFDictionaryGetValue(routeDictionary, CFSTR(kAudioSession_AudioRouteChangeKey_OldRoute));
-             if (oldRoute)	
-             {
-             printf("old route:\n");
-             CFShow(oldRoute);
-             }
-             else 
-             printf("ERROR GETTING OLD AUDIO ROUTE!\n");
-             
-             CFStringRef newRoute;
-             UInt32 size; size = sizeof(CFStringRef);
-             OSStatus error = AudioSessionGetProperty(kAudioSessionProperty_AudioRoute, &size, &newRoute);
-             if (error) printf("ERROR GETTING NEW AUDIO ROUTE! %d\n", error);
-             else
-             {
-             printf("new route:\n");
-             CFShow(newRoute);
-             }*/
-            
-			/*if (reasonVal == kAudioSessionRouteChangeReason_OldDeviceUnavailable)
-			{			
-				if (THIS->player->IsRunning()) {
-					[THIS pausePlayQueue];
-					[[NSNotificationCenter defaultCenter] postNotificationName:@"playbackQueueStopped" object:THIS];
-				}		
-			}*/
-            
 			// stop the queue if we had a non-policy route change
 			if (THIS->recorder->IsRunning()) {
 				[THIS stopRecord];

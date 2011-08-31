@@ -14,8 +14,8 @@
 #import "AQPlayer.h"
 #import "RecordingWaveCell.h"
 
-#define PLAY_SRC_VOIDC_BUTTON_TAG 50001
-#define PLAY_USER_VOIDC_BUTTON_TAG 50002
+#define PLAY_SRC_VOICE_BUTTON_TAG 50001
+#define PLAY_USER_VOICE_BUTTON_TAG 50002
 
 @protocol RecordingDelegate <NSObject>
 @optional
@@ -31,6 +31,7 @@
     
 	//AQPlayer*				player;
 	AQRecorder*				recorder;
+    AVAudioPlayer *         player;
     NSMutableDictionary*    recordSetting;
     NSString*               recorderFilePath;
     WaveView*               _waveView;
@@ -47,6 +48,7 @@
 	
 	CFStringRef				recordFilePath;
     RecordingWaveCell *     recordCell;
+    BOOL                    isStopPlaySrc;
 }
 
 @property (nonatomic, assign) NSString* resourcePath;
@@ -71,6 +73,5 @@
 - (void) updateAudioDisplay;
 
 - (void) onRecording:(id)sender;
-- (void) onPlaying:(id)sender;
 
 @end
