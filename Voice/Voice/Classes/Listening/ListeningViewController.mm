@@ -451,6 +451,7 @@
         RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
         detailViewController.recordingdelegate = (id)self;
         detailViewController.sentence = sentence;
+        detailViewController.nPos = nPosition;
         detailViewController.wavefile = wavefile;
         detailViewController.resourcePath = resourcePath;
         // ...
@@ -771,5 +772,15 @@
         BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
         [cell setIsHighlightText:YES];
     }
+}
+
+- (Sentence*)getSentencefromPos:(NSInteger)pos;
+{
+    if (pos > -1 && pos < [_sentencesArray count]) {
+        Sentence* sentence = [_sentencesArray objectAtIndex:pos];
+        return sentence;
+    }
+
+    return nil;
 }
 @end

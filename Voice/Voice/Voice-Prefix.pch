@@ -28,6 +28,9 @@
 #define MAGIN_OF_RIGHT         40
 #define DARK_BACKGROUND  [UIColor colorWithRed:151.0/255.0 green:152.0/255.0 blue:155.0/255.0 alpha:1.0]
 #define LIGHT_BACKGROUND [UIColor colorWithRed:172.0/255.0 green:173.0/255.0 blue:175.0/255.0 alpha:1.0]
+#define NAVI_COLOR_R    42.0/255.0
+#define NAVI_COLOR_G    57.0/255.0
+#define NAVI_COLOR_B    21.0/255.0
 
 #define NOTI_CHANGED_SETTING_VALUE      @"ChangedSettingValueNotification"
 #define NOTI_WILLENTERFOREGROUND        @"WillEnterForegroundNotification"
@@ -72,3 +75,6 @@
 #define STRING_ABOUT_DETAIL             @"当老板想安排略懂英语皮毛的你在有老外出现在正式场合和商务会谈上进行接待工作时，当你正在街上购物、散步，突然有一位老外来向你求助时，朋友聚会中突然有一位外国友人向你发出邀请时……遇到这些情况你该怎么办呢？如果你能够应对自如，那绝对是会迎来众多羡慕、赞赏的目光。不过你也可能会担心英语已经丢了好久，没关系，《社交英语》课程内容包括了报道、迎接、引见、提问、结束、致谢等等，说上几遍你一定能够表达自如且信心慢慢。"
 #define STRING_START_RECORDING          @"开始录音"
 #define STRING_STOP_RECORDING           @"停止录音"
+#define STRING_PREVIOUS_SENTENCE        @"上一句"
+#define STRING_NEXT_SENTENCE            @"下一句"
+

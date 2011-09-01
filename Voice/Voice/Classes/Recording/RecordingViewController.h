@@ -19,7 +19,7 @@
 
 @protocol RecordingDelegate <NSObject>
 @optional
-
+- (Sentence*)getSentencefromPos:(NSInteger)pos;
 @end
 
 @interface RecordingViewController : UIViewController {
@@ -38,7 +38,8 @@
     UIToolbar*              _toolbar;
     
     UIBarButtonItem*        _recordingItem;
-    UIBarButtonItem*        _playingItem;
+    UIBarButtonItem*        _previousItem;
+    UIBarButtonItem*        _nextItem;
     UIProgressView*         _timeProgress;
     UILabel*                _costTimelabel;
     UILabel*                _totalTimelabel;
@@ -49,6 +50,7 @@
 	CFStringRef				recordFilePath;
     RecordingWaveCell *     recordCell;
     BOOL                    isStopPlaySrc;
+    NSInteger               nPos;
 }
 
 @property (nonatomic, assign) NSString* resourcePath;
@@ -60,19 +62,23 @@
 @property (nonatomic, retain) IBOutlet WaveView* waveView;
 @property (nonatomic, retain) IBOutlet UIToolbar* toolbar;
 @property (nonatomic, retain) UIBarButtonItem* recordingItem;
-@property (nonatomic, retain) UIBarButtonItem* playingItem;
+@property (nonatomic, retain) UIBarButtonItem* previousItem;
+@property (nonatomic, retain) UIBarButtonItem* nextItem;
 @property (nonatomic, retain) UILabel*         costTimelabel;
 @property (nonatomic, retain) UILabel*         totalTimelabel;
 @property (nonatomic, retain) UIProgressView*        timeProgress;
 //@property (readonly)			AQPlayer			*player;
 @property (readonly)			AQRecorder			*recorder;
 @property						BOOL				playbackWasInterrupted;
+@property (nonatomic, assign) NSInteger nPos;
 
 - (void)initMembers;
 - (void) loadToolbar;
 - (void) updateAudioDisplay;
 
 - (void) onRecording:(id)sender;
+- (void) onPrevious:(id)sender;
+- (void) onNext:(id)sender;
 - (void)animationProgress;
 
 @end

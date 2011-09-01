@@ -10,9 +10,6 @@
 #import "ScenesCoverViewController.h"
 #import "FavorViewController.h"
 #import "SettingViewController.h"
-#define NAVI_COLOR_R    42.0/255.0
-#define NAVI_COLOR_G    57.0/255.0
-#define NAVI_COLOR_B    21.0/255.0
 
 @implementation CustomUITabBarController
 

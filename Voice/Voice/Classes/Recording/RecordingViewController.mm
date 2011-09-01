@@ -18,12 +18,14 @@
 @synthesize waveView = _waveView;
 @synthesize toolbar = _toolbar;
 @synthesize recordingItem = _recordingItem;
-@synthesize playingItem = _playingItem;
 @synthesize costTimelabel = _costTimelabel;
 @synthesize totalTimelabel = _totalTimelabel;
 @synthesize timeProgress = _timeProgress;
 @synthesize recordingTableView = _recordingTableView;
 @synthesize resourcePath;
+@synthesize previousItem = _previousItem;
+@synthesize nextItem = _nextItem;
+@synthesize nPos;
 
 //@synthesize player;
 @synthesize recorder;
@@ -209,10 +211,10 @@ char *OSTypeToStr(char *buf, OSType t)
     itemFlexedSpace.width = 10.0;
 	/*itemFlexedSpace.width = [[UIDevice currentDevice] userInterfaceIdiom] == [UIUserInterfaceIdiomPad]? 35.0 : 20.0;*/
 	
-    [items addObject:itemFlexedSpaceSmall];
+    [items addObject:itemFlexedSpace];
     
 	// recording button
-	[items addObject:itemFlexibleSpace];
+	//[items addObject:itemFlexibleSpace];
     NSString* recordingString = STRING_START_RECORDING;
 	UIBarButtonItem* recordingItemTemp = [[UIBarButtonItem alloc] initWithTitle:recordingString                                                                                  
                                                                  style:UIBarButtonItemStyleBordered
@@ -222,7 +224,27 @@ char *OSTypeToStr(char *buf, OSType t)
 	self.recordingItem = recordingItemTemp;
 	[recordingItemTemp release];
 	
+    [items addObject:itemFlexibleSpace];
+    NSString* last = STRING_PREVIOUS_SENTENCE;
+    
+	UIBarButtonItem* previousTemp = [[UIBarButtonItem alloc] initWithTitle:last                                                                                  
+                                                                          style:UIBarButtonItemStyleBordered
+                                                                         target:self
+                                                                         action:@selector(onPrevious:)];
+	[items addObject:previousTemp];
+	self.previousItem = previousTemp;
+	[previousTemp release];
 	
+    [items addObject:itemFlexedSpace];
+    NSString* next = STRING_NEXT_SENTENCE;
+	UIBarButtonItem* nextTemp = [[UIBarButtonItem alloc] initWithTitle:next                                                                                  
+                                                                     style:UIBarButtonItemStyleBordered
+                                                                    target:self
+                                                                    action:@selector(onNext:)];
+	[items addObject:nextTemp];
+	self.nextItem = nextTemp;
+	[nextTemp release];
+
 	// playing
 	/*[items addObject:itemFlexedSpace];
     itemImage = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
@@ -235,6 +257,7 @@ char *OSTypeToStr(char *buf, OSType t)
 	[playingItemTemp release];
 	*/
     
+    /*
 	// start time
 	[items addObject:itemFlexedSpace];
     UILabel* start = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
@@ -269,14 +292,20 @@ char *OSTypeToStr(char *buf, OSType t)
     self.totalTimelabel.text = [NSString stringWithString:@"0.0"];
     [total release];
     [totalItemTemp release];
-
+   
+    
  	[items addObject:itemFlexibleSpace];
-	
+	 */
     [items addObject:itemFlexedSpaceSmall];
 	
 	[itemFlexibleSpace release];
 	[itemFlexedSpace release];
 	[itemFlexedSpaceSmall release];
+    [self.toolbar setTintColor:[[UIColor alloc] initWithRed:NAVI_COLOR_R
+                                                 green:NAVI_COLOR_G
+                                                  blue:NAVI_COLOR_B
+                                                 alpha:1.0]];
+
 	[self.toolbar setItems:items animated:YES];
 	[items release];
 }
@@ -314,6 +343,26 @@ char *OSTypeToStr(char *buf, OSType t)
         NSString* start = STRING_START_RECORDING;
         self.recordingItem.title = start;
         [self stopRecord];
+    }
+}
+
+- (void) onPrevious:(id)sender;
+{
+    Sentence* s = [recordingdelegate getSentencefromPos:(nPos-1)];
+    if (s != nil) {
+        self.sentence = s;
+        nPos--;
+        [self.recordingTableView reloadData];
+    }
+}
+
+- (void) onNext:(id)sender;
+{
+     Sentence* s = [recordingdelegate getSentencefromPos:(nPos+1)];
+    if (s != nil) {
+        self.sentence = s;
+        nPos++;
+        [self.recordingTableView reloadData];
     }
 }
 
