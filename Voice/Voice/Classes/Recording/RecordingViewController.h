@@ -73,5 +73,6 @@
 - (void) updateAudioDisplay;
 
 - (void) onRecording:(id)sender;
+- (void)animationProgress;
 
 @end

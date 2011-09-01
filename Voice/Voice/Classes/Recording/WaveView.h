@@ -24,12 +24,15 @@
     unsigned long buffertotal;
     CWaveFile* wavefile;
     IntPairVector waveSampleVector;
+    BOOL bReadfromTime;
 }
 
 @property (nonatomic, retain) NSString* wavefilename;
 @property (nonatomic) unsigned long starttime;
 @property (nonatomic) unsigned long endtime;
-
+@property (nonatomic) BOOL bReadfromTime;
+@property (nonatomic) unsigned long dwWidPerSencond;
+@property (nonatomic) double dwavesecond;
 - (void)setPower:(CGFloat)fPower peak:(CGFloat)fPeak;
 - (CGPathRef)giveAPath;
 

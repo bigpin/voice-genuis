@@ -86,6 +86,8 @@ char *OSTypeToStr(char *buf, OSType t)
     if (recordCell != nil) {
         recordCell.waveView.wavefilename = recordFile;
         [recordCell.waveView loadwavedata];
+        recordCell.timelabel.text = [NSString stringWithFormat:@"Time:0.2%f", recordCell.waveView.dwavesecond];
+
     }
     NSFileManager *mgr = [NSFileManager defaultManager];
     if ([mgr fileExistsAtPath:recordFile isDirectory:nil]) {
@@ -152,7 +154,7 @@ char *OSTypeToStr(char *buf, OSType t)
     wavefile = [[NSString alloc] initWithFormat:@"%@/%@.caf", documentsDirectory, @"2011-08-20 09/31/06 +0000"];  
     self.waveView.wavefilename = wavefile;
     [self.waveView loadwavedata];*/
-  
+    self.totalTimelabel.text = [NSString stringWithFormat:@"%.1f", [_sentence endTime] - [_sentence startTime]];
     [self.recordingTableView reloadData];
 }
 
@@ -184,6 +186,11 @@ char *OSTypeToStr(char *buf, OSType t)
     // Return YES for supported orientations
     return YES;
     //return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation;
+{
+    [self.recordingTableView reloadData];
 }
 
 - (void) loadToolbar;
@@ -237,12 +244,11 @@ char *OSTypeToStr(char *buf, OSType t)
     UIBarButtonItem* startItemTemp = [[UIBarButtonItem alloc] initWithCustomView:start];
     [items addObject:startItemTemp];
     self.costTimelabel = start;
-    self.costTimelabel.text = [NSString stringWithString:@"00.00.00"];
+    self.costTimelabel.text = [NSString stringWithString:@"0.0"];
     [start release];
     [startItemTemp release];
     
     // slider
- 	//[items addObject:itemFlexedSpace];
     UIProgressView* s = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 0, 120, 9)];
     UIBarButtonItem* sliderTemp = [[UIBarButtonItem alloc] initWithCustomView:s];
     [s setProgress:0];
@@ -252,7 +258,7 @@ char *OSTypeToStr(char *buf, OSType t)
     [sliderTemp release];
     
     // total time
-    //[items addObject:itemFlexedSpace];
+    [items addObject:itemFlexedSpace];
     UILabel* total = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
     [total setBackgroundColor:[UIColor clearColor]];
     [total setTextColor:[UIColor whiteColor]];
@@ -260,7 +266,7 @@ char *OSTypeToStr(char *buf, OSType t)
     UIBarButtonItem* totalItemTemp = [[UIBarButtonItem alloc] initWithCustomView:total];
     [items addObject:totalItemTemp];
     self.totalTimelabel = total;
-    self.totalTimelabel.text = [NSString stringWithString:@"00.00.00"];
+    self.totalTimelabel.text = [NSString stringWithString:@"0.0"];
     [total release];
     [totalItemTemp release];
 
@@ -302,13 +308,18 @@ char *OSTypeToStr(char *buf, OSType t)
             // Hook the level meter up to the Audio Queue for the recorder
             //[lvlMeter_in setAq: recorder->Queue()];
         }	
-        
+        [NSTimer scheduledTimerWithTimeInterval: 0.35 target: self selector:@selector(animationProgress) userInfo: nil repeats: YES];
 
     } else {
         NSString* start = STRING_START_RECORDING;
         self.recordingItem.title = start;
         [self stopRecord];
     }
+}
+
+- (void)animationProgress
+{
+    
 }
 
 #pragma mark - Record
@@ -422,10 +433,12 @@ char *OSTypeToStr(char *buf, OSType t)
             cell.waveView.starttime = [_sentence startTime] * 1000;
             cell.waveView.endtime = [_sentence endTime] *1000;
             cell.waveView.wavefilename = wavefile;
-            [cell.waveView loadwavedatafromTime];
-            cell.timelabel.text = [NSString stringWithFormat:@"Time:%@",_sentence.endtime];
+            //[cell.waveView loadwavedatafromTime];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = (id)self;
+            cell.waveView.bReadfromTime = YES;
+            [cell.waveView setNeedsLayout];
+            cell.timelabel.text = [NSString stringWithFormat:@"Time:%@",_sentence.endtime];
           return cell;
             
 
@@ -456,12 +469,11 @@ char *OSTypeToStr(char *buf, OSType t)
                 cell.playingButton.enabled = NO;
             }
 
-            /*cell.waveView.starttime = [_sentence startTime] * 1000;
-            cell.waveView.endtime = [_sentence endTime] *1000;
-            cell.waveView.wavefilename = wavefile;
-            [cell.waveView loadwavedata];*/
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             recordCell = cell;
+            cell.waveView.bReadfromTime = NO;
+            cell.waveView.wavefilename = recordFile;
+           [cell.waveView setNeedsLayout];
             return cell;
         }
     }

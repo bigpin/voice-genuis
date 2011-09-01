@@ -14,6 +14,9 @@
 @synthesize wavefilename;
 @synthesize starttime;
 @synthesize endtime;
+@synthesize bReadfromTime;
+@synthesize dwWidPerSencond;
+@synthesize dwavesecond;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -97,9 +100,7 @@
     WAVEFORMATEX waveformatex = wavefile->GetWaveFormat();
     
     unsigned char* pBuffer = nil;
-    //    unsigned long nBufferSize = 0;
     wavefile->ReadWaveData(starttime, endtime, pBuffer, buffertotal);
-    //   unsigned long bytesperHDR = (waveformatex.nAvgBytesPerSec / 10) * 2;
     dwavesecond = (double)buffertotal / (double)waveformatex.nAvgBytesPerSec;
     
     unsigned long wavesecondtemp = (unsigned long)dwavesecond + 1;
@@ -107,7 +108,6 @@
     
     //waveSampleVector.clear();
     GetWaveSample(waveformatex, pBuffer, buffertotal, dwWidPerSencond, nHeight, waveSampleVector);
-    [self setNeedsDisplay];
     return true;
 
 }
@@ -117,8 +117,16 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    CGContextRef context = UIGraphicsGetCurrentContext();    
+    if (wavefilename == nil) {
+        return;
+    }
+    CGContextRef context = UIGraphicsGetCurrentContext();  
     
+    if (bReadfromTime) {
+        [self loadwavedatafromTime];
+    } else {
+        [self loadwavedata];
+    }
 
     UIColor* c = [UIColor whiteColor];
     CGContextSetStrokeColorWithColor(context, [c CGColor]);
@@ -130,6 +138,7 @@
         }
         CGContextStrokePath(context);
     }
+    
     
     CGContextSetLineWidth(context, 1);
      CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
@@ -145,7 +154,27 @@
     CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2);
     CGContextStrokePath(context);
     
-
+    if (dwWidPerSencond != 0) {
+        NSInteger nTimeCount = rect.size.width / dwWidPerSencond;
+        CGFloat h = rect.size.height - 10;
+       /// CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        CGContextSelectFont(context, "Helvetica", 12, kCGEncodingMacRoman);
+        CGContextSetTextDrawingMode(context, kCGTextFill);
+        CGContextSetFillColorWithColor(context, [clr CGColor]);
+        CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+       for (NSInteger i = 0; i < nTimeCount; i++) {
+            CGFloat w = (i+1) * dwWidPerSencond;
+            CGContextMoveToPoint(context, w, h);
+            CGContextAddLineToPoint(context, w, rect.size.height);
+            
+           CGAffineTransform xform = CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0);
+           CGContextSetTextMatrix(context, xform);
+           NSString* str = [NSString stringWithFormat:@"%d.00", (i+1)];
+           CGContextSetTextPosition(context, w + 2, rect.size.height - 2);
+           CGContextShowText(context, [str UTF8String], strlen([str UTF8String]));
+        }
+        CGContextStrokePath(context);
+    }
     UIGraphicsEndImageContext();
 }
 
