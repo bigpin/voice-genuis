@@ -117,6 +117,18 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // init the player
+    // 解压wave
+    if (![[NSFileManager defaultManager] fileExistsAtPath:wavefile]) {
+        char strwavefile[256];
+        [wavefile getCString:strwavefile maxLength:256 encoding:NSUTF8StringEncoding];
+        
+        NSString* isbfile = [[wavefile substringToIndex:wavefile.length - 4] stringByAppendingPathExtension:@"isb"];
+        char strisbfile[256];
+        [isbfile getCString:strisbfile maxLength:256 encoding:NSUTF8StringEncoding];
+        if ([isaybio ISB_LoadFile:strisbfile])
+            [isaybio ISB_SaveFile:strwavefile];
+    }
+    
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
     AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
     [fileURL release];
