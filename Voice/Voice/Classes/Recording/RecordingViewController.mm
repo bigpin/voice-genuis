@@ -146,6 +146,11 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
+    NSFileManager* mgr = [NSFileManager defaultManager];
+    if ([mgr fileExistsAtPath:recordFile]) {
+        [mgr removeItemAtPath:recordFile error:nil];
+    }
     [self loadToolbar];
     // Do any additional setup after loading the view from its nib.
     
@@ -296,7 +301,7 @@ char *OSTypeToStr(char *buf, OSType t)
     
  	[items addObject:itemFlexibleSpace];
 	 */
-    [items addObject:itemFlexedSpaceSmall];
+    [items addObject:itemFlexedSpace];
 	
 	[itemFlexibleSpace release];
 	[itemFlexedSpace release];

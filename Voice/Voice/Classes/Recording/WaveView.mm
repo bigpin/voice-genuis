@@ -120,6 +120,10 @@
     if (wavefilename == nil) {
         return;
     }
+    NSFileManager* mgr = [NSFileManager defaultManager];
+    if (![mgr fileExistsAtPath:wavefilename]) {
+        return;
+    }
     CGContextRef context = UIGraphicsGetCurrentContext();  
     
     if (bReadfromTime) {
