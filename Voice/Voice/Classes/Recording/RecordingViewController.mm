@@ -21,7 +21,7 @@
 @synthesize playingItem = _playingItem;
 @synthesize costTimelabel = _costTimelabel;
 @synthesize totalTimelabel = _totalTimelabel;
-@synthesize timeSlider = _timeSlider;
+@synthesize timeProgress = _timeProgress;
 @synthesize recordingTableView = _recordingTableView;
 @synthesize resourcePath;
 
@@ -229,8 +229,8 @@ char *OSTypeToStr(char *buf, OSType t)
 	*/
     
 	// start time
-	//[items addObject:itemFlexedSpace];
-    /*UILabel* start = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
+	[items addObject:itemFlexedSpace];
+    UILabel* start = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 20)];
     [start setBackgroundColor:[UIColor clearColor]];
     [start setTextColor:[UIColor whiteColor]];
     [start setFont:[UIFont systemFontOfSize:10]];
@@ -243,22 +243,11 @@ char *OSTypeToStr(char *buf, OSType t)
     
     // slider
  	//[items addObject:itemFlexedSpace];
-    UISlider* s = [[UISlider alloc] initWithFrame:CGRectMake(0, 0, 120, 21)];
+    UIProgressView* s = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 0, 120, 9)];
     UIBarButtonItem* sliderTemp = [[UIBarButtonItem alloc] initWithCustomView:s];
-    [s setMinimumValue:0];
-    [s setMaximumValue:1];
-    s.value = 0.0;
+    [s setProgress:0];
     [items addObject:sliderTemp];
-    self.timeSlider = s;
-    
-    UIImage* imageThumb = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-handle.png", resourcePath]];
-    
-    [self.timeSlider setThumbImage:imageThumb forState:UIControlStateNormal];
-    
-    UIImage* imageTrack = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-track-right.png", resourcePath]];
-    [self.timeSlider setMaximumTrackImage:imageTrack forState:UIControlStateNormal];
-    [self.timeSlider setMinimumTrackImage:imageTrack forState:UIControlStateNormal];
-
+    self.timeProgress = s;
     [s release];
     [sliderTemp release];
     
@@ -273,7 +262,7 @@ char *OSTypeToStr(char *buf, OSType t)
     self.totalTimelabel = total;
     self.totalTimelabel.text = [NSString stringWithString:@"00.00.00"];
     [total release];
-    [totalItemTemp release];*/
+    [totalItemTemp release];
 
  	[items addObject:itemFlexibleSpace];
 	

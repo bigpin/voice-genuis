@@ -54,6 +54,8 @@
         
         settingData = [[SettingData alloc] init];
         [settingData loadSettingData];
+        nLesson = settingData.eReadingMode == READING_MODE_WHOLE_TEXT ?  PLAY_LESSON : PLAY_SENTENCE;
+        looptype = settingData.bLoop ? PLAY_LOOP_TPYE_SINGLE : PLAY_LOOP_TPYE_LOOP;
 		NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 		[center addObserver:self selector:@selector(willEnterToBackground:) name:NOTI_WILLENTERFOREGROUND object:nil]; 
 

@@ -39,7 +39,7 @@
     
     UIBarButtonItem*        _recordingItem;
     UIBarButtonItem*        _playingItem;
-    UISlider*               _timeSlider;
+    UIProgressView*         _timeProgress;
     UILabel*                _costTimelabel;
     UILabel*                _totalTimelabel;
     NSString*               resourcePath;
@@ -63,7 +63,7 @@
 @property (nonatomic, retain) UIBarButtonItem* playingItem;
 @property (nonatomic, retain) UILabel*         costTimelabel;
 @property (nonatomic, retain) UILabel*         totalTimelabel;
-@property (nonatomic, retain) UISlider*        timeSlider;
+@property (nonatomic, retain) UIProgressView*        timeProgress;
 //@property (readonly)			AQPlayer			*player;
 @property (readonly)			AQRecorder			*recorder;
 @property						BOOL				playbackWasInterrupted;
