@@ -100,11 +100,14 @@
         resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
         imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iPad.png"];
 	}
-    covers = [[NSArray alloc] initWithObjects:
-              [UIImage imageWithContentsOfFile:imagepath],[UIImage imageWithContentsOfFile:imagepath],
-              [UIImage imageWithContentsOfFile:imagepath],[UIImage imageWithContentsOfFile:imagepath],
-              [UIImage imageWithContentsOfFile:imagepath],nil];
-	[coverflow setNumberOfCovers:[self.scenesArray count]];
+    UIImage* coverImage = [UIImage imageWithContentsOfFile:imagepath];
+    if (coverImage != nil) {
+        covers = [[NSMutableArray alloc] init];
+        for (NSInteger i = 0; i < [self.scenesArray count]; i++) {
+            [covers addObject:coverImage]; 
+        }
+    }
+ 	[coverflow setNumberOfCovers:[self.scenesArray count]];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
