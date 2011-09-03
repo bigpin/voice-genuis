@@ -67,7 +67,7 @@
 #define STRING_SHOW_SRC_TEXT            @"显示原文"
 #define STRING_SHOW_SRCANDTRANS_TEXT    @"显示原文和译文"
 #define STRING_SHOW_NO_TEXT             @"不显示"
-#define STRING_SETTING_LOOP_TEXT        @"循环朗读"
+#define STRING_SETTING_LOOP_TEXT        @"循环朗读全文"
 
 #define STRING_ABOUT_US                 @"关于我们"
 #define STRING_ABOUT_VERSION            @"版本号"

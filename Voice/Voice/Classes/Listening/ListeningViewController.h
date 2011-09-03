@@ -12,12 +12,6 @@
 #import "SettingData.h"
 
 #define VOLUMNVIEW_TAG  50001
-enum {
-    PLAY_LOOP_TPYE_NONE      = 0,
-    PLAY_LOOP_TPYE_SINGLE    = 1,
-    PLAY_LOOP_TPYE_LOOP      = 2,
-};
-typedef NSInteger PLAY_LOOP_TPYE;
 
 enum {
     PLAY_LESSON_TYPE_NONE = 0,
@@ -52,7 +46,6 @@ typedef enum {
     AVAudioPlayer *player;
     
     // 循环控制
-    PLAY_LOOP_TPYE looptype;         // 循环类型
     NSTimeInterval loopstarttime;   // 循环开始时间
     NSTimeInterval loopendtime;     // 循环结束时间
     
@@ -62,6 +55,7 @@ typedef enum {
     CGFloat fVolumn;
     PLAY_STATUS ePlayStatus;
     SettingData* settingData;
+    NSInteger nCurrentReadingCount;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
