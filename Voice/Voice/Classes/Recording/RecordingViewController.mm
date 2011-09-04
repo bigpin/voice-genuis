@@ -466,7 +466,7 @@ char *OSTypeToStr(char *buf, OSType t)
         }
         NSString* oritext = self.sentence.orintext;
         if (self.sentence.transtext != nil) {
-            oritext = [NSString stringWithFormat:@"%@ %@", oritext, self.sentence.transtext];
+            oritext = [NSString stringWithFormat:@"%@ \r\n %@", oritext, self.sentence.transtext];
         }
          cell.textLabel.text = oritext;
         cell.textLabel.lineBreakMode   = UILineBreakModeWordWrap;
