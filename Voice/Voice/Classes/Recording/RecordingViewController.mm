@@ -633,9 +633,11 @@ char *OSTypeToStr(char *buf, OSType t)
 {
     NSInteger poswillstop = [pos intValue];
     if (isStopPlaySrc && poswillstop == nPos) {
-        NSLog(@"stop");
-        isStopPlaySrc = NO;
-        [player stop];
+        if (player.currentTime >= [_sentence endTime]) {
+            NSLog(@"stop");
+            isStopPlaySrc = NO;
+            [player stop];
+        }
     }
 }
 
