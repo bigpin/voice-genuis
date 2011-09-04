@@ -26,6 +26,7 @@
 @synthesize previousItem = _previousItem;
 @synthesize nextItem = _nextItem;
 @synthesize nPos;
+@synthesize nTotalCount;
 
 //@synthesize player;
 @synthesize recorder;
@@ -146,12 +147,21 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = STRING_SINGLE_TRAINING;
     NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
     NSFileManager* mgr = [NSFileManager defaultManager];
     if ([mgr fileExistsAtPath:recordFile]) {
         [mgr removeItemAtPath:recordFile error:nil];
     }
+    
+    NSString* countString = [NSString stringWithFormat:@"%d / %d", (nPos + 1), nTotalCount];
+    UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:countString style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.rightBarButtonItem = rightItem;
+    [rightItem release];
+
     [self loadToolbar];
+    self.previousItem.enabled = (nPos != 0);
+    self.nextItem.enabled = ((nPos + 1) != nTotalCount);
     // Do any additional setup after loading the view from its nib.
     
     /*self.waveView.starttime = [_sentence startTime] * 1000;
@@ -163,6 +173,7 @@ char *OSTypeToStr(char *buf, OSType t)
     [self.waveView loadwavedata];*/
     self.totalTimelabel.text = [NSString stringWithFormat:@"%.1f", [_sentence endTime] - [_sentence startTime]];
     [self.recordingTableView reloadData];
+    [self performSelector:@selector(playingSrcVoice) withObject:nil afterDelay:1.0];
 }
 
 - (void)viewDidUnload
@@ -358,7 +369,12 @@ char *OSTypeToStr(char *buf, OSType t)
         self.sentence = s;
         nPos--;
         [self.recordingTableView reloadData];
+        NSString* countString = [NSString stringWithFormat:@"%d / %d", (nPos + 1), nTotalCount];
+        self.navigationItem.rightBarButtonItem.title = countString;
+        [self performSelector:@selector(playingSrcVoice) withObject:nil afterDelay:1.0];
     }
+    self.previousItem.enabled = (nPos != 0);
+    self.nextItem.enabled = ((nPos + 1) != nTotalCount);
 }
 
 - (void) onNext:(id)sender;
@@ -368,7 +384,12 @@ char *OSTypeToStr(char *buf, OSType t)
         self.sentence = s;
         nPos++;
         [self.recordingTableView reloadData];
+        NSString* countString = [NSString stringWithFormat:@"%d / %d", (nPos + 1), nTotalCount];
+        self.navigationItem.rightBarButtonItem.title = countString;
+        [self performSelector:@selector(playingSrcVoice) withObject:nil afterDelay:1.0];
     }
+    self.previousItem.enabled = (nPos != 0);
+    self.nextItem.enabled = ((nPos + 1) != nTotalCount);
 }
 
 - (void)animationProgress
@@ -389,6 +410,11 @@ char *OSTypeToStr(char *buf, OSType t)
 
     // [self.waveView setPower:[recorder averagePowerForChannel:0] peak:[recorder peakPowerForChannel: 0]]; 
 } 
+
+- (void) playingSrcVoice;
+{
+    [self playing:PLAY_SRC_VOICE_BUTTON_TAG];
+}
 
 #pragma mark - Delegate
 

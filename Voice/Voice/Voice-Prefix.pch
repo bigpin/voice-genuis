@@ -12,7 +12,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
-#define kBufferDurationSeconds .5
+#define kBufferDurationSeconds 1.0
 
 #define TAG_OF_TIME_INTEVAL 40000
 #define TAG_OF_READING_COUNT 40001
@@ -77,4 +77,6 @@
 #define STRING_STOP_RECORDING           @"停止录音"
 #define STRING_PREVIOUS_SENTENCE        @"上一句"
 #define STRING_NEXT_SENTENCE            @"下一句"
+#define STRING_SINGLE_TRAINING          @"单句训练"
+
 

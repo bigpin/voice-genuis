@@ -94,6 +94,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSString* backString = STRING_BACK;
+    UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithTitle:backString style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
+    [backItem release];
 
     UIImage* bkimage = [[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/background_gray.png", resourcePath]] stretchableImageWithLeftCapWidth:24 topCapHeight:15];
     self.view.backgroundColor = [UIColor colorWithPatternImage:bkimage];
@@ -146,11 +150,14 @@
     loopendtime = self.player.duration;
     fVolumn = 0.8;
     
-    NSString* recordingTitle = STRING_LISTENING;
+    NSString* recordingTitle = STRING_SINGLE_TRAINING;
     UIBarButtonItem* recordingItem = [[UIBarButtonItem alloc] initWithTitle:recordingTitle style:UIBarButtonItemStyleDone target:self action:@selector(onRecording)];
     self.navigationItem.rightBarButtonItem = recordingItem;
     self.recordingItem = recordingItem;
      [recordingItem release];
+
+    self.listeningToolbar.previousItem.enabled = (nPosition != 0);
+    self.listeningToolbar.nextItem.enabled = ((nPosition + 1) != [_sentencesArray count]);
 
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -182,12 +189,12 @@
 {
     timeStart = 0.0;
     [self updateViewForPlayer];
+    
     if (ePlayStatus == PLAY_STATUS_PLAYING) {
         // if playing, pause.
-        if (ePlayStatus == PLAY_STATUS_PLAYING) {
-            ePlayStatus = PLAY_STATUS_PAUSING;
-            [player pause];
-        }
+        
+        ePlayStatus = PLAY_STATUS_PAUSING;
+        [player pause];
     }
     [super viewWillDisappear:animated];
 }
@@ -448,11 +455,24 @@
     cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:indexPath];
     [cell setIsHighlightText:YES];
     
-    if (bRecording) {
+    RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
+    detailViewController.recordingdelegate = (id)self;
+    detailViewController.sentence = sentence;
+    detailViewController.nPos = nPosition;
+    detailViewController.nTotalCount = [_sentencesArray count];
+    detailViewController.wavefile = wavefile;
+    detailViewController.resourcePath = resourcePath;
+    // ...
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+
+   /* if (bRecording) {
         RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
         detailViewController.recordingdelegate = (id)self;
         detailViewController.sentence = sentence;
         detailViewController.nPos = nPosition;
+        detailViewController.nTotalCount = [_sentencesArray count];
         detailViewController.wavefile = wavefile;
         detailViewController.resourcePath = resourcePath;
         // ...
@@ -470,7 +490,7 @@
         ePlayStatus = PLAY_STATUS_PLAYING;
         [self.player play];
         [self updateViewForPlayer];
-    }
+    }*/
 
  }
 
@@ -518,33 +538,75 @@
 
 }
 
-- (void)highlightCell:(NSInteger)nCurrentIndex
+- (void)scrollCell
 {
-    if (nCurrentIndex != nPosition) {
-        // scroll to cell
-        NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
-        [_sentencesTableView scrollToRowAtIndexPath:path
-                                   atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-        BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
-        [cell setIsHighlightText:YES];
-        NSIndexPath * lastpath = [NSIndexPath indexPathForRow:0  inSection:nPosition];
-        cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
-        if (cell != nil && [cell isKindOfClass:[BubbleCell class]]) {
-            // interrupted somtimes.
-            [cell setIsHighlightText:NO];
+    int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
+    
+   if (nLesson == PLAY_SENTENCE) {
+        if (nCurrentIndex != nPosition) {
+            
+            NSLog(@"pause sentence");
+            [player pause];
+            Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
+            NSTimeInterval inter = [sentence endTime] - [sentence startTime];
+            inter = inter + inter * 0.1;
+            [NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
+
+            if (nCurrentReadingCount == settingData.nReadingCount) {
+                // scroll to cell
+                NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
+                [_sentencesTableView scrollToRowAtIndexPath:path
+                                           atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+                BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
+                [cell setIsHighlightText:YES];
+                NSIndexPath * lastpath = [NSIndexPath indexPathForRow:0  inSection:nPosition];
+                cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
+                if (cell != nil && [cell isKindOfClass:[BubbleCell class]]) {
+                    // interrupted somtimes.
+                    [cell setIsHighlightText:NO];
+                }
+                nPosition = nCurrentIndex;
+                nCurrentReadingCount = 0;
+                NSLog(@"scroll to cell %d", nCurrentIndex);
+            } 
+            // set the time Interval
+        } else if (nCurrentIndex == 0 && nPosition == 0) {
+            // scroll to cell
+            NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
+            [_sentencesTableView scrollToRowAtIndexPath:path
+                                       atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
+            [cell setIsHighlightText:YES];
         }
-        nPosition = nCurrentIndex;
-        
-        // set the time Interval
-        [player pause];
-        [NSTimer scheduledTimerWithTimeInterval:settingData.dTimeInterval target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
-    } else if (nCurrentIndex == 0 && nPosition == 0) {
-        // scroll to cell
-        NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
-        [_sentencesTableView scrollToRowAtIndexPath:path
-                                   atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-        BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
-        [cell setIsHighlightText:YES];
+
+    } else {
+        if (nCurrentIndex != nPosition) {
+            // scroll to cell
+            NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
+            [_sentencesTableView scrollToRowAtIndexPath:path
+                                       atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
+            [cell setIsHighlightText:YES];
+            NSIndexPath * lastpath = [NSIndexPath indexPathForRow:0  inSection:nPosition];
+            cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:lastpath];
+            if (cell != nil && [cell isKindOfClass:[BubbleCell class]]) {
+                // interrupted somtimes.
+                [cell setIsHighlightText:NO];
+            }
+            nPosition = nCurrentIndex;
+            
+            // set the time Interval
+            [player pause];
+            
+            [NSTimer scheduledTimerWithTimeInterval:settingData.dTimeInterval target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
+        } else if (nCurrentIndex == 0 && nPosition == 0) {
+            // scroll to cell
+            NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
+            [_sentencesTableView scrollToRowAtIndexPath:path
+                                       atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+            BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
+            [cell setIsHighlightText:YES];
+        }
     }
 }
 
@@ -627,6 +689,20 @@
 
 - (void)onRecording;
 {
+    Sentence* sentence = [self.sentencesArray objectAtIndex:nPosition];
+    RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
+    detailViewController.recordingdelegate = (id)self;
+    detailViewController.sentence = sentence;
+    detailViewController.nPos = nPosition;
+    detailViewController.nTotalCount = [_sentencesArray count];
+    detailViewController.wavefile = wavefile;
+    detailViewController.resourcePath = resourcePath;
+    // ...
+    // Pass the selected object to the new view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
+
+    /*
     bRecording = !bRecording;
     if (bRecording) {
         NSString* t = STRING_RECORDING;
@@ -638,7 +714,7 @@
         self.recordingItem.title = t;
         self.recordingItem.style = UIBarButtonItemStyleBordered;
     }
-
+     */
 }
 
 - (IBAction)onSetting:(id)sender;
@@ -659,37 +735,38 @@
         return;
     }
     
-    if (self.player.currentTime > loopendtime + 0.1 || self.player.currentTime < loopstarttime - 0.1) {
+    /*if (self.player.currentTime > loopendtime + 0.1 || self.player.currentTime < loopstarttime - 0.1) {
         if (nLesson == PLAY_SENTENCE) {
             if (nCurrentReadingCount < settingData.nReadingCount) {
                 self.player.currentTime = loopstarttime;
                 nCurrentReadingCount++;
             } else {
-                [self.player pause];
-                ePlayStatus = PLAY_STATUS_PAUSING;
-                self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];               
+                nCurrentReadingCount = 1;
+                int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
+                Sentence* sentence = [_sentencesArray objectAtIndex:nCurrentIndex];
+                loopstarttime = [sentence startTime];
+                loopendtime = [sentence endTime];    
             }
         } 
-        /*if (looptype == PLAY_LOOP_TPYE_SINGLE) {
-            [self.player pause];
-            self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
-        }
-        else {
-            self.player.currentTime = loopstarttime;
-        }*/
-    }
+    }*/
     
-    int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
-    
-    // 如果是不是单句循环才滚动
-    if (nLesson == PLAY_LESSON) {
-        [self highlightCell:(NSInteger)nCurrentIndex];
-    }
+    [self scrollCell];
+    self.listeningToolbar.previousItem.enabled = (nPosition != 0);
+    self.listeningToolbar.nextItem.enabled = ((nPosition + 1) != [_sentencesArray count]);
 }
 
 - (void)continueReading
 {
     if (ePlayStatus == PLAY_STATUS_PLAYING) {
+        if (nLesson == PLAY_SENTENCE) {
+            if (nCurrentReadingCount != settingData.nReadingCount) {
+                nCurrentReadingCount++;
+                NSLog(@"nCurrentReadingCount++");
+                Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
+                player.currentTime = [sentence startTime];
+            }
+            NSLog(@"reading Count %d", nCurrentReadingCount);
+        }
         [player play];
     }
 }

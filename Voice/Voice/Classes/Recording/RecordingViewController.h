@@ -51,6 +51,7 @@
     RecordingWaveCell *     recordCell;
     BOOL                    isStopPlaySrc;
     NSInteger               nPos;
+    NSInteger               nTotalCount;
 }
 
 @property (nonatomic, assign) NSString* resourcePath;
@@ -71,11 +72,12 @@
 @property (readonly)			AQRecorder			*recorder;
 @property						BOOL				playbackWasInterrupted;
 @property (nonatomic, assign) NSInteger nPos;
+@property (nonatomic, assign) NSInteger nTotalCount;
 
 - (void)initMembers;
 - (void) loadToolbar;
 - (void) updateAudioDisplay;
-
+- (void) playingSrcVoice;
 - (void) onRecording:(id)sender;
 - (void) onPrevious:(id)sender;
 - (void) onNext:(id)sender;
