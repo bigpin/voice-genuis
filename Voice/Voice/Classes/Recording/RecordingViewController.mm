@@ -89,7 +89,7 @@ char *OSTypeToStr(char *buf, OSType t)
     if (recordCell != nil) {
         recordCell.waveView.wavefilename = recordFile;
         [recordCell.waveView loadwavedata];
-        recordCell.timelabel.text = [NSString stringWithFormat:@"Time:0.2%f", recordCell.waveView.dwavesecond];
+        recordCell.timelabel.text = [NSString stringWithFormat:@"Time: %.2f", recordCell.waveView.dwavesecond];
 
     }
     NSFileManager *mgr = [NSFileManager defaultManager];
@@ -517,7 +517,7 @@ char *OSTypeToStr(char *buf, OSType t)
             cell.delegate = (id)self;
             cell.waveView.bReadfromTime = YES;
             [cell.waveView setNeedsLayout];
-            cell.timelabel.text = [NSString stringWithFormat:@"Time:%@",_sentence.endtime];
+            cell.timelabel.text = [NSString stringWithFormat:@"Time: %.2f",[_sentence endTime] - [_sentence startTime]];
           return cell;
             
 
