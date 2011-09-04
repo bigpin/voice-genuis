@@ -82,5 +82,6 @@
 - (void) onPrevious:(id)sender;
 - (void) onNext:(id)sender;
 - (void)animationProgress;
+- (void)stopPlayingSrcVoice:(NSNumber*)pos;
 
 @end

@@ -56,7 +56,7 @@
         nLesson = settingData.eReadingMode == READING_MODE_WHOLE_TEXT ?  PLAY_LESSON : PLAY_SENTENCE;
 		NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 		[center addObserver:self selector:@selector(willEnterToBackground:) name:NOTI_WILLENTERFOREGROUND object:nil]; 
-
+        bAlReadyPaused = NO;
         resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
     }
     return self;
@@ -113,6 +113,12 @@
     UIImage* imageTrack = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-track-right.png", resourcePath]];
     [self.progressBar setMaximumTrackImage:imageTrack forState:UIControlStateNormal];
     [self.progressBar setMinimumTrackImage:imageTrack forState:UIControlStateNormal];
+    [self.progressBar setMaximumValue:[_sentencesArray count]];
+    [self.progressBar setMinimumValue:1];
+    [self.progressBar addTarget:self action:@selector(onGotoSentence:) forControlEvents:UIControlEventTouchUpInside];
+    [self.progressBar addTarget:self action:@selector(onChangingGotoSentence:) forControlEvents:UIControlEventTouchDragInside];
+    
+    self.progressBar.continuous = NO;
    // self.navigationController.navigationBar.hidden = YES;
     //self.sentencesTableView.contentOffset = CGPointMake(0, 44);
     // Uncomment the following line to preserve selection between presentations.
@@ -140,10 +146,8 @@
     [player setDelegate:(id<AVAudioPlayerDelegate>)self];
     [newPlayer release];
     
-    progressBar.maximumValue = [self.player duration];
-    progressBar.value = timeStart;
     self.player.currentTime = timeStart;
-    self.senCount.text = [NSString stringWithFormat:@"%d / %d ", nPosition, [self.sentencesArray count]];
+    self.senCount.text = [NSString stringWithFormat:@"%d / %d ", (nPosition+1), [self.sentencesArray count]];
     //[timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
     //[timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration ]];
     loopstarttime = 0.0;
@@ -195,6 +199,7 @@
         
         ePlayStatus = PLAY_STATUS_PAUSING;
         [player pause];
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
     }
     [super viewWillDisappear:animated];
 }
@@ -533,19 +538,22 @@
         loopendtime = [sentence endTime];    
         player.currentTime = loopstarttime;
         [player play];
-        NSLog(@"%d,%f", nPosition, player.currentTime);
+        // NSLog(@"%d,%f", nPosition, player.currentTime);
     }
 
 }
 
 - (void)scrollCell
 {
+    if (bAlReadyPaused) {
+        return;
+    }
     int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
     
    if (nLesson == PLAY_SENTENCE) {
         if (nCurrentIndex != nPosition) {
-            
-            NSLog(@"pause sentence");
+            bAlReadyPaused = YES;
+            // NSLog(@"pause sentence");
             [player pause];
             Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
             NSTimeInterval inter = [sentence endTime] - [sentence startTime];
@@ -567,7 +575,7 @@
                 }
                 nPosition = nCurrentIndex;
                 nCurrentReadingCount = 0;
-                NSLog(@"scroll to cell %d", nCurrentIndex);
+                // NSLog(@"scroll to cell %d", nCurrentIndex);
             } 
             // set the time Interval
         } else if (nCurrentIndex == 0 && nPosition == 0) {
@@ -582,6 +590,7 @@
     } else {
         if (nCurrentIndex != nPosition) {
             // scroll to cell
+            bAlReadyPaused = YES;
             NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nCurrentIndex];
             [_sentencesTableView scrollToRowAtIndexPath:path
                                        atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
@@ -615,7 +624,7 @@
     Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
     loopstarttime = [sentence startTime];
     loopendtime = [sentence endTime];    
-    nCurrentReadingCount = 0;
+    nCurrentReadingCount = 1;
     switch (ePlayStatus) {
         case PLAY_STATUS_NONE:
         {
@@ -682,7 +691,7 @@
         loopendtime = [sentence endTime];    
         player.currentTime = loopstarttime;
         [player play];
-        NSLog(@"%d,%f", nPosition, player.currentTime);
+        // NSLog(@"%d,%f", nPosition, player.currentTime);
     }
     [self updateViewForPlayer];
 }
@@ -727,6 +736,29 @@
     [setting release];
 }
 
+- (IBAction)onGotoSentence:(id)sender;
+{
+    CGFloat v = self.progressBar.value - 1;
+    if (v != nPosition) {
+        ePlayStatus = PLAY_STATUS_PLAYING;
+        nPosition = v;
+        Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
+        loopstarttime = [sentence startTime];
+        loopendtime = [sentence endTime];    
+        player.currentTime = loopstarttime;
+        [player play];
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
+    }
+    self.senCount.text = [NSString stringWithFormat:@"%d / %d ", nPosition + 1, [self.sentencesArray count]];
+}
+
+- (IBAction)onChangingGotoSentence:(id)sender;
+{
+    NSInteger v = (NSInteger)self.progressBar.value;
+    self.senCount.text = [NSString stringWithFormat:@"%d / %d ", v, [self.sentencesArray count]];
+ 
+}
+
 #pragma mark - Update timer
 
 - (void)updateCurrentTime
@@ -734,22 +766,7 @@
     if (ePlayStatus != PLAY_STATUS_PLAYING) {
         return;
     }
-    
-    /*if (self.player.currentTime > loopendtime + 0.1 || self.player.currentTime < loopstarttime - 0.1) {
-        if (nLesson == PLAY_SENTENCE) {
-            if (nCurrentReadingCount < settingData.nReadingCount) {
-                self.player.currentTime = loopstarttime;
-                nCurrentReadingCount++;
-            } else {
-                nCurrentReadingCount = 1;
-                int nCurrentIndex = [self getSentenceIndex:self.player.currentTime];
-                Sentence* sentence = [_sentencesArray objectAtIndex:nCurrentIndex];
-                loopstarttime = [sentence startTime];
-                loopendtime = [sentence endTime];    
-            }
-        } 
-    }*/
-    
+        
     [self scrollCell];
     self.listeningToolbar.previousItem.enabled = (nPosition != 0);
     self.listeningToolbar.nextItem.enabled = ((nPosition + 1) != [_sentencesArray count]);
@@ -761,12 +778,13 @@
         if (nLesson == PLAY_SENTENCE) {
             if (nCurrentReadingCount != settingData.nReadingCount) {
                 nCurrentReadingCount++;
-                NSLog(@"nCurrentReadingCount++");
+                // NSLog(@"nCurrentReadingCount++");
                 Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
                 player.currentTime = [sentence startTime];
             }
-            NSLog(@"reading Count %d", nCurrentReadingCount);
+            // NSLog(@"reading Count %d", nCurrentReadingCount);
         }
+        bAlReadyPaused = NO;
         [player play];
     }
 }
@@ -786,7 +804,7 @@
 
 - (void)updateViewForPlayer
 {
-    NSLog(@"updateViewForPlayer");
+    // NSLog(@"updateViewForPlayer");
     if (nLesson == PLAY_LESSON && settingData.bLoop) {
         self.player.numberOfLoops = -1;
     } else {
@@ -881,6 +899,7 @@
     if (ePlayStatus == PLAY_STATUS_PLAYING) {
         ePlayStatus = PLAY_STATUS_PAUSING;
         [player pause];
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
     }
 }
 

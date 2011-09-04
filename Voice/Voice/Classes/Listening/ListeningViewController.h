@@ -28,34 +28,35 @@ typedef enum {
 } PLAY_STATUS;
 
 @interface ListeningViewController : UIViewController {
-    NSMutableArray* _sentencesArray;
-    NSMutableArray* _teachersArray;
-    UITableView* _sentencesTableView;
-    ListeningToolbar* _listeningToolbar;
-    UIBarButtonItem* _recordingItem;
-    UISlider* progressBar;
+    NSMutableArray*                 _sentencesArray;
+    NSMutableArray*                 _teachersArray;
+    UITableView*                    _sentencesTableView;
+    ListeningToolbar*               _listeningToolbar;
+    UIBarButtonItem*                _recordingItem;
+    UISlider*                       progressBar;
     //UILabel* timepreces;
     //UILabel* timelast;
-    UILabel* senCount;
-    NSTimer* updateTimer;
-    NSTimer* updataUI;
-    int nLesson;
-    BOOL bRecording;
-    NSString* wavefile;             // 音频文件
-    NSString* resourcePath;
-    AVAudioPlayer *player;
+    UILabel*                        senCount;
+    NSTimer*                        updateTimer;
+    NSTimer*                        updataUI;
+    int                             nLesson;
+    BOOL                            bRecording;
+    NSString*                       wavefile;         // 音频文件
+    NSString*                       resourcePath;
+    AVAudioPlayer *                 player;
     
     // 循环控制
-    NSTimeInterval loopstarttime;   // 循环开始时间
-    NSTimeInterval loopendtime;     // 循环结束时间
+    NSTimeInterval                  loopstarttime;   // 循环开始时间
+    NSTimeInterval                  loopendtime;     // 循环结束时间
     
-    NSTimeInterval timeStart;       // 起始时间
+    NSTimeInterval                  timeStart;       // 起始时间
     
-    NSInteger nPosition;            // 滚动位置
-    CGFloat fVolumn;
-    PLAY_STATUS ePlayStatus;
-    SettingData* settingData;
-    NSInteger nCurrentReadingCount;
+    NSInteger                       nPosition;       // 滚动位置
+    CGFloat                         fVolumn;
+    PLAY_STATUS                     ePlayStatus;
+    SettingData*                    settingData;
+    NSInteger                       nCurrentReadingCount;
+    BOOL                            bAlReadyPaused;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
@@ -76,6 +77,8 @@ typedef enum {
 - (IBAction)onStart:(id)sender;
 - (IBAction)onNext:(id)sender;
 - (IBAction)onSetting:(id)sender;
+- (IBAction)onGotoSentence:(id)sender;
+- (IBAction)onChangingGotoSentence:(id)sender;
 - (void)onRecording;
 - (void)updateCurrentTime;
 - (void)updateViewForPlayer;

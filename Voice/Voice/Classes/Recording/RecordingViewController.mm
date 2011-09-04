@@ -158,7 +158,6 @@ char *OSTypeToStr(char *buf, OSType t)
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:countString style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.rightBarButtonItem = rightItem;
     [rightItem release];
-
     [self loadToolbar];
     self.previousItem.enabled = (nPos != 0);
     self.nextItem.enabled = ((nPos + 1) != nTotalCount);
@@ -600,6 +599,7 @@ char *OSTypeToStr(char *buf, OSType t)
     if (buttonTag == PLAY_SRC_VOICE_BUTTON_TAG) {
         // play user recording voice
         if (player != nil) {
+            isStopPlaySrc = NO;
             [player stop];
             [player release];
             player = nil;
@@ -610,8 +610,9 @@ char *OSTypeToStr(char *buf, OSType t)
         player.currentTime = [_sentence startTime];
         [player play];
         isStopPlaySrc = YES;
-        NSTimeInterval inter = [_sentence endTime] - [_sentence startTime];
-        [NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(stopPlayingSrcVoice) userInfo:nil repeats:NO];
+        NSTimeInterval inter = [_sentence endTime] - [_sentence startTime] + 0.2;
+        [self performSelector:@selector(stopPlayingSrcVoice:) withObject:[NSNumber numberWithInt:nPos] afterDelay:inter];
+        //[NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(stopPlayingSrcVoice:) userInfo:[NSNumber numberWithInt:nPos] repeats:NO];
         
     } else {
         // play src voice
@@ -628,9 +629,11 @@ char *OSTypeToStr(char *buf, OSType t)
     }
 }
 
-- (void)stopPlayingSrcVoice
+- (void)stopPlayingSrcVoice:(NSNumber*)pos
 {
-    if (isStopPlaySrc) {
+    NSInteger poswillstop = [pos intValue];
+    if (isStopPlaySrc && poswillstop == nPos) {
+        NSLog(@"stop");
         isStopPlaySrc = NO;
         [player stop];
     }
