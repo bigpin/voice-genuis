@@ -126,15 +126,30 @@
     
     // init the player
     // 解压wave
-    if (![[NSFileManager defaultManager] fileExistsAtPath:wavefile]) {
+    NSFileManager* fileMgr = [NSFileManager defaultManager];
+    if (![fileMgr fileExistsAtPath:wavefile]) {
         char strwavefile[256];
-        [wavefile getCString:strwavefile maxLength:256 encoding:NSUTF8StringEncoding];
-        
-        NSString* isbfile = [[wavefile substringToIndex:wavefile.length - 4] stringByAppendingPathExtension:@"isb"];
-        char strisbfile[256];
-        [isbfile getCString:strisbfile maxLength:256 encoding:NSUTF8StringEncoding];
-        if ([isaybio ISB_LoadFile:strisbfile])
-            [isaybio ISB_SaveFile:strwavefile];
+        NSString* resource = [[NSBundle mainBundle] resourcePath];
+        NSRange r = [wavefile rangeOfString:resource];
+        NSString* dataPath = [wavefile substringFromIndex:(r.location + r.length)];
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+		NSString *docsDir = [paths objectAtIndex:0]; 
+        NSString *willSaveFile = [NSString stringWithFormat:@"%@%@%@", docsDir, PATH_USERDATA, dataPath];
+        r = [willSaveFile rangeOfString:@"/" options:NSBackwardsSearch];
+        if (r.length != NSNotFound) {
+            NSString *willSavePath = [willSaveFile substringToIndex:(r.location + r.length)];
+            if (![fileMgr fileExistsAtPath:willSavePath isDirectory:nil])  
+                [fileMgr createDirectoryAtPath:willSavePath withIntermediateDirectories:YES attributes:nil error:nil];	
+            
+            willSaveFile = [[willSaveFile substringToIndex:willSaveFile.length - 4] stringByAppendingPathExtension:@"wav"];
+            [willSaveFile getCString:strwavefile maxLength:256 encoding:NSUTF8StringEncoding];
+            NSString *isbFile = [[wavefile substringToIndex:wavefile.length - 4] stringByAppendingPathExtension:@"isb"];
+            char strisbfile[256];
+            [isbFile getCString:strisbfile maxLength:256 encoding:NSUTF8StringEncoding];
+            if ([isaybio ISB_LoadFile:strisbfile])
+                [isaybio ISB_SaveFile:strwavefile];
+
+        }
     }
     
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
