@@ -18,6 +18,7 @@
 	NSString* file;
 	NSMutableArray* teachers;
 	NSString* wavfile;
+    NSString* isbfile;
 	NSMutableArray* setences;
     
     BOOL bParsed;
@@ -30,6 +31,7 @@
 @property (nonatomic, retain) NSString* file;
 @property (nonatomic, retain) NSMutableArray* teachers;
 @property (nonatomic, retain) NSString* wavfile;
+@property (nonatomic, retain) NSString* isbfile;
 @property (nonatomic, retain) NSMutableArray* setences;
 
 @property (nonatomic) BOOL bParsed;

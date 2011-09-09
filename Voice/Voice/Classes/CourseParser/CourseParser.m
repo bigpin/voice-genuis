@@ -24,6 +24,12 @@
     return self;
 }
 
+/*- (void)setResourcePath:(NSString *)resource
+{
+    resourcePath = resource;
+    NSLog(@"%@", resourcePath);
+}
+*/
 - (void)loadCourses:(NSString*)filename
 {
 	// Load and parse the index.xml file
@@ -142,7 +148,23 @@
 				if (media) {
 					TBXMLElement* file = [TBXML childElementNamed:@"file" parentElement:media];
 					if (file) {
-						lesson.wavfile = [resourcePath stringByAppendingPathComponent: [TBXML valueOfAttributeNamed:@"src" forElement:file]];
+						//lesson.wavfile = [resourcePath stringByAppendingPathComponent: [TBXML valueOfAttributeNamed:@"src" forElement:file]];
+                        
+                        NSString* filePath = [TBXML valueOfAttributeNamed:@"src" forElement:file];                    
+                        NSString* fileName = [filePath substringToIndex:(filePath.length - 4)];
+                        
+                        if (wavePath == nil) {
+                            NSRange r = [resourcePath rangeOfString:@"/Data"];
+                            NSString* dataPath = [resourcePath substringFromIndex:r.location];
+                            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+                            NSString *docsDir = [paths objectAtIndex:0]; 
+                            wavePath = [[NSString alloc] initWithFormat:@"%@%@%@", docsDir, PATH_USERDATA, dataPath];
+                        }
+						lesson.wavfile = [wavePath stringByAppendingPathComponent:[fileName stringByAppendingPathExtension:@"wav"]];
+                        //NSLog(@"%@", lesson.wavfile);
+                        lesson.isbfile = [resourcePath stringByAppendingPathComponent:[fileName stringByAppendingPathExtension:@"isb"]];
+                        //NSLog(@"%@", lesson.isbfile);
+                        
 					}
 				}
                 lesson.bParsed = YES;

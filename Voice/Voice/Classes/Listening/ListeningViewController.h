@@ -42,6 +42,7 @@ typedef enum {
     int                             nLesson;
     BOOL                            bRecording;
     NSString*                       wavefile;         // 音频文件
+    NSString*                       _isbfile;
     NSString*                       resourcePath;
     AVAudioPlayer *                 player;
     
@@ -70,6 +71,7 @@ typedef enum {
 @property (nonatomic, retain) IBOutlet UILabel* senCount;
 @property (nonatomic, retain) NSTimer* updataeTimer;
 @property (nonatomic, retain) NSString* wavefile;
+@property (nonatomic, retain) NSString* isbfile;
 @property (nonatomic, retain) AVAudioPlayer* player;
 
 - (IBAction)onPrevious:(id)sender;

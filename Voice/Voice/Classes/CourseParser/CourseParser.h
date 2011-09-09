@@ -16,6 +16,7 @@
     NSString* resourcePath; // resource path
     TBXML* tbxml;
 	Course* course;         // data after parsed
+    NSString* wavePath;
 }
 
 @property (nonatomic, retain) NSString* resourcePath;
