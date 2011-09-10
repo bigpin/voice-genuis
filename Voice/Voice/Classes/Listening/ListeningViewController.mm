@@ -367,6 +367,13 @@
     cell.msgText = sentence.orintext;
     cell.transText = sentence.transtext;
     cell.nShowTextStyle = settingData.eShowTextType;
+    if (ePlayStatus != PLAY_STATUS_NONE && nPosition == indexPath.section) {
+        NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nPosition];
+        [_sentencesTableView scrollToRowAtIndexPath:path
+                                   atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+         [cell setIsHighlightText:YES];
+    }
+
     return cell;
 }
 
@@ -802,7 +809,7 @@
     //    NSLog(@"%f, volume:%f", p.currentTime, volumBar.value);
     // 	currentTime.text = [NSString stringWithFormat:@"%d:%02d", (int)p.currentTime / 60, (int)p.currentTime % 60, nil];
     self.player.volume = fVolumn;
-	progressBar.value = self.player.currentTime;
+	progressBar.value = nPosition + 1;
     //   NSLog(@"%f, %f === %f",p.currentTime, loopstarttime, loopendtime);
     
     self.senCount.text = [NSString stringWithFormat:@"%d / %d ", nPosition + 1, [self.sentencesArray count]];
@@ -925,13 +932,6 @@
 - (void)reloadTableView;
 {
     [self.sentencesTableView reloadData];
-    if (ePlayStatus != PLAY_STATUS_NONE) {
-        NSIndexPath * path = [NSIndexPath  indexPathForRow:0  inSection:nPosition];
-        [_sentencesTableView scrollToRowAtIndexPath:path
-                                   atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-        BubbleCell* cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:path];
-        [cell setIsHighlightText:YES];
-    }
 }
 
 - (Sentence*)getSentencefromPos:(NSInteger)pos;

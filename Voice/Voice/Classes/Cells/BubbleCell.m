@@ -300,6 +300,11 @@
  
     textContent = txtLabel;
     
+    if (bHighlight) {
+        textContent.textColor       = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:1.0];
+        [textContent setNeedsDisplay];
+
+    }
     /*UIImageView* micro = [[UIImageView alloc] initWithFrame:CGRectMake(iconImage.frame.origin.x + iconImage.frame.size.width - 12, iconImage.frame.origin.y + iconImage.frame.size.height - 24, 24, 24)];
     NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
     NSString* stringResource = @"Image";
