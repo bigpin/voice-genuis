@@ -38,7 +38,6 @@ typedef enum {
     //UILabel* timelast;
     UILabel*                        senCount;
     NSTimer*                        updateTimer;
-    NSTimer*                        updataUI;
     int                             nLesson;
     BOOL                            bRecording;
     NSString*                       wavefile;         // 音频文件
@@ -58,6 +57,7 @@ typedef enum {
     SettingData*                    settingData;
     NSInteger                       nCurrentReadingCount;
     BOOL                            bAlReadyPaused;
+    NSInteger                       nLastScrollPos;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
@@ -85,6 +85,7 @@ typedef enum {
 - (void)updateCurrentTime;
 - (void)updateViewForPlayer;
 - (void)updateUI;
+- (void)highlightCell:(NSInteger)nPos;
 
 - (int)getSentenceIndex:(NSTimeInterval)time;
 - (void)reloadTableView;
