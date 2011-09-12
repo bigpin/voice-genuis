@@ -26,6 +26,7 @@
 
 - (void)dealloc
 {
+    [resourcePath release];
     [super dealloc];
 }
 

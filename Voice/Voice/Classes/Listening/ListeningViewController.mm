@@ -934,6 +934,9 @@
                 //[NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(playfromCurrentPos) userInfo:nil repeats:NO]; 
                 [self performSelector:@selector(playfromCurrentPos) withObject:self afterDelay:inter];
 
+            } else {
+                ePlayStatus = PLAY_STATUS_NONE;
+                [self updateUI];
             }
           
         }

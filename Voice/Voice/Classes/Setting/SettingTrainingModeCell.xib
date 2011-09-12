@@ -93,7 +93,7 @@
 							<object class="IBUISlider" id="564823238">
 								<reference key="NSNextResponder" ref="189729218"/>
 								<int key="NSvFlags">290</int>
-								<string key="NSFrame">{{72, 43}, {157, 23}}</string>
+								<string key="NSFrame">{{76, 43}, {153, 23}}</string>
 								<reference key="NSSuperview" ref="189729218"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="377631176"/>

@@ -358,6 +358,7 @@ char *OSTypeToStr(char *buf, OSType t)
         NSString* start = STRING_START_RECORDING;
         self.recordingItem.title = start;
         [self stopRecord];
+        [self performSelector:@selector(playingRecordingVoice) withObject:nil afterDelay:0.5];
     }
 }
 
@@ -615,17 +616,8 @@ char *OSTypeToStr(char *buf, OSType t)
         //[NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(stopPlayingSrcVoice:) userInfo:[NSNumber numberWithInt:nPos] repeats:NO];
         
     } else {
-        // play src voice
-        if (player != nil) {
-            [player stop];
-            [player release];
-            player = nil;
-        }
-        NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
-        NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: recordFile];
-        player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-        [fileURL release];
-        [player play];
+        // play recording voice
+        [self playingRecordingVoice];
     }
 }
 
@@ -765,6 +757,20 @@ void propListener(	void *                  inClientData,
 	// btn_play.title = @"Stop";
 	// btn_record.enabled = NO;
 	// [lvlMeter_in setAq: player->Queue()];
+}
+
+- (void) playingRecordingVoice;
+{
+    if (player != nil) {
+        [player stop];
+        [player release];
+        player = nil;
+    }
+    NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: recordFile];
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+    [fileURL release];
+    [player play];
 }
 
 @end

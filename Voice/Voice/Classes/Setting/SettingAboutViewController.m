@@ -131,7 +131,8 @@
         return 44;
     } else {
         UITableViewCell *cell = (UITableViewCell*)[self tableView: tableView cellForRowAtIndexPath: indexPath];
-        CGSize size   = [BubbleCell calcTextHeight:STRING_ABOUT_DETAIL withWidth:cell.frame.size.width  - CELL_CONTENT_MARGIN*2];
+        NSString* detail = STRING_ABOUT_DETAIL;
+        CGSize size   = [BubbleCell calcTextHeight:detail withWidth:cell.frame.size.width  - CELL_CONTENT_MARGIN*2];
         return size.height + 44;
     }
 }

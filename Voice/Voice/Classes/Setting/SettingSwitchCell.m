@@ -32,6 +32,7 @@
 
 - (void)dealloc
 {
+    delegate = nil;
     [self.label release];
     [self.switchControl release];
     [super dealloc];

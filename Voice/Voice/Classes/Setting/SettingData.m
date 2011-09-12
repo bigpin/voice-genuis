@@ -43,7 +43,7 @@
 
 - (void)initSettingData;
 {
-    self.dTimeInterval = 0.5;
+    self.dTimeInterval = kBufferDurationSeconds;
     self.nReadingCount = 1.0;
     self.eShowTextType = SHOW_TEXT_TYPE_SRC;
     self.bLoop = NO;
