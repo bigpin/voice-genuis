@@ -199,13 +199,13 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     timeStart = 0.0;
-    [self updateViewForPlayer];
     
     if (ePlayStatus == PLAY_STATUS_PLAYING) {
         // if playing, pause.
-        
+        [self highlightCell:nPosition];
         ePlayStatus = PLAY_STATUS_PAUSING;
         [player pause];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
         self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
     }
     [super viewWillDisappear:animated];
@@ -477,7 +477,8 @@
     cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:indexPath];
     [cell setIsHighlightText:YES];
     nLastScrollPos = nPosition;
-
+    ePlayStatus = PLAY_STATUS_NONE;
+    [self.player stop];
     RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
     detailViewController.recordingdelegate = (id)self;
     detailViewController.sentence = sentence;
@@ -490,32 +491,6 @@
     // Pass the selected object to the new view controller.
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
-
-   /* if (bRecording) {
-        RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
-        detailViewController.recordingdelegate = (id)self;
-        detailViewController.sentence = sentence;
-        detailViewController.nPos = nPosition;
-        detailViewController.nTotalCount = [_sentencesArray count];
-        detailViewController.wavefile = wavefile;
-        detailViewController.resourcePath = resourcePath;
-        // ...
-        // Pass the selected object to the new view controller.
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        [detailViewController release];
-
-    } else {
-        if (nLesson != 1) {
-            loopstarttime = [sentence startTime];
-            loopendtime = [sentence endTime];
-        }
-        nCurrentReadingCount = 1;
-        player.currentTime = [sentence startTime];
-        ePlayStatus = PLAY_STATUS_PLAYING;
-        [self.player play];
-        [self updateViewForPlayer];
-    }*/
-
  }
 
 #pragma Action
@@ -541,21 +516,35 @@
 
 - (IBAction)onPrevious:(id)sender;
 {
-    nCurrentReadingCount = 1;
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    nCurrentReadingCount = 0;
+    ePlayStatus = PLAY_STATUS_PLAYING;
     if (nPosition > 0) {
         [self highlightCell:(nPosition-1)];
         nLastScrollPos = nPosition-1;
-        
         nPosition = nPosition - 1;
-        [self updateUI];
         Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
-        loopstarttime = [sentence startTime];
-        loopendtime = [sentence endTime];    
-        player.currentTime = loopstarttime;
-        [player play];
-        // NSLog(@"%d,%f", nPosition, player.currentTime);
+        player.currentTime = [sentence startTime];
+        [self updateUI];
+        [self playfromCurrentPos];
     }
+}
 
+- (IBAction)onNext:(id)sender;
+{
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    nCurrentReadingCount = 0;
+    ePlayStatus = PLAY_STATUS_PLAYING;
+    if (nPosition < [_sentencesArray count] - 1) {
+        ePlayStatus = PLAY_STATUS_PLAYING;
+        // scroll to cell
+        [self highlightCell:(nPosition+1)];
+        nPosition = nPosition + 1;
+        Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
+        player.currentTime = [sentence startTime];
+        [self updateUI];
+        [self playfromCurrentPos];
+    }
 }
 
 - (void)scrollCell
@@ -624,54 +613,33 @@
     Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
     loopstarttime = [sentence startTime];
     loopendtime = [sentence endTime];    
-    nCurrentReadingCount = 1;
     switch (ePlayStatus) {
         case PLAY_STATUS_NONE:
         {
-            //if (looptype == PLAY_LOOP_TPYE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
-            //    player.currentTime = loopstarttime;
-            //}
             [self highlightCell:nPosition];
+            player.currentTime = [sentence startTime];
             ePlayStatus = PLAY_STATUS_PLAYING;
-            [player play];
-        }
+            nCurrentReadingCount = 0;
+       }
             break;
         case PLAY_STATUS_PLAYING:
         {
             [self highlightCell:nPosition];
             ePlayStatus = PLAY_STATUS_PAUSING;
             [player pause];
+            [NSObject cancelPreviousPerformRequestsWithTarget:self];
         }
             break;
         case PLAY_STATUS_PAUSING:
         {
             ePlayStatus = PLAY_STATUS_PLAYING;
-            [player play];
         }
             break;
         default:
             break;
     }
-    [self updateViewForPlayer];
-}
-
-- (IBAction)onNext:(id)sender;
-{
-    nCurrentReadingCount = 1;
-    if (nPosition < [_sentencesArray count] - 1) {
-        ePlayStatus = PLAY_STATUS_PLAYING;
-        // scroll to cell
-        [self highlightCell:(nPosition+1)];
-        nPosition = nPosition + 1;
-        [self updateUI];
-        Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
-        loopstarttime = [sentence startTime];
-        loopendtime = [sentence endTime];    
-        player.currentTime = loopstarttime;
-        [player play];
-        // NSLog(@"%d,%f", nPosition, player.currentTime);
-    }
-    [self updateViewForPlayer];
+    [self updateUI];
+    [self playfromCurrentPos];
 }
 
 - (void)onRecording;
@@ -703,6 +671,8 @@
 
 - (IBAction)onGotoSentence:(id)sender;
 {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    nCurrentReadingCount = 0;
     CGFloat v = self.progressBar.value - 1;
     if (v != nPosition) {
         ePlayStatus = PLAY_STATUS_PLAYING;
@@ -711,11 +681,9 @@
         loopstarttime = [sentence startTime];
         loopendtime = [sentence endTime];    
         player.currentTime = loopstarttime;
-        [player play];
-        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
+        [self updateUI];
+        [self playfromCurrentPos];
     }
-    [self updateUI];
-    [self updateViewForPlayer];
 }
 
 - (IBAction)onChangingGotoSentence:(id)sender;
@@ -781,9 +749,23 @@
 
 - (void)updateUI
 {
-    self.player.volume = fVolumn;
+    self.listeningToolbar.previousItem.enabled = (nPosition != 0);
+    self.listeningToolbar.nextItem.enabled = ((nPosition + 1) != [_sentencesArray count]);
+   self.player.volume = fVolumn;
 	progressBar.value = nPosition + 1;
     self.senCount.text = [NSString stringWithFormat:@"%d / %d ", nPosition + 1, [self.sentencesArray count]];
+    if (nLesson == PLAY_LESSON && settingData.bLoop) {
+        self.player.numberOfLoops = -1;
+    } else {
+        self.player.numberOfLoops = 1;
+    }
+    
+    if (ePlayStatus == PLAY_STATUS_PLAYING) {
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
+    } else {
+        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
+    }
+   
 }
 
 - (void)updateViewForPlayer
@@ -799,6 +781,7 @@
     } else {
         self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
     }
+    
        
 	if (updateTimer) 
 		[updateTimer invalidate];
@@ -867,6 +850,7 @@
     if (ePlayStatus == PLAY_STATUS_PLAYING) {
         ePlayStatus = PLAY_STATUS_PAUSING;
         [player pause];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
         self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
     }
 }
@@ -896,4 +880,70 @@
 
     return nil;
 }
+
+- (void)playfromCurrentPos;
+{
+    if (ePlayStatus != PLAY_STATUS_PLAYING) {
+        return;
+    }
+    if (nLesson != PLAY_LESSON) {
+        nCurrentReadingCount++;
+    } 
+    [self highlightCell:nPosition];
+    [self updateUI];
+    Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
+    NSTimeInterval inter = [sentence endTime] - self.player.currentTime;
+    [self.player play];
+    [self performSelector:@selector(pauseintime) withObject:self afterDelay:inter];
+    //[NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(pauseintime) userInfo:nil repeats:NO];        
+}
+
+- (void)pauseintime;
+{
+    if (ePlayStatus != PLAY_STATUS_PLAYING) {
+        return;
+    }
+    
+    Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
+    NSTimeInterval inter = [sentence endTime] - [sentence startTime];
+    if (nLesson == PLAY_LESSON) {
+        [self.player pause];
+        if (nPosition < ([_sentencesArray count] - 1)) {
+            nPosition++;
+            sentence = [_sentencesArray objectAtIndex:nPosition];
+            self.player.currentTime = [sentence startTime];
+            [self performSelector:@selector(playfromCurrentPos) withObject:self afterDelay:settingData.dTimeInterval];
+           
+            //[NSTimer scheduledTimerWithTimeInterval:(settingData.dTimeInterval) target:self selector:@selector(playfromCurrentPos) userInfo:nil repeats:NO];        
+        } else if (settingData.bLoop) {
+            nPosition = 0;
+            sentence = [_sentencesArray objectAtIndex:nPosition];
+            self.player.currentTime = [sentence startTime];
+            [self performSelector:@selector(playfromCurrentPos) withObject:self afterDelay:settingData.dTimeInterval];
+
+            //[NSTimer scheduledTimerWithTimeInterval:(settingData.dTimeInterval) target:self selector:@selector(playfromCurrentPos) userInfo:nil repeats:NO];        
+           
+        }
+    } else {
+        [self.player pause];
+        self.player.currentTime = [sentence startTime];
+        if (nCurrentReadingCount < settingData.nReadingCount) {
+          // [NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(playfromCurrentPos) userInfo:nil repeats:NO];        
+            [self performSelector:@selector(playfromCurrentPos) withObject:self afterDelay:inter];
+
+        } else {
+            nCurrentReadingCount = 0;
+            if (nPosition < ([_sentencesArray count] - 1)) {
+                nPosition++;
+                sentence = [_sentencesArray objectAtIndex:nPosition];
+                self.player.currentTime = [sentence startTime];
+                //[NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(playfromCurrentPos) userInfo:nil repeats:NO]; 
+                [self performSelector:@selector(playfromCurrentPos) withObject:self afterDelay:inter];
+
+            }
+          
+        }
+    }
+}
+
 @end

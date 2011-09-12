@@ -38,6 +38,8 @@ typedef enum {
     //UILabel* timelast;
     UILabel*                        senCount;
     NSTimer*                        updateTimer;
+    NSTimer*                        playTimer;
+    NSTimer*                        pauseTimer;
     int                             nLesson;
     BOOL                            bRecording;
     NSString*                       wavefile;         // 音频文件
@@ -75,9 +77,9 @@ typedef enum {
 @property (nonatomic, retain) AVAudioPlayer* player;
 
 - (IBAction)onPrevious:(id)sender;
+- (IBAction)onNext:(id)sender;
 - (IBAction)onOther:(id)sender;
 - (IBAction)onStart:(id)sender;
-- (IBAction)onNext:(id)sender;
 - (IBAction)onSetting:(id)sender;
 - (IBAction)onGotoSentence:(id)sender;
 - (IBAction)onChangingGotoSentence:(id)sender;
@@ -89,4 +91,7 @@ typedef enum {
 
 - (int)getSentenceIndex:(NSTimeInterval)time;
 - (void)reloadTableView;
+- (void)playfromCurrentPos;
+- (void)pauseintime;
+
 @end
