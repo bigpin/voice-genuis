@@ -102,7 +102,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     // Configure the cell...
     if (indexPath.section == 0) {
         cell.textLabel.text = STRING_ABOUT_VERSION;
@@ -130,9 +130,8 @@
     if (indexPath.section == 0) {
         return 44;
     } else {
-        UITableViewCell *cell = (UITableViewCell*)[self tableView: tableView cellForRowAtIndexPath: indexPath];
         NSString* detail = STRING_ABOUT_DETAIL;
-        CGSize size   = [BubbleCell calcTextHeight:detail withWidth:cell.frame.size.width  - CELL_CONTENT_MARGIN*2];
+        CGSize size   = [BubbleCell calcTextHeight:detail withWidth:self.view.bounds.size.width  - CELL_CONTENT_MARGIN*2];
         return size.height + 44;
     }
 }

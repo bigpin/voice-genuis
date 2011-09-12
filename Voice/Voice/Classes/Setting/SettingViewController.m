@@ -238,6 +238,7 @@
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"otherAbout"] autorelease];
         }
         cell.textLabel.text = STRING_ABOUT_US;
+        cell.textLabel.font = [UIFont systemFontOfSize:17];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
     }

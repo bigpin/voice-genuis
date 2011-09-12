@@ -239,7 +239,7 @@
         return;
     }
     CGFloat startDis = MAGIN_OF_BUBBLE_ICON_START;
-    CGFloat space = 0.9;
+    CGFloat space = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone?  0.9 :0.95;
     CGFloat width = self.frame.size.width * space - 2*MAGIN_OF_BUBBLE_TEXT_START;
     CGSize size   = [BubbleCell calcTextHeight:self.msgText withWidth:width ];
     CGSize szText = size;
@@ -250,7 +250,7 @@
     }
     bubbleSize = size;
     CGFloat bubbleImageHeight = size.height + 18;
-    CGFloat iconY = bubbleImageHeight < startDis ? 0 : (bubbleImageHeight - startDis)/2;
+    CGFloat iconY = bubbleImageHeight  < (startDis + 20) ? 10 : (bubbleImageHeight - startDis - 20);
     UIImageView* iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, iconY, startDis, startDis)];
     iconImage.image = [UIImage imageWithContentsOfFile:self.imgIcon];
     [self.contentView addSubview:iconImage];

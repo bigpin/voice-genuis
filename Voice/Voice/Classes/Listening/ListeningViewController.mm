@@ -96,6 +96,10 @@
 {
     [super viewDidLoad];
     NSString* backString = STRING_BACK;
+    [self.sentencesTableView setBackgroundView:nil];
+    [self.sentencesTableView setBackgroundView:[[[UIView alloc] init] autorelease]];
+    [self.sentencesTableView setBackgroundColor:UIColor.clearColor];
+
     UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithTitle:backString style:UIBarButtonItemStyleBordered target:nil action:nil];
     self.navigationItem.backBarButtonItem = backItem;
     [backItem release];
@@ -382,7 +386,7 @@
     Sentence * sentence = [self.sentencesArray objectAtIndex:indexPath.section];
    	NSString *aMsg = sentence.orintext;
     NSString *transText = sentence.transtext;
-    CGFloat divide = 0.9;
+    CGFloat divide = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone?  0.9 : 0.95;
     CGFloat width = self.view.bounds.size.width * divide - 2*MAGIN_OF_BUBBLE_TEXT_START;
 	CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
     if (settingData.eShowTextType == 1 && sentence.transtext != nil) {

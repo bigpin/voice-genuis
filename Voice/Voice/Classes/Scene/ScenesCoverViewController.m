@@ -63,7 +63,7 @@
 	coverflow.dataSource = self;
 	if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
 		coverflow.coverSpacing = 200;
-		coverflow.coverSize = CGSizeMake(300, 300);
+		coverflow.coverSize = CGSizeMake(512, 512);
 	}
 	
 	[self.view addSubview:coverflow];
@@ -192,7 +192,7 @@
 	
 	if(cover == nil){
 		BOOL phone = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone;
-		CGRect rect = phone ? CGRectMake(0, 0, 224, 300) : CGRectMake(0, 0, 300, 600);
+		CGRect rect = phone ? CGRectMake(0, 0, 224, 300) : CGRectMake(0, 0, 512, 1024);
 		cover = [[[TKCoverflowCoverView alloc] initWithFrame:rect] autorelease]; // 224
 		cover.baseline = 224;
 		
