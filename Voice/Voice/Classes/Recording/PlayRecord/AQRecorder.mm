@@ -162,7 +162,7 @@ void AQRecorder::SetupAudioFormat(UInt32 inFormatID)
 {
 	memset(&mRecordFormat, 0, sizeof(mRecordFormat));
 
-	UInt32 size = sizeof(mRecordFormat.mSampleRate);
+	/*UInt32 size = sizeof(mRecordFormat.mSampleRate);
 	XThrowIfError(AudioSessionGetProperty(	kAudioSessionProperty_CurrentHardwareSampleRate,
 										&size, 
 										&mRecordFormat.mSampleRate), "couldn't get hardware sample rate");
@@ -180,7 +180,7 @@ void AQRecorder::SetupAudioFormat(UInt32 inFormatID)
 		mRecordFormat.mBitsPerChannel = 16;
 		mRecordFormat.mBytesPerPacket = mRecordFormat.mBytesPerFrame = 1;//(mRecordFormat.mBitsPerChannel / 8) * mRecordFormat.mChannelsPerFrame;
 		mRecordFormat.mFramesPerPacket = 1;
-	}
+	}*/
     
     mRecordFormat.mSampleRate = 16000; // 采样率 (立体声 = 8000)
     

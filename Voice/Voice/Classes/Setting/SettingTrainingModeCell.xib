@@ -14,6 +14,7 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>IBUISlider</string>
 			<string>IBUITableViewCell</string>
+			<string>IBUIImageView</string>
 			<string>IBUILabel</string>
 			<string>IBProxyObject</string>
 		</object>
@@ -91,8 +92,8 @@
 							</object>
 							<object class="IBUISlider" id="564823238">
 								<reference key="NSNextResponder" ref="189729218"/>
-								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{81, 43}, {129, 23}}</string>
+								<int key="NSvFlags">290</int>
+								<string key="NSFrame">{{72, 43}, {157, 23}}</string>
 								<reference key="NSSuperview" ref="189729218"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="377631176"/>
@@ -106,10 +107,10 @@
 							<object class="IBUILabel" id="377631176">
 								<reference key="NSNextResponder" ref="189729218"/>
 								<int key="NSvFlags">289</int>
-								<string key="NSFrame">{{259, 43}, {34, 21}}</string>
+								<string key="NSFrame">{{240, 43}, {34, 21}}</string>
 								<reference key="NSSuperview" ref="189729218"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
+								<reference key="NSNextKeyView" ref="944571104"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -125,6 +126,16 @@
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">10</float>
+							</object>
+							<object class="IBUIImageView" id="944571104">
+								<reference key="NSNextResponder" ref="189729218"/>
+								<int key="NSvFlags">289</int>
+								<string key="NSFrame">{{284, 42}, {24, 24}}</string>
+								<reference key="NSSuperview" ref="189729218"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
 						</object>
 						<string key="NSFrameSize">{320, 85}</string>
@@ -209,6 +220,14 @@
 					</object>
 					<int key="connectionID">13</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">selectedView</string>
+						<reference key="source" ref="439655597"/>
+						<reference key="destination" ref="944571104"/>
+					</object>
+					<int key="connectionID">15</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -239,6 +258,7 @@
 							<reference ref="427216757"/>
 							<reference ref="377631176"/>
 							<reference ref="564823238"/>
+							<reference ref="944571104"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -262,6 +282,11 @@
 						<reference key="object" ref="427216757"/>
 						<reference key="parent" ref="439655597"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">14</int>
+						<reference key="object" ref="944571104"/>
+						<reference key="parent" ref="439655597"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -270,6 +295,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-2.CustomClassName</string>
 					<string>12.IBPluginDependency</string>
+					<string>14.IBPluginDependency</string>
 					<string>2.CustomClassName</string>
 					<string>2.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
@@ -279,6 +305,7 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>SettingTrainingModeCell</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -299,7 +326,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">15</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -344,6 +371,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>label</string>
+							<string>selectedView</string>
 							<string>slider</string>
 							<string>sliderText</string>
 							<string>timeLabel</string>
@@ -351,6 +379,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UISlider</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
@@ -361,6 +390,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>label</string>
+							<string>selectedView</string>
 							<string>slider</string>
 							<string>sliderText</string>
 							<string>timeLabel</string>
@@ -370,6 +400,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">label</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">selectedView</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">slider</string>

@@ -14,6 +14,7 @@
 @synthesize slider = _slider;
 @synthesize timeLabel = _timeLabel;
 @synthesize sliderText = _sliderText;
+@synthesize selectedView = _selectedView;
 
 @synthesize delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

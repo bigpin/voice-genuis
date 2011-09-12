@@ -11,6 +11,7 @@
 #import "BubbleCell.h"
 #import "SettingSwitchCell.h"
 #import "SettingAboutViewController.h"
+#import "SettingShowTranslationCell.h"
 
 @implementation SettingViewController
 
@@ -45,6 +46,9 @@
     if (settingData == nil) {
         settingData = [[SettingData alloc] init];
         [settingData loadSettingData];
+    }
+    if (resourcePath == nil) {
+        resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
     }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -155,10 +159,10 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.delegate = (id)self;
             if (settingData.eReadingMode == nRow) {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
                 pathReadingMode = indexPath;
             } else {
-                cell.accessoryType = UITableViewCellAccessoryNone;
+                cell.selectedView.image = nil;
             }
             return cell;
         } else {
@@ -179,10 +183,10 @@
             cell.timeLabel.text = [NSString stringWithFormat:str, settingData.nReadingCount];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (settingData.eReadingMode == nRow) {
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
+                cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
                 pathReadingMode = indexPath;
-           } else {
-                cell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+               cell.selectedView.image = nil;
             }
             return cell;
         }
@@ -197,20 +201,21 @@
             return cell;
         }
     } else if (nSection == 2) {
-        static NSString *cellName = @"showModeCell";
-       UITableViewCell * cell =  (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellName];
+       SettingShowTranslationCell * cell =  (SettingShowTranslationCell*)[tableView dequeueReusableCellWithIdentifier:@"SettingShowTranslationCell"];
         if (cell == nil) {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellName] autorelease];
+            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingShowTranslationCell" owner:self options:nil];
+            cell = [array objectAtIndex:0];
+
         }
         switch (nRow) {
             case 0:
-                cell.textLabel.text = STRING_SHOW_SRC_TEXT;
+                cell.textLabelTrans.text = STRING_SHOW_SRC_TEXT;
                 break;
             case 1:
-                cell.textLabel.text = STRING_SHOW_SRCANDTRANS_TEXT;
+                cell.textLabelTrans.text = STRING_SHOW_SRCANDTRANS_TEXT;
                 break;
             case 2:
-                cell.textLabel.text = STRING_SHOW_NO_TEXT;
+                cell.textLabelTrans.text = STRING_SHOW_NO_TEXT;
                 break;
                 
             default:
@@ -220,10 +225,10 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         if (settingData.eShowTextType == nRow) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
             pathShowText = indexPath;
+            cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
         } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.selectedView.image = nil;
         }
         return cell;
     } else if (nSection == 3) {
@@ -286,12 +291,12 @@
     if (indexPath.section == 0) {
         NSInteger nRow = indexPath.row;
         if (nRow != (NSInteger)pathReadingMode.row) {
-            UITableViewCell* cellOld = [self.tableView cellForRowAtIndexPath:pathReadingMode];
-            cellOld.accessoryType = UITableViewCellAccessoryNone;
+            SettingTrainingModeCell* cellOld = (SettingTrainingModeCell*)[self.tableView cellForRowAtIndexPath:pathReadingMode];
+            cellOld.selectedView.image = nil;
             pathReadingMode = indexPath;
             
-            UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            SettingShowTranslationCell* cell = (SettingShowTranslationCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+            cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
             settingData.eReadingMode = nRow;
             
             [settingData saveSettingData];
@@ -300,12 +305,12 @@
     } else if (indexPath.section == 2) {
         NSInteger nRow = indexPath.row;
         if (nRow != (NSInteger)pathShowText.row) {
-            UITableViewCell* cellOld = [self.tableView cellForRowAtIndexPath:pathShowText];
-            cellOld.accessoryType = UITableViewCellAccessoryNone;
+            SettingShowTranslationCell* cellOld = (SettingShowTranslationCell*)[self.tableView cellForRowAtIndexPath:pathShowText];
+            cellOld.selectedView.image = nil;
             pathShowText = indexPath;
 
-            UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            SettingShowTranslationCell* cell = (SettingShowTranslationCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+            cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
             settingData.eShowTextType = nRow;
 
             [settingData saveSettingData];

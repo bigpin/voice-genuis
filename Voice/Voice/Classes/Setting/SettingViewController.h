@@ -13,6 +13,7 @@
     SettingData* settingData;
     NSIndexPath* pathShowText;
     NSIndexPath* pathReadingMode;
+    NSString* resourcePath;
 }
 
 - (SettingData*)getSettingData;
