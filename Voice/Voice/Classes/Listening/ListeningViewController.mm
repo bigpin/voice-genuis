@@ -788,7 +788,6 @@
 
 - (void)updateViewForPlayer
 {
-    // NSLog(@"updateViewForPlayer");
     if (nLesson == PLAY_LESSON && settingData.bLoop) {
         self.player.numberOfLoops = -1;
     } else {

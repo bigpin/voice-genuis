@@ -95,7 +95,7 @@
 	if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone){
         resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
         
-        imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iPhone.png"];
+        imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iphone.png"];
 	}else{
         resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
         imagepath = [NSString stringWithFormat:@"%@/%@", resourcePath, @"cover_iPad.png"];
