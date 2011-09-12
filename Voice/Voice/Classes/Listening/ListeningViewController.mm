@@ -573,21 +573,17 @@
             Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
             NSTimeInterval inter = [sentence endTime] - [sentence startTime];
             inter = inter + inter * 0.1;
-            if (nCurrentReadingCount == settingData.nReadingCount && nLesson == PLAY_LESSON && nPosition == ([_sentencesArray count] - 1) && !settingData.bLoop) {
-                ePlayStatus = PLAY_STATUS_NONE;
-                [player stop];
-                bAlReadyPaused = NO;
-            } else {
-                [NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
-                
-                if (nCurrentReadingCount == settingData.nReadingCount) {
-                    // scroll to cell
-                    [self highlightCell:nCurrentIndex];
-                    nPosition = nCurrentIndex;
-                    nCurrentReadingCount = 0;
-                    // NSLog(@"scroll to cell %d", nCurrentIndex);
-                } 
-            }
+            
+            [NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
+            
+            if (nCurrentReadingCount == settingData.nReadingCount) {
+                // scroll to cell
+                [self highlightCell:nCurrentIndex];
+                nPosition = nCurrentIndex;
+                nCurrentReadingCount = 0;
+                // NSLog(@"scroll to cell %d", nCurrentIndex);
+            } 
+            
 
             // set the time Interval
         } else if (nCurrentIndex == nPosition) {
@@ -597,14 +593,25 @@
     } else {
         if (nCurrentIndex != nPosition) {
             // scroll to cell
+            
             bAlReadyPaused = YES;
+            NSLog(@"highlightCell");
             [self highlightCell:nCurrentIndex];
+            NSInteger nLast = nPosition;
             nPosition = nCurrentIndex;
             
             // set the time Interval
             [player pause];
-            
-            [NSTimer scheduledTimerWithTimeInterval:settingData.dTimeInterval target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
+            if (nLast == ([_sentencesArray count] - 1) && !settingData.bLoop) {
+                ePlayStatus = PLAY_STATUS_NONE;
+                [player stop];
+                bAlReadyPaused = NO;
+                self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
+                [self updateUI];
+                
+            } else {
+                [NSTimer scheduledTimerWithTimeInterval:settingData.dTimeInterval target:self selector:@selector(continueReading) userInfo:nil repeats:NO];
+            }
         } else if (nCurrentIndex == nPosition) {
             // scroll to cell
             [self highlightCell:nCurrentIndex];
@@ -639,23 +646,12 @@
         case PLAY_STATUS_PAUSING:
         {
             ePlayStatus = PLAY_STATUS_PLAYING;
-            //if (looptype == PLAY_LOOP_TPYE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
-            //    player.currentTime = loopstarttime;
-            //}
             [player play];
         }
             break;
         default:
             break;
     }
-    /*if (player.playing) {
-        [player pause];
-    } else {
-        if (bLoop == PLAY_LOOP_TPYE_SINGLE && player.currentTime + 0.1 >= loopendtime) {
-            player.currentTime = loopstarttime;
-        }
-        [player play];
-    }*/
     [self updateViewForPlayer];
 }
 
@@ -693,19 +689,6 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
     [detailViewController release];
 
-    /*
-    bRecording = !bRecording;
-    if (bRecording) {
-        NSString* t = STRING_RECORDING;
-        self.recordingItem.title = t;
-        self.recordingItem.style = UIBarButtonItemStyleDone;
-        [self.player pause];
-    } else {
-        NSString* t = STRING_LISTENING;
-        self.recordingItem.title = t;
-        self.recordingItem.style = UIBarButtonItemStyleBordered;
-    }
-     */
 }
 
 - (IBAction)onSetting:(id)sender;
@@ -811,17 +794,6 @@
     } else {
         self.player.numberOfLoops = 1;
     }
-    /*switch (looptype) {
-        case PLAY_LOOP_TPYE_SINGLE:
-            self.player.numberOfLoops = 1;    // Loop playback until invoke stop method
-            break;
-        case PLAY_LOOP_TPYE_LOOP:
-            self.player.numberOfLoops = -1;
-            break;
-            
-        default:
-            break;
-    }*/
     
     if (ePlayStatus == PLAY_STATUS_PLAYING) {
         self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/pause.png", resourcePath]];
