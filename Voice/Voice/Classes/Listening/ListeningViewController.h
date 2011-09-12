@@ -93,5 +93,5 @@ typedef enum {
 - (void)reloadTableView;
 - (void)playfromCurrentPos;
 - (void)pauseintime;
-
+- (void)setStatusPause;
 @end

@@ -201,12 +201,10 @@
     timeStart = 0.0;
     
     if (ePlayStatus == PLAY_STATUS_PLAYING) {
-        // if playing, pause.
-        [self highlightCell:nPosition];
-        ePlayStatus = PLAY_STATUS_PAUSING;
-        [player pause];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self];
-        self.listeningToolbar.playItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/play.png", resourcePath]];
+        [self setStatusPause];
+        Sentence* sentence = [self.sentencesArray objectAtIndex:nPosition];
+        self.player.currentTime = [sentence startTime];
+        [self updateUI];
     }
     [super viewWillDisappear:animated];
 }
@@ -477,8 +475,7 @@
     cell = (BubbleCell*)[self.sentencesTableView cellForRowAtIndexPath:indexPath];
     [cell setIsHighlightText:YES];
     nLastScrollPos = nPosition;
-    ePlayStatus = PLAY_STATUS_NONE;
-    [self.player stop];
+    self.player.currentTime = [sentence startTime];
     RecordingViewController *detailViewController = [[RecordingViewController alloc] initWithNibName:@"RecordingViewController" bundle:nil];
     detailViewController.recordingdelegate = (id)self;
     detailViewController.sentence = sentence;
@@ -624,10 +621,7 @@
             break;
         case PLAY_STATUS_PLAYING:
         {
-            [self highlightCell:nPosition];
-            ePlayStatus = PLAY_STATUS_PAUSING;
-            [player pause];
-            [NSObject cancelPreviousPerformRequestsWithTarget:self];
+            [self setStatusPause];
         }
             break;
         case PLAY_STATUS_PAUSING:
@@ -690,7 +684,6 @@
 {
     NSInteger v = (NSInteger)self.progressBar.value;
     self.senCount.text = [NSString stringWithFormat:@"%d / %d ", v, [self.sentencesArray count]];
- 
 }
 
 #pragma mark - Update timer
@@ -868,6 +861,7 @@
 
 - (void)reloadTableView;
 {
+    [self highlightCell:nPosition];
     [self.sentencesTableView reloadData];
 }
 
@@ -944,6 +938,14 @@
           
         }
     }
+}
+
+- (void)setStatusPause;
+{
+    [self highlightCell:nPosition];
+    ePlayStatus = PLAY_STATUS_PAUSING;
+    [player pause];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 @end
