@@ -79,4 +79,5 @@
 #define STRING_NEXT_SENTENCE            @"下一句"
 #define STRING_SINGLE_TRAINING          @"单句训练"
 
-
+#define STRING_SRC_TEXT                 @"原文显示"
+#define STRING_VOICE_GRAPHIC            @"波形对比"

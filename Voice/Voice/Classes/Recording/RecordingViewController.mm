@@ -466,8 +466,10 @@ char *OSTypeToStr(char *buf, OSType t)
         }
         NSString* oritext = self.sentence.orintext;
         if (self.sentence.transtext != nil) {
-            oritext = [NSString stringWithFormat:@"%@ \r\n %@", oritext, self.sentence.transtext];
-        }
+            if ([self.sentence.transtext length] > 0) {
+                oritext = [NSString stringWithFormat:@"%@ \r\n %@", oritext, self.sentence.transtext];
+            }
+       }
          cell.textLabel.text = oritext;
         cell.textLabel.lineBreakMode   = UILineBreakModeWordWrap;
         cell.textLabel.numberOfLines   = 0;
@@ -585,13 +587,32 @@ char *OSTypeToStr(char *buf, OSType t)
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
 	
     // create the parent view that will hold header Label
-	UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(2, 0.0, self.view.bounds.size.width, 5.0)] autorelease];
-    return customView;
-}
+    if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) {
+        UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(2, 0.0, self.view.bounds.size.width, 5.0)] autorelease];
+        return customView;
+
+    } else {
+        NSString *t = STRING_SRC_TEXT;
+        if (section == 1) {
+            t = STRING_VOICE_GRAPHIC;
+        } 
+        UIView* customView = [[[UIView alloc] initWithFrame:CGRectMake(2, 0.0, self.view.bounds.size.width, 50.0)] autorelease];
+        UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(50, 20.0, self.view.bounds.size.width -100, 30.0)];
+        [label setBackgroundColor:[UIColor clearColor]];
+        label.text = t;
+        label.textColor = [UIColor colorWithRed:0.0 green:0.2 blue:0.0 alpha:1.0];
+        label.shadowColor = [UIColor whiteColor];
+        label.shadowOffset = CGSizeMake(0, -1);
+        [customView addSubview:label];
+        [label release];
+        return customView;
+    }
+ }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-	return 5.0;
+    CGFloat height = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone?  5.0 : 50;
+	return height;
 }
 
 #pragma RecordingWaveCell
