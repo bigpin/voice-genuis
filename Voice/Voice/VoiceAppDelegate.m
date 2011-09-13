@@ -25,6 +25,7 @@
                                                   blue:NAVI_COLOR_B
                                                  alpha:0.2]];
     
+    v.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     [self.tabBar insertSubview:v atIndex:0];
     [v release];
 
