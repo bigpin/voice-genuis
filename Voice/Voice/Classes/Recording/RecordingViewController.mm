@@ -148,11 +148,7 @@ char *OSTypeToStr(char *buf, OSType t)
 {
     [super viewDidLoad];
     self.title = STRING_SINGLE_TRAINING;
-    NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
-    NSFileManager* mgr = [NSFileManager defaultManager];
-    if ([mgr fileExistsAtPath:recordFile]) {
-        [mgr removeItemAtPath:recordFile error:nil];
-    }
+    [self removeRecordingFile];
     
     NSString* countString = [NSString stringWithFormat:@"%d / %d", (nPos + 1), nTotalCount];
     UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithTitle:countString style:UIBarButtonItemStylePlain target:nil action:nil];
@@ -328,6 +324,8 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void) onRecording:(id)sender;
 {
     if ([self.recordingItem.title isEqualToString:STRING_START_RECORDING]) {
+        [self removeRecordingFile];
+        [self.recordingTableView reloadData];
         if (recorder == nil) {
             [self initMembers];
         }
@@ -364,6 +362,15 @@ char *OSTypeToStr(char *buf, OSType t)
 
 - (void) onPrevious:(id)sender;
 {
+    if (recorder != nil) {
+        if (recorder->IsRunning()) // If we are currently recording, stop and save the file.
+        {
+            NSString* start = STRING_START_RECORDING;
+            self.recordingItem.title = start;
+           [self stopRecord];
+        }
+    }
+    [self removeRecordingFile];
     Sentence* s = [recordingdelegate getSentencefromPos:(nPos-1)];
     if (s != nil) {
         self.sentence = s;
@@ -379,6 +386,15 @@ char *OSTypeToStr(char *buf, OSType t)
 
 - (void) onNext:(id)sender;
 {
+    if (recorder != nil) {
+        if (recorder->IsRunning()) // If we are currently recording, stop and save the file.
+        {
+            NSString* start = STRING_START_RECORDING;
+            self.recordingItem.title = start;
+            [self stopRecord];
+        }
+    }
+    [self removeRecordingFile];
      Sentence* s = [recordingdelegate getSentencefromPos:(nPos+1)];
     if (s != nil) {
         self.sentence = s;
@@ -628,6 +644,7 @@ char *OSTypeToStr(char *buf, OSType t)
         }
         NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
         player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+        player.volume = 1.0;
         [fileURL release];
         player.currentTime = [_sentence startTime];
         [player play];
@@ -790,8 +807,17 @@ void propListener(	void *                  inClientData,
     NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: recordFile];
     player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+    player.volume = 1.0;
     [fileURL release];
     [player play];
 }
 
+- (void)removeRecordingFile;
+{
+    NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
+    NSFileManager* mgr = [NSFileManager defaultManager];
+    if ([mgr fileExistsAtPath:recordFile]) {
+        [mgr removeItemAtPath:recordFile error:nil];
+    }
+}
 @end

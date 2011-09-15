@@ -163,7 +163,7 @@
     //[timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration ]];
     loopstarttime = 0.0;
     loopendtime = self.player.duration;
-    fVolumn = 0.8;
+    fVolumn = 1.0;
     
     NSString* recordingTitle = STRING_SINGLE_TRAINING;
     UIBarButtonItem* recordingItem = [[UIBarButtonItem alloc] initWithTitle:recordingTitle style:UIBarButtonItemStyleDone target:self action:@selector(onRecording)];
@@ -748,7 +748,6 @@
 {
     self.listeningToolbar.previousItem.enabled = (nPosition != 0);
     self.listeningToolbar.nextItem.enabled = ((nPosition + 1) != [_sentencesArray count]);
-   self.player.volume = fVolumn;
 	progressBar.value = nPosition + 1;
     self.senCount.text = [NSString stringWithFormat:@"%d / %d ", nPosition + 1, [self.sentencesArray count]];
     if (nLesson == PLAY_LESSON && settingData.bLoop) {
@@ -913,11 +912,19 @@
             [self performSelector:@selector(playfromCurrentPos) withObject:self afterDelay:settingData.dTimeInterval];
            
             //[NSTimer scheduledTimerWithTimeInterval:(settingData.dTimeInterval) target:self selector:@selector(playfromCurrentPos) userInfo:nil repeats:NO];        
-        } else if (settingData.bLoop) {
-            nPosition = 0;
-            sentence = [_sentencesArray objectAtIndex:nPosition];
-            self.player.currentTime = [sentence startTime];
-            [self performSelector:@selector(playfromCurrentPos) withObject:self afterDelay:settingData.dTimeInterval];
+        } else {
+            if (settingData.bLoop) {
+                nPosition = 0;
+                sentence = [_sentencesArray objectAtIndex:nPosition];
+                self.player.currentTime = [sentence startTime];
+                [self performSelector:@selector(playfromCurrentPos) withObject:self afterDelay:settingData.dTimeInterval];
+            } else {
+                [self setStatusPause];
+                [self updateUI];
+                nPosition = 0;
+                sentence = [_sentencesArray objectAtIndex:nPosition];
+                self.player.currentTime = [sentence startTime];
+            }
 
             //[NSTimer scheduledTimerWithTimeInterval:(settingData.dTimeInterval) target:self selector:@selector(playfromCurrentPos) userInfo:nil repeats:NO];        
            

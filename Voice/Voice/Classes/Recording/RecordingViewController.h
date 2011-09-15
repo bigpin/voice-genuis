@@ -84,5 +84,5 @@
 - (void)animationProgress;
 - (void)stopPlayingSrcVoice:(NSNumber*)pos;
 - (void) playingRecordingVoice;
-
+- (void)removeRecordingFile;
 @end
