@@ -175,6 +175,7 @@
 {
     [super viewDidLoad];
     if (!bInit) {
+        bInit = YES;
         [self initMembers];
     }
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
