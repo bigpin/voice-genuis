@@ -60,6 +60,7 @@ typedef enum {
     NSInteger                       nCurrentReadingCount;
     BOOL                            bAlReadyPaused;
     NSInteger                       nLastScrollPos;
+    BOOL                            bInit;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
@@ -76,6 +77,7 @@ typedef enum {
 @property (nonatomic, retain) NSString* isbfile;
 @property (nonatomic, retain) AVAudioPlayer* player;
 
+- (void)initMembers;
 - (IBAction)onPrevious:(id)sender;
 - (IBAction)onNext:(id)sender;
 - (IBAction)onOther:(id)sender;

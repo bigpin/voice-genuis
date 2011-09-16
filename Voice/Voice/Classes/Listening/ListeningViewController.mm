@@ -58,6 +58,7 @@
 		[center addObserver:self selector:@selector(willEnterToBackground:) name:NOTI_WILLENTERFOREGROUND object:nil]; 
         bAlReadyPaused = NO;
         nLastScrollPos = 0;
+        bInit = NO;
         resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
     }
     return self;
@@ -92,29 +93,28 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+- (void)initMembers;
 {
-    [super viewDidLoad];
     NSString* backString = STRING_BACK;
     [self.sentencesTableView setBackgroundView:nil];
     [self.sentencesTableView setBackgroundView:[[[UIView alloc] init] autorelease]];
     [self.sentencesTableView setBackgroundColor:UIColor.clearColor];
-
+    
     UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithTitle:backString style:UIBarButtonItemStyleBordered target:nil action:nil];
     self.navigationItem.backBarButtonItem = backItem;
     [backItem release];
-
+    
     UIImage* bkimage = [[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/background_gray.png", resourcePath]] stretchableImageWithLeftCapWidth:24 topCapHeight:15];
     self.view.backgroundColor = [UIColor colorWithPatternImage:bkimage];
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(settingChanged:) name:NOTI_CHANGED_SETTING_VALUE object:nil]; 
-   [self.listeningToolbar loadToolbar:self];
+    [self.listeningToolbar loadToolbar:self];
     
     UIImage* imageThumb = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-handle.png", resourcePath]];
-   
+    
     [self.progressBar setThumbImage:imageThumb forState:UIControlStateNormal];
-
+    
     UIImage* imageTrack = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/slider-track-right.png", resourcePath]];
     [self.progressBar setMaximumTrackImage:imageTrack forState:UIControlStateNormal];
     [self.progressBar setMinimumTrackImage:imageTrack forState:UIControlStateNormal];
@@ -124,12 +124,6 @@
     [self.progressBar addTarget:self action:@selector(onChangingGotoSentence:) forControlEvents:UIControlEventTouchDragInside];
     
     self.progressBar.continuous = NO;
-   // self.navigationController.navigationBar.hidden = YES;
-    //self.sentencesTableView.contentOffset = CGPointMake(0, 44);
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // init the player
     // 解压wave
     NSFileManager* fileMgr = [NSFileManager defaultManager];
     if (![fileMgr fileExistsAtPath:wavefile]) {
@@ -141,7 +135,7 @@
         //NSLog(@"%@", wavePath);
         char strwavefile[256];
         [wavefile getCString:strwavefile maxLength:256 encoding:NSUTF8StringEncoding];
-       
+        
         char strisbfile[256];
         [self.isbfile getCString:strisbfile maxLength:256 encoding:NSUTF8StringEncoding];
         if ([isaybio ISB_LoadFile:strisbfile])
@@ -171,11 +165,18 @@
     UIBarButtonItem* recordingItem = [[UIBarButtonItem alloc] initWithTitle:recordingTitle style:UIBarButtonItemStyleDone target:self action:@selector(onRecording)];
     self.navigationItem.rightBarButtonItem = recordingItem;
     self.recordingItem = recordingItem;
-     [recordingItem release];
-
+    [recordingItem release];
+    
     self.listeningToolbar.previousItem.enabled = (nPosition != 0);
     self.listeningToolbar.nextItem.enabled = ((nPosition + 1) != [_sentencesArray count]);
+}
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    if (!bInit) {
+        [self initMembers];
+    }
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
