@@ -147,17 +147,19 @@
         if ([isaybio ISB_LoadFile:strisbfile])
             [isaybio ISB_SaveFile:strwavefile];
     }
+    if (self.player == nil) {
+        NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
+        AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
+        [fileURL release];
+        
+        self.player = newPlayer;
+        [player prepareToPlay];
+        [player setDelegate:(id<AVAudioPlayerDelegate>)self];
+        [newPlayer release];
+        self.player.currentTime = timeStart;
+        self.player.volume = 1.0;
+    }
     
-    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
-    AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-    [fileURL release];
-    
-    self.player = newPlayer;
-    [player prepareToPlay];
-    [player setDelegate:(id<AVAudioPlayerDelegate>)self];
-    [newPlayer release];
-    
-    self.player.currentTime = timeStart;
     self.senCount.text = [NSString stringWithFormat:@"%d / %d ", (nPosition+1), [self.sentencesArray count]];
     //[timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
     //[timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration ]];
