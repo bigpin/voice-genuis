@@ -676,22 +676,26 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     nCurrentReadingCount = 0;
     CGFloat v = self.progressBar.value - 1;
-    if (v != nPosition) {
-        ePlayStatus = PLAY_STATUS_PLAYING;
-        nPosition = v;
-        Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
-        loopstarttime = [sentence startTime];
-        loopendtime = [sentence endTime];    
-        player.currentTime = loopstarttime;
-        [self updateUI];
-        [self playfromCurrentPos];
-    }
+    nPosition = (v - 1);
+    ePlayStatus = PLAY_STATUS_PLAYING;
+    nPosition = v;
+    Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
+    loopstarttime = [sentence startTime];
+    loopendtime = [sentence endTime];    
+    player.currentTime = loopstarttime;
+    [self updateUI];
+    [self playfromCurrentPos];
 }
 
 - (IBAction)onChangingGotoSentence:(id)sender;
 {
     NSInteger v = (NSInteger)self.progressBar.value;
-    self.senCount.text = [NSString stringWithFormat:@"%d / %d ", v, [self.sentencesArray count]];
+    nPosition = (v - 1);
+    if (ePlayStatus == PLAY_STATUS_PLAYING) {
+        [self setStatusPause];
+    }
+    [self highlightCell:nPosition];
+    [self updateUI];
 }
 
 #pragma mark - Update timer
