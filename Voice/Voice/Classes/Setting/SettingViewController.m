@@ -14,6 +14,7 @@
 #import "SettingShowTranslationCell.h"
 
 @implementation SettingViewController
+@synthesize bFromSence;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,6 +24,14 @@
     }
     return self;
 }
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    bFromSence = NO;
+    return self;
+}
+
 
 - (void)dealloc
 {
@@ -50,6 +59,11 @@
     }
     if (resourcePath == nil) {
         resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
+    }
+    if (bFromSence) {
+        UIBarButtonItem* back = [[UIBarButtonItem alloc] initWithTitle:STRING_BACK style:UIBarButtonItemStyleBordered target:self action:@selector(backToSelectedViewController)];
+        self.navigationItem.leftBarButtonItem = back;
+        [back release];
     }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -352,4 +366,8 @@
     }
 }
 
+- (void)backToSelectedViewController;
+{
+    self.tabBarController.selectedIndex = 0;
+}
 @end

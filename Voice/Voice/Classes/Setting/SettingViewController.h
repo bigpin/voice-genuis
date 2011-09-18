@@ -14,7 +14,10 @@
     NSIndexPath* pathShowText;
     NSIndexPath* pathReadingMode;
     NSString* resourcePath;
+    BOOL      bFromSence;
 }
+@property (nonatomic) BOOL bFromSence;
 
 - (SettingData*)getSettingData;
+- (void)backToSelectedViewController;
 @end

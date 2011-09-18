@@ -92,6 +92,7 @@
     SettingViewController* setting = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
     
  	setting.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/preferences.png", resourcePath]];
+    setting.bFromSence = YES;
     nav = [[UINavigationController alloc] initWithRootViewController:setting];
     nav.navigationBar.tintColor = [UIColor blackColor];
     [viewControllers addObject:nav];
