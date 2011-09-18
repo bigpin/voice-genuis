@@ -81,3 +81,4 @@
 
 #define STRING_SRC_TEXT                 @"原文显示"
 #define STRING_VOICE_GRAPHIC            @"波形对比"
+#define STRING_LOADING_TEXT             @"第一次初始化课程..."

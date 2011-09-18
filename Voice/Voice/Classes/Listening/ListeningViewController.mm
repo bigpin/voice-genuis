@@ -17,6 +17,7 @@
 #import "SettingViewController.h"
 #import "isaybio.h"
 
+#define LOADINGVIEWTAG      20933
 @implementation ListeningViewController
 @synthesize sentencesArray = _sentencesArray;
 @synthesize teachersArray = _teachersArray;
@@ -59,6 +60,7 @@
         bAlReadyPaused = NO;
         nLastScrollPos = 0;
         bInit = NO;
+        bParseWAV = NO;
         resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
     }
     return self;
@@ -127,20 +129,62 @@
     // 解压wave
     NSFileManager* fileMgr = [NSFileManager defaultManager];
     if (![fileMgr fileExistsAtPath:wavefile]) {
-        NSString* wavePath = [wavefile substringToIndex:(wavefile.length - 4)];
-        NSFileManager* mgr = [NSFileManager defaultManager];
-        if (![mgr fileExistsAtPath:wavePath]) {
-            [mgr createDirectoryAtPath:wavePath withIntermediateDirectories:YES attributes:nil error:nil];
-        }
-        //NSLog(@"%@", wavePath);
-        char strwavefile[256];
-        [wavefile getCString:strwavefile maxLength:256 encoding:NSUTF8StringEncoding];
-        
-        char strisbfile[256];
-        [self.isbfile getCString:strisbfile maxLength:256 encoding:NSUTF8StringEncoding];
-        if ([isaybio ISB_LoadFile:strisbfile])
-            [isaybio ISB_SaveFile:strwavefile];
+        [self addLoadingView];
+        bParseWAV = YES;
+        self.sentencesTableView.hidden = YES;
+        [self.navigationItem setHidesBackButton:YES animated:YES];
+        [self performSelector:@selector(parseWAVFile) withObject:nil afterDelay:2.0];
+    } else {
+        [self initValue];
     }
+}
+
+- (void)addLoadingView;
+{
+    UIView *loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 140, 80)];
+    loadingView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    loadingView.layer.cornerRadius = 8;
+    loadingView.tag = LOADINGVIEWTAG;
+    loadingView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    UIActivityIndicatorView* activeView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [activeView startAnimating];
+    activeView.center = CGPointMake(loadingView.center.x, loadingView.center.y - 10) ;
+    [loadingView addSubview:activeView];
+    [activeView release];
+    UILabel* loadingText = [[UILabel alloc] initWithFrame:CGRectMake(0, loadingView.frame.size.height - 30, loadingView.frame.size.width, 20)];
+    loadingText.textColor = [UIColor whiteColor];
+    loadingText.text = STRING_LOADING_TEXT;
+    loadingText.font = [UIFont systemFontOfSize:14];
+    loadingText.backgroundColor = [UIColor clearColor];
+    loadingText.textAlignment  = UITextAlignmentCenter;
+    [loadingView addSubview:loadingText];
+    [loadingText release];
+    loadingView.center = self.view.center;
+    [self.view addSubview:loadingView];
+    [loadingView release];
+}
+
+- (void)removeLoadingView;
+{
+    UIView* loadingView = [self.view viewWithTag:LOADINGVIEWTAG];
+    if (loadingView != nil) {
+        [loadingView removeFromSuperview];
+    }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    if (!bInit) {
+        bInit = YES;
+        [self initMembers];
+    }
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)initValue;
+{
     if (self.player == nil) {
         NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
         AVAudioPlayer *newPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
@@ -155,8 +199,6 @@
     }
     
     self.senCount.text = [NSString stringWithFormat:@"%d / %d ", (nPosition+1), [self.sentencesArray count]];
-    //[timepreces setText:[NSString stringWithFormat:@"%.1f", self.player.currentTime]];
-    //[timelast setText:[NSString stringWithFormat:@"%.1f", self.player.duration ]];
     loopstarttime = 0.0;
     loopendtime = self.player.duration;
     fVolumn = 1.0;
@@ -171,15 +213,27 @@
     self.listeningToolbar.nextItem.enabled = ((nPosition + 1) != [_sentencesArray count]);
 }
 
-- (void)viewDidLoad
+- (void)parseWAVFile;
 {
-    [super viewDidLoad];
-    if (!bInit) {
-        bInit = YES;
-        [self initMembers];
+    NSString* wavePath = [wavefile substringToIndex:(wavefile.length - 4)];
+    NSFileManager* mgr = [NSFileManager defaultManager];
+    if (![mgr fileExistsAtPath:wavePath]) {
+        [mgr createDirectoryAtPath:wavePath withIntermediateDirectories:YES attributes:nil error:nil];
     }
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //NSLog(@"%@", wavePath);
+    char strwavefile[256];
+    [wavefile getCString:strwavefile maxLength:256 encoding:NSUTF8StringEncoding];
+    
+    char strisbfile[256];
+    [self.isbfile getCString:strisbfile maxLength:256 encoding:NSUTF8StringEncoding];
+    if ([isaybio ISB_LoadFile:strisbfile])
+        [isaybio ISB_SaveFile:strwavefile];
+    [self removeLoadingView];
+    [self initValue];
+    [self.navigationItem setHidesBackButton:NO animated:YES];
+    bParseWAV = NO;
+    [self.sentencesTableView reloadData];
+    self.sentencesTableView.hidden = NO;
 }
 
 - (void)viewDidUnload
@@ -196,7 +250,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self reloadTableView];
+    if (!bParseWAV) {
+        [self reloadTableView];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated

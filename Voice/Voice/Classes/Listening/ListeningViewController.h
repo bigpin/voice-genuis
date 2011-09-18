@@ -61,6 +61,7 @@ typedef enum {
     BOOL                            bAlReadyPaused;
     NSInteger                       nLastScrollPos;
     BOOL                            bInit;
+    BOOL                            bParseWAV;
 }
 
 @property (nonatomic, retain) NSMutableArray* sentencesArray;
@@ -78,6 +79,10 @@ typedef enum {
 @property (nonatomic, retain) AVAudioPlayer* player;
 
 - (void)initMembers;
+- (void)initValue;
+- (void)parseWAVFile;
+- (void)addLoadingView;
+- (void)removeLoadingView;
 - (IBAction)onPrevious:(id)sender;
 - (IBAction)onNext:(id)sender;
 - (IBAction)onOther:(id)sender;
