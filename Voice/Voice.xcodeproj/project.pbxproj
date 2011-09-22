@@ -93,6 +93,8 @@
 		95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */; };
 		95B9657813FE13C2002F6087 /* WaveView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657713FE13C2002F6087 /* WaveView.mm */; };
 		95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657913FE1499002F6087 /* WaveFile.cpp */; };
+		95ED3784142A1E5900DF6BE5 /* libIsaybEncrypt.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ED3782142A1E5900DF6BE5 /* libIsaybEncrypt.d.a */; };
+		95ED3785142A1E5900DF6BE5 /* libIsaybEncrypt.s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ED3783142A1E5900DF6BE5 /* libIsaybEncrypt.s.a */; };
 		E222057C13D5B89F006BA2A4 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E222056E13D5B89F006BA2A4 /* Course.m */; };
 		E222057D13D5B89F006BA2A4 /* CourseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057013D5B89F006BA2A4 /* CourseParser.m */; };
 		E222057E13D5B89F006BA2A4 /* Lesson.m in Sources */ = {isa = PBXBuildFile; fileRef = E222057213D5B89F006BA2A4 /* Lesson.m */; };
@@ -267,6 +269,9 @@
 		95B9657513FE0962002F6087 /* WaveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveFile.h; path = Voice/WaveDecode/WaveFile.h; sourceTree = "<group>"; };
 		95B9657713FE13C2002F6087 /* WaveView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WaveView.mm; path = Recording/WaveView.mm; sourceTree = "<group>"; };
 		95B9657913FE1499002F6087 /* WaveFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveFile.cpp; path = Voice/WaveDecode/WaveFile.cpp; sourceTree = "<group>"; };
+		95ED3781142A1E1500DF6BE5 /* IsaybEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IsaybEncrypt.h; path = Voice/XMLDecrypt/IsaybEncrypt.h; sourceTree = "<group>"; };
+		95ED3782142A1E5900DF6BE5 /* libIsaybEncrypt.d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIsaybEncrypt.d.a; path = Voice/XMLDecrypt/libIsaybEncrypt.d.a; sourceTree = "<group>"; };
+		95ED3783142A1E5900DF6BE5 /* libIsaybEncrypt.s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIsaybEncrypt.s.a; path = Voice/XMLDecrypt/libIsaybEncrypt.s.a; sourceTree = "<group>"; };
 		E222056D13D5B89F006BA2A4 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E222056E13D5B89F006BA2A4 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		E222056F13D5B89F006BA2A4 /* CourseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseParser.h; sourceTree = "<group>"; };
@@ -302,6 +307,8 @@
 				95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.4.a in Frameworks */,
 				9583C8A1140E4F3E0025BC2B /* libisaybio.d.a in Frameworks */,
 				9583C8A2140E4F3E0025BC2B /* libisaybio.s.a in Frameworks */,
+				95ED3784142A1E5900DF6BE5 /* libIsaybEncrypt.d.a in Frameworks */,
+				95ED3785142A1E5900DF6BE5 /* libIsaybEncrypt.s.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,6 +423,7 @@
 		0D8E161C13D471580005CD0F = {
 			isa = PBXGroup;
 			children = (
+				95ED3780142A1DE800DF6BE5 /* XMLDecrypt */,
 				95B9657313FE094C002F6087 /* WaveDecode */,
 				95B9399213F6791C006F4D61 /* UMeng */,
 				0DE9C224140BBE630025BDD2 /* iPublicUtility */,
@@ -440,6 +448,8 @@
 		0D8E162A13D471580005CD0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95ED3782142A1E5900DF6BE5 /* libIsaybEncrypt.d.a */,
+				95ED3783142A1E5900DF6BE5 /* libIsaybEncrypt.s.a */,
 				9583C89F140E4F3E0025BC2B /* libisaybio.d.a */,
 				9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */,
 				0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */,
@@ -676,6 +686,14 @@
 				95B9657513FE0962002F6087 /* WaveFile.h */,
 			);
 			name = WaveDecode;
+			sourceTree = "<group>";
+		};
+		95ED3780142A1DE800DF6BE5 /* XMLDecrypt */ = {
+			isa = PBXGroup;
+			children = (
+				95ED3781142A1E1500DF6BE5 /* IsaybEncrypt.h */,
+			);
+			name = XMLDecrypt;
 			sourceTree = "<group>";
 		};
 		E222056C13D5B89F006BA2A4 /* CourseParser */ = {
@@ -1027,6 +1045,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Voice/UMeng\"",
 					"\"$(SRCROOT)/Voice/WaveDecode\"",
+					"\"$(SRCROOT)/Voice/XMLDecrypt\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -1052,6 +1071,7 @@
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/Voice/UMeng\"",
 					"\"$(SRCROOT)/Voice/WaveDecode\"",
+					"\"$(SRCROOT)/Voice/XMLDecrypt\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",

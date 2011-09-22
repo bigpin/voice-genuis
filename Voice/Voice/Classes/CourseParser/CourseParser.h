@@ -23,6 +23,8 @@
 @property (nonatomic, retain) TBXML* tbxml;
 @property (nonatomic, retain) Course* course;
 
+- (void) getMirrorRessourcePath;
+
 // Load course by filename  "index.xml"
 - (void) loadCourses:(NSString*)filename;
 - (void) loadMetadata:(TBXMLElement*)element;

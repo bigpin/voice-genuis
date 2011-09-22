@@ -13,6 +13,8 @@
 #import "Sentence.h"
 #import "Teacher.h"
 
+#import "IsaybEncrypt.h"
+
 @implementation CourseParser
 
 @synthesize resourcePath, tbxml, course;
@@ -30,6 +32,18 @@
     NSLog(@"%@", resourcePath);
 }
 */
+
+- (void)getMirrorRessourcePath
+{
+    if (wavePath == nil) {
+        NSRange r = [resourcePath rangeOfString:@"/Data"];
+        NSString* dataPath = [resourcePath substringFromIndex:r.location];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+        NSString *docsDir = [paths objectAtIndex:0]; 
+        wavePath = [[NSString alloc] initWithFormat:@"%@%@%@", docsDir, PATH_USERDATA, dataPath];
+    }
+}
+
 - (void)loadCourses:(NSString*)filename
 {
 	// Load and parse the index.xml file
@@ -124,7 +138,25 @@
         NSString* fullFilename = [resourcePath stringByAppendingPathComponent:lesson.path];
         fullFilename = [fullFilename stringByAppendingPathComponent:lesson.file];
        // NSLog(@"%@", fullFilename);
-        NSData* filedata = [NSData dataWithContentsOfFile:fullFilename];
+        
+        // 解压xml文件
+        // 判断目标xml文件是否存在
+        [self getMirrorRessourcePath];
+        NSString* mirrorFullFilename = [wavePath stringByAppendingPathComponent:lesson.path];
+        mirrorFullFilename = [mirrorFullFilename stringByAppendingPathComponent:lesson.file];
+        NSFileManager* fileMgr = [NSFileManager defaultManager];
+        if (![fileMgr fileExistsAtPath:mirrorFullFilename]) {
+            // 创建目录
+            NSRange range = [mirrorFullFilename rangeOfString:@"/" options:NSBackwardsSearch];
+            NSString* filePath = [mirrorFullFilename substringToIndex:range.location];
+            [fileMgr createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+             // 解密
+            NSString* xatFile = [fullFilename substringToIndex:[fullFilename length] - 4];
+            xatFile = [xatFile stringByAppendingPathExtension:@"xat"];
+            [IsaybEncrypt DecodeFile:xatFile to:mirrorFullFilename];
+        }
+
+        NSData* filedata = [NSData dataWithContentsOfFile:mirrorFullFilename];
         tbxml = [[TBXML tbxmlWithXMLData:filedata] retain];
 		
 		TBXMLElement* root = tbxml.rootXMLElement;
@@ -153,13 +185,8 @@
                         NSString* filePath = [TBXML valueOfAttributeNamed:@"src" forElement:file];                    
                         NSString* fileName = [filePath substringToIndex:(filePath.length - 4)];
                         
-                        if (wavePath == nil) {
-                            NSRange r = [resourcePath rangeOfString:@"/Data"];
-                            NSString* dataPath = [resourcePath substringFromIndex:r.location];
-                            NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
-                            NSString *docsDir = [paths objectAtIndex:0]; 
-                            wavePath = [[NSString alloc] initWithFormat:@"%@%@%@", docsDir, PATH_USERDATA, dataPath];
-                        }
+                       [self getMirrorRessourcePath];
+                        
 						lesson.wavfile = [wavePath stringByAppendingPathComponent:[fileName stringByAppendingPathExtension:@"wav"]];
                         //NSLog(@"%@", lesson.wavfile);
                         lesson.isbfile = [resourcePath stringByAppendingPathComponent:[fileName stringByAppendingPathExtension:@"isb"]];
