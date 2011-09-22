@@ -215,10 +215,11 @@
 
 - (void)parseWAVFile;
 {
-    NSString* wavePath = [wavefile substringToIndex:(wavefile.length - 4)];
-    NSFileManager* mgr = [NSFileManager defaultManager];
-    if (![mgr fileExistsAtPath:wavePath]) {
-        [mgr createDirectoryAtPath:wavePath withIntermediateDirectories:YES attributes:nil error:nil];
+    NSFileManager* fileMgr = [NSFileManager defaultManager];
+    if (![fileMgr fileExistsAtPath:wavefile]) {
+        NSRange range = [wavefile rangeOfString:@"/" options:NSBackwardsSearch];
+        NSString* wavePath = [wavefile substringToIndex:range.location];
+        [fileMgr createDirectoryAtPath:wavePath withIntermediateDirectories:YES attributes:nil error:nil];
     }
     //NSLog(@"%@", wavePath);
     char strwavefile[256];
