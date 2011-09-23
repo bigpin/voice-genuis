@@ -141,23 +141,28 @@
         
         // 解压xml文件
         // 判断目标xml文件是否存在
-        [self getMirrorRessourcePath];
-        NSString* mirrorFullFilename = [wavePath stringByAppendingPathComponent:lesson.path];
-        mirrorFullFilename = [mirrorFullFilename stringByAppendingPathComponent:lesson.file];
-        NSFileManager* fileMgr = [NSFileManager defaultManager];
-        if (![fileMgr fileExistsAtPath:mirrorFullFilename]) {
-            // 创建目录
-            NSRange range = [mirrorFullFilename rangeOfString:@"/" options:NSBackwardsSearch];
-            NSString* filePath = [mirrorFullFilename substringToIndex:range.location];
-            [fileMgr createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
-             // 解密
-            NSString* xatFile = [fullFilename substringToIndex:[fullFilename length] - 4];
-            xatFile = [xatFile stringByAppendingPathExtension:@"xat"];
-            [IsaybEncrypt DecodeFile:xatFile to:mirrorFullFilename];
-        }
+//        [self getMirrorRessourcePath];
+//        NSString* mirrorFullFilename = [wavePath stringByAppendingPathComponent:lesson.path];
+//        mirrorFullFilename = [mirrorFullFilename stringByAppendingPathComponent:lesson.file];
+//        NSFileManager* fileMgr = [NSFileManager defaultManager];
+//        if (![fileMgr fileExistsAtPath:mirrorFullFilename]) {
+//            // 创建目录
+//            NSRange range = [mirrorFullFilename rangeOfString:@"/" options:NSBackwardsSearch];
+//            NSString* filePath = [mirrorFullFilename substringToIndex:range.location];
+//            [fileMgr createDirectoryAtPath:filePath withIntermediateDirectories:YES attributes:nil error:nil];
+//             // 解密
+//            NSString* xatFile = [fullFilename substringToIndex:[fullFilename length] - 4];
+//            xatFile = [xatFile stringByAppendingPathExtension:@"xat"];
+//            [IsaybEncrypt DecodeFile:xatFile to:mirrorFullFilename];
+//        }
+        // 读取加密xml
+        NSString* xatFile = [fullFilename substringToIndex:[fullFilename length] - 4];
+        xatFile = [xatFile stringByAppendingPathExtension:@"xat"];
+        unsigned char* filedata = nil;
+        long nLen = [IsaybEncrypt LoadDecodeBuffer:xatFile to:&filedata];
 
-        NSData* filedata = [NSData dataWithContentsOfFile:mirrorFullFilename];
-        tbxml = [[TBXML tbxmlWithXMLData:filedata] retain];
+        tbxml = [[TBXML tbxmlWithXMLData:[NSData dataWithBytes:filedata length:nLen]] retain];
+        [IsaybEncrypt FreeBuffer:&filedata];
 		
 		TBXMLElement* root = tbxml.rootXMLElement;
 		if (root) {

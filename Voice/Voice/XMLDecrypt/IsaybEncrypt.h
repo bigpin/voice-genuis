@@ -23,4 +23,8 @@
 + (bool) DecodeFile:(NSString*)infile 
                  to:(NSString*)outfile;
 
++ (long) LoadDecodeBuffer:(NSString*)infile
+                       to:(unsigned char**)fileData;
+
++ (void) FreeBuffer:(unsigned char**)fileData;
 @end
