@@ -12,6 +12,7 @@
 #import "Lesson.h"
 #import "Sentence.h"
 #import "Teacher.h"
+#import "Word.h"
 
 #import "IsaybEncrypt.h"
 
@@ -155,6 +156,7 @@
 //            xatFile = [xatFile stringByAppendingPathExtension:@"xat"];
 //            [IsaybEncrypt DecodeFile:xatFile to:mirrorFullFilename];
 //        }
+        
         // 读取加密xml
         NSString* xatFile = [fullFilename substringToIndex:[fullFilename length] - 4];
         xatFile = [xatFile stringByAppendingPathExtension:@"xat"];
@@ -218,18 +220,28 @@
 				sentence.starttime = [TBXML valueOfAttributeNamed:@"st" forElement:sentenceEle];
 				sentence.endtime = [TBXML valueOfAttributeNamed:@"et" forElement:sentenceEle];
 				sentence.techerid = [TBXML valueOfAttributeNamed:@"t" forElement:sentenceEle];
-				TBXMLElement* orintext = [TBXML childElementNamed:@"ot" parentElement:sentenceEle];
+				// 原文
+                TBXMLElement* orintext = [TBXML childElementNamed:@"ot" parentElement:sentenceEle];
 				if (orintext) {
 					sentence.orintext = [TBXML textForElement:orintext];
 				}
+                // 译文
 				TBXMLElement* transtext = [TBXML childElementNamed:@"tt" parentElement:sentenceEle];
 				if (transtext) {
 					sentence.transtext = [TBXML textForElement:transtext];
 				}
+                // 
 				TBXMLElement* ps = [TBXML childElementNamed:@"ps" parentElement:sentenceEle];
 				if (ps) {
 					sentence.ps = [TBXML textForElement:ps];
 				}
+                // 单词位置
+                TBXMLElement* wordsEle = [TBXML childElementNamed:@"tw" parentElement:sentenceEle];
+                if (wordsEle) {
+                    sentence.words = [[NSMutableArray alloc] init];
+                    [self loadWord:wordsEle to:sentence.words];
+                }
+                
 				[sentences addObject:sentence];
 				sentenceEle = [TBXML nextSiblingNamed:@"s" searchFromElement:sentenceEle];
 			}
@@ -259,6 +271,26 @@
 			teacherEle = [TBXML nextSiblingNamed:@"teacher" searchFromElement:teacherEle];
 		}
 	}
+}
+
+- (void) loadWord:(TBXMLElement *)element to:(NSMutableArray *)words
+{
+    if (element) {
+        TBXMLElement* wordEle = [TBXML childElementNamed:@"w" parentElement:element];
+        while (wordEle) {
+            Word* word = [[Word alloc] init];
+            word.starttime = [TBXML valueOfAttributeNamed:@"st" forElement:wordEle];
+            word.endtime = [TBXML valueOfAttributeNamed:@"et" forElement:wordEle];
+            word.fayin = [[TBXML valueOfAttributeNamed:@"fy" forElement:wordEle] floatValue];
+            word.jiezou = [[TBXML valueOfAttributeNamed:@"sc" forElement:wordEle] floatValue];
+            word.yinliang = [[TBXML valueOfAttributeNamed:@"yl" forElement:wordEle] floatValue];
+            word.yingao = [[TBXML valueOfAttributeNamed:@"yg" forElement:wordEle] floatValue];
+            TBXMLElement* text = [TBXML childElementNamed:@"text" parentElement:wordEle];
+            word.text = [TBXML textForElement:text];
+            [words addObject:word];
+            wordEle = [TBXML nextSiblingNamed:@"w" searchFromElement:wordEle];
+        }
+    }
 }
 
 - (void)dealloc {

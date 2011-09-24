@@ -86,6 +86,7 @@
 		0DF7F8C613EEF3ED008A885A /* SettingTrainingModeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7F8C513EEF3ED008A885A /* SettingTrainingModeCell.xib */; };
 		0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */; };
 		0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */; };
+		9570CC28142DCDDE009C1E7E /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 9570CC27142DCDDE009C1E7E /* Word.m */; };
 		9583C8A1140E4F3E0025BC2B /* libisaybio.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583C89F140E4F3E0025BC2B /* libisaybio.d.a */; };
 		9583C8A2140E4F3E0025BC2B /* libisaybio.s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */; };
 		95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9398C13F66432006F4D61 /* AudioToolbox.framework */; };
@@ -259,6 +260,8 @@
 		0DFCFF6C14016A5100B1050E /* SettingSwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingSwitchCell.h; sourceTree = "<group>"; };
 		0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingSwitchCell.m; sourceTree = "<group>"; };
 		0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
+		9570CC26142DCDDE009C1E7E /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		9570CC27142DCDDE009C1E7E /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		9583C89F140E4F3E0025BC2B /* libisaybio.d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.d.a; path = Voice/WaveDecode/libisaybio.d.a; sourceTree = "<group>"; };
 		9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.s.a; path = Voice/WaveDecode/libisaybio.s.a; sourceTree = "<group>"; };
 		9585CB3F140E3683006AF6FE /* isaybio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = isaybio.h; path = Voice/WaveDecode/isaybio.h; sourceTree = "<group>"; };
@@ -710,6 +713,8 @@
 				E222057513D5B89F006BA2A4 /* TBXML */,
 				E222057A13D5B89F006BA2A4 /* Teacher.h */,
 				E222057B13D5B89F006BA2A4 /* Teacher.m */,
+				9570CC26142DCDDE009C1E7E /* Word.h */,
+				9570CC27142DCDDE009C1E7E /* Word.m */,
 			);
 			path = CourseParser;
 			sourceTree = "<group>";
@@ -926,6 +931,7 @@
 				0DE9C22D140BBE730025BDD2 /* CAStreamBasicDescription.cpp in Sources */,
 				0DE9C22E140BBE730025BDD2 /* CADebugMacros.cpp in Sources */,
 				0D9A0153141E368800FFF508 /* SettingShowTranslationCell.m in Sources */,
+				9570CC28142DCDDE009C1E7E /* Word.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,5 +36,7 @@
                    to:(NSMutableArray*)sentences;
 - (void) loadTeacher:(TBXMLElement*)element 
                   to:(NSMutableArray*)teachers;
+- (void) loadWord:(TBXMLElement*)element
+               to:(NSMutableArray*)words;
 
 @end

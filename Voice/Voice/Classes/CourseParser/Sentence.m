@@ -11,7 +11,24 @@
 
 @implementation Sentence
 
-@synthesize starttime, endtime, orintext, transtext, techerid, ps;
+@synthesize starttime, endtime, orintext, transtext, techerid, ps, words;
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        // Initialization code here.
+        starttime = nil;
+        endtime = nil;
+        orintext = nil;
+        transtext = nil;
+        techerid = nil;
+        ps = nil;
+        words = nil;
+    }
+    
+    return self;
+}
 
 - (NSTimeInterval) transTotime:(NSString*)str
 {
@@ -44,6 +61,16 @@
         temp = text;
     }
      orintext = [[NSString alloc] initWithString:temp];
+}
+
+- (void)dealloc 
+{
+    for (int i = 0; i < [self.words count]; i++) {
+		[[self.words objectAtIndex:i] release];
+	}
+    [self.words release];
+
+    [super dealloc];
 }
 
 @end

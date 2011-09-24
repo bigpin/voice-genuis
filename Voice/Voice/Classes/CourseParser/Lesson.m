@@ -35,8 +35,14 @@
     [self.title release];
     [self.path release];
     [self.file release];
+    for (int i = 0; i < [self.teachers count]; i++) {
+		[[self.teachers objectAtIndex:i] release];
+	}
     [self.teachers release];
     [self.wavfile release];
+    for (int i = 0; i < [self.setences count]; i++) {
+		[[self.setences objectAtIndex:i] release];
+	}
     [self.setences release];
     [self.isbfile release];
     [super dealloc];
