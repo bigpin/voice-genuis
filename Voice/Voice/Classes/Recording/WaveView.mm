@@ -75,8 +75,8 @@
 //   unsigned long bytesperHDR = (waveformatex.nAvgBytesPerSec / 10) * 2;
     dwavesecond = (double)buffertotal / (double)waveformatex.nAvgBytesPerSec;
     
-    unsigned long wavesecondtemp = (unsigned long)dwavesecond + 1;
-    dwWidPerSencond = nWidth / wavesecondtemp;
+    // unsigned long wavesecondtemp = (unsigned long)dwavesecond + 1;
+    dwWidPerSencond = nWidth / dwavesecond;
     
     //waveSampleVector.clear();
     GetWaveSample(waveformatex, pBuffer, buffertotal, dwWidPerSencond, nHeight, waveSampleVector);
@@ -103,8 +103,8 @@
     wavefile->ReadWaveData(starttime, endtime, pBuffer, buffertotal);
     dwavesecond = (double)buffertotal / (double)waveformatex.nAvgBytesPerSec;
     
-    unsigned long wavesecondtemp = (unsigned long)dwavesecond + 1;
-    dwWidPerSencond = nWidth / wavesecondtemp;
+    // unsigned long wavesecondtemp = (unsigned long)dwavesecond + 1;
+    dwWidPerSencond = nWidth / dwavesecond;
     
     //waveSampleVector.clear();
     GetWaveSample(waveformatex, pBuffer, buffertotal, dwWidPerSencond, nHeight, waveSampleVector);
@@ -134,18 +134,62 @@
 
     UIColor* c = [UIColor whiteColor];
     CGContextSetStrokeColorWithColor(context, [c CGColor]);
-    if (waveSampleVector.size() > 0) {
-         for(size_t i = 1; i < waveSampleVector.size(); i++)
-        {
-            CGContextMoveToPoint(context, i, waveSampleVector[i].first);
-            CGContextAddLineToPoint(context, i, waveSampleVector[i].second);
+    CGContextSetFillColorWithColor(context, [c CGColor]);
+    
+    int nCount = waveSampleVector.size() * 2;
+    CGPoint *points = (CGPoint*)malloc(sizeof(CGPoint) * nCount);
+    int minvalue = 1024;    // 波形最小值
+    int maxvalue = 0;       // 波形最大值
+    for (size_t i  = 0; i < waveSampleVector.size(); i++) {
+        points[i].x = i;
+        points[i].y = waveSampleVector.at(i).first;
+        points[nCount - i - 1].x = i;
+        points[nCount - i - 1].y = waveSampleVector.at(i).second;
+        if (minvalue > waveSampleVector.at(i).first) {
+            minvalue = waveSampleVector.at(i).first;
         }
-        CGContextStrokePath(context);
+        if (maxvalue < waveSampleVector.at(i).second) {
+            maxvalue = waveSampleVector.at(i).second;
+        }
     }
     
+    CGContextBeginPath(context);
+    CGContextAddLines(context, points, nCount);
+    free(points);
+    CGContextClosePath(context);
+    CGContextClip(context);
+    
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGFloat locations[] = { 0.0, 1.0 };
+    
+    // 渐变颜色区间
+    NSArray *colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor redColor] CGColor], nil];
+    
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef) colors, locations);
+    
+    CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), minvalue);
+    CGPoint midPoint = CGPointMake(CGRectGetMidX(rect), (maxvalue + minvalue) / 2);
+    CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), maxvalue);
+    
+    CGContextDrawLinearGradient(context, gradient, midPoint, startPoint, 0);
+    CGContextDrawLinearGradient(context, gradient, midPoint, endPoint, 0);
+
+    CGGradientRelease(gradient);
+    CGColorSpaceRelease(colorSpace);
+    // CGContextFillPath(context);
+    // CGContextStrokePath(context);
+   
+//    if (waveSampleVector.size() > 0) {
+//         for(size_t i = 1; i < waveSampleVector.size(); i++)
+//        {
+//            CGContextMoveToPoint(context, i, waveSampleVector[i].first);
+//            CGContextAddLineToPoint(context, i, waveSampleVector[i].second);
+//        }
+//        CGContextStrokePath(context);
+//    }
     
     CGContextSetLineWidth(context, 1);
-     CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+    CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
     
     CGContextMoveToPoint(context, 0, rect.size.height/2 - 1);
     CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2 - 1);
