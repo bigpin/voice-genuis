@@ -132,50 +132,55 @@
         [self loadwavedata];
     }
 
-    UIColor* c = [UIColor whiteColor];
-    CGContextSetStrokeColorWithColor(context, [c CGColor]);
-    CGContextSetFillColorWithColor(context, [c CGColor]);
-    
-    int nCount = waveSampleVector.size() * 2;
-    CGPoint *points = (CGPoint*)malloc(sizeof(CGPoint) * nCount);
-    int minvalue = 1024;    // 波形最小值
-    int maxvalue = 0;       // 波形最大值
-    for (size_t i  = 0; i < waveSampleVector.size(); i++) {
-        points[i].x = i;
-        points[i].y = waveSampleVector.at(i).first;
-        points[nCount - i - 1].x = i;
-        points[nCount - i - 1].y = waveSampleVector.at(i).second;
-        if (minvalue > waveSampleVector.at(i).first) {
-            minvalue = waveSampleVector.at(i).first;
+    if (waveSampleVector.size() > 0) {
+        UIColor* c = [UIColor whiteColor];
+        CGContextSetStrokeColorWithColor(context, [c CGColor]);
+        CGContextSetFillColorWithColor(context, [c CGColor]);
+        
+        int nCount = waveSampleVector.size() * 2;
+        CGPoint *points = (CGPoint*)malloc(sizeof(CGPoint) * nCount);
+        int minvalue = 1024;    // 波形最小值
+        int maxvalue = 0;       // 波形最大值
+        for (size_t i  = 0; i < waveSampleVector.size(); i++) {
+            points[i].x = i;
+            points[i].y = waveSampleVector.at(i).first;
+            points[nCount - i - 1].x = i;
+            points[nCount - i - 1].y = waveSampleVector.at(i).second;
+            if (minvalue > waveSampleVector.at(i).first) {
+                minvalue = waveSampleVector.at(i).first;
+            }
+            if (maxvalue < waveSampleVector.at(i).second) {
+                maxvalue = waveSampleVector.at(i).second;
+            }
         }
-        if (maxvalue < waveSampleVector.at(i).second) {
-            maxvalue = waveSampleVector.at(i).second;
-        }
+        
+        CGContextSaveGState(context);
+        CGContextBeginPath(context);
+        CGContextAddLines(context, points, nCount);
+        free(points);
+        CGContextClosePath(context);
+        CGContextClip(context);
+        
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        CGFloat locations[] = { 0.0, 1.0 };
+        
+        // 渐变颜色区间
+        NSArray *colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor redColor] CGColor], nil];
+        
+        CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef) colors, locations);
+        
+        CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), minvalue);
+        CGPoint midPoint = CGPointMake(CGRectGetMidX(rect), (maxvalue + minvalue) / 2);
+        CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), maxvalue);
+        
+        CGContextDrawLinearGradient(context, gradient, midPoint, startPoint, 0);
+        CGContextDrawLinearGradient(context, gradient, midPoint, endPoint, 0);
+        
+        CGGradientRelease(gradient);
+        CGColorSpaceRelease(colorSpace);
+        CGContextRestoreGState(context);
     }
-    
-    CGContextBeginPath(context);
-    CGContextAddLines(context, points, nCount);
-    free(points);
-    CGContextClosePath(context);
-    CGContextClip(context);
-    
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGFloat locations[] = { 0.0, 1.0 };
-    
-    // 渐变颜色区间
-    NSArray *colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor redColor] CGColor], nil];
-    
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef) colors, locations);
-    
-    CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), minvalue);
-    CGPoint midPoint = CGPointMake(CGRectGetMidX(rect), (maxvalue + minvalue) / 2);
-    CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), maxvalue);
-    
-    CGContextDrawLinearGradient(context, gradient, midPoint, startPoint, 0);
-    CGContextDrawLinearGradient(context, gradient, midPoint, endPoint, 0);
 
-    CGGradientRelease(gradient);
-    CGColorSpaceRelease(colorSpace);
     // CGContextFillPath(context);
     // CGContextStrokePath(context);
    
