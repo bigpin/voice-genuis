@@ -165,7 +165,7 @@
         CGFloat locations[] = { 0.0, 1.0 };
         
         // 渐变颜色区间
-        NSArray *colors = [NSArray arrayWithObjects:(id)[[UIColor whiteColor] CGColor], (id)[[UIColor redColor] CGColor], nil];
+        NSArray *colors = [NSArray arrayWithObjects:(id)[[UIColor blueColor] CGColor], (id)[[UIColor redColor] CGColor], nil];
         
         CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef) colors, locations);
         
@@ -175,7 +175,7 @@
         
         CGContextDrawLinearGradient(context, gradient, midPoint, startPoint, 0);
         CGContextDrawLinearGradient(context, gradient, midPoint, endPoint, 0);
-        
+      
         CGGradientRelease(gradient);
         CGColorSpaceRelease(colorSpace);
         CGContextRestoreGState(context);
@@ -211,7 +211,7 @@
         NSInteger nTimeCount = rect.size.width / dwWidPerSencond;
         CGFloat h = rect.size.height - 10;
        /// CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
-        CGContextSelectFont(context, "Helvetica", 12, kCGEncodingMacRoman);
+        CGContextSelectFont(context, "Helvetica", 16, kCGEncodingMacRoman);
         CGContextSetTextDrawingMode(context, kCGTextFill);
         CGContextSetFillColorWithColor(context, [clr CGColor]);
         CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);

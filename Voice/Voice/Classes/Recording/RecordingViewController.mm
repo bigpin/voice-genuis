@@ -9,6 +9,7 @@
 #import "RecordingViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "BubbleCell.h"
+#import "MobClick.h"
 
 @implementation RecordingViewController
 @synthesize recordingdelegate;
@@ -324,6 +325,8 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void) onRecording:(id)sender;
 {
     if ([self.recordingItem.title isEqualToString:STRING_START_RECORDING]) {
+        [MobClick event:@"recording_click"];
+        
         [self removeRecordingFile];
         [self.recordingTableView reloadData];
         if (recorder == nil) {
