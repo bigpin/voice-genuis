@@ -19,11 +19,6 @@
     NSInteger nSelectedPage;
     NSInteger nPageCount;
     UISegmentedControl* _pageSegment;
-    BOOL bLessonViewAsRootView;
-    BOOL bPagination;
-    NSInteger nPageCountOfiPhone;
-    NSInteger nPageCountOfiPad;
-    NSInteger nLessonCellStyle;
 }
 
 @property (nonatomic, retain) NSString* scenesName;

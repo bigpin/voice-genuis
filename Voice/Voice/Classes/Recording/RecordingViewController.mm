@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BubbleCell.h"
 #import "MobClick.h"
+#import "VoiceAppDelegate.h"
 
 @implementation RecordingViewController
 @synthesize recordingdelegate;
@@ -313,9 +314,10 @@ char *OSTypeToStr(char *buf, OSType t)
 	[itemFlexibleSpace release];
 	[itemFlexedSpace release];
 	[itemFlexedSpaceSmall release];
-    [self.toolbar setTintColor:[[UIColor alloc] initWithRed:NAVI_COLOR_R
-                                                 green:NAVI_COLOR_G
-                                                  blue:NAVI_COLOR_B
+    VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
+    [self.toolbar setTintColor:[[UIColor alloc] initWithRed:app.naviRed
+                                                 green:app.naviGreen
+                                                  blue:app.naviBlue
                                                  alpha:1.0]];
 
 	[self.toolbar setItems:items animated:YES];

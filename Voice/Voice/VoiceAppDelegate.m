@@ -14,16 +14,16 @@
 
 @implementation CustomUITabBarController
 
-- (id)init
+- (id)initWithColor:(CGFloat)r withGreen:(CGFloat)g withBlue:(CGFloat)b withAlpha:(CGFloat)a;
 {
     self = [super init];
     CGRect frame = CGRectMake(0.0, 0, self.view.bounds.size.width, 48);
     
     UIView *v = [[UIView alloc] initWithFrame:frame];
     
-    [v setBackgroundColor:[[UIColor alloc] initWithRed:NAVI_COLOR_R
-                                                 green:NAVI_COLOR_G
-                                                  blue:NAVI_COLOR_B
+    [v setBackgroundColor:[[UIColor alloc] initWithRed:r
+                                                 green:g
+                                                  blue:b
                                                  alpha:0.2]];
     
     v.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
@@ -38,12 +38,30 @@
 
 @synthesize window=_window;
 @synthesize  tabBar = _tabBar;
+@synthesize naviRed;
+@synthesize naviGreen;
+@synthesize naviBlue;
+@synthesize naviAphla;
+@synthesize bLessonViewAsRootView;
+@synthesize bPagination;
+@synthesize nPageCountOfiPhone;
+@synthesize nPageCountOfiPad;
+@synthesize nLessonCellStyle;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     /*if (databaseQuery == nil) {
         databaseQuery = [Database database];
     }*/
+    bLessonViewAsRootView = NO;
+    bPagination = NO;
+    nPageCountOfiPhone = 8;
+    nPageCountOfiPad = 15;
+    nLessonCellStyle = 0;
+    naviRed = 0.20392;
+    naviGreen = 0.2235294;
+    naviBlue = 0.082353;
+    naviAphla = 1.0;
     
     NSString* path = [[NSBundle mainBundle] resourcePath];
     path = [NSString stringWithFormat:@"%@/%@",path, @"configuration.plist"];
@@ -51,14 +69,37 @@
     if (config != nil) {
         NSNumber* isLoadCoverFlow = [config objectForKey:KEY_SETTING_USE_COVERFLOW];
         if (isLoadCoverFlow != nil) {
-            if ([isLoadCoverFlow boolValue]) {
-                [self loadCoverFlowUI];
-            } else {
-                [self loadLessonUI];
-            }
-        } else {
-            [self loadCoverFlowUI];           
+            bLessonViewAsRootView = ![isLoadCoverFlow boolValue];
         }
+        
+        NSNumber* isPagination = [config objectForKey:KEY_SETTING_LESSON_PAGINATION];
+        if (isPagination != nil) {
+            bPagination = [isPagination boolValue];
+        }
+        NSNumber* numOfiPhone = [config objectForKey:KEY_SETTING_LESSON_PAGE_OF_IPHONE];
+        if (numOfiPhone != nil) {
+            nPageCountOfiPhone = [numOfiPhone intValue];
+        }
+        
+        NSNumber* numOfiPad = [config objectForKey:KEY_SETTING_LESSON_PAGE_OF_IPAD];
+        if (numOfiPad != nil) {
+            nPageCountOfiPad = [numOfiPad intValue];
+        }
+        NSNumber* numCellStyle = [config objectForKey:KEY_SETTING_LESSONCELLSTYLE];
+        if (numCellStyle != 0) {
+            nLessonCellStyle = [numCellStyle intValue];
+        }
+       NSArray* colorOfNavigation = [config objectForKey:KEY_SETTING_NAVIGATIONCOLOR];
+        naviRed = [[colorOfNavigation objectAtIndex:0] floatValue];
+        naviGreen = [[colorOfNavigation objectAtIndex:1] floatValue];
+        naviBlue = [[colorOfNavigation objectAtIndex:2] floatValue];
+        naviAphla = [[colorOfNavigation objectAtIndex:3] floatValue];
+        if (!bLessonViewAsRootView) {
+            [self loadCoverFlowUI];
+        } else {
+            [self loadLessonUI];
+        }
+        
     } else {
         [self loadCoverFlowUI];
         
@@ -137,7 +178,7 @@
     ScenesCoverViewController* scenes = [[ScenesCoverViewController alloc] init];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:scenes];
     
-    nav.navigationBar.tintColor = [UIColor colorWithRed:NAVI_COLOR_R green:NAVI_COLOR_G blue:NAVI_COLOR_B alpha:1.0];
+    nav.navigationBar.tintColor = [UIColor colorWithRed:naviRed green:naviGreen blue:naviBlue alpha:naviAphla];
     //scenes.title = @"Scenes root";
 	scenes.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/world.png", resourcePath]];
     
@@ -173,9 +214,9 @@
     LessonsViewController* scenes = [[LessonsViewController alloc] initWithNibName:@"LessonsViewController" bundle:nil];
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:scenes];
     
-    nav.navigationBar.tintColor = [UIColor colorWithRed:NAVI_COLOR_R green:NAVI_COLOR_G blue:NAVI_COLOR_B alpha:1.0];
+    nav.navigationBar.tintColor = [UIColor colorWithRed:naviRed green:naviGreen blue:naviBlue alpha:naviAphla];
     nav.toolbarHidden = YES;
-    nav.toolbar.tintColor = [UIColor colorWithRed:NAVI_COLOR_R green:NAVI_COLOR_G blue:NAVI_COLOR_B alpha:1.0];
+    nav.toolbar.tintColor = [UIColor colorWithRed:naviRed green:naviGreen blue:naviBlue alpha:naviAphla];
     NSString* scenetitle = STRING_SCENE_TITLE;
     scenes.tabBarItem.title = scenetitle;
     

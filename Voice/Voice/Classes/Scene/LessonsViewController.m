@@ -11,7 +11,7 @@
 #import "SettingViewController.h"
 #import "LessonCell.h"
 #import "BubbleCell.h"
-
+#import "VoiceAppDelegate.h"
 
 @implementation LessonsViewController
 @synthesize scenesName = _scenesName;
@@ -21,12 +21,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     nSelectedPage = 0;
-    bLessonViewAsRootView = NO;
-    bPagination = NO;
-    nPageCountOfiPhone = 8;
-    nPageCountOfiPad = 15;
-    nPageCount = IS_IPAD ? nPageCountOfiPad : nPageCountOfiPhone;
-    nLessonCellStyle = 0;
+    
+    VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
+    nPageCount = IS_IPAD ? app.nPageCountOfiPad : app.nPageCountOfiPhone;
     return self;
 }
 
@@ -58,37 +55,6 @@
 - (void)loadView 
 {
     [super loadView];
-    NSString* path = [[NSBundle mainBundle] resourcePath];
-    path = [NSString stringWithFormat:@"%@/%@",path, @"configuration.plist"];
-    NSDictionary* config = [[NSDictionary alloc] initWithContentsOfFile:path];
-    if (config != nil) {
-        NSNumber* isLoadCoverFlow = [config objectForKey:KEY_SETTING_USE_COVERFLOW];
-        if (isLoadCoverFlow != nil) {
-            bLessonViewAsRootView = ![isLoadCoverFlow boolValue];
-        }
-        
-        NSNumber* isPagination = [config objectForKey:KEY_SETTING_LESSON_PAGINATION];
-       if (isPagination != nil) {
-           bPagination = [isPagination boolValue];
-        }
-        NSNumber* numOfiPhone = [config objectForKey:KEY_SETTING_LESSON_PAGE_OF_IPHONE];
-        if (numOfiPhone != nil) {
-            nPageCountOfiPhone = [numOfiPhone intValue];
-        }
-
-        NSNumber* numOfiPad = [config objectForKey:KEY_SETTING_LESSON_PAGE_OF_IPAD];
-        if (numOfiPad != nil) {
-            nPageCountOfiPad = [numOfiPad intValue];
-        }
-        nPageCount = IS_IPAD ? nPageCountOfiPad : nPageCountOfiPhone;
-        NSNumber* numCellStyle = [config objectForKey:KEY_SETTING_LESSONCELLSTYLE];
-        if (numCellStyle != 0) {
-            nLessonCellStyle = [numCellStyle intValue];
-        }
-    }
-    [config release];
-    config = nil;
-
 }
 
 - (void)viewDidLoad
@@ -99,15 +65,16 @@
     self.navigationItem.backBarButtonItem = backItem;
     [backItem release];
     [self loadCourses];
-    if (bPagination) {
+    VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
+    if (app.bPagination) {
         if ([_courseParser.course.lessons count] > nPageCount) {
             [self loadToolbarItems];
         } else {
-            bPagination = NO;
+            app.bPagination = NO;
         }
     } 
     
-    if (bLessonViewAsRootView) {
+    if (app.bLessonViewAsRootView) {
         NSString* displayName = [[[NSBundle mainBundle] infoDictionary]   objectForKey:@"CFBundleDisplayName"];
         self.title = displayName;
         UIBarButtonItem* itemSetting = [[UIBarButtonItem alloc] initWithTitle:STRING_SETTING
@@ -174,7 +141,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (!bPagination) {
+    VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
+    if (!(app.bPagination)) {
         return [_courseParser.course.lessons count];
     } else {
         NSInteger nCount = (nSelectedPage+1) * nPageCount;
@@ -212,8 +180,9 @@
         [cell cleanUp];
     }
     
+    VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
     NSInteger nPostion = nSelectedPage * nPageCount + indexPath.row;
-    if (!bPagination) {
+    if (!(app.bPagination)) {
         nPostion = indexPath.row;
     }
     if (nPostion < [_courseParser.course.lessons count]) {
@@ -233,7 +202,8 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (bPagination) {
+    VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
+    if (app.bPagination) {
         NSInteger nPostion = nSelectedPage*nPageCount + indexPath.row;
         if (nPostion < ([_courseParser.course.lessons count])) {
             LessonCell *cell = (LessonCell*)[self tableView: tableView cellForRowAtIndexPath: indexPath];
@@ -380,7 +350,8 @@
     }
     UISegmentedControl* seg = [[UISegmentedControl alloc] initWithItems:array];
     seg.segmentedControlStyle = UISegmentedControlStyleBar;
-    seg.tintColor = [UIColor colorWithRed:NAVI_COLOR_R green:NAVI_COLOR_G blue:NAVI_COLOR_B alpha:1.0];
+    VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
+    seg.tintColor = [UIColor colorWithRed:app.naviRed green:app.naviGreen blue:app.naviBlue alpha:1.0];
     [array release];
     UIBarButtonItem* itemPlay = [[UIBarButtonItem alloc] initWithCustomView:seg];
     [items addObject:itemPlay];
