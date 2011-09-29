@@ -10,6 +10,7 @@
 #import "ScenesCoverViewController.h"
 #import "FavorViewController.h"
 #import "SettingViewController.h"
+#import "LessonsViewController.h"
 
 @implementation CustomUITabBarController
 
@@ -43,56 +44,27 @@
     /*if (databaseQuery == nil) {
         databaseQuery = [Database database];
     }*/
-    CustomUITabBarController* tb = [[CustomUITabBarController alloc] init];
-    NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
-    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSString* stringResource = @"Image";
-    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
     
-    // lessons
-    /*ScenesViewController* lessons = [[ScenesViewController alloc] initWithNibName:@"ScenesViewController" bundle:nil];
-    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:lessons];
-    nav.navigationBar.tintColor = [UIColor blackColor];
-    lessons.title = @"Scenes root";
-	lessons.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/world.png", resourcePath]];
-    
-    nav.title = @"Scenes";
-    [viewControllers addObject:nav];
-    
-    [lessons release];
-    [nav release];*/
-    ScenesCoverViewController* scenes = [[ScenesCoverViewController alloc] init];
-    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:scenes];
-
-    nav.navigationBar.tintColor = [UIColor colorWithRed:NAVI_COLOR_R green:NAVI_COLOR_G blue:NAVI_COLOR_B alpha:1.0];
-    //scenes.title = @"Scenes root";
-	scenes.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/world.png", resourcePath]];
-    
-    NSString* scenetitle = STRING_SCENE_TITLE;
-    scenes.tabBarItem.title = scenetitle;
-    [viewControllers addObject:nav];
-    
-    [scenes release];
-    [nav release];
-    
-    // settings
-    SettingViewController* setting = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
-    
- 	setting.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/preferences.png", resourcePath]];
-    setting.bFromSence = YES;
-    nav = [[UINavigationController alloc] initWithRootViewController:setting];
-    nav.navigationBar.tintColor = [UIColor blackColor];
-    [viewControllers addObject:nav];
-    NSString* settingTitle = STRING_SETTING_TITLE;
-    setting.title = settingTitle;
-    setting.tabBarItem.title = settingTitle;
-    [setting release];
-    [nav release];
-    
-    [tb setViewControllers:viewControllers];
-    
-    self.tabBar = tb;
-    [self.window addSubview:self.tabBar.view];
+    NSString* path = [[NSBundle mainBundle] resourcePath];
+    path = [NSString stringWithFormat:@"%@/%@",path, @"configuration.plist"];
+    NSDictionary* config = [[NSDictionary alloc] initWithContentsOfFile:path];
+    if (config != nil) {
+        NSNumber* isLoadCoverFlow = [config objectForKey:KEY_SETTING_USE_COVERFLOW];
+        if (isLoadCoverFlow != nil) {
+            if ([isLoadCoverFlow boolValue]) {
+                [self loadCoverFlowUI];
+            } else {
+                [self loadLessonUI];
+            }
+        } else {
+            [self loadCoverFlowUI];           
+        }
+    } else {
+        [self loadCoverFlowUI];
+        
+    }
+    [config release];
+    config = nil;
     // Override point for customization after application launch.
     
     // UMeng setting
@@ -102,6 +74,7 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -151,6 +124,65 @@
 {
     [_window release];
     [super dealloc];
+}
+
+- (void)loadCoverFlowUI;
+{
+    CustomUITabBarController* tb = [[CustomUITabBarController alloc] init];
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] init];
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+    NSString* stringResource = @"Image";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    
+    ScenesCoverViewController* scenes = [[ScenesCoverViewController alloc] init];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:scenes];
+    
+    nav.navigationBar.tintColor = [UIColor colorWithRed:NAVI_COLOR_R green:NAVI_COLOR_G blue:NAVI_COLOR_B alpha:1.0];
+    //scenes.title = @"Scenes root";
+	scenes.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/world.png", resourcePath]];
+    
+    NSString* scenetitle = STRING_SCENE_TITLE;
+    scenes.tabBarItem.title = scenetitle;
+    [viewControllers addObject:nav];
+    
+    [scenes release];
+    [nav release];
+    
+    // settings
+    SettingViewController* setting = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
+    
+ 	setting.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/preferences.png", resourcePath]];
+    setting.bFromSence = YES;
+    nav = [[UINavigationController alloc] initWithRootViewController:setting];
+    nav.navigationBar.tintColor = [UIColor blackColor];
+    [viewControllers addObject:nav];
+    NSString* settingTitle = STRING_SETTING_TITLE;
+    setting.title = settingTitle;
+    setting.tabBarItem.title = settingTitle;
+    [setting release];
+    [nav release];
+    
+    [tb setViewControllers:viewControllers];
+    
+    self.tabBar = tb;
+    [self.window addSubview:self.tabBar.view];
+}
+
+- (void)loadLessonUI;
+{
+    LessonsViewController* scenes = [[LessonsViewController alloc] initWithNibName:@"LessonsViewController" bundle:nil];
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:scenes];
+    
+    nav.navigationBar.tintColor = [UIColor colorWithRed:NAVI_COLOR_R green:NAVI_COLOR_G blue:NAVI_COLOR_B alpha:1.0];
+    nav.toolbarHidden = YES;
+    nav.toolbar.tintColor = [UIColor colorWithRed:NAVI_COLOR_R green:NAVI_COLOR_G blue:NAVI_COLOR_B alpha:1.0];
+    NSString* scenetitle = STRING_SCENE_TITLE;
+    scenes.tabBarItem.title = scenetitle;
+    
+    [scenes release];
+    self.window.rootViewController = nav;
+    [nav release];
+    
 }
 
 #pragma Mark - UMeng

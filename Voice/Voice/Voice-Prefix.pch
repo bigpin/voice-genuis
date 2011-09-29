@@ -23,6 +23,7 @@
 #define MAX_RATING 5.0
 #define MAGIN_OF_BUBBLE_ICON_START 24.0
 #define MAGIN_OF_BUBBLE_TEXT_START 15.0
+#define IS_IPAD	([[UIDevice currentDevice] respondsToSelector:@selector(userInterfaceIdiom)] && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 
 #define MAGIN_OF_LESSON_TITLE  64
 #define MAGIN_OF_RIGHT         40
@@ -89,3 +90,6 @@
 #define STRING_SRC_TEXT                 @"原文显示"
 #define STRING_VOICE_GRAPHIC            @"波形对比"
 #define STRING_LOADING_TEXT             @"第一次初始化课程..."
+#define STRING_SETTING                  @"设置"
+#define STRING_PRE_PAGE                 @"上一页"
+#define STRING_NEXT_PAGE                @"下一页"

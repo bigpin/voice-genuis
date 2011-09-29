@@ -22,4 +22,7 @@
 @property (nonatomic, retain) IBOutlet CustomUITabBarController *tabBar;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
+- (void)loadCoverFlowUI;
+- (void)loadLessonUI;
+
 @end
