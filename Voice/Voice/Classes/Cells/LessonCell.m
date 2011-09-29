@@ -9,7 +9,7 @@
 #import "LessonCell.h"
 #import "BubbleCell.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UACellBackgroundView.h"
 
 @implementation LessonCell
 @synthesize lessonTitle = _lessonTitle;
@@ -20,23 +20,36 @@
 @synthesize nIndex;
 @synthesize scoreLabel = _scoreLabel;
 @synthesize fRating;
+@synthesize nStyle;
+@synthesize nCellPosition;
 
 - (void)setUseDarkBackground:(BOOL)flag
 {
     if (flag != useDarkBackground || !self.backgroundView)
     {
         useDarkBackground = flag;
-        NSString* darkPath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@/Cells/DarkBackground.png", [[NSBundle mainBundle] resourcePath], @"Image"]];
-        
-        NSString* lightPath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@/Cells/LightBackground.png", [[NSBundle mainBundle] resourcePath], @"Image"]];
-        
-        NSString *backgroundImagePath = useDarkBackground ? darkPath : lightPath ;
-        UIImage *backgroundImage = [[UIImage imageWithContentsOfFile:backgroundImagePath] stretchableImageWithLeftCapWidth:0.0 topCapHeight:1.0];
-        self.backgroundView = [[[UIImageView alloc] initWithImage:backgroundImage] autorelease];
+        if (nStyle == 0) {
+            NSString* darkPath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@/Cells/DarkBackground.png", [[NSBundle mainBundle] resourcePath], @"Image"]];
+            
+            NSString* lightPath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@/Cells/LightBackground.png", [[NSBundle mainBundle] resourcePath], @"Image"]];
+            
+            NSString *backgroundImagePath = useDarkBackground ? darkPath : lightPath ;
+            UIImage *backgroundImage = [[UIImage imageWithContentsOfFile:backgroundImagePath] stretchableImageWithLeftCapWidth:0.0 topCapHeight:1.0];
+            self.backgroundView = [[[UIImageView alloc] initWithImage:backgroundImage] autorelease];
+
+        } else {
+            UACellBackgroundView* b = [[UACellBackgroundView alloc] initWithFrame:self.bounds];
+            self.backgroundView.frame = CGRectMake(self.bounds.origin.x, self.bounds.origin.y, self.bounds.size.width, self.bounds.size.height - 1);
+            b.position = UACellBackgroundViewPositionMiddle;
+            self.backgroundView = b;
+            [b release];
+        }
+
         self.backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.backgroundView.frame = self.bounds;
-        fRating = MAX_RATING;
+       fRating = MAX_RATING;
     }
+    
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -44,6 +57,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        nStyle = 0;
     }
     return self;
 }
@@ -74,6 +88,7 @@
     self.ratingView = nil;
     self.board = nil;
     self.scoreLabel = nil;
+    [self setNeedsDisplay];
 }
 
 - (void)layoutSubviews {

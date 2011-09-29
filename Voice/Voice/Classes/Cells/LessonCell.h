@@ -18,6 +18,8 @@
     BOOL useDarkBackground;
     NSInteger nIndex;
     CGFloat fRating;
+    NSInteger nStyle;
+    NSInteger nCellPosition;
 }
 @property (nonatomic) BOOL useDarkBackground;
 @property (nonatomic) NSInteger nIndex;
@@ -27,5 +29,9 @@
 @property (nonatomic, retain) IBOutlet UIImageView* board;
 @property (nonatomic, retain) IBOutlet UILabel* scoreLabel;
 @property (nonatomic) CGFloat fRating;
+@property (nonatomic) NSInteger nStyle;
+@property (nonatomic) NSInteger nCellPosition;
+
 - (void)cleanUp;
+
 @end

@@ -187,6 +187,26 @@
     }
     if (nPostion < [_courseParser.course.lessons count]) {
         Lesson * lesson = [_courseParser.course.lessons objectAtIndex:nPostion];
+        /*
+        if (app.bPagination) {
+            if (indexPath.row == 0) {
+                cell.nCellPosition = 1;
+            } else if (indexPath.row == (nPageCount - 1)) {
+                cell.nCellPosition = 3;
+            } else {
+                cell.nCellPosition = 2;
+            }
+        } else {
+            if (indexPath.row == 0) {
+                cell.nCellPosition = 1;
+            } else if (indexPath.row == ([_courseParser.course.lessons count] - 1)) {
+                cell.nCellPosition = 3;
+            } else {
+                cell.nCellPosition = 2;
+            }
+        }
+         */
+        cell.nStyle = app.nLessonCellStyle;
         cell.lessonTitle = lesson.title;
         cell.useDarkBackground = (nPostion % 2 == 0);
         cell.nIndex = nPostion;
