@@ -200,7 +200,7 @@ void AQRecorder::SetupAudioFormat(UInt32 inFormatID)
 
 }
 
-void AQRecorder::StartRecord(CFStringRef inRecordFile)
+BOOL AQRecorder::StartRecord(CFStringRef inRecordFile)
 {
 	int i, bufferByteSize;
 	UInt32 size;
@@ -253,13 +253,16 @@ void AQRecorder::StartRecord(CFStringRef inRecordFile)
 		// start the queue
 		mIsRunning = true;
 		XThrowIfError(AudioQueueStart(mQueue, NULL), "AudioQueueStart failed");
+        return YES;
 	}
 	catch (CAXException &e) {
 		char buf[256];
 		fprintf(stderr, "Error: %s (%s)\n", e.mOperation, e.FormatError(buf));
+        return NO;
 	}
 	catch (...) {
 		fprintf(stderr, "An unknown error occurred\n");
+        return NO;
 	}	
 
 }

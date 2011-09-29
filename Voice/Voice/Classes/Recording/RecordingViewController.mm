@@ -324,44 +324,61 @@ char *OSTypeToStr(char *buf, OSType t)
 	[items release];
 }
 
+- (void) stop;
+{
+    [self removeStartRecordingView];
+    NSString* start = STRING_START_RECORDING;
+    self.recordingItem.title = start;
+    [self stopRecord];
+    [self performSelector:@selector(playingRecordingVoice) withObject:nil afterDelay:0.5];
+
+}
+
+- (void) start;
+{
+    [MobClick event:@"recording_click"];
+    [self startRecordingView];
+    [self removeRecordingFile];
+    [self.recordingTableView reloadData];
+    if (recorder == nil) {
+        [self initMembers];
+    }
+    NSString* stop = STRING_STOP_RECORDING;
+    self.recordingItem.title = stop;
+    if (recorder->IsRunning()) // If we are currently recording, stop and save the file.
+    {
+        [self stopRecord];
+    }
+    else // If we're not recording, start.
+    {
+        // btn_play.enabled = NO;	
+        
+        // Set the button's state to "stop"
+        // btn_record.title = @"Stop";
+        
+        // Start the recorder
+        BOOL bOK = recorder->StartRecord(CFSTR("recordedFile.wav"));
+        
+        
+        [self setFileDescriptionForFormat:recorder->DataFormat() withName:@"Recorded File"];
+        if (!bOK) {
+            [self addFailedRecordingView];
+            NSString* start = STRING_START_RECORDING;
+            self.recordingItem.title = start;
+            recorder->StopRecord();
+            [NSTimer scheduledTimerWithTimeInterval: 3 target: self selector:@selector(removeFailedRecordingView) userInfo: nil repeats: NO];
+        }
+        // Hook the level meter up to the Audio Queue for the recorder
+        //[lvlMeter_in setAq: recorder->Queue()];
+    }	
+}
+
 - (void) onRecording:(id)sender;
 {
     if ([self.recordingItem.title isEqualToString:STRING_START_RECORDING]) {
-        [MobClick event:@"recording_click"];
-        
-        [self removeRecordingFile];
-        [self.recordingTableView reloadData];
-        if (recorder == nil) {
-            [self initMembers];
-        }
-        NSString* stop = STRING_STOP_RECORDING;
-        self.recordingItem.title = stop;
-        if (recorder->IsRunning()) // If we are currently recording, stop and save the file.
-        {
-            [self stopRecord];
-        }
-        else // If we're not recording, start.
-        {
-            // btn_play.enabled = NO;	
-            
-            // Set the button's state to "stop"
-            // btn_record.title = @"Stop";
-            
-            // Start the recorder
-            recorder->StartRecord(CFSTR("recordedFile.wav"));
-            
-            [self setFileDescriptionForFormat:recorder->DataFormat() withName:@"Recorded File"];
-            
-            // Hook the level meter up to the Audio Queue for the recorder
-            //[lvlMeter_in setAq: recorder->Queue()];
-        }	
-        [NSTimer scheduledTimerWithTimeInterval: 0.35 target: self selector:@selector(animationProgress) userInfo: nil repeats: YES];
-
+        [self start];
     } else {
-        NSString* start = STRING_START_RECORDING;
-        self.recordingItem.title = start;
-        [self stopRecord];
-        [self performSelector:@selector(playingRecordingVoice) withObject:nil afterDelay:0.5];
+        [self stop];
     }
 }
 
@@ -660,6 +677,9 @@ char *OSTypeToStr(char *buf, OSType t)
         
     } else {
         // play recording voice
+        if (![self.recordingItem.title isEqualToString:STRING_START_RECORDING]) {
+            [self stop];
+        }
         [self playingRecordingVoice];
     }
 }
@@ -824,5 +844,67 @@ void propListener(	void *                  inClientData,
     if ([mgr fileExistsAtPath:recordFile]) {
         [mgr removeItemAtPath:recordFile error:nil];
     }
+}
+
+- (void)addFailedRecordingView;
+{
+    UIView *loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 40)];
+    loadingView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    loadingView.layer.cornerRadius = 8;
+    loadingView.tag = FAILEDRECORDINGVIEW_TAG;
+    loadingView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    UILabel* loadingText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, loadingView.frame.size.width, 20)];
+    loadingText.textColor = [UIColor whiteColor];
+    loadingText.text = STRING_RECORDING_ERROR;
+    loadingText.font = [UIFont systemFontOfSize:14];
+    loadingText.backgroundColor = [UIColor clearColor];
+    loadingText.textAlignment  = UITextAlignmentCenter;
+    loadingText.center = loadingView.center;
+    [loadingView addSubview:loadingText];
+    [loadingText release];
+    loadingView.center = self.view.center;
+    [self.view addSubview:loadingView];
+    [loadingView release];
+
+}
+- (void)removeFailedRecordingView;
+{
+    UIView* loadingView = [self.view viewWithTag:FAILEDRECORDINGVIEW_TAG];
+    if (loadingView != nil) {
+        [loadingView removeFromSuperview];
+    }
+
+}
+
+- (void)startRecordingView;
+{
+    UIView *loadingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 120, 40)];
+    loadingView.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.5];
+    loadingView.layer.cornerRadius = 8;
+    loadingView.tag = (FAILEDRECORDINGVIEW_TAG+1);
+    loadingView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+    UILabel* loadingText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, loadingView.frame.size.width, 20)];
+    loadingText.textColor = [UIColor whiteColor];
+    loadingText.text = STRING_RECORDING;
+    loadingText.font = [UIFont systemFontOfSize:14];
+    loadingText.backgroundColor = [UIColor clearColor];
+    loadingText.textAlignment  = UITextAlignmentCenter;
+    loadingText.center = loadingView.center;
+    [loadingView addSubview:loadingText];
+    [loadingText release];
+    loadingView.center = self.view.center;
+    [self.view addSubview:loadingView];
+    [loadingView release];
+
+}
+
+- (void)removeStartRecordingView;
+{
+    UIView* loadingView = [self.view viewWithTag:(FAILEDRECORDINGVIEW_TAG+1)];
+    if (loadingView != nil) {
+        [loadingView removeFromSuperview];
+    }
+    
+
 }
 @end

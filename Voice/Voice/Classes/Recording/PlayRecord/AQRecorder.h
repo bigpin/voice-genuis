@@ -67,7 +67,7 @@ class AQRecorder
 		AudioQueueRef				Queue() const				{ return mQueue; }
 		CAStreamBasicDescription	DataFormat() const			{ return mRecordFormat; }
 		
-		void			StartRecord(CFStringRef inRecordFile);
+		BOOL			StartRecord(CFStringRef inRecordFile);
 		void			StopRecord();		
 		Boolean			IsRunning() const			{ return mIsRunning; }
 		

@@ -14,6 +14,7 @@
 #import "AQPlayer.h"
 #import "RecordingWaveCell.h"
 
+#define FAILEDRECORDINGVIEW_TAG 45505
 #define PLAY_SRC_VOICE_BUTTON_TAG 50001
 #define PLAY_USER_VOICE_BUTTON_TAG 50002
 
@@ -78,6 +79,8 @@
 - (void) loadToolbar;
 - (void) updateAudioDisplay;
 - (void) playingSrcVoice;
+- (void) stop;
+- (void) start;
 - (void) onRecording:(id)sender;
 - (void) onPrevious:(id)sender;
 - (void) onNext:(id)sender;
@@ -85,4 +88,9 @@
 - (void)stopPlayingSrcVoice:(NSNumber*)pos;
 - (void) playingRecordingVoice;
 - (void)removeRecordingFile;
+- (void)startRecordingView;
+- (void)removeStartRecordingView;
+- (void)addFailedRecordingView;
+- (void)removeFailedRecordingView;
+
 @end

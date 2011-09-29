@@ -85,6 +85,8 @@
 #define STRING_SRC_TEXT                 @"原文显示"
 #define STRING_VOICE_GRAPHIC            @"波形对比"
 #define STRING_LOADING_TEXT             @"第一次初始化课程..."
+#define STRING_RECORDING_ERROR          @"录音失败，请检查设备"
+#define STRING_RECORDING                @"正在录音..."
 #define STRING_SETTING                  @"设置"
 #define STRING_PRE_PAGE                 @"上一页"
 #define STRING_NEXT_PAGE                @"下一页"
