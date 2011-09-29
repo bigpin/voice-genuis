@@ -75,19 +75,6 @@
     [scenes release];
     [nav release];
     
-    
-    // favor
-    /*FavorViewController* favor = [[FavorViewController alloc] initWithNibName:@"FavorViewController" bundle:nil];
-    
-	favor.tabBarItem.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/clock.png", resourcePath]];
-    nav = [[UINavigationController alloc] initWithRootViewController:favor];
-    nav.navigationBar.tintColor = [UIColor blackColor];
-    [viewControllers addObject:nav];
-    favor.title = @"Favorite";
-    favor.tabBarItem.title = @"Favorite";
-    [favor release];
-    [nav release];*/
-    
     // settings
     SettingViewController* setting = [[SettingViewController alloc] initWithNibName:@"SettingViewController" bundle:nil];
     

@@ -32,6 +32,13 @@
 #define NAVI_COLOR_G    57.0/255.0
 #define NAVI_COLOR_B    21.0/255.0
 
+#define KEY_SETTING_USE_COVERFLOW                   @"UICoverFlow"
+#define KEY_SETTING_LESSONCELLSTYLE                 @"UILessonCellStyle"
+#define KEY_SETTING_NAVIGATIONCOLOR                 @"UINavigationColor"
+#define KEY_SETTING_LESSON_PAGINATION               @"UILessonPagination"
+#define KEY_SETTING_LESSON_PAGE_OF_IPHONE           @"UILessonPageCountOfiPhone"
+#define KEY_SETTING_LESSON_PAGE_OF_IPAD             @"UILessonPageCountOfiPad"
+
 #define NOTI_CHANGED_SETTING_VALUE      @"ChangedSettingValueNotification"
 #define NOTI_WILLENTERFOREGROUND        @"WillEnterForegroundNotification"
 #define STRING_RESOURCE_DATA            @"Data"

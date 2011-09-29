@@ -72,6 +72,7 @@
 		0D9A0153141E368800FFF508 /* SettingShowTranslationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9A0152141E368800FFF508 /* SettingShowTranslationCell.m */; };
 		0D9A0155141E36D500FFF508 /* SettingShowTranslationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9A0154141E36D500FFF508 /* SettingShowTranslationCell.xib */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
+		0DCC434D143414FF00F2BCBE /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DCC434C143414FF00F2BCBE /* configuration.plist */; };
 		0DD478E713F129250054E726 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E313F129250054E726 /* icon@2x.png */; };
 		0DD478E813F129250054E726 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E413F129250054E726 /* icon.png */; };
 		0DD478E913F129250054E726 /* icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E513F129250054E726 /* icon_small.png */; };
@@ -236,6 +237,7 @@
 		0D9A0154141E36D500FFF508 /* SettingShowTranslationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingShowTranslationCell.xib; sourceTree = "<group>"; };
 		0DC0218D13E45825007170F3 /* BubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BubbleCell.m; path = Cells/BubbleCell.m; sourceTree = "<group>"; };
 		0DC0218E13E45825007170F3 /* BubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleCell.h; path = Cells/BubbleCell.h; sourceTree = "<group>"; };
+		0DCC434C143414FF00F2BCBE /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = configuration.plist; path = Voice/Resources/Setting/configuration.plist; sourceTree = "<group>"; };
 		0DD478E313F129250054E726 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Voice/Resources/Other/icon@2x.png"; sourceTree = "<group>"; };
 		0DD478E413F129250054E726 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Voice/Resources/Other/icon.png; sourceTree = "<group>"; };
 		0DD478E513F129250054E726 /* icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_small.png; path = Voice/Resources/Other/icon_small.png; sourceTree = "<group>"; };
@@ -615,12 +617,21 @@
 		0D90AA2E13D69F13005FA104 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DCC434B143414E500F2BCBE /* Setting */,
 				0DD478E213F128950054E726 /* Other */,
 				0D90AA2F13D69F2C005FA104 /* Data */,
 				0D872D7613EE78BC00361672 /* DataBase */,
 				0D90ABD213D69F2C005FA104 /* Image */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		0DCC434B143414E500F2BCBE /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				0DCC434C143414FF00F2BCBE /* configuration.plist */,
+			);
+			name = Setting;
 			sourceTree = "<group>";
 		};
 		0DD478E213F128950054E726 /* Other */ = {
@@ -849,6 +860,7 @@
 				0D7948811413250000E92396 /* Default@2x.png in Resources */,
 				0D7948821413250000E92396 /* Default.png in Resources */,
 				0D9A0155141E36D500FFF508 /* SettingShowTranslationCell.xib in Resources */,
+				0DCC434D143414FF00F2BCBE /* configuration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
