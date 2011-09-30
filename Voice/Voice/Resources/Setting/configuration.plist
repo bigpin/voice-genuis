@@ -8,16 +8,18 @@
 	<integer>0</integer>
 	<key>UINavigationColor</key>
 	<array>
-		<string>0.0</string>
-		<string>0.1</string>
-		<string>0.0</string>
+		<string>0.20392</string>
+		<string>0.2235294</string>
+		<string>0.082353</string>
 		<string>1.0</string>
 	</array>
 	<key>UILessonPagination</key>
 	<false/>
 	<key>UILessonPageCountOfiPhone</key>
-	<integer>6</integer>
+	<integer>8</integer>
 	<key>UILessonPageCountOfiPad</key>
 	<integer>15</integer>
+	<key>UIShowTranslation</key>
+	<true/>
 </dict>
 </plist>
