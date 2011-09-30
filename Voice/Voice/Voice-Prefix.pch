@@ -34,6 +34,7 @@
 #define KEY_SETTING_LESSON_PAGINATION               @"UILessonPagination"
 #define KEY_SETTING_LESSON_PAGE_OF_IPHONE           @"UILessonPageCountOfiPhone"
 #define KEY_SETTING_LESSON_PAGE_OF_IPAD             @"UILessonPageCountOfiPad"
+#define KEY_SETTING_SHOWTRANLATION                  @"UIShowTranslation"
 
 #define NOTI_CHANGED_SETTING_VALUE      @"ChangedSettingValueNotification"
 #define NOTI_WILLENTERFOREGROUND        @"WillEnterForegroundNotification"

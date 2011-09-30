@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Database.h"
 #import "MobClick.h"
+#import "ConfigData.h"
 
 @interface CustomUITabBarController: UITabBarController {
 }
@@ -18,29 +19,12 @@
 @interface VoiceAppDelegate : NSObject <UIApplicationDelegate, MobClickDelegate> {
     CustomUITabBarController* _tabBar;
     Database* databaseQuery;
-    CGFloat naviRed;
-    CGFloat naviGreen;
-    CGFloat naviBlue;
-    CGFloat naviAphla;
-    BOOL bLessonViewAsRootView;
-    BOOL bPagination;
-    NSInteger nPageCountOfiPhone;
-    NSInteger nPageCountOfiPad;
-    NSInteger nLessonCellStyle;
+    ConfigData* _configData;
 }
 
 @property (nonatomic, retain) IBOutlet CustomUITabBarController *tabBar;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property CGFloat naviRed;
-@property CGFloat naviGreen;
-@property CGFloat naviBlue;
-@property CGFloat naviAphla;
-@property BOOL bLessonViewAsRootView;
-@property BOOL bPagination;
-@property NSInteger nPageCountOfiPhone;
-@property NSInteger nPageCountOfiPad;
-@property NSInteger nLessonCellStyle;
-
+@property (nonatomic, assign) ConfigData* configData;
 - (void)loadCoverFlowUI;
 - (void)loadLessonUI;
 

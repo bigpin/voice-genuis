@@ -77,6 +77,7 @@
 		0DD478E813F129250054E726 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E413F129250054E726 /* icon.png */; };
 		0DD478E913F129250054E726 /* icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E513F129250054E726 /* icon_small.png */; };
 		0DD478EA13F129250054E726 /* icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E613F129250054E726 /* icon_72.png */; };
+		0DDDFCAD143551F500D1632F /* ConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDDFCAC143551F500D1632F /* ConfigData.m */; };
 		0DE9C222140BBDFD0025BDD2 /* AQRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C21E140BBDFD0025BDD2 /* AQRecorder.mm */; };
 		0DE9C223140BBDFD0025BDD2 /* AQPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C220140BBDFD0025BDD2 /* AQPlayer.mm */; };
 		0DE9C22C140BBE730025BDD2 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C226140BBE730025BDD2 /* CAXException.cpp */; };
@@ -243,6 +244,8 @@
 		0DD478E513F129250054E726 /* icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_small.png; path = Voice/Resources/Other/icon_small.png; sourceTree = "<group>"; };
 		0DD478E613F129250054E726 /* icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_72.png; path = Voice/Resources/Other/icon_72.png; sourceTree = "<group>"; };
 		0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Voice/TapKu/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
+		0DDDFCAB143551F500D1632F /* ConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigData.h; path = Configuration/ConfigData.h; sourceTree = "<group>"; };
+		0DDDFCAC143551F500D1632F /* ConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigData.m; path = Configuration/ConfigData.m; sourceTree = "<group>"; };
 		0DE9C21E140BBDFD0025BDD2 /* AQRecorder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AQRecorder.mm; path = Recording/PlayRecord/AQRecorder.mm; sourceTree = "<group>"; };
 		0DE9C21F140BBDFD0025BDD2 /* AQRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQRecorder.h; path = Recording/PlayRecord/AQRecorder.h; sourceTree = "<group>"; };
 		0DE9C220140BBDFD0025BDD2 /* AQPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AQPlayer.mm; path = Recording/PlayRecord/AQPlayer.mm; sourceTree = "<group>"; };
@@ -540,6 +543,7 @@
 		0D8E166913D471830005CD0F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0DDDFCAA143551D700D1632F /* Configuration */,
 				0D872DA413EEDA3700361672 /* Recording */,
 				0D872D7813EE799700361672 /* DataBase */,
 				0D3B8C9E13DC0892005898CD /* Cells */,
@@ -655,6 +659,15 @@
 				0DD5619413DE3D2900F928E6 /* LogicTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0DDDFCAA143551D700D1632F /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				0DDDFCAB143551F500D1632F /* ConfigData.h */,
+				0DDDFCAC143551F500D1632F /* ConfigData.m */,
+			);
+			name = Configuration;
 			sourceTree = "<group>";
 		};
 		0DE9C21D140BBDF20025BDD2 /* AQPlayRecorder */ = {
@@ -944,6 +957,7 @@
 				0DE9C22E140BBE730025BDD2 /* CADebugMacros.cpp in Sources */,
 				0D9A0153141E368800FFF508 /* SettingShowTranslationCell.m in Sources */,
 				9570CC28142DCDDE009C1E7E /* Word.m in Sources */,
+				0DDDFCAD143551F500D1632F /* ConfigData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

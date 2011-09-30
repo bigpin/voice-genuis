@@ -315,9 +315,9 @@ char *OSTypeToStr(char *buf, OSType t)
 	[itemFlexedSpace release];
 	[itemFlexedSpaceSmall release];
     VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
-    [self.toolbar setTintColor:[[UIColor alloc] initWithRed:app.naviRed
-                                                 green:app.naviGreen
-                                                  blue:app.naviBlue
+    [self.toolbar setTintColor:[[UIColor alloc] initWithRed:app.configData.naviRed
+                                                 green:app.configData.naviGreen
+                                                  blue:app.configData.naviBlue
                                                  alpha:1.0]];
 
 	[self.toolbar setItems:items animated:YES];
