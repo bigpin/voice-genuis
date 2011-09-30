@@ -12,6 +12,7 @@
 #import "SettingSwitchCell.h"
 #import "SettingAboutViewController.h"
 #import "SettingShowTranslationCell.h"
+#import "VoiceAppDelegate.h"
 
 @implementation SettingViewController
 @synthesize bFromSence;
@@ -116,13 +117,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
     // Return the number of rows in the section.
     if (section == 0) {
         return 2;
     } else if (section == 1) {
         return 1;
     } else if (section == 2) {
-        return 3;
+        if (app.configData.bShowTranslateText) {
+            return 3;
+        } else {
+            return 2;
+        }
     } else if (section == 3) {
         return 1;
     } else {
@@ -216,35 +222,69 @@
             return cell;
         }
     } else if (nSection == 2) {
+        
        SettingShowTranslationCell * cell =  (SettingShowTranslationCell*)[tableView dequeueReusableCellWithIdentifier:@"SettingShowTranslationCell"];
         if (cell == nil) {
             NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingShowTranslationCell" owner:self options:nil];
             cell = [array objectAtIndex:0];
 
         }
-        switch (nRow) {
-            case 0:
-                cell.textLabelTrans.text = STRING_SHOW_SRC_TEXT;
-                break;
-            case 1:
-                cell.textLabelTrans.text = STRING_SHOW_SRCANDTRANS_TEXT;
-                break;
-            case 2:
-                cell.textLabelTrans.text = STRING_SHOW_NO_TEXT;
-                break;
-                
-            default:
-                break;
+        VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
+        if (app.configData.bShowTranslateText) {
+            switch (nRow) {
+                case 0:
+                    cell.textLabelTrans.text = STRING_SHOW_SRC_TEXT;
+                    break;
+                case 1:
+                    cell.textLabelTrans.text = STRING_SHOW_SRCANDTRANS_TEXT;
+                    break;
+                case 2:
+                    cell.textLabelTrans.text = STRING_SHOW_NO_TEXT;
+                    break;
+                    
+                default:
+                    break;
+            }
+            if (settingData.eShowTextType == nRow) {
+                pathShowText = indexPath;
+                cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
+            } else {
+                cell.selectedView.image = nil;
+            }
+
+        } else {
+            switch (nRow) {
+                case 0:
+                {
+                    if (settingData.eShowTextType == SHOW_TEXT_TYPE_SRC) {
+                        pathShowText = indexPath;
+                        cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
+                    } else {
+                        cell.selectedView.image = nil;
+                    }
+
+                    cell.textLabelTrans.text = STRING_SHOW_SRC_TEXT;
+                    break;
+                }
+                case 1:
+                {
+                    if (settingData.eShowTextType == SHOW_TEXT_TYPE_NONE) {
+                        pathShowText = indexPath;
+                        cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
+                    } else {
+                        cell.selectedView.image = nil;
+                    }
+
+                    cell.textLabelTrans.text = STRING_SHOW_NO_TEXT;
+                    break;
+                }
+                default:
+                    break;
+            }
+
         }
 
-        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        if (settingData.eShowTextType == nRow) {
-            pathShowText = indexPath;
-            cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
-        } else {
-            cell.selectedView.image = nil;
-        }
         return cell;
     } else if (nSection == 3) {
         UITableViewCell * cell =  (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"otherAbout"];
@@ -327,7 +367,17 @@
 
             SettingShowTranslationCell* cell = (SettingShowTranslationCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
-            settingData.eShowTextType = nRow;
+            
+            VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
+            if (app.configData.bShowTranslateText) {
+                settingData.eShowTextType = nRow;
+            } else {
+                if (nRow == 0) {
+                    settingData.eShowTextType = SHOW_TEXT_TYPE_SRC;
+                } else if (nRow == 1){
+                    settingData.eShowTextType = SHOW_TEXT_TYPE_NONE;
+                }
+            }
 
             [settingData saveSettingData];
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
