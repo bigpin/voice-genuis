@@ -16,6 +16,7 @@
 #import "RecordingViewController.h"
 #import "SettingViewController.h"
 #import "isaybio.h"
+#import "VoiceAppDelegate.h"
 
 #define LOADINGVIEWTAG      20933
 @implementation ListeningViewController
@@ -383,16 +384,20 @@
         }
         
     }
+    VoiceAppDelegate* app = (VoiceAppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSString* teacherfemale1 = app.configData.nTeacherHeadStyle == 0 ? @"female1.png" :@"female3.png";
+    NSString* teachermale1 = app.configData.nTeacherHeadStyle == 0 ? @"male1.png" :@"male3.png";
+    NSString* teacherfemale2 = app.configData.nTeacherHeadStyle == 0 ? @"female2.png" :@"female4.png";
+    NSString* teachermale2 = app.configData.nTeacherHeadStyle == 0 ? @"male2.png" :@"male4.png";
     switch (nTeacher) {
         case 1:
         { 
             if ([[teacher1 gender] isEqualToString:@"female"]) {
-                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/female1.png"]];;
+                cell.imgIcon = [[NSString alloc] initWithFormat:@"%@/%@%@", resourcePath, @"teachers/", teacherfemale1];
             } else {
-                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/male1.png"]];;
+                cell.imgIcon = [[NSString alloc] initWithFormat:@"%@/%@%@", resourcePath, @"teachers/", teachermale1];
             }
-            
-             
+                         
             NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"bubble1.png"]];
             cell.imgName = imgName;
             [imgName release];
@@ -402,15 +407,14 @@
         case 2:
         {
             if ([[teacher1 gender] isEqualToString:@"female"]) {
-                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/female1.png"]];;
+                cell.imgIcon = [[NSString alloc] initWithFormat:@"%@/%@%@", resourcePath, @"teachers/", teacherfemale1];
             } else {
-                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/male1.png"]];;
+                cell.imgIcon = [[NSString alloc] initWithFormat:@"%@/%@%@", resourcePath, @"teachers/", teachermale1];
             }
-
             if ([[teacher2 gender] isEqualToString:@"female"]) {
-                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/female2.png"]];;
+                cell.imgIcon = [[NSString alloc] initWithFormat:@"%@/%@%@", resourcePath, @"teachers/", teacherfemale2];
             } else {
-                cell.imgIcon = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"teachers/male2.png"]];;
+                cell.imgIcon = [[NSString alloc] initWithFormat:@"%@/%@%@", resourcePath, @"teachers/", teachermale2];
             }
 
             NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"bubble2.png"]];

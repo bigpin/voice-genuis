@@ -19,6 +19,7 @@
 @synthesize nPageCountOfiPad;
 @synthesize nLessonCellStyle;
 @synthesize bShowTranslateText;
+@synthesize nTeacherHeadStyle;
 
 - (id)init
 {
@@ -35,6 +36,7 @@
         naviBlue = 0.082353;
         naviAphla = 1.0;
         bShowTranslateText = YES;
+        nTeacherHeadStyle = 0;
         [self loadConfiguration];
     }
     
@@ -79,6 +81,12 @@
         if (numShowTransText != nil) {
             bShowTranslateText = [numShowTransText boolValue];
         }
+        
+        NSNumber* numTeachHead = [config objectForKey:KEY_SETTING_TEACHERHEAD_STYLE];
+        if (numTeachHead != nil) {
+            nTeacherHeadStyle = [numTeachHead intValue];
+        }
+       
     } 
     [config release];
     config = nil;

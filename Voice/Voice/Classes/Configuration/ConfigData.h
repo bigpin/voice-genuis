@@ -19,6 +19,7 @@
     NSInteger   nPageCountOfiPad;
     NSInteger   nLessonCellStyle;
     BOOL        bShowTranslateText;
+    NSInteger   nTeacherHeadStyle;
 }
 @property CGFloat   naviRed;
 @property CGFloat   naviGreen;
@@ -30,6 +31,7 @@
 @property NSInteger nPageCountOfiPad;
 @property NSInteger nLessonCellStyle;
 @property BOOL      bShowTranslateText;
+@property NSInteger nTeacherHeadStyle;
 
 - (void)loadConfiguration;
 @end
