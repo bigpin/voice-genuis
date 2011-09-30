@@ -30,7 +30,6 @@
 		0D4D6B0413DE410800F87B13 /* ScenesCoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */; };
 		0D7948801413250000E92396 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D79487D1413250000E92396 /* Default~iphone.png */; };
 		0D7948811413250000E92396 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D79487E1413250000E92396 /* Default@2x.png */; };
-		0D7948821413250000E92396 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D79487F1413250000E92396 /* Default.png */; };
 		0D8632CC13E8083200F934AF /* ListeningToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8632CB13E8083100F934AF /* ListeningToolbar.m */; };
 		0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8632DE13E8383400F934AF /* ListeningVolumView.m */; };
 		0D8632E113E8386500F934AF /* ListeningVolumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8632E013E8386500F934AF /* ListeningVolumView.xib */; };
@@ -73,6 +72,8 @@
 		0D9A0155141E36D500FFF508 /* SettingShowTranslationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9A0154141E36D500FFF508 /* SettingShowTranslationCell.xib */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
 		0DCC434D143414FF00F2BCBE /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DCC434C143414FF00F2BCBE /* configuration.plist */; };
+		0DCD635F1436123B002F91F5 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD635D1436123B002F91F5 /* Default-Landscape.png */; };
+		0DCD63601436123B002F91F5 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD635E1436123B002F91F5 /* Default-Portrait.png */; };
 		0DD478E713F129250054E726 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E313F129250054E726 /* icon@2x.png */; };
 		0DD478E813F129250054E726 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E413F129250054E726 /* icon.png */; };
 		0DD478E913F129250054E726 /* icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E513F129250054E726 /* icon_small.png */; };
@@ -177,7 +178,6 @@
 		0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenesCoverViewController.m; sourceTree = "<group>"; };
 		0D79487D1413250000E92396 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~iphone.png"; path = "Voice/Resources/Other/Default~iphone.png"; sourceTree = "<group>"; };
 		0D79487E1413250000E92396 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Voice/Resources/Other/Default@2x.png"; sourceTree = "<group>"; };
-		0D79487F1413250000E92396 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Voice/Resources/Other/Default.png; sourceTree = "<group>"; };
 		0D8632CA13E8083100F934AF /* ListeningToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningToolbar.h; sourceTree = "<group>"; };
 		0D8632CB13E8083100F934AF /* ListeningToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeningToolbar.m; sourceTree = "<group>"; };
 		0D8632DD13E8383300F934AF /* ListeningVolumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningVolumView.h; sourceTree = "<group>"; };
@@ -239,6 +239,8 @@
 		0DC0218D13E45825007170F3 /* BubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BubbleCell.m; path = Cells/BubbleCell.m; sourceTree = "<group>"; };
 		0DC0218E13E45825007170F3 /* BubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleCell.h; path = Cells/BubbleCell.h; sourceTree = "<group>"; };
 		0DCC434C143414FF00F2BCBE /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = configuration.plist; path = Voice/Resources/Setting/configuration.plist; sourceTree = "<group>"; };
+		0DCD635D1436123B002F91F5 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "Voice/Resources/Other/Default-Landscape.png"; sourceTree = "<group>"; };
+		0DCD635E1436123B002F91F5 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait.png"; path = "Voice/Resources/Other/Default-Portrait.png"; sourceTree = "<group>"; };
 		0DD478E313F129250054E726 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Voice/Resources/Other/icon@2x.png"; sourceTree = "<group>"; };
 		0DD478E413F129250054E726 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Voice/Resources/Other/icon.png; sourceTree = "<group>"; };
 		0DD478E513F129250054E726 /* icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_small.png; path = Voice/Resources/Other/icon_small.png; sourceTree = "<group>"; };
@@ -643,7 +645,8 @@
 			children = (
 				0D79487D1413250000E92396 /* Default~iphone.png */,
 				0D79487E1413250000E92396 /* Default@2x.png */,
-				0D79487F1413250000E92396 /* Default.png */,
+				0DCD635D1436123B002F91F5 /* Default-Landscape.png */,
+				0DCD635E1436123B002F91F5 /* Default-Portrait.png */,
 				0DD478E313F129250054E726 /* icon@2x.png */,
 				0DD478E413F129250054E726 /* icon.png */,
 				0DD478E513F129250054E726 /* icon_small.png */,
@@ -871,9 +874,10 @@
 				0D9043AB1402335200684A04 /* RecordingWaveCell.xib in Resources */,
 				0D7948801413250000E92396 /* Default~iphone.png in Resources */,
 				0D7948811413250000E92396 /* Default@2x.png in Resources */,
-				0D7948821413250000E92396 /* Default.png in Resources */,
 				0D9A0155141E36D500FFF508 /* SettingShowTranslationCell.xib in Resources */,
 				0DCC434D143414FF00F2BCBE /* configuration.plist in Resources */,
+				0DCD635F1436123B002F91F5 /* Default-Landscape.png in Resources */,
+				0DCD63601436123B002F91F5 /* Default-Portrait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,7 +1050,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wang Yi (SHC58C4T94)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: d l";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1055,7 +1059,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lz";
 				PREBINGDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D2358826-F887-44C4-8399-86E914A9BF75";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AA25EE93-8852-4D5E-AE24-83775E790A3E";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
