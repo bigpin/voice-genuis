@@ -885,7 +885,7 @@ void propListener(	void *                  inClientData,
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
     UILabel* loadingText = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, loadingView.frame.size.width, 20)];
     loadingText.textColor = [UIColor whiteColor];
-    loadingText.text = STRING_RECORDING;
+    loadingText.text = STRING_RECORDING_TEXT;
     loadingText.font = [UIFont systemFontOfSize:14];
     loadingText.backgroundColor = [UIColor clearColor];
     loadingText.textAlignment  = UITextAlignmentCenter;
