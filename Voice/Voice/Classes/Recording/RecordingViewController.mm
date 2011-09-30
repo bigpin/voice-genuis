@@ -672,7 +672,10 @@ char *OSTypeToStr(char *buf, OSType t)
         [player play];
         isStopPlaySrc = YES;
         NSTimeInterval inter = [_sentence endTime] - [_sentence startTime] + 0.2;
-        [self performSelector:@selector(stopPlayingSrcVoice:) withObject:[NSNumber numberWithInt:nPos] afterDelay:inter];
+        NSMutableDictionary* dic = [[NSMutableDictionary alloc] init];
+        [dic setObject:[NSNumber numberWithInt:nPos] forKey:@"pos"];
+        [dic setObject:player forKey:@"player"];
+        [self performSelector:@selector(stopPlayingSrcVoice:) withObject:dic afterDelay:inter];
         //[NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(stopPlayingSrcVoice:) userInfo:[NSNumber numberWithInt:nPos] repeats:NO];
         
     } else {
@@ -684,15 +687,32 @@ char *OSTypeToStr(char *buf, OSType t)
     }
 }
 
-- (void)stopPlayingSrcVoice:(NSNumber*)pos
+- (void)stopPlayingSrcVoice:(NSMutableDictionary*)dic
 {
+    if (dic == nil) {
+        return;
+    }
+    NSNumber* pos = [dic objectForKey:@"pos"];
+    if (pos == nil) {
+        [dic release];
+        dic = nil;
+        return;
+    }
+    AVAudioPlayer* p = [dic objectForKey:@"player"];
+    if (p == nil) {
+        [dic release];
+        dic = nil;
+        return;
+    }
     NSInteger poswillstop = [pos intValue];
-    if (isStopPlaySrc && poswillstop == nPos) {
+    if (p == player && poswillstop == nPos) {
         if (player.currentTime >= [_sentence endTime]) {
             isStopPlaySrc = NO;
             [player stop];
         }
     }
+    [dic release];
+    dic = nil;
 }
 
 #pragma mark AudioSession listeners

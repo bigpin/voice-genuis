@@ -85,7 +85,7 @@
 - (void) onPrevious:(id)sender;
 - (void) onNext:(id)sender;
 - (void)animationProgress;
-- (void)stopPlayingSrcVoice:(NSNumber*)pos;
+- (void)stopPlayingSrcVoice:(NSMutableDictionary*)dic;
 - (void) playingRecordingVoice;
 - (void)removeRecordingFile;
 - (void)startRecordingView;
