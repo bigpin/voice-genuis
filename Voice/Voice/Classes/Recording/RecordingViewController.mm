@@ -78,6 +78,8 @@ char *OSTypeToStr(char *buf, OSType t)
 
 - (void)stopRecord
 {
+    [self removeStartRecordingView];
+    [self removeFailedRecordingView];
 	// Disconnect our level meter from the audio queue
 	//[lvlMeter_in setAq: nil];
 	
@@ -183,6 +185,7 @@ char *OSTypeToStr(char *buf, OSType t)
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(playingSrcVoice) object:nil];
     if (player != nil) {
         [player stop];
         [player release];
@@ -395,6 +398,11 @@ char *OSTypeToStr(char *buf, OSType t)
     [self removeRecordingFile];
     Sentence* s = [recordingdelegate getSentencefromPos:(nPos-1)];
     if (s != nil) {
+        if (player != nil) {
+            [player stop];
+            [player release];
+            player = nil;
+        }
         self.sentence = s;
         nPos--;
         [self.recordingTableView reloadData];
@@ -419,6 +427,11 @@ char *OSTypeToStr(char *buf, OSType t)
     [self removeRecordingFile];
      Sentence* s = [recordingdelegate getSentencefromPos:(nPos+1)];
     if (s != nil) {
+        if (player != nil) {
+            [player stop];
+            [player release];
+            player = nil;
+        }
         self.sentence = s;
         nPos++;
         [self.recordingTableView reloadData];
