@@ -46,7 +46,7 @@
     self.opaque = NO;
     self.backgroundColor = [UIColor clearColor];
     self.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    CGFloat heightOfLabel = 20;
+    CGFloat heightOfLabel = [[UIDevice currentDevice] respondsToSelector:@selector(userInterfaceIdiom)] && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad ? 40 : 20;
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.width)];
     [self addSubview:imageView];
     reflected =  [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.width, self.frame.size.width, self.frame.size.width)];
@@ -62,7 +62,11 @@
     UILabel* textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, imageView.frame.size.height - heightOfLabel, imageView.frame.size.width, heightOfLabel)];
     textLabel.backgroundColor = [UIColor clearColor];
     textLabel.textColor = [UIColor whiteColor];
-    textLabel.font = [UIFont boldSystemFontOfSize:17];
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(userInterfaceIdiom)] && [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        textLabel.font = [UIFont boldSystemFontOfSize:34];
+    } else {
+        textLabel.font = [UIFont boldSystemFontOfSize:17];
+    }
     textLabel.baselineAdjustment = UIBaselineAdjustmentAlignCenters;
     [self addSubview:textLabel];
     self.coverLabel = textLabel;
