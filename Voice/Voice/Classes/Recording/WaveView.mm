@@ -124,6 +124,13 @@
     if (![mgr fileExistsAtPath:wavefilename]) {
         return;
     }
+    if (colorImage == nil) {
+        NSString* resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image/color.png"]];
+        
+        colorImage = [[UIImage alloc] initWithContentsOfFile:resourcePath];
+        [resourcePath release];
+    }
+
     CGContextRef context = UIGraphicsGetCurrentContext();  
     
     if (bReadfromTime) {
@@ -131,7 +138,105 @@
     } else {
         [self loadwavedata];
     }
+    if (waveSampleVector.size() > 0) {
+        UIColor* c = [UIColor whiteColor];
+        CGContextSetStrokeColorWithColor(context, [c CGColor]);
+        CGContextSetFillColorWithColor(context, [c CGColor]);
+        
+        int nCount = waveSampleVector.size() * 2;
+        CGPoint *points = (CGPoint*)malloc(sizeof(CGPoint) * nCount);
+        int minvalue = 1024;    // 波形最小值
+        int maxvalue = 0;       // 波形最大值
+        for (size_t i  = 0; i < waveSampleVector.size(); i++) {
+            points[i].x = i;
+            points[i].y = waveSampleVector.at(i).first;
+            points[nCount - i - 1].x = i;
+            points[nCount - i - 1].y = waveSampleVector.at(i).second;
+            if (minvalue > waveSampleVector.at(i).first) {
+                minvalue = waveSampleVector.at(i).first;
+            }
+            if (maxvalue < waveSampleVector.at(i).second) {
+                maxvalue = waveSampleVector.at(i).second;
+            }
+        }
+        // draw shadow
+        CGContextSaveGState(context);
+        CGContextTranslateCTM(context, 2, -1);
+        CGContextBeginPath(context);
+        CGContextAddLines(context, points, nCount);
+        CGContextSetLineJoin(context, kCGLineJoinRound);
+        //free(points);
+        CGContextClosePath(context);
+        //CGContextClip(context);
+        CGContextSetFillColorWithColor(context, [[UIColor grayColor] CGColor]);
+        CGContextFillPath(context);
+        CGContextRestoreGState(context);
 
+        /*CGContextSaveGState(context);
+        CGContextTranslateCTM(context, 1, -1);
+        CGContextBeginPath(context);
+        CGContextAddLines(context, points, nCount);
+        CGContextSetLineJoin(context, kCGLineJoinBevel);
+        //free(points);
+        CGContextClosePath(context);
+        //CGContextClip(context);
+        CGContextSetFillColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        CGContextFillPath(context);
+        CGContextRestoreGState(context);*/
+
+        // draw color image
+        CGContextSaveGState(context);
+        CGContextBeginPath(context);
+        CGContextAddLines(context, points, nCount);
+        CGContextSetLineJoin(context, kCGLineJoinBevel);
+        //free(points);
+        CGContextClosePath(context);
+        CGContextClip(context);
+        CGContextDrawImage(context, rect, colorImage.CGImage);
+        CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        CGContextStrokePath(context);
+        CGContextRestoreGState(context);
+        
+        free(points);
+    }    
+
+    CGContextSetLineWidth(context, 1);
+    CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+    
+    CGContextMoveToPoint(context, 0, rect.size.height/2 - 1);
+    CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2 - 1);
+    CGContextStrokePath(context);
+    
+    UIColor *clr = [UIColor colorWithRed:147.0/255.0 green:194.0/255.0 blue:34.0/255.0 alpha:1.0];
+    CGContextSetStrokeColorWithColor(context, [clr CGColor]);
+    
+    CGContextMoveToPoint(context, 0, rect.size.height/2);
+    CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2);
+    CGContextStrokePath(context);
+    
+    if (dwWidPerSencond != 0) {
+        NSInteger nTimeCount = rect.size.width / dwWidPerSencond;
+        CGFloat h = rect.size.height - 10;
+        /// CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        CGContextSelectFont(context, "Helvetica", 16, kCGEncodingMacRoman);
+        CGContextSetTextDrawingMode(context, kCGTextFill);
+        CGContextSetFillColorWithColor(context, [clr CGColor]);
+        CGContextSetStrokeColorWithColor(context, [[UIColor whiteColor] CGColor]);
+        for (NSInteger i = 0; i < nTimeCount; i++) {
+            CGFloat w = (i+1) * dwWidPerSencond;
+            CGContextMoveToPoint(context, w, h);
+            CGContextAddLineToPoint(context, w, rect.size.height);
+            
+            CGAffineTransform xform = CGAffineTransformMake(1.0, 0.0, 0.0, -1.0, 0.0, 0.0);
+            CGContextSetTextMatrix(context, xform);
+            NSString* str = [NSString stringWithFormat:@"%d.00", (i+1)];
+            CGContextSetTextPosition(context, w + 2, rect.size.height - 2);
+            CGContextShowText(context, [str UTF8String], strlen([str UTF8String]));
+        }
+        CGContextStrokePath(context);
+    }
+    UIGraphicsEndImageContext();
+ /*
     if (waveSampleVector.size() > 0) {
         UIColor* c = [UIColor whiteColor];
         CGContextSetStrokeColorWithColor(context, [c CGColor]);
@@ -229,6 +334,7 @@
         CGContextStrokePath(context);
     }
     UIGraphicsEndImageContext();
+  */
 }
 
 - (CGPathRef)giveAPath

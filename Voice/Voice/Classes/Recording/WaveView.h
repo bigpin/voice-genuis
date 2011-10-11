@@ -25,6 +25,7 @@
     CWaveFile* wavefile;
     IntPairVector waveSampleVector;
     BOOL bReadfromTime;
+    UIImage* colorImage;
 }
 
 @property (nonatomic, retain) NSString* wavefilename;
