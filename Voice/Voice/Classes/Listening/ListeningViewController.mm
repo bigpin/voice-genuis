@@ -196,13 +196,13 @@
         [player setDelegate:(id<AVAudioPlayerDelegate>)self];
         [newPlayer release];
         self.player.currentTime = timeStart;
-        self.player.volume = 1.0;
+        self.player.volume = 5.0;
     }
     
     self.senCount.text = [NSString stringWithFormat:@"%d / %d ", (nPosition+1), [self.sentencesArray count]];
     loopstarttime = 0.0;
     loopendtime = self.player.duration;
-    fVolumn = 1.0;
+    fVolumn = 5.0;
     
     NSString* recordingTitle = STRING_SINGLE_TRAINING;
     UIBarButtonItem* recordingItem = [[UIBarButtonItem alloc] initWithTitle:recordingTitle style:UIBarButtonItemStyleDone target:self action:@selector(onRecording)];

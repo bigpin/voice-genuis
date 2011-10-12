@@ -82,7 +82,14 @@
                                                                        target:self
                                                                        action:@selector(onSetting:)];
         self.navigationItem.rightBarButtonItem = itemSetting;
+        
         [itemSetting release];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        NSString* resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
+        UIImage* bkimage = [[UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/background_gray.png", resourcePath]] stretchableImageWithLeftCapWidth:24 topCapHeight:15];
+        self.view.backgroundColor = [UIColor colorWithPatternImage:bkimage];
+        [resourcePath release];
+        
     }
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

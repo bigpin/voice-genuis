@@ -679,7 +679,7 @@ char *OSTypeToStr(char *buf, OSType t)
         }
         NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: wavefile];
         player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-        player.volume = 1.0;
+        player.volume = 5.0;
         [fileURL release];
         player.currentTime = [_sentence startTime];
         [player play];
@@ -865,7 +865,7 @@ void propListener(	void *                  inClientData,
     NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];	
     NSURL *fileURL = [[NSURL alloc] initFileURLWithPath: recordFile];
     player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
-    player.volume = 1.0;
+    player.volume = 5.0;
     [fileURL release];
     [player play];
 }
