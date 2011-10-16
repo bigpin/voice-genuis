@@ -11,12 +11,14 @@
 
 @interface SettingViewController : UITableViewController {
     SettingData* settingData;
-    NSIndexPath* pathShowText;
-    NSIndexPath* pathReadingMode;
+    NSIndexPath* _pathShowText;
+    NSIndexPath* _pathReadingMode;
     NSString* resourcePath;
     BOOL      bFromSence;
 }
 @property (nonatomic) BOOL bFromSence;
+@property (nonatomic, retain) NSIndexPath* pathShowText;
+@property (nonatomic, retain) NSIndexPath* pathReadingMode;
 
 - (SettingData*)getSettingData;
 - (void)backToSelectedViewController;

@@ -16,6 +16,8 @@
 
 @implementation SettingViewController
 @synthesize bFromSence;
+@synthesize pathShowText = _pathShowText;
+@synthesize pathReadingMode = _pathReadingMode;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,6 +38,13 @@
 
 - (void)dealloc
 {
+    if (self.pathReadingMode != nil) {
+        self.pathReadingMode = nil;
+    }
+    
+    if (self.pathShowText != nil) {
+        self.pathShowText = nil;
+    }
     [resourcePath release];
     [super dealloc];
 }
@@ -181,7 +190,7 @@
             cell.delegate = (id)self;
             if (settingData.eReadingMode == nRow) {
                 cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
-                pathReadingMode = indexPath;
+                self.pathReadingMode = indexPath;
             } else {
                 cell.selectedView.image = nil;
             }
@@ -205,7 +214,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             if (settingData.eReadingMode == nRow) {
                 cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
-                pathReadingMode = indexPath;
+                self.pathReadingMode = indexPath;
             } else {
                cell.selectedView.image = nil;
             }
@@ -246,7 +255,7 @@
                     break;
             }
             if (settingData.eShowTextType == nRow) {
-                pathShowText = indexPath;
+                self.pathShowText = indexPath;
                 cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
             } else {
                 cell.selectedView.image = nil;
@@ -257,7 +266,7 @@
                 case 0:
                 {
                     if (settingData.eShowTextType == SHOW_TEXT_TYPE_SRC) {
-                        pathShowText = indexPath;
+                        self.pathShowText = indexPath;
                         cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
                     } else {
                         cell.selectedView.image = nil;
@@ -269,7 +278,7 @@
                 case 1:
                 {
                     if (settingData.eShowTextType == SHOW_TEXT_TYPE_NONE) {
-                        pathShowText = indexPath;
+                        self.pathShowText = indexPath;
                         cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
                     } else {
                         cell.selectedView.image = nil;
@@ -346,10 +355,10 @@
 {
     if (indexPath.section == 0) {
         NSInteger nRow = indexPath.row;
-        if (nRow != (NSInteger)pathReadingMode.row) {
-            SettingTrainingModeCell* cellOld = (SettingTrainingModeCell*)[self.tableView cellForRowAtIndexPath:pathReadingMode];
+        if (nRow != (NSInteger)self.pathReadingMode.row) {
+            SettingTrainingModeCell* cellOld = (SettingTrainingModeCell*)[self.tableView cellForRowAtIndexPath:self.pathReadingMode];
             cellOld.selectedView.image = nil;
-            pathReadingMode = indexPath;
+            self.pathReadingMode = indexPath;
             
             SettingShowTranslationCell* cell = (SettingShowTranslationCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
@@ -360,10 +369,10 @@
         }
     } else if (indexPath.section == 2) {
         NSInteger nRow = indexPath.row;
-        if (nRow != (NSInteger)pathShowText.row) {
-            SettingShowTranslationCell* cellOld = (SettingShowTranslationCell*)[self.tableView cellForRowAtIndexPath:pathShowText];
+        if (nRow != (NSInteger)self.pathShowText.row) {
+            SettingShowTranslationCell* cellOld = (SettingShowTranslationCell*)[self.tableView cellForRowAtIndexPath:self.pathShowText];
             cellOld.selectedView.image = nil;
-            pathShowText = indexPath;
+            self.pathShowText = indexPath;
 
             SettingShowTranslationCell* cell = (SettingShowTranslationCell*)[self.tableView cellForRowAtIndexPath:indexPath];
             cell.selectedView.image = [UIImage imageWithContentsOfFile:[NSString stringWithFormat:@"%@/%@", resourcePath, @"checked.png"]];
