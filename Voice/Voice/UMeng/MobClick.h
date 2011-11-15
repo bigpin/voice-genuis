@@ -1,10 +1,10 @@
-//
-//  MobClick.h
-//  MobClick
-//
-//  Created by Aladdin on 3/25/10.
-//  Copyright 2010 Umeng.com . All rights reserved.
-//
+    //
+    //  MobClick.h
+    //  MobClick
+    //
+    //  Created by Aladdin on 3/25/10.
+    //  Copyright 2010 Umeng.com . All rights reserved.
+    //
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
@@ -82,7 +82,7 @@ typedef enum{
 /*方法名:
  *		showFeedback:(UIViewController *)rootViewcontroller
  *介绍:
- *		类方法，弹出一个默认的反馈界面，生成一条事件记录，并保存到本地缓存
+ *		类方法，弹出一个默认的反馈界面，生成一条反馈记录，并保存到本地缓存
  *参数说明:
  *		rootViewController:会用来弹出presentModalViewController方法来展示反馈界面
  *		请确保rootViewController非空
@@ -96,7 +96,7 @@ typedef enum{
 /*方法名:
  *		feedbackWithDictionary:(NSDictionary * )feedbackDict
  *介绍:
- *		类方法，生成一条事件记录，并保存到本地缓存。这是自定义事件的数据接口，视图方面请自己定义，调用该接口传送数据即可。
+ *		类方法，生成一条反馈记录，并保存到本地缓存。这是自定义反馈的数据接口，视图方面请自己定义，调用该接口传送数据即可。
  *参数说明:
  *		Dictionary中应该有以下三个键名:
  *      @"UMengFeedbackGender" @"UMengFeedbackAge" @"UMengFeedbackContent"
@@ -110,11 +110,11 @@ typedef enum{
  *       请在调用该方法之前自行判断键值的完整性和正确性，否则会保存失败
  *       这些键值会保存到本地中，并在下次提交数据时上传到服务器
  *返回值:
- *      BOOL 保存失败或者成功的状态。
+ *      无
  *
  *文档地址: http://www.umeng.com/doc/home.html#op_con_kfzn/iossdk_syzn
  */
-+ (BOOL)feedbackWithDictionary:(NSDictionary * )feedbackDict;
++ (void)feedbackWithDictionary:(NSDictionary * )feedbackDict;
 #pragma mark helper
 /*方法名:
  *		isJailbroken

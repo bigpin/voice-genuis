@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0BDACE1472B86C005AFE34 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D0BDACD1472B86C005AFE34 /* CoreTelephony.framework */; };
 		0D16D70E13FE468B00BCFC29 /* LessonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D16D70B13FE468B00BCFC29 /* LessonCell.xib */; };
 		0D16D70F13FE468B00BCFC29 /* LessonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D16D70C13FE468B00BCFC29 /* LessonCell.m */; };
 		0D16D71213FE477F00BCFC29 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D16D71013FE477F00BCFC29 /* RatingView.m */; };
@@ -94,7 +95,7 @@
 		9583C8A2140E4F3E0025BC2B /* libisaybio.s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */; };
 		95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9398C13F66432006F4D61 /* AudioToolbox.framework */; };
 		95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9399613F67990006F4D61 /* SystemConfiguration.framework */; };
-		95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */; };
+		95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.6.a */; };
 		95B9657813FE13C2002F6087 /* WaveView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657713FE13C2002F6087 /* WaveView.mm */; };
 		95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657913FE1499002F6087 /* WaveFile.cpp */; };
 		95ED3784142A1E5900DF6BE5 /* libIsaybEncrypt.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ED3782142A1E5900DF6BE5 /* libIsaybEncrypt.d.a */; };
@@ -141,6 +142,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D0BDACD1472B86C005AFE34 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		0D16D70B13FE468B00BCFC29 /* LessonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LessonCell.xib; path = Cells/LessonCell.xib; sourceTree = "<group>"; };
 		0D16D70C13FE468B00BCFC29 /* LessonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LessonCell.m; path = Cells/LessonCell.m; sourceTree = "<group>"; };
 		0D16D70D13FE468B00BCFC29 /* LessonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LessonCell.h; path = Cells/LessonCell.h; sourceTree = "<group>"; };
@@ -274,7 +276,7 @@
 		9585CB3F140E3683006AF6FE /* isaybio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = isaybio.h; path = Voice/WaveDecode/isaybio.h; sourceTree = "<group>"; };
 		95B9398C13F66432006F4D61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		95B9399613F67990006F4D61 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary_1.6.4.a; path = Voice/UMeng/libMobClickLibrary_1.6.4.a; sourceTree = "<group>"; };
+		95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary_1.6.6.a; path = Voice/UMeng/libMobClickLibrary_1.6.6.a; sourceTree = "<group>"; };
 		95B9656F13FE08F5002F6087 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MobClick.h; path = Voice/UMeng/MobClick.h; sourceTree = "<group>"; };
 		95B9657513FE0962002F6087 /* WaveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveFile.h; path = Voice/WaveDecode/WaveFile.h; sourceTree = "<group>"; };
 		95B9657713FE13C2002F6087 /* WaveView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WaveView.mm; path = Recording/WaveView.mm; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D0BDACE1472B86C005AFE34 /* CoreTelephony.framework in Frameworks */,
 				95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */,
 				95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */,
 				0D872D8513EE7DFF00361672 /* libsqlite3.0.dylib in Frameworks */,
@@ -314,7 +317,7 @@
 				0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */,
 				0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */,
 				0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */,
-				95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.4.a in Frameworks */,
+				95B9657013FE08F5002F6087 /* libMobClickLibrary_1.6.6.a in Frameworks */,
 				9583C8A1140E4F3E0025BC2B /* libisaybio.d.a in Frameworks */,
 				9583C8A2140E4F3E0025BC2B /* libisaybio.s.a in Frameworks */,
 				95ED3784142A1E5900DF6BE5 /* libIsaybEncrypt.d.a in Frameworks */,
@@ -464,6 +467,7 @@
 				9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */,
 				0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */,
 				95B9399613F67990006F4D61 /* SystemConfiguration.framework */,
+				0D0BDACD1472B86C005AFE34 /* CoreTelephony.framework */,
 				95B9398C13F66432006F4D61 /* AudioToolbox.framework */,
 				0D4D6AC613DE3E1B00F87B13 /* libTapkuLibrary.a */,
 				0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */,
@@ -702,7 +706,7 @@
 		95B9399213F6791C006F4D61 /* UMeng */ = {
 			isa = PBXGroup;
 			children = (
-				95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.4.a */,
+				95B9656E13FE08F5002F6087 /* libMobClickLibrary_1.6.6.a */,
 				95B9656F13FE08F5002F6087 /* MobClick.h */,
 			);
 			name = UMeng;
@@ -1050,7 +1054,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: d l";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wang Yi (SHC58C4T94)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1059,7 +1063,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lz";
 				PREBINGDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AA25EE93-8852-4D5E-AE24-83775E790A3E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08D81EB1-9835-47BD-99CA-B041AF82336C";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
