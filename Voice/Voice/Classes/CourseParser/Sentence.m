@@ -11,7 +11,7 @@
 
 @implementation Sentence
 
-@synthesize starttime, endtime, orintext, transtext, techerid, ps, words;
+@synthesize starttime, endtime, orintext, transtext, techerid, psDict, words;
 
 - (id)init
 {
@@ -23,7 +23,7 @@
         orintext = nil;
         transtext = nil;
         techerid = nil;
-        ps = nil;
+        psDict = nil;
         words = nil;
     }
     
@@ -69,6 +69,8 @@
 		[[self.words objectAtIndex:i] release];
 	}
     [self.words release];
+    
+    [self.psDict release];
 
     [super dealloc];
 }

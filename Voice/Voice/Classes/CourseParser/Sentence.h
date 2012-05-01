@@ -16,7 +16,7 @@
 	NSString* orintext;
 	NSString* transtext;
 	NSString* techerid;
-	NSString* ps;
+    NSMutableArray* psDict;
 
     NSMutableArray* words;
 }
@@ -26,7 +26,7 @@
 @property (nonatomic, retain) NSString* orintext;
 @property (nonatomic, retain) NSString* transtext;
 @property (nonatomic, retain) NSString* techerid;
-@property (nonatomic, retain) NSString* ps;
+@property (nonatomic, retain) NSMutableArray* psDict;
 @property (nonatomic, retain) NSMutableArray* words;
 
 - (NSTimeInterval) startTime;

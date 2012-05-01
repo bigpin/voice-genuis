@@ -230,11 +230,32 @@
 				if (transtext) {
 					sentence.transtext = [TBXML textForElement:transtext];
 				}
-                // 
+                // 音标
 				TBXMLElement* ps = [TBXML childElementNamed:@"ps" parentElement:sentenceEle];
 				if (ps) {
-					sentence.ps = [TBXML textForElement:ps];
-				}
+                    // 分词
+                    sentence.psDict = [[NSMutableArray alloc] init];
+                    NSString* psStr = [TBXML textForElement:ps];
+                    NSRange separat = [psStr rangeOfString:@","];
+                    while (separat.length > 0 || psStr.length > 0) {
+                        NSString* psTemp = psStr;
+                        if (separat.length > 0) {
+                            psTemp = [psStr substringToIndex:separat.location];
+                        }
+                        NSRange colon = [psTemp rangeOfString:@":"];
+                        if (colon.length > 0) {
+                            NSDictionary* dictTemp = [NSDictionary dictionaryWithObjectsAndKeys:
+                                                      [psTemp substringToIndex:colon.location], [psTemp substringFromIndex:colon.location + 1], nil];
+                            [sentence.psDict addObject:dictTemp];
+                        }
+                        // next
+                        if (separat.length == 0) {
+                            break;
+                        }
+                        psStr = [psStr substringFromIndex:(separat.location + 1)];
+                        separat = [psStr rangeOfString:@","];
+                    }
+ 				}
                 // 单词位置
                 TBXMLElement* wordsEle = [TBXML childElementNamed:@"tw" parentElement:sentenceEle];
                 if (wordsEle) {
