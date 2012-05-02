@@ -786,6 +786,10 @@
             // NSLog(@"reading Count %d", nCurrentReadingCount);
         }
         bAlReadyPaused = NO;
+        UInt32 doChangeDefaultRoute = 1;
+        AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,
+                                 sizeof (doChangeDefaultRoute),
+                                 &doChangeDefaultRoute); 
        [player play];            
     
         [self updateUI];
@@ -959,6 +963,10 @@
     [self updateUI];
     Sentence* sentence = [_sentencesArray objectAtIndex:nPosition];
     NSTimeInterval inter = [sentence endTime] - self.player.currentTime;
+    UInt32 doChangeDefaultRoute = 1;
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,
+                             sizeof (doChangeDefaultRoute),
+                             &doChangeDefaultRoute); 
     [self.player play];
     [self performSelector:@selector(pauseintime) withObject:self afterDelay:inter];
     //[NSTimer scheduledTimerWithTimeInterval:inter target:self selector:@selector(pauseintime) userInfo:nil repeats:NO];        

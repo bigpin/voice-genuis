@@ -682,6 +682,10 @@ char *OSTypeToStr(char *buf, OSType t)
         player.volume = 5.0;
         [fileURL release];
         player.currentTime = [_sentence startTime];
+        UInt32 doChangeDefaultRoute = 1;
+        AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,
+                                 sizeof (doChangeDefaultRoute),
+                                 &doChangeDefaultRoute); 
         [player play];
         isStopPlaySrc = YES;
         NSTimeInterval inter = [_sentence endTime] - [_sentence startTime] + 0.2;
@@ -867,6 +871,10 @@ void propListener(	void *                  inClientData,
     player = [[AVAudioPlayer alloc] initWithContentsOfURL: fileURL error: nil];
     player.volume = 5.0;
     [fileURL release];
+    UInt32 doChangeDefaultRoute = 1;
+    AudioSessionSetProperty (kAudioSessionProperty_OverrideCategoryDefaultToSpeaker,
+                             sizeof (doChangeDefaultRoute),
+                             &doChangeDefaultRoute); 
     [player play];
 }
 
