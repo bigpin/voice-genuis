@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TBXML.h"
+#import "NSPhoneticSymbol.h"
 
 @class Course;
 @class Lesson;
@@ -17,6 +18,8 @@
     TBXML* tbxml;
 	Course* course;         // data after parsed
     NSString* wavePath;
+    
+    NSPhoneticSymbol* psDict;
 }
 
 @property (nonatomic, retain) NSString* resourcePath;

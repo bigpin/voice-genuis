@@ -98,6 +98,7 @@
 		95B9657813FE13C2002F6087 /* WaveView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657713FE13C2002F6087 /* WaveView.mm */; };
 		95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657913FE1499002F6087 /* WaveFile.cpp */; };
 		95E6381B154FB28500A3EAC5 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E6381A154FB28500A3EAC5 /* libMobClickLibrary.a */; };
+		95E6382915542B7A00A3EAC5 /* NSPhoneticSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E6382815542B7A00A3EAC5 /* NSPhoneticSymbol.m */; };
 		95ED3784142A1E5900DF6BE5 /* libIsaybEncrypt.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ED3782142A1E5900DF6BE5 /* libIsaybEncrypt.d.a */; };
 		95ED3785142A1E5900DF6BE5 /* libIsaybEncrypt.s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ED3783142A1E5900DF6BE5 /* libIsaybEncrypt.s.a */; };
 		E222057C13D5B89F006BA2A4 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E222056E13D5B89F006BA2A4 /* Course.m */; };
@@ -281,6 +282,8 @@
 		95B9657713FE13C2002F6087 /* WaveView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WaveView.mm; path = Recording/WaveView.mm; sourceTree = "<group>"; };
 		95B9657913FE1499002F6087 /* WaveFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveFile.cpp; path = Voice/WaveDecode/WaveFile.cpp; sourceTree = "<group>"; };
 		95E6381A154FB28500A3EAC5 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = Voice/UMeng/libMobClickLibrary.a; sourceTree = "<group>"; };
+		95E6382715542B7A00A3EAC5 /* NSPhoneticSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPhoneticSymbol.h; sourceTree = "<group>"; };
+		95E6382815542B7A00A3EAC5 /* NSPhoneticSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPhoneticSymbol.m; sourceTree = "<group>"; };
 		95ED3781142A1E1500DF6BE5 /* IsaybEncrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IsaybEncrypt.h; path = Voice/XMLDecrypt/IsaybEncrypt.h; sourceTree = "<group>"; };
 		95ED3782142A1E5900DF6BE5 /* libIsaybEncrypt.d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIsaybEncrypt.d.a; path = Voice/XMLDecrypt/libIsaybEncrypt.d.a; sourceTree = "<group>"; };
 		95ED3783142A1E5900DF6BE5 /* libIsaybEncrypt.s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libIsaybEncrypt.s.a; path = Voice/XMLDecrypt/libIsaybEncrypt.s.a; sourceTree = "<group>"; };
@@ -746,6 +749,8 @@
 				E222057B13D5B89F006BA2A4 /* Teacher.m */,
 				9570CC26142DCDDE009C1E7E /* Word.h */,
 				9570CC27142DCDDE009C1E7E /* Word.m */,
+				95E6382715542B7A00A3EAC5 /* NSPhoneticSymbol.h */,
+				95E6382815542B7A00A3EAC5 /* NSPhoneticSymbol.m */,
 			);
 			path = CourseParser;
 			sourceTree = "<group>";
@@ -806,6 +811,9 @@
 /* Begin PBXProject section */
 		0D8E161E13D471580005CD0F /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
 			buildConfigurationList = 0D8E162113D471580005CD0F /* Build configuration list for PBXProject "Voice" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -966,6 +974,7 @@
 				0D9A0153141E368800FFF508 /* SettingShowTranslationCell.m in Sources */,
 				9570CC28142DCDDE009C1E7E /* Word.m in Sources */,
 				0DDDFCAD143551F500D1632F /* ConfigData.m in Sources */,
+				95E6382915542B7A00A3EAC5 /* NSPhoneticSymbol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,6 +1087,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voice/Voice-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Voice/TapKu/";
 				INFOPLIST_FILE = "Voice/Voice-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1104,6 +1114,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Voice/Voice-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/Voice/TapKu/";
 				INFOPLIST_FILE = "Voice/Voice-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -1135,6 +1146,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VoiceTests/VoiceTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "VoiceTests/VoiceTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1157,6 +1169,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VoiceTests/VoiceTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "VoiceTests/VoiceTests-Info.plist";
 				OTHER_LDFLAGS = (
 					"-framework",

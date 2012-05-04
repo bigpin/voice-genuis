@@ -23,6 +23,9 @@
 - (id)init
 {
     course = nil;
+#ifdef PRE_TRANSFER_PS
+    psDict = [[NSPhoneticSymbol alloc]init];
+#endif
     [super init];
     return self;
 }
@@ -244,8 +247,15 @@
                         }
                         NSRange colon = [psTemp rangeOfString:@":"];
                         if (colon.length > 0) {
+                            NSString* strPS = [psTemp substringFromIndex:colon.location + 1];
+#ifdef PRE_TRANSFER_PS
+                            strPS = [psDict getPhoneticSymbol:strPS];
+#endif
                             NSDictionary* dictTemp = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                      [psTemp substringToIndex:colon.location], [psTemp substringFromIndex:colon.location + 1], nil];
+                                                      [psTemp substringToIndex:colon.location], strPS, nil];
+#ifdef PRE_TRANSFER_PS
+                            [strPS release];
+#endif
                             [sentence.psDict addObject:dictTemp];
                         }
                         // next
@@ -320,7 +330,7 @@
 		[[course.lessons objectAtIndex:i] release];
 	}
 	[course.lessons release];
-	
+	[psDict release];
     [super dealloc];
 }
 
