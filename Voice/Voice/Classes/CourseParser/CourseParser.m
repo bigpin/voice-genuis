@@ -20,6 +20,8 @@
 
 @synthesize resourcePath, tbxml, course;
 
+// #define PRE_TRANSFER_PS
+
 - (id)init
 {
     course = nil;
@@ -255,9 +257,9 @@
                             NSString* strPS = [psTemp substringFromIndex:colon.location + 1];
 #ifdef PRE_TRANSFER_PS
                             strPS = [psDict getPhoneticSymbol:strPS];
-#endif
-                            //strPS = [psDict getPhoneticSymbol:strPS];
+#else
                             strPS = [self convertpsChar:strPS];
+#endif
                             NSDictionary* dictTemp = [NSDictionary dictionaryWithObjectsAndKeys:
                                                       [psTemp substringToIndex:colon.location], strPS, nil];
 #ifdef PRE_TRANSFER_PS
