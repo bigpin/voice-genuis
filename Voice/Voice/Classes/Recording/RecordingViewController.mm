@@ -500,7 +500,7 @@ char *OSTypeToStr(char *buf, OSType t)
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 1;
+        return 1+[self.sentence.words count];
     }else {
         return 2;
     }
@@ -509,35 +509,42 @@ char *OSTypeToStr(char *buf, OSType t)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        NSString *CellIdentifier = @"MsgListCell";
-        
-        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        }
-        NSString* oritext = self.sentence.orintext;
-        if (self.sentence.transtext != nil) {
-            if ([self.sentence.transtext length] > 0) {
-                oritext = [NSString stringWithFormat:@"%@ \r\n %@", oritext, self.sentence.transtext];
+        if (indexPath.row == 0) {
+            NSString *CellIdentifier = @"MsgListCell";
+            
+            UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
             }
-       }
-         cell.textLabel.text = oritext;
-        cell.textLabel.lineBreakMode   = UILineBreakModeWordWrap;
-        cell.textLabel.numberOfLines   = 0;
-        cell.textLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
-        /*BubbleCell *cell = (BubbleCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        
-        if (cell == nil) {
-            cell = [[[BubbleCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+            NSString* oritext = self.sentence.orintext;
+            if (self.sentence.transtext != nil) {
+                if ([self.sentence.transtext length] > 0) {
+                    oritext = [NSString stringWithFormat:@"%@ \r\n %@", oritext, self.sentence.transtext];
+                }
+            }
+            cell.textLabel.text = oritext;
+            cell.textLabel.lineBreakMode   = UILineBreakModeWordWrap;
+            cell.textLabel.numberOfLines   = 0;
+            cell.textLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
+            return cell;
         } else {
-            [cell cleanUp];
+            UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+            if (cell == nil) {
+                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"] autorelease];
+            }
+            NSInteger nIndex = indexPath.row - 1;
+            NSString* text = [[self.sentence.words objectAtIndex:nIndex] text];
+            NSDictionary* dictionary = [self.sentence.psDict objectAtIndex:nIndex] ;
+            NSString* ps = nil;
+            for (id key in dictionary) {
+                ps = key;
+            }
+            cell.textLabel.textColor = [UIColor blueColor];
+            cell.textLabel.font      = [UIFont systemFontOfSize:(FONT_SIZE_BUBBLE-1)];
+            cell.textLabel.text = [NSString stringWithFormat:@"%d. %@ [%@]",nIndex+1, text,ps];
+            return cell;
+
         }
-        cell.imgIcon = [NSString stringWithFormat:@"%@//teachers/t2.png", resourcePath];
-        cell.imgName = [NSString stringWithFormat:@"%@/cells/Register_TipBkg.png", resourcePath];
-        cell.msgText = self.sentence.orintext;
-        cell.transText = self.sentence.transtext;
-        cell.nShowTextStyle = YES;*/
-        return cell;
     } else {
         if (indexPath.row == 0) {
             
@@ -615,20 +622,24 @@ char *OSTypeToStr(char *buf, OSType t)
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        NSString *aMsg = self.sentence.orintext;
-        NSString *transText = self.sentence.transtext;
-        CGFloat divide = 0.9;
-        CGFloat width = self.view.bounds.size.width * divide - 2*MAGIN_OF_BUBBLE_TEXT_START;
-        CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
-        if (self.sentence.transtext != nil) {
-            CGSize szTrans = [BubbleCell calcTextHeight:transText withWidth:width];
-            size = CGSizeMake(size.width, size.height + szTrans.height + MAGIN_OF_TEXTANDTRANSLATE);
+        if (indexPath.row == 0) {
+            NSString *aMsg = self.sentence.orintext;
+            NSString *transText = self.sentence.transtext;
+            CGFloat divide = 0.9;
+            CGFloat width = self.view.bounds.size.width * divide - 2*MAGIN_OF_BUBBLE_TEXT_START;
+            CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
+            if (self.sentence.transtext != nil) {
+                CGSize szTrans = [BubbleCell calcTextHeight:transText withWidth:width];
+                size = CGSizeMake(size.width, size.height + szTrans.height + MAGIN_OF_TEXTANDTRANSLATE);
+            }
+            size.height += 5;
+            
+            CGFloat height = (size.height < 44) ? 44 : size.height;
+            
+            return height;
+        } else {
+            return 44.0;
         }
-        size.height += 5;
-        
-        CGFloat height = (size.height < 44) ? 44 : size.height;
-        
-        return height;
 
     } else {
         return 134;

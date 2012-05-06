@@ -25,7 +25,12 @@
     course = nil;
 #ifdef PRE_TRANSFER_PS
     psDict = [[NSPhoneticSymbol alloc]init];
+    
 #endif
+
+    _psArray = [[NSMutableArray alloc] initWithArray:[PS_ARRAY componentsSeparatedByString:@","]];
+    _psSrcArray = [[NSMutableArray alloc] initWithArray:[PS_CHAR_ARRAY componentsSeparatedByString:@","]];
+    
     [super init];
     return self;
 }
@@ -251,6 +256,8 @@
 #ifdef PRE_TRANSFER_PS
                             strPS = [psDict getPhoneticSymbol:strPS];
 #endif
+                            //strPS = [psDict getPhoneticSymbol:strPS];
+                            strPS = [self convertpsChar:strPS];
                             NSDictionary* dictTemp = [NSDictionary dictionaryWithObjectsAndKeys:
                                                       [psTemp substringToIndex:colon.location], strPS, nil];
 #ifdef PRE_TRANSFER_PS
@@ -331,7 +338,24 @@
 	}
 	[course.lessons release];
 	[psDict release];
+    [_psArray release];
+    [_psSrcArray release];
     [super dealloc];
 }
 
+- (NSString*) convertpsChar:(NSString*)str
+{
+    if (str == nil) {
+        return str;
+    }
+    NSString* convertString = [NSString stringWithFormat:@"%@", str];
+    if (([_psArray count] != [_psSrcArray count]) && ([_psSrcArray count] == 0)) {
+        return str;
+    }
+    for (NSInteger i = 0; i < [_psArray count]; i++) {
+        convertString = [convertString stringByReplacingOccurrencesOfString:[_psSrcArray objectAtIndex:i] withString:[_psArray objectAtIndex:i]];
+    }
+    convertString = [convertString stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return convertString;
+}
 @end

@@ -20,6 +20,8 @@
     NSString* wavePath;
     
     NSPhoneticSymbol* psDict;
+    NSArray* _psArray;
+    NSArray* _psSrcArray;
 }
 
 @property (nonatomic, retain) NSString* resourcePath;
@@ -41,5 +43,5 @@
                   to:(NSMutableArray*)teachers;
 - (void) loadWord:(TBXMLElement*)element
                to:(NSMutableArray*)words;
-
+- (NSString*) convertpsChar:(NSString*)str;
 @end

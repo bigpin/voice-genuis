@@ -212,7 +212,7 @@
     
     CGContextMoveToPoint(context, 0, rect.size.height/2);
     CGContextAddLineToPoint(context, rect.size.width, rect.size.height/2);
-    CGContextStrokePath(context);
+    CGContextStrokePath(context);   
     
     if (dwWidPerSencond != 0) {
         NSInteger nTimeCount = rect.size.width / dwWidPerSencond;
