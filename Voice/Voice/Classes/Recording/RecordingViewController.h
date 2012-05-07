@@ -53,6 +53,7 @@
     BOOL                    isStopPlaySrc;
     NSInteger               nPos;
     NSInteger               nTotalCount;
+    NSMutableString*         _psContent;
 }
 
 @property (nonatomic, assign) NSString* resourcePath;
@@ -92,5 +93,6 @@
 - (void)removeStartRecordingView;
 - (void)addFailedRecordingView;
 - (void)removeFailedRecordingView;
+- (void)setpscontent;
 
 @end
