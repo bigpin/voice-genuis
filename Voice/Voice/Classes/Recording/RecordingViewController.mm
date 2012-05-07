@@ -135,6 +135,7 @@ char *OSTypeToStr(char *buf, OSType t)
 
     [self.sentence release];
     [self.sentenceView release];
+    [_psContent release];
     [super dealloc];
 }
 
