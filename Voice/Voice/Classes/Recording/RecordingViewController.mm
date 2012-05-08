@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BubbleCell.h"
 #import "MobClick.h"
+#import "NSPhoneticSymbol.h"
 #import "VoiceAppDelegate.h"
 
 @implementation RecordingViewController
@@ -510,29 +511,17 @@ char *OSTypeToStr(char *buf, OSType t)
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            NSString *CellIdentifier = @"MsgListCell";
-            
-            UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (cell == nil) {
-                cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-            }
-            [self setpscontent];
-            NSString* oritext = self.sentence.orintext;
-            if (_psContent != nil) {
-                oritext = [NSString stringWithFormat:@"%@ \r\n%@", _psContent, oritext];
-            }
-            if (self.sentence.transtext != nil) {
-                if ([self.sentence.transtext length] > 0) {
-                    oritext = [NSString stringWithFormat:@"%@ \r\n %@", oritext, self.sentence.transtext];
-                }
-            }
-            cell.textLabel.text = oritext;
-            cell.textLabel.lineBreakMode   = UILineBreakModeWordWrap;
-            cell.textLabel.numberOfLines   = 0;
-            cell.textLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
-            return cell;
-        } 
+        NSString *CellIdentifier = @"MsgListCell";
+        
+        UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        }
+        cell.textLabel.text = [self getSrcTextString];
+        cell.textLabel.lineBreakMode   = UILineBreakModeWordWrap;
+        cell.textLabel.numberOfLines   = 0;
+        cell.textLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
+        return cell;
     } else {
         if (indexPath.row == 0) {
             
@@ -610,25 +599,14 @@ char *OSTypeToStr(char *buf, OSType t)
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            [self setpscontent];
-            NSString *aMsg = self.sentence.orintext;
-            NSString *transText = self.sentence.transtext;
-            CGFloat divide = 0.9;
-            CGFloat width = self.view.bounds.size.width * divide - 2*MAGIN_OF_BUBBLE_TEXT_START;
-            CGSize size    = [BubbleCell calcTextHeight:aMsg withWidth:width];
-            CGSize psSize    = [BubbleCell calcTextHeight:_psContent withWidth:width];
-            if (self.sentence.transtext != nil) {
-                CGSize szTrans = [BubbleCell calcTextHeight:transText withWidth:width];
-                size = CGSizeMake(size.width, size.height + szTrans.height + psSize.height+MAGIN_OF_TEXTANDTRANSLATE);
-            }
-            size.height += 5;
-            
-            CGFloat height = (size.height < 44) ? 44 : size.height;
-            
-            return height;
-        } 
-    } else {
+        NSString* srcText = [self getSrcTextString];
+        CGFloat divide = 0.9;
+        CGFloat width = self.view.bounds.size.width * divide - 2*MAGIN_OF_BUBBLE_TEXT_START;
+        CGSize size    = [BubbleCell calcTextHeight:srcText withWidth:width];
+        size.height += 5;
+        CGFloat height = (size.height < 44) ? 44 : size.height;
+        return height;
+     } else {
         return 134;
     }
 }
@@ -950,16 +928,35 @@ void propListener(	void *                  inClientData,
 - (void)setpscontent
 {
     if (_psContent == nil) {
-        _psContent = [[NSMutableString alloc] initWithFormat:@"%@",@""];
-        for (NSInteger nIndex = 0; nIndex < [self.sentence.psDict count]; nIndex++) {
-            NSDictionary* dictionary = [self.sentence.psDict objectAtIndex:nIndex] ;
-            NSString* ps = nil;
-            for (id key in dictionary) {
-                ps = key;
+        NSPhoneticSymbol* sy = [[NSPhoneticSymbol alloc] init];
+        if ([self.sentence.psDict count] > 0) {
+            _psContent = [[NSMutableString alloc] initWithFormat:@"%@",@""];
+            for (NSInteger nIndex = 0; nIndex < [self.sentence.psDict count]; nIndex++) {
+                NSDictionary* dictionary = [self.sentence.psDict objectAtIndex:nIndex] ;
+                NSString* ps = nil;
+                for (id key in dictionary) {
+                    ps = [sy getPhoneticSymbol:key];
+                }
+                [_psContent appendFormat:@"[%@] ", ps];
             }
-            [_psContent appendFormat:@"[%@] ", ps];
+        }
+        [sy release];
+    }
+}
+
+- (NSString*)getSrcTextString;
+{
+    [self setpscontent];
+    NSString* oritext = self.sentence.orintext;
+    if (_psContent != nil) {
+        oritext = [NSString stringWithFormat:@"%@ \r\n\r\n%@", oritext, _psContent];
+    }
+    if (self.sentence.transtext != nil) {
+        if ([self.sentence.transtext length] > 0) {
+            oritext = [NSString stringWithFormat:@"%@ \r\n\r\n %@", oritext, self.sentence.transtext];
         }
     }
-    
+    return oritext;
 }
+
 @end

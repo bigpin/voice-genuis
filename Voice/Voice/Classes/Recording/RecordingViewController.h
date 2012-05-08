@@ -94,5 +94,5 @@
 - (void)addFailedRecordingView;
 - (void)removeFailedRecordingView;
 - (void)setpscontent;
-
+- (NSString*)getSrcTextString;
 @end

@@ -258,7 +258,7 @@
 #ifdef PRE_TRANSFER_PS
                             strPS = [psDict getPhoneticSymbol:strPS];
 #else
-                            strPS = [self convertpsChar:strPS];
+                            //strPS = [self convertpsChar:strPS];
 #endif
                             NSDictionary* dictTemp = [NSDictionary dictionaryWithObjectsAndKeys:
                                                       [psTemp substringToIndex:colon.location], strPS, nil];
