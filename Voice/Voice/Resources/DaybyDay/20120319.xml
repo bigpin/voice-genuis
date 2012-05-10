@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>A glamorous life is quite different to a life of luxury.       By Lady GaGa</ot>
+          <tt>生活的美丽与否与奢华无关。</tt>
+          <wd v="4">
+            <w>
+              <txt>glamorous</txt>
+              <pro>['glæmərəs]</pro>
+              <pos></pos>
+              <def>adj.富有魅力的，迷人的</def>
+            </w>
+            <w>
+              <txt>luxury</txt>
+              <pro>[ˈlʌkʃəri]</pro>
+              <pos></pos>
+              <def>n.奢侈，华贵；奢侈品</def>
+            </w>
+            <w>
+              <txt>different to</txt>
+              <def>不同于，与 ... 不同的</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The biggest adventure you can take is to live the life of your dreams.    By Oprah Gail Winfrey</ot>
+          <tt>你能经历的最大冒险，就是过你梦想的生活。     —— 奥普拉•温弗莉</tt>
+          <wd v="4">
+            <w>
+              <txt>adventure</txt>
+              <pro>[ədˈventʃə]</pro>
+              <pos></pos>
+              <def>n.异乎寻常的经历,奇遇；冒险(活动)</def>
+            </w>
+            <w>
+              <txt>live the life</txt>
+              <def>生活</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>We're here to put a dent in the universe.         By Steve Jobs</ot>
+          <tt>活着就是为了改变世界。       —— 史蒂夫•乔布斯</tt>
+          <wd v="4">
+            <w>
+              <txt>universe</txt>
+              <pro>[ˈju:nivə:s]</pro>
+              <pos></pos>
+              <def>n.宇宙，万物，世界；领域，范围</def>
+            </w>
+            <w>
+              <txt>put a dent</txt>
+              <def>产生影响</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The world has changed, and we must change with it.              By Barack Obama </ot>
+          <tt>世界已经变了，我们必须同时改变。                                  —— 奥巴马</tt>
+          <wd v="4">
+            <w>
+              <txt>change</txt>
+              <pro>[tʃeindʒ]</pro>
+              <pos></pos>
+              <def>v.改变；交换；兑换    n.变化；更换；零钱</def>
+              <clon>
+                <c>changed</c>
+              </clon>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Magic is easy if you put your heart into it.                 By Michael Jackson</ot>
+          <tt>如果你全身心地投入一件事，奇迹即将发生。                       —— 迈克尔•杰克逊</tt>
+          <wd v="4">
+            <w>
+              <txt>put heart into sth</txt>
+              <def>全心全意做某事</def>
+              <clon>
+                <c>put</c>
+                  <c>heart into</c>
+              </clon>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>外界一提到扎克伯格时，总是将其同微软创始人比尔•盖茨做比较，因为他们都是从哈佛大学辍学的“坏学生”，都是白手起家，在互联网上创业，从而影响全世界。20岁的扎克伯格虽然考入了知名的哈佛大学，但却是该学校计算机和心理学系的辍学生。2004年，他在哈佛的大学宿舍创办了 Facebook。短短数年，这一网站迅速风靡全世界，如今它已成为世界上最重要的社交网站之一。Facebook 的市值已高达1800亿美元，扎克伯格本人也因这一成功创业，成为世界上最年轻的亿万富翁，同时也是最积极从事慈善事业的美国富豪之一。扎克伯格曾表示：“一些人等到事业晚期才回馈(社会)。可现在就有那么多事情需要做，为何要等待？我们中一些人很可能在人生早期回馈社会，见证我们慈善努力的影响。”</txt>
+      <img>20120319.jpg</img>
+    </tips>
+  </body>
+</lesson>

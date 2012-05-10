@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>What is a man's first duty? The answer is brief: To be himself.</ot>
+          <tt>一个人的首要职责是什么很简单：做自己。 </tt>
+          <wd v="4">
+            <w>
+              <txt>duty</txt>
+              <pro>['dju:ti]</pro>
+              <pos></pos>
+              <def>n. 责任；关税；职务</def>
+            </w>
+            <w>
+              <txt>brief</txt>
+              <pro>[bri:f]</pro>
+              <pos></pos>
+              <def>adj. 简短的，简洁的；短暂的，草率的   n. 摘要，简报；概要，诉书</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The love of country is the first virtue in a civilized man.</ot>
+          <tt>爱国是文明人类的第一美德。</tt>
+          <wd v="4">
+            <w>
+              <txt>virtue</txt>
+              <pro>['və:tju:]</pro>
+              <pos></pos>
+              <def>n. 美德；优点；贞操；功效</def>
+            </w>
+            <w>
+              <txt>civilized</txt>
+              <pro>['sivilaizd]</pro>
+              <pos></pos>
+              <def>adj. 文明的；有礼貌的</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The proper function of man is to live, but not to exist.</ot>
+          <tt>人应该生活，而非单纯的的生存。</tt>
+          <wd v="4">
+            <w>
+              <txt>function</txt>
+              <pro>['fʌŋkʃən]</pro>
+              <pos></pos>
+              <def>n. 功能；  [数] 函数；职责；盛大的集会</def>
+            </w>
+            <w>
+              <txt>proper</txt>
+              <pro>['prɔpə]</pro>
+              <pos></pos>
+              <def>adj. 适当的；本身的；特有的；正派的</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Wonders are many, and nothing is more wonderful then man.</ot>
+          <tt>天下奇迹无数，却无一比人更奇妙。</tt>
+          <wd v="4">
+            <w>
+              <txt>wonder</txt>
+              <pro>['wʌndə]</pro>
+              <pos></pos>
+              <def>n. 惊奇；奇迹；惊愕</def>
+              <clon>
+                <c>wonders</c>
+              </clon>
+            </w>
+            <w>
+              <txt>wonderful</txt>
+              <pro>['wʌndəful]</pro>
+              <pos></pos>
+              <def>adj. 奇妙的；极好的</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>If you smile when one is around, you really mean it.</ot>
+          <tt>如果你独自一人时笑了，那是真心的笑。</tt>
+          <wd v="4">
+            <w>
+              <txt>around</txt>
+              <pro>[ə'raund]</pro>
+              <pos></pos>
+              <def>adv. 大约；到处；在附近    prep. 四处；在…周围</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>郁金香原产于中东，16世纪传入欧洲。在中东，人们总是将其与穆斯林头巾相联系。由于其花似穆斯林头巾，波斯语称之为dulband，土耳其语借了过来，作tulbend，意即“穆斯林头巾”。经过园艺家长期的杂交栽培，目前全世界已拥有8000多个品种，被大量生产的约150种。世界上原本并没有紫色，有一天不知道是谁将红色和蓝色调和在了一起，于是神奇的紫色出现了…… 有人说，紫色有着红色的浪漫与高贵；也有人说紫色有着黑色的神秘与忧伤。但是，当紫色如此完美地呈现在一朵花上的时候。我们不得不惊叹于她的美丽,紫色郁金香，美得如此纯粹，如此动人心魄!</txt>
+      <img>20120409.jpg</img>
+    </tips>
+  </body>
+</lesson>

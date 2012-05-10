@@ -71,6 +71,7 @@
 		0D90ABD613D69F2C005FA104 /* Image in Resources */ = {isa = PBXBuildFile; fileRef = 0D90ABD213D69F2C005FA104 /* Image */; };
 		0D9A0153141E368800FFF508 /* SettingShowTranslationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D9A0152141E368800FFF508 /* SettingShowTranslationCell.m */; };
 		0D9A0155141E36D500FFF508 /* SettingShowTranslationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9A0154141E36D500FFF508 /* SettingShowTranslationCell.xib */; };
+		0DAAE030155BBB2200D9B3F1 /* DaybyDay in Resources */ = {isa = PBXBuildFile; fileRef = 0DAAE02F155BBB2200D9B3F1 /* DaybyDay */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
 		0DCC434D143414FF00F2BCBE /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DCC434C143414FF00F2BCBE /* configuration.plist */; };
 		0DCD635F1436123B002F91F5 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD635D1436123B002F91F5 /* Default-Landscape.png */; };
@@ -239,6 +240,7 @@
 		0D9A0151141E368800FFF508 /* SettingShowTranslationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingShowTranslationCell.h; sourceTree = "<group>"; };
 		0D9A0152141E368800FFF508 /* SettingShowTranslationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingShowTranslationCell.m; sourceTree = "<group>"; };
 		0D9A0154141E36D500FFF508 /* SettingShowTranslationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingShowTranslationCell.xib; sourceTree = "<group>"; };
+		0DAAE02F155BBB2200D9B3F1 /* DaybyDay */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DaybyDay; path = Voice/Resources/DaybyDay; sourceTree = "<group>"; };
 		0DC0218D13E45825007170F3 /* BubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BubbleCell.m; path = Cells/BubbleCell.m; sourceTree = "<group>"; };
 		0DC0218E13E45825007170F3 /* BubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleCell.h; path = Cells/BubbleCell.h; sourceTree = "<group>"; };
 		0DCC434C143414FF00F2BCBE /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = configuration.plist; path = Voice/Resources/Setting/configuration.plist; sourceTree = "<group>"; };
@@ -635,6 +637,7 @@
 				0D90AA2F13D69F2C005FA104 /* Data */,
 				0D872D7613EE78BC00361672 /* DataBase */,
 				0D90ABD213D69F2C005FA104 /* Image */,
+				0DAAE02F155BBB2200D9B3F1 /* DaybyDay */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				0DCC434D143414FF00F2BCBE /* configuration.plist in Resources */,
 				0DCD635F1436123B002F91F5 /* Default-Landscape.png in Resources */,
 				0DCD63601436123B002F91F5 /* Default-Portrait.png in Resources */,
+				0DAAE030155BBB2200D9B3F1 /* DaybyDay in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

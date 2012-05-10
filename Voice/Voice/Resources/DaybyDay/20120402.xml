@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>Imagination is more important than keowledge.                                Einstein</ot>
+          <tt>想象力比知识更重要。                                                      ----爱因斯坦</tt>
+          <wd v="4">
+            <w>
+              <txt>imagination</txt>
+              <pro>[i,mædʒi'neiʃən]</pro>
+              <pos></pos>
+              <def>n. 想象力；幻想物;空想</def>
+            </w>
+            <w>
+              <txt>more ... than</txt>
+              <def>多于；超出；比……多</def>
+                <clon>
+                  <c>more</c>
+		  <c>than</c>
+                </clon>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Activity is the only road to knowledge.                        Bernard Shaw</ot>
+          <tt>行动是通往知识的唯一道路。                                         ---- 萧伯纳</tt>
+          <wd v="4">
+            <w>
+              <txt>activity</txt>
+              <pro>[æk'tivəti]</pro>
+              <pos></pos>
+              <def>n. 活动；活跃；行动</def>
+            </w>
+            <w>
+              <txt>knowledge</txt>
+              <pro>['nɔlidʒ]</pro>
+              <pos></pos>
+              <def>n. 知识，学问；知道，认识；</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Don't gild the lily.                                Shakespeare</ot>
+          <tt>不要画蛇添足。                                    ---- 莎士比亚</tt>
+          <wd v="4">
+            <w>
+              <txt>gild</txt>
+              <pro>[gild]</pro>
+              <pos></pos>
+              <def>vt. 镀金；虚饰；供给钱</def>
+            </w>
+            <w>
+              <txt>lily</txt>
+              <pro>['lili]</pro>
+              <pos></pos>
+              <def>n. 百合花,百合;洁白之物; adj. 洁白的，纯洁的</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A novel is a mirror walking alone a main road.                    Stendhcl</ot>
+          <tt>一部小说犹如一面行走在大街上的镜子。                              ---- 司汤达</tt>
+          <wd v="4">
+            <w>
+              <txt>novel</txt>
+              <pro>['nɔvəl]</pro>
+              <pos></pos>
+              <def>n.小说；adj.新奇的；异常的</def>
+            </w>
+            <w>
+              <txt>mirror</txt>
+              <pro>['mirə]</pro>
+              <pos></pos>
+              <def>n. 镜子,真实的写照,榜样; vt. 反映；反射</def>
+            </w>
+            <w>
+              <txt>walk alone</txt>
+              <def>独行 ；守望孤单</def>
+                <clon>
+                  <c>walking alone</c>
+                </clon>	      
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Art is long, and times fleeting.                             Longfellow</ot>
+          <tt>艺术是永恒的，时间却是瞬息即逝的。                           ---- 朗费罗</tt>
+          <wd v="4">
+            <w>
+              <txt>fleet</txt>
+              <pro>[fli:t]</pro>
+              <pos></pos>
+              <def>adj. 快速的，敏捷的；n. 舰队；小河；港湾；vi. 疾驰；飞逝；掠过；vt. 消磨</def>
+                <clon>
+                  <c>fleeting</c>
+                </clon>
+           </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>玉兰经常在一片绿意盎然中开出大轮的白色花朵，随着那芳郁的香味令人感受到一股难以言喻的气质，委实清新可人。因其株禾高大，开花位置较高，迎风摇曳，神采奕奕，宛若天女散花，非常可爱。"新诗已旧不堪闻，江南荒馆隔秋云。多情不改年年色，千古芳心持增君。"而玉兰花的名字源于这样一个故事：很久以前在一处深山里住着三个姐妹，大姐叫红玉兰，二姐叫白玉兰，三姐叫黄玉兰。一天她们下山游玩却发现村子里冷水秋烟，一片死寂，三姐妹十分惊异，向村子里的人问讯后得知，原来秦始皇赶山填海，杀死了龙虾公主，从此，龙王爷就跟张家界成了仇家，龙王锁了盐库，不让张家界人吃盐，终于导致了瘟疫发生，死了好多人。三姐妹十分同情他们，于是决定帮大家讨盐。然而这又何等容易？在遭到龙王多次拒绝以后，三姐妹只得从看守盐仓的蟹将军入手，用自己酿制的花香迷倒了蟹将军，趁机将盐仓凿穿，把所有的盐都浸入海水中。村子里的人得救了，三姐妹却被龙王变作花树。后来人们为了纪念她们就将那种花树称作“玉兰花”，而她们酿造的花香也变成了她们自己的香味。故事很简单，也很唯美，却也反映了人们对美好事物的追求、对完美的向往。</txt>
+      <img>20120402.jpg</img>
+    </tips>
+  </body>
+</lesson>
