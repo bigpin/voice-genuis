@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DaybyDayViewController : UIViewController
+@property(nonatomic, retain) IBOutlet UILabel* textLabel;
 - (void)back;
 @end

@@ -116,9 +116,8 @@
     if ([array count] > 0) {
         DaybyDayView* dayView = [array objectAtIndex:0];
         [self.view addSubview:dayView];
-        dayView.delegate = self;
-    }
-     
+        dayView.delegate = (id)self;
+     }
 }
 
 - (void) viewWillAppear:(BOOL)animated{

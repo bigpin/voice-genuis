@@ -12,6 +12,7 @@
 		0D16D70F13FE468B00BCFC29 /* LessonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D16D70C13FE468B00BCFC29 /* LessonCell.m */; };
 		0D16D71213FE477F00BCFC29 /* RatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D16D71013FE477F00BCFC29 /* RatingView.m */; };
 		0D3B8CA113DC08B1005898CD /* UACellBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3B8CA013DC08B1005898CD /* UACellBackgroundView.m */; };
+		0D4220D3155D0DA0007B6BBB /* daydetail.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D4220D2155D0DA0007B6BBB /* daydetail.png */; };
 		0D4D6ABF13DE3D7600F87B13 /* TapkuLibrary.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0D4D6ABE13DE3D7600F87B13 /* TapkuLibrary.bundle */; };
 		0D4D6AC113DE3DAB00F87B13 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4D6AC013DE3DAB00F87B13 /* QuartzCore.framework */; };
 		0D4D6AC313DE3DB300F87B13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D4D6AC213DE3DB300F87B13 /* MapKit.framework */; };
@@ -156,6 +157,7 @@
 		0D16D71113FE477F00BCFC29 /* RatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RatingView.h; path = Cells/RatingView.h; sourceTree = "<group>"; };
 		0D3B8C9F13DC08B1005898CD /* UACellBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UACellBackgroundView.h; path = Cells/UACellBackgroundView.h; sourceTree = "<group>"; };
 		0D3B8CA013DC08B1005898CD /* UACellBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UACellBackgroundView.m; path = Cells/UACellBackgroundView.m; sourceTree = "<group>"; };
+		0D4220D2155D0DA0007B6BBB /* daydetail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = daydetail.png; path = Voice/Resources/Other/daydetail.png; sourceTree = "<group>"; };
 		0D4D6ABE13DE3D7600F87B13 /* TapkuLibrary.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = TapkuLibrary.bundle; path = Voice/TapKu/TapkuLibrary.bundle; sourceTree = SOURCE_ROOT; };
 		0D4D6AC013DE3DAB00F87B13 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0D4D6AC213DE3DB300F87B13 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -664,6 +666,7 @@
 		0DD478E213F128950054E726 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				0D4220D2155D0DA0007B6BBB /* daydetail.png */,
 				0D79487D1413250000E92396 /* Default~iphone.png */,
 				0D79487E1413250000E92396 /* Default@2x.png */,
 				0DCD635D1436123B002F91F5 /* Default-Landscape.png */,
@@ -920,6 +923,7 @@
 				0DAAE030155BBB2200D9B3F1 /* DaybyDay in Resources */,
 				0DE1B022155C9C53003A71B9 /* DaybyDayViewController.xib in Resources */,
 				0DE1B027155C9D83003A71B9 /* DaybyDayView.xib in Resources */,
+				0D4220D3155D0DA0007B6BBB /* daydetail.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

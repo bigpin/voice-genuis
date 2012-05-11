@@ -14,7 +14,12 @@
 
 @end
 @interface DaybyDayView : UIView
+{
+    NSTimer*           updateTimer;
 
+}
 @property (nonatomic, assign) id<DabyDayViewDelegate>delegate;
 @property (nonatomic, retain) IBOutlet UILabel* textLabel;
+@property (nonatomic, retain) IBOutlet UIImageView* backgroundView;
+
 @end

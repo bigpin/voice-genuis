@@ -13,6 +13,7 @@
 @end
 
 @implementation DaybyDayViewController
+@synthesize textLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
