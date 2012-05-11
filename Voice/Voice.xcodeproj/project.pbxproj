@@ -81,6 +81,10 @@
 		0DD478E913F129250054E726 /* icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E513F129250054E726 /* icon_small.png */; };
 		0DD478EA13F129250054E726 /* icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E613F129250054E726 /* icon_72.png */; };
 		0DDDFCAD143551F500D1632F /* ConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDDFCAC143551F500D1632F /* ConfigData.m */; };
+		0DE1B021155C9C53003A71B9 /* DaybyDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1B01F155C9C53003A71B9 /* DaybyDayViewController.m */; };
+		0DE1B022155C9C53003A71B9 /* DaybyDayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DE1B020155C9C53003A71B9 /* DaybyDayViewController.xib */; };
+		0DE1B025155C9D44003A71B9 /* DaybyDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1B024155C9D43003A71B9 /* DaybyDayView.m */; };
+		0DE1B027155C9D83003A71B9 /* DaybyDayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DE1B026155C9D82003A71B9 /* DaybyDayView.xib */; };
 		0DE9C222140BBDFD0025BDD2 /* AQRecorder.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C21E140BBDFD0025BDD2 /* AQRecorder.mm */; };
 		0DE9C223140BBDFD0025BDD2 /* AQPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C220140BBDFD0025BDD2 /* AQPlayer.mm */; };
 		0DE9C22C140BBE730025BDD2 /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0DE9C226140BBE730025BDD2 /* CAXException.cpp */; };
@@ -253,6 +257,12 @@
 		0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Voice/TapKu/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		0DDDFCAB143551F500D1632F /* ConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigData.h; path = Configuration/ConfigData.h; sourceTree = "<group>"; };
 		0DDDFCAC143551F500D1632F /* ConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigData.m; path = Configuration/ConfigData.m; sourceTree = "<group>"; };
+		0DE1B01E155C9C53003A71B9 /* DaybyDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaybyDayViewController.h; path = DaybyDay/DaybyDayViewController.h; sourceTree = "<group>"; };
+		0DE1B01F155C9C53003A71B9 /* DaybyDayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DaybyDayViewController.m; path = DaybyDay/DaybyDayViewController.m; sourceTree = "<group>"; };
+		0DE1B020155C9C53003A71B9 /* DaybyDayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DaybyDayViewController.xib; path = DaybyDay/DaybyDayViewController.xib; sourceTree = "<group>"; };
+		0DE1B023155C9D43003A71B9 /* DaybyDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaybyDayView.h; path = DaybyDay/DaybyDayView.h; sourceTree = "<group>"; };
+		0DE1B024155C9D43003A71B9 /* DaybyDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DaybyDayView.m; path = DaybyDay/DaybyDayView.m; sourceTree = "<group>"; };
+		0DE1B026155C9D82003A71B9 /* DaybyDayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DaybyDayView.xib; path = DaybyDay/DaybyDayView.xib; sourceTree = "<group>"; };
 		0DE9C21E140BBDFD0025BDD2 /* AQRecorder.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AQRecorder.mm; path = Recording/PlayRecord/AQRecorder.mm; sourceTree = "<group>"; };
 		0DE9C21F140BBDFD0025BDD2 /* AQRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AQRecorder.h; path = Recording/PlayRecord/AQRecorder.h; sourceTree = "<group>"; };
 		0DE9C220140BBDFD0025BDD2 /* AQPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AQPlayer.mm; path = Recording/PlayRecord/AQPlayer.mm; sourceTree = "<group>"; };
@@ -554,6 +564,7 @@
 		0D8E166913D471830005CD0F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0DE1B01D155C9C20003A71B9 /* DaybydDay */,
 				0DDDFCAA143551D700D1632F /* Configuration */,
 				0D872DA413EEDA3700361672 /* Recording */,
 				0D872D7813EE799700361672 /* DataBase */,
@@ -681,6 +692,19 @@
 				0DDDFCAC143551F500D1632F /* ConfigData.m */,
 			);
 			name = Configuration;
+			sourceTree = "<group>";
+		};
+		0DE1B01D155C9C20003A71B9 /* DaybydDay */ = {
+			isa = PBXGroup;
+			children = (
+				0DE1B01E155C9C53003A71B9 /* DaybyDayViewController.h */,
+				0DE1B01F155C9C53003A71B9 /* DaybyDayViewController.m */,
+				0DE1B020155C9C53003A71B9 /* DaybyDayViewController.xib */,
+				0DE1B023155C9D43003A71B9 /* DaybyDayView.h */,
+				0DE1B024155C9D43003A71B9 /* DaybyDayView.m */,
+				0DE1B026155C9D82003A71B9 /* DaybyDayView.xib */,
+			);
+			name = DaybydDay;
 			sourceTree = "<group>";
 		};
 		0DE9C21D140BBDF20025BDD2 /* AQPlayRecorder */ = {
@@ -894,6 +918,8 @@
 				0DCD635F1436123B002F91F5 /* Default-Landscape.png in Resources */,
 				0DCD63601436123B002F91F5 /* Default-Portrait.png in Resources */,
 				0DAAE030155BBB2200D9B3F1 /* DaybyDay in Resources */,
+				0DE1B022155C9C53003A71B9 /* DaybyDayViewController.xib in Resources */,
+				0DE1B027155C9D83003A71B9 /* DaybyDayView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,6 +1005,8 @@
 				9570CC28142DCDDE009C1E7E /* Word.m in Sources */,
 				0DDDFCAD143551F500D1632F /* ConfigData.m in Sources */,
 				95E6382915542B7A00A3EAC5 /* NSPhoneticSymbol.m in Sources */,
+				0DE1B021155C9C53003A71B9 /* DaybyDayViewController.m in Sources */,
+				0DE1B025155C9D44003A71B9 /* DaybyDayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

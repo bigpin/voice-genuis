@@ -8,8 +8,8 @@
 
 #import "ScenesCoverViewController.h"
 #import "LessonsViewController.h"
-
-
+#import "DaybyDayView.h"
+#import "DaybyDayViewController.h"
 @implementation ScenesCoverViewController
 @synthesize scenesArray = _scenesArray;
 @synthesize scenesLabel = _scenesLabel;
@@ -84,7 +84,6 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
     NSString* backString = STRING_BACK;
     UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithTitle:backString style:UIBarButtonItemStyleBordered target:nil action:nil];
     self.navigationItem.backBarButtonItem = backItem;
@@ -108,6 +107,18 @@
         }
     }
  	[coverflow setNumberOfCovers:[self.scenesArray count]];
+    [self performSelector:@selector(loadDaybyDayView) withObject:nil afterDelay:0.2];
+}
+
+- (void)loadDaybyDayView;
+{
+    NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"DaybyDayView" owner:self options:NULL];
+    if ([array count] > 0) {
+        DaybyDayView* dayView = [array objectAtIndex:0];
+        [self.view addSubview:dayView];
+        dayView.delegate = self;
+    }
+     
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -274,4 +285,13 @@
     }
 }
 
+- (void)tap
+{
+    DaybyDayViewController* dayViewController = [[DaybyDayViewController alloc] initWithNibName:@"DaybyDayViewController" bundle:nil];
+    
+    UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:dayViewController];
+   [self.navigationController presentModalViewController:nav animated:YES];
+    [dayViewController release];
+    [nav release];
+}
 @end

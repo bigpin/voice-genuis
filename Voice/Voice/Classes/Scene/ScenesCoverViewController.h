@@ -27,4 +27,5 @@
 
 - (void)loadScenes;
 - (void)openScenes:(TKCoverflowView*)coverflowView coverAtIndex:(int)index;
+- (void)loadDaybyDayView;
 @end
