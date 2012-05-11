@@ -22,4 +22,8 @@
 @property (nonatomic, retain) IBOutlet UILabel* textLabel;
 @property (nonatomic, retain) IBOutlet UIImageView* backgroundView;
 
+- (void)setBackground;
+- (void)startAnimations;
+- (void)stopAnimations;
+- (void)doAnimations;
 @end

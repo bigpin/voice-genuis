@@ -116,6 +116,9 @@
     if ([array count] > 0) {
         DaybyDayView* dayView = [array objectAtIndex:0];
         [self.view addSubview:dayView];
+        dayView.tag = 201;
+        dayView.frame = CGRectMake(dayView.frame.origin.x, dayView.frame.origin.y, self.view.frame.size.width, dayView.frame.size.height);
+        [dayView setBackground];
         dayView.delegate = (id)self;
      }
 }
@@ -289,6 +292,9 @@
     DaybyDayViewController* dayViewController = [[DaybyDayViewController alloc] initWithNibName:@"DaybyDayViewController" bundle:nil];
     
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:dayViewController];
+	if (IS_IPAD) {
+		[nav setModalPresentationStyle:UIModalPresentationFormSheet];
+	}
    [self.navigationController presentModalViewController:nav animated:YES];
     [dayViewController release];
     [nav release];
