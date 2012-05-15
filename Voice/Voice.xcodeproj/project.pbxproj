@@ -74,6 +74,7 @@
 		0D9A0155141E36D500FFF508 /* SettingShowTranslationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9A0154141E36D500FFF508 /* SettingShowTranslationCell.xib */; };
 		0DAAE030155BBB2200D9B3F1 /* DaybyDay in Resources */ = {isa = PBXBuildFile; fileRef = 0DAAE02F155BBB2200D9B3F1 /* DaybyDay */; };
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
+		0DC11C601561EB5F00996BC3 /* DayParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC11C5F1561EB5F00996BC3 /* DayParser.m */; };
 		0DCC434D143414FF00F2BCBE /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DCC434C143414FF00F2BCBE /* configuration.plist */; };
 		0DCD635F1436123B002F91F5 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD635D1436123B002F91F5 /* Default-Landscape.png */; };
 		0DCD63601436123B002F91F5 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD635E1436123B002F91F5 /* Default-Portrait.png */; };
@@ -249,6 +250,8 @@
 		0DAAE02F155BBB2200D9B3F1 /* DaybyDay */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DaybyDay; path = Voice/Resources/DaybyDay; sourceTree = "<group>"; };
 		0DC0218D13E45825007170F3 /* BubbleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BubbleCell.m; path = Cells/BubbleCell.m; sourceTree = "<group>"; };
 		0DC0218E13E45825007170F3 /* BubbleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BubbleCell.h; path = Cells/BubbleCell.h; sourceTree = "<group>"; };
+		0DC11C5E1561EB5F00996BC3 /* DayParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayParser.h; sourceTree = "<group>"; };
+		0DC11C5F1561EB5F00996BC3 /* DayParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayParser.m; sourceTree = "<group>"; };
 		0DCC434C143414FF00F2BCBE /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = configuration.plist; path = Voice/Resources/Setting/configuration.plist; sourceTree = "<group>"; };
 		0DCD635D1436123B002F91F5 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "Voice/Resources/Other/Default-Landscape.png"; sourceTree = "<group>"; };
 		0DCD635E1436123B002F91F5 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait.png"; path = "Voice/Resources/Other/Default-Portrait.png"; sourceTree = "<group>"; };
@@ -781,6 +784,8 @@
 				9570CC27142DCDDE009C1E7E /* Word.m */,
 				95E6382715542B7A00A3EAC5 /* NSPhoneticSymbol.h */,
 				95E6382815542B7A00A3EAC5 /* NSPhoneticSymbol.m */,
+				0DC11C5E1561EB5F00996BC3 /* DayParser.h */,
+				0DC11C5F1561EB5F00996BC3 /* DayParser.m */,
 			);
 			path = CourseParser;
 			sourceTree = "<group>";
@@ -1011,6 +1016,7 @@
 				95E6382915542B7A00A3EAC5 /* NSPhoneticSymbol.m in Sources */,
 				0DE1B021155C9C53003A71B9 /* DaybyDayViewController.m in Sources */,
 				0DE1B025155C9D44003A71B9 /* DaybyDayView.m in Sources */,
+				0DC11C601561EB5F00996BC3 /* DayParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

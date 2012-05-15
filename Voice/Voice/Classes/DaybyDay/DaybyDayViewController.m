@@ -14,7 +14,7 @@
 
 @implementation DaybyDayViewController
 @synthesize textLabel;
-
+@synthesize txtContent;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,6 +32,7 @@
     UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonSystemItemDone target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = right;
     [right release];
+    self.textLabel.text = txtContent;
 }
 
 - (void)viewDidUnload

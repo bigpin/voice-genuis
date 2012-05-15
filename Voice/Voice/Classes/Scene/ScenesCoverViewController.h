@@ -18,6 +18,7 @@
 	NSInteger nCoverIndex;
     UILabel* _scenesLabel;
     BOOL bAnimation;
+    NSMutableDictionary* _everydaySentence;
 }
 
 @property (nonatomic,retain) TKCoverflowView *coverflow; 

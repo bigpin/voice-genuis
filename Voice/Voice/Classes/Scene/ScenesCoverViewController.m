@@ -10,6 +10,7 @@
 #import "LessonsViewController.h"
 #import "DaybyDayView.h"
 #import "DaybyDayViewController.h"
+#import "DayParser.h"
 @implementation ScenesCoverViewController
 @synthesize scenesArray = _scenesArray;
 @synthesize scenesLabel = _scenesLabel;
@@ -112,12 +113,28 @@
 
 - (void)loadDaybyDayView;
 {
+    NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+     NSString* stringResource = @"DaybyDay/20120305.xml";
+    resourcePath = [NSString stringWithFormat:@"%@/%@", resourcePath, stringResource];
+    
+    DayParser* parser = [[DayParser alloc] init];
+    [parser loadData:resourcePath];
+    
+    // get the sentence
     NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"DaybyDayView" owner:self options:NULL];
     if ([array count] > 0) {
         DaybyDayView* dayView = [array objectAtIndex:0];
         [self.view addSubview:dayView];
         dayView.tag = 201;
         dayView.frame = CGRectMake(dayView.frame.origin.x, dayView.frame.origin.y, self.view.frame.size.width, dayView.frame.size.height);
+        if ([parser.everydaySentences count] > 0) {
+            NSMutableDictionary* dic = [parser.everydaySentences objectAtIndex:0];
+            _everydaySentence = [dic retain];
+            NSString* oritext = [dic objectForKey:@"orintext"];
+            if (oritext != nil) {
+                dayView.textLabel.text = oritext;
+            }
+        }
         [dayView setBackground];
         dayView.delegate = (id)self;
      }
@@ -291,6 +308,11 @@
 {
     DaybyDayViewController* dayViewController = [[DaybyDayViewController alloc] initWithNibName:@"DaybyDayViewController" bundle:nil];
     
+    NSString * orintext = [_everydaySentence objectForKey:@"orintext"];
+    NSString * transtext = [_everydaySentence objectForKey:@"transtext"];
+    if (transtext != nil && orintext != nil) {
+        dayViewController.txtContent = [NSString stringWithFormat:@"%@\r\n%@", orintext, transtext];
+    }                      
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:dayViewController];
 	if (IS_IPAD) {
 		[nav setModalPresentationStyle:UIModalPresentationFormSheet];
