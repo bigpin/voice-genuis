@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AdMoGoView.h"
 
-@interface DaybyDayViewController : UIViewController
+@interface DaybyDayViewController : UIViewController<AdMoGoDelegate>
+{
+    AdMoGoView *adView;
+}
+@property (nonatomic, retain) AdMoGoView *adView;
 @property(nonatomic, retain) IBOutlet UITextView* textLabel;
 @property (nonatomic, retain) NSString* txtContent;
 - (void)back;
+- (void)addAD;
 @end

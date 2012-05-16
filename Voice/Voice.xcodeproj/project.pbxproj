@@ -32,6 +32,30 @@
 		0D4D6B0413DE410800F87B13 /* ScenesCoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */; };
 		0D7948801413250000E92396 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D79487D1413250000E92396 /* Default~iphone.png */; };
 		0D7948811413250000E92396 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D79487E1413250000E92396 /* Default@2x.png */; };
+		0D7F4D401563385B0072723A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7F4D3F1563385B0072723A /* ImageIO.framework */; };
+		0D7F4D42156338870072723A /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7F4D41156338870072723A /* MediaPlayer.framework */; };
+		0D7F4D441563388F0072723A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7F4D431563388F0072723A /* MessageUI.framework */; };
+		0D7F4D46156338B20072723A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7F4D45156338B20072723A /* CoreLocation.framework */; };
+		0D7F4D7F15633E620072723A /* AdMoGoAdapterGoogleAdMobAds.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F4D4C15633E620072723A /* AdMoGoAdapterGoogleAdMobAds.m */; };
+		0D7F4D8015633E620072723A /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7F4D5615633E620072723A /* libGoogleAdMobAds.a */; };
+		0D7F4D8115633E620072723A /* AdMoGoAdapterDoMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F4D5A15633E620072723A /* AdMoGoAdapterDoMob.m */; };
+		0D7F4D8215633E620072723A /* DoMobBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D5C15633E620072723A /* DoMobBundle.bundle */; };
+		0D7F4D8315633E620072723A /* DoMobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6115633E620072723A /* DoMobViewController.m */; };
+		0D7F4D8415633E620072723A /* libDomob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7F4D6215633E620072723A /* libDomob.a */; };
+		0D7F4D8515633E620072723A /* adsmogo_adclose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6515633E620072723A /* adsmogo_adclose@2x.png */; };
+		0D7F4D8615633E620072723A /* adsmogo_bannerbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6615633E620072723A /* adsmogo_bannerbg@2x.png */; };
+		0D7F4D8715633E620072723A /* adsmogo_btnbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6715633E620072723A /* adsmogo_btnbg@2x.png */; };
+		0D7F4D8815633E620072723A /* adsmogo_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6815633E620072723A /* adsmogo_close@2x.png */; };
+		0D7F4D8915633E620072723A /* adsmogo_corner@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6915633E620072723A /* adsmogo_corner@2x.png */; };
+		0D7F4D8A15633E620072723A /* adsmogo_picrollbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6A15633E620072723A /* adsmogo_picrollbg@2x.png */; };
+		0D7F4D8B15633E620072723A /* adsmogo_adclose.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6C15633E620072723A /* adsmogo_adclose.png */; };
+		0D7F4D8C15633E620072723A /* adsmogo_bannerbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6D15633E620072723A /* adsmogo_bannerbg.png */; };
+		0D7F4D8D15633E620072723A /* adsmogo_btnbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6E15633E620072723A /* adsmogo_btnbg.png */; };
+		0D7F4D8E15633E620072723A /* adsmogo_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D6F15633E620072723A /* adsmogo_close.png */; };
+		0D7F4D8F15633E620072723A /* adsmogo_corner.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D7015633E620072723A /* adsmogo_corner.png */; };
+		0D7F4D9015633E620072723A /* adsmogo_picrollbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D7115633E620072723A /* adsmogo_picrollbg.png */; };
+		0D7F4D9115633E620072723A /* AdMoGoWebBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7F4D7A15633E620072723A /* AdMoGoWebBrowser.xib */; };
+		0D7F4D9215633E620072723A /* libAdMoGo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7F4D7E15633E620072723A /* libAdMoGo.a */; };
 		0D8632CC13E8083200F934AF /* ListeningToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8632CB13E8083100F934AF /* ListeningToolbar.m */; };
 		0D8632DF13E8383400F934AF /* ListeningVolumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D8632DE13E8383400F934AF /* ListeningVolumView.m */; };
 		0D8632E113E8386500F934AF /* ListeningVolumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8632E013E8386500F934AF /* ListeningVolumView.xib */; };
@@ -189,6 +213,54 @@
 		0D4D6B0313DE410800F87B13 /* ScenesCoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenesCoverViewController.m; sourceTree = "<group>"; };
 		0D79487D1413250000E92396 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default~iphone.png"; path = "Voice/Resources/Other/Default~iphone.png"; sourceTree = "<group>"; };
 		0D79487E1413250000E92396 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Voice/Resources/Other/Default@2x.png"; sourceTree = "<group>"; };
+		0D7F4D3F1563385B0072723A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		0D7F4D41156338870072723A /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		0D7F4D431563388F0072723A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		0D7F4D45156338B20072723A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0D7F4D4B15633E620072723A /* AdMoGoAdapterGoogleAdMobAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoGoAdapterGoogleAdMobAds.h; sourceTree = "<group>"; };
+		0D7F4D4C15633E620072723A /* AdMoGoAdapterGoogleAdMobAds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdMoGoAdapterGoogleAdMobAds.m; sourceTree = "<group>"; };
+		0D7F4D4D15633E620072723A /* GADAdMobExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdMobExtras.h; sourceTree = "<group>"; };
+		0D7F4D4E15633E620072723A /* GADAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdNetworkExtras.h; sourceTree = "<group>"; };
+		0D7F4D4F15633E620072723A /* GADAdSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADAdSize.h; sourceTree = "<group>"; };
+		0D7F4D5015633E620072723A /* GADBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerView.h; sourceTree = "<group>"; };
+		0D7F4D5115633E620072723A /* GADBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADBannerViewDelegate.h; sourceTree = "<group>"; };
+		0D7F4D5215633E620072723A /* GADInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitial.h; sourceTree = "<group>"; };
+		0D7F4D5315633E620072723A /* GADInterstitialDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADInterstitialDelegate.h; sourceTree = "<group>"; };
+		0D7F4D5415633E620072723A /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
+		0D7F4D5515633E620072723A /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
+		0D7F4D5615633E620072723A /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
+		0D7F4D5915633E620072723A /* AdMoGoAdapterDoMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoGoAdapterDoMob.h; sourceTree = "<group>"; };
+		0D7F4D5A15633E620072723A /* AdMoGoAdapterDoMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdMoGoAdapterDoMob.m; sourceTree = "<group>"; };
+		0D7F4D5C15633E620072723A /* DoMobBundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DoMobBundle.bundle; sourceTree = "<group>"; };
+		0D7F4D5D15633E620072723A /* DoMobDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoMobDelegateProtocol.h; sourceTree = "<group>"; };
+		0D7F4D5E15633E620072723A /* DoMobView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoMobView.h; sourceTree = "<group>"; };
+		0D7F4D6015633E620072723A /* DoMobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoMobViewController.h; sourceTree = "<group>"; };
+		0D7F4D6115633E620072723A /* DoMobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoMobViewController.m; sourceTree = "<group>"; };
+		0D7F4D6215633E620072723A /* libDomob.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libDomob.a; sourceTree = "<group>"; };
+		0D7F4D6515633E620072723A /* adsmogo_adclose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "adsmogo_adclose@2x.png"; sourceTree = "<group>"; };
+		0D7F4D6615633E620072723A /* adsmogo_bannerbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "adsmogo_bannerbg@2x.png"; sourceTree = "<group>"; };
+		0D7F4D6715633E620072723A /* adsmogo_btnbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "adsmogo_btnbg@2x.png"; sourceTree = "<group>"; };
+		0D7F4D6815633E620072723A /* adsmogo_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "adsmogo_close@2x.png"; sourceTree = "<group>"; };
+		0D7F4D6915633E620072723A /* adsmogo_corner@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "adsmogo_corner@2x.png"; sourceTree = "<group>"; };
+		0D7F4D6A15633E620072723A /* adsmogo_picrollbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "adsmogo_picrollbg@2x.png"; sourceTree = "<group>"; };
+		0D7F4D6C15633E620072723A /* adsmogo_adclose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adsmogo_adclose.png; sourceTree = "<group>"; };
+		0D7F4D6D15633E620072723A /* adsmogo_bannerbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adsmogo_bannerbg.png; sourceTree = "<group>"; };
+		0D7F4D6E15633E620072723A /* adsmogo_btnbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adsmogo_btnbg.png; sourceTree = "<group>"; };
+		0D7F4D6F15633E620072723A /* adsmogo_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adsmogo_close.png; sourceTree = "<group>"; };
+		0D7F4D7015633E620072723A /* adsmogo_corner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adsmogo_corner.png; sourceTree = "<group>"; };
+		0D7F4D7115633E620072723A /* adsmogo_picrollbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = adsmogo_picrollbg.png; sourceTree = "<group>"; };
+		0D7F4D7315633E620072723A /* AdMoGoAdNetworkAdapter+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AdMoGoAdNetworkAdapter+Helpers.h"; sourceTree = "<group>"; };
+		0D7F4D7415633E620072723A /* AdMoGoAdNetworkAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoGoAdNetworkAdapter.h; sourceTree = "<group>"; };
+		0D7F4D7515633E620072723A /* AdMoGoAdNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoGoAdNetworkConfig.h; sourceTree = "<group>"; };
+		0D7F4D7615633E620072723A /* AdMoGoAdNetworkRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoGoAdNetworkRegistry.h; sourceTree = "<group>"; };
+		0D7F4D7715633E620072723A /* AdMoGoConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoGoConfig.h; sourceTree = "<group>"; };
+		0D7F4D7815633E620072723A /* AdMoGoDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoGoDelegateProtocol.h; sourceTree = "<group>"; };
+		0D7F4D7915633E620072723A /* AdMoGoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdMoGoView.h; sourceTree = "<group>"; };
+		0D7F4D7A15633E620072723A /* AdMoGoWebBrowser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdMoGoWebBrowser.xib; sourceTree = "<group>"; };
+		0D7F4D7B15633E620072723A /* AdsMOGOAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdsMOGOAction.h; sourceTree = "<group>"; };
+		0D7F4D7C15633E620072723A /* AMNetworkReachabilityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMNetworkReachabilityDelegate.h; sourceTree = "<group>"; };
+		0D7F4D7D15633E620072723A /* AMNetworkReachabilityWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMNetworkReachabilityWrapper.h; sourceTree = "<group>"; };
+		0D7F4D7E15633E620072723A /* libAdMoGo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdMoGo.a; sourceTree = "<group>"; };
 		0D8632CA13E8083100F934AF /* ListeningToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningToolbar.h; sourceTree = "<group>"; };
 		0D8632CB13E8083100F934AF /* ListeningToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListeningToolbar.m; sourceTree = "<group>"; };
 		0D8632DD13E8383300F934AF /* ListeningVolumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListeningVolumView.h; sourceTree = "<group>"; };
@@ -327,12 +399,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D0BDACE1472B86C005AFE34 /* CoreTelephony.framework in Frameworks */,
-				95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */,
+				0D7F4D46156338B20072723A /* CoreLocation.framework in Frameworks */,
+				0D7F4D441563388F0072723A /* MessageUI.framework in Frameworks */,
+				0D7F4D42156338870072723A /* MediaPlayer.framework in Frameworks */,
 				95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */,
+				0D4D6AC113DE3DAB00F87B13 /* QuartzCore.framework in Frameworks */,
+				0D4D6AC313DE3DB300F87B13 /* MapKit.framework in Frameworks */,
+				0D7F4D401563385B0072723A /* ImageIO.framework in Frameworks */,
+				95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */,
 				0D872D8513EE7DFF00361672 /* libsqlite3.0.dylib in Frameworks */,
 				0D4D6AC713DE3E1B00F87B13 /* libTapkuLibrary.a in Frameworks */,
-				0D4D6AC313DE3DB300F87B13 /* MapKit.framework in Frameworks */,
-				0D4D6AC113DE3DAB00F87B13 /* QuartzCore.framework in Frameworks */,
 				E222058413D5B9CA006BA2A4 /* AVFoundation.framework in Frameworks */,
 				0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */,
 				0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */,
@@ -342,6 +418,9 @@
 				95ED3784142A1E5900DF6BE5 /* libIsaybEncrypt.d.a in Frameworks */,
 				95ED3785142A1E5900DF6BE5 /* libIsaybEncrypt.s.a in Frameworks */,
 				95E6381B154FB28500A3EAC5 /* libMobClickLibrary.a in Frameworks */,
+				0D7F4D8015633E620072723A /* libGoogleAdMobAds.a in Frameworks */,
+				0D7F4D8415633E620072723A /* libDomob.a in Frameworks */,
+				0D7F4D9215633E620072723A /* libAdMoGo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +507,146 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		0D7F4D4715633E620072723A /* AdsMoGoLib */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D4815633E620072723A /* AdNetworkLibs */,
+				0D7F4D6315633E620072723A /* AdsMoGoRes */,
+				0D7F4D7215633E620072723A /* AdsMoGoSDK */,
+			);
+			name = AdsMoGoLib;
+			path = Voice/Classes/AdsMoGoLib;
+			sourceTree = "<group>";
+		};
+		0D7F4D4815633E620072723A /* AdNetworkLibs */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D4915633E620072723A /* AdMob */,
+				0D7F4D5715633E620072723A /* DoMob */,
+			);
+			path = AdNetworkLibs;
+			sourceTree = "<group>";
+		};
+		0D7F4D4915633E620072723A /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D4A15633E620072723A /* AdsMoGoAdapter */,
+				0D7F4D4D15633E620072723A /* GADAdMobExtras.h */,
+				0D7F4D4E15633E620072723A /* GADAdNetworkExtras.h */,
+				0D7F4D4F15633E620072723A /* GADAdSize.h */,
+				0D7F4D5015633E620072723A /* GADBannerView.h */,
+				0D7F4D5115633E620072723A /* GADBannerViewDelegate.h */,
+				0D7F4D5215633E620072723A /* GADInterstitial.h */,
+				0D7F4D5315633E620072723A /* GADInterstitialDelegate.h */,
+				0D7F4D5415633E620072723A /* GADRequest.h */,
+				0D7F4D5515633E620072723A /* GADRequestError.h */,
+				0D7F4D5615633E620072723A /* libGoogleAdMobAds.a */,
+			);
+			path = AdMob;
+			sourceTree = "<group>";
+		};
+		0D7F4D4A15633E620072723A /* AdsMoGoAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D4B15633E620072723A /* AdMoGoAdapterGoogleAdMobAds.h */,
+				0D7F4D4C15633E620072723A /* AdMoGoAdapterGoogleAdMobAds.m */,
+			);
+			path = AdsMoGoAdapter;
+			sourceTree = "<group>";
+		};
+		0D7F4D5715633E620072723A /* DoMob */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D5815633E620072723A /* AdsMoGoAdapter */,
+				0D7F4D5B15633E620072723A /* DomobBundle */,
+				0D7F4D5D15633E620072723A /* DoMobDelegateProtocol.h */,
+				0D7F4D5E15633E620072723A /* DoMobView.h */,
+				0D7F4D5F15633E620072723A /* IBSupport */,
+				0D7F4D6215633E620072723A /* libDomob.a */,
+			);
+			path = DoMob;
+			sourceTree = "<group>";
+		};
+		0D7F4D5815633E620072723A /* AdsMoGoAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D5915633E620072723A /* AdMoGoAdapterDoMob.h */,
+				0D7F4D5A15633E620072723A /* AdMoGoAdapterDoMob.m */,
+			);
+			path = AdsMoGoAdapter;
+			sourceTree = "<group>";
+		};
+		0D7F4D5B15633E620072723A /* DomobBundle */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D5C15633E620072723A /* DoMobBundle.bundle */,
+			);
+			path = DomobBundle;
+			sourceTree = "<group>";
+		};
+		0D7F4D5F15633E620072723A /* IBSupport */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D6015633E620072723A /* DoMobViewController.h */,
+				0D7F4D6115633E620072723A /* DoMobViewController.m */,
+			);
+			path = IBSupport;
+			sourceTree = "<group>";
+		};
+		0D7F4D6315633E620072723A /* AdsMoGoRes */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D6415633E620072723A /* High */,
+				0D7F4D6B15633E620072723A /* Normal */,
+			);
+			path = AdsMoGoRes;
+			sourceTree = "<group>";
+		};
+		0D7F4D6415633E620072723A /* High */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D6515633E620072723A /* adsmogo_adclose@2x.png */,
+				0D7F4D6615633E620072723A /* adsmogo_bannerbg@2x.png */,
+				0D7F4D6715633E620072723A /* adsmogo_btnbg@2x.png */,
+				0D7F4D6815633E620072723A /* adsmogo_close@2x.png */,
+				0D7F4D6915633E620072723A /* adsmogo_corner@2x.png */,
+				0D7F4D6A15633E620072723A /* adsmogo_picrollbg@2x.png */,
+			);
+			path = High;
+			sourceTree = "<group>";
+		};
+		0D7F4D6B15633E620072723A /* Normal */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D6C15633E620072723A /* adsmogo_adclose.png */,
+				0D7F4D6D15633E620072723A /* adsmogo_bannerbg.png */,
+				0D7F4D6E15633E620072723A /* adsmogo_btnbg.png */,
+				0D7F4D6F15633E620072723A /* adsmogo_close.png */,
+				0D7F4D7015633E620072723A /* adsmogo_corner.png */,
+				0D7F4D7115633E620072723A /* adsmogo_picrollbg.png */,
+			);
+			path = Normal;
+			sourceTree = "<group>";
+		};
+		0D7F4D7215633E620072723A /* AdsMoGoSDK */ = {
+			isa = PBXGroup;
+			children = (
+				0D7F4D7315633E620072723A /* AdMoGoAdNetworkAdapter+Helpers.h */,
+				0D7F4D7415633E620072723A /* AdMoGoAdNetworkAdapter.h */,
+				0D7F4D7515633E620072723A /* AdMoGoAdNetworkConfig.h */,
+				0D7F4D7615633E620072723A /* AdMoGoAdNetworkRegistry.h */,
+				0D7F4D7715633E620072723A /* AdMoGoConfig.h */,
+				0D7F4D7815633E620072723A /* AdMoGoDelegateProtocol.h */,
+				0D7F4D7915633E620072723A /* AdMoGoView.h */,
+				0D7F4D7A15633E620072723A /* AdMoGoWebBrowser.xib */,
+				0D7F4D7B15633E620072723A /* AdsMOGOAction.h */,
+				0D7F4D7C15633E620072723A /* AMNetworkReachabilityDelegate.h */,
+				0D7F4D7D15633E620072723A /* AMNetworkReachabilityWrapper.h */,
+				0D7F4D7E15633E620072723A /* libAdMoGo.a */,
+			);
+			path = AdsMoGoSDK;
+			sourceTree = "<group>";
+		};
 		0D872D7813EE799700361672 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
@@ -456,6 +675,7 @@
 		0D8E161C13D471580005CD0F = {
 			isa = PBXGroup;
 			children = (
+				0D7F4D4715633E620072723A /* AdsMoGoLib */,
 				95ED3780142A1DE800DF6BE5 /* XMLDecrypt */,
 				95B9657313FE094C002F6087 /* WaveDecode */,
 				95B9399213F6791C006F4D61 /* UMeng */,
@@ -486,6 +706,10 @@
 				9583C89F140E4F3E0025BC2B /* libisaybio.d.a */,
 				9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */,
 				0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */,
+				0D7F4D45156338B20072723A /* CoreLocation.framework */,
+				0D7F4D431563388F0072723A /* MessageUI.framework */,
+				0D7F4D41156338870072723A /* MediaPlayer.framework */,
+				0D7F4D3F1563385B0072723A /* ImageIO.framework */,
 				95B9399613F67990006F4D61 /* SystemConfiguration.framework */,
 				0D0BDACD1472B86C005AFE34 /* CoreTelephony.framework */,
 				95B9398C13F66432006F4D61 /* AudioToolbox.framework */,
@@ -929,6 +1153,20 @@
 				0DE1B022155C9C53003A71B9 /* DaybyDayViewController.xib in Resources */,
 				0DE1B027155C9D83003A71B9 /* DaybyDayView.xib in Resources */,
 				0D4220D3155D0DA0007B6BBB /* daydetail.png in Resources */,
+				0D7F4D8215633E620072723A /* DoMobBundle.bundle in Resources */,
+				0D7F4D8515633E620072723A /* adsmogo_adclose@2x.png in Resources */,
+				0D7F4D8615633E620072723A /* adsmogo_bannerbg@2x.png in Resources */,
+				0D7F4D8715633E620072723A /* adsmogo_btnbg@2x.png in Resources */,
+				0D7F4D8815633E620072723A /* adsmogo_close@2x.png in Resources */,
+				0D7F4D8915633E620072723A /* adsmogo_corner@2x.png in Resources */,
+				0D7F4D8A15633E620072723A /* adsmogo_picrollbg@2x.png in Resources */,
+				0D7F4D8B15633E620072723A /* adsmogo_adclose.png in Resources */,
+				0D7F4D8C15633E620072723A /* adsmogo_bannerbg.png in Resources */,
+				0D7F4D8D15633E620072723A /* adsmogo_btnbg.png in Resources */,
+				0D7F4D8E15633E620072723A /* adsmogo_close.png in Resources */,
+				0D7F4D8F15633E620072723A /* adsmogo_corner.png in Resources */,
+				0D7F4D9015633E620072723A /* adsmogo_picrollbg.png in Resources */,
+				0D7F4D9115633E620072723A /* AdMoGoWebBrowser.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1017,6 +1255,9 @@
 				0DE1B021155C9C53003A71B9 /* DaybyDayViewController.m in Sources */,
 				0DE1B025155C9D44003A71B9 /* DaybyDayView.m in Sources */,
 				0DC11C601561EB5F00996BC3 /* DayParser.m in Sources */,
+				0D7F4D7F15633E620072723A /* AdMoGoAdapterGoogleAdMobAds.m in Sources */,
+				0D7F4D8115633E620072723A /* AdMoGoAdapterDoMob.m in Sources */,
+				0D7F4D8315633E620072723A /* DoMobViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,6 +1379,13 @@
 					"\"$(SRCROOT)/Voice/UMeng\"",
 					"\"$(SRCROOT)/Voice/WaveDecode\"",
 					"\"$(SRCROOT)/Voice/XMLDecrypt\"",
+					"\"$(SRCROOT)/Voice/Classes/AD/AdsMoGoLib/AdNetworkLibs/AdMob\"",
+					"\"$(SRCROOT)/Voice/Classes/AD/AdsMoGoLib/AdNetworkLibs/YouMi\"",
+					"\"$(SRCROOT)/Voice/Classes/AD/AdsMoGoLib/AdsMoGoSDK\"",
+					"\"$(SRCROOT)/Voice/Classes/AD/AdsMoGoLib/AdNetworkLibs/DoMob\"",
+					"\"$(SRCROOT)/Voice/Classes/AdsMoGoLib/AdNetworkLibs/AdMob\"",
+					"\"$(SRCROOT)/Voice/Classes/AdsMoGoLib/AdNetworkLibs/DoMob\"",
+					"\"$(SRCROOT)/Voice/Classes/AdsMoGoLib/AdsMoGoSDK\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -1165,6 +1413,13 @@
 					"\"$(SRCROOT)/Voice/UMeng\"",
 					"\"$(SRCROOT)/Voice/WaveDecode\"",
 					"\"$(SRCROOT)/Voice/XMLDecrypt\"",
+					"\"$(SRCROOT)/Voice/Classes/AD/AdsMoGoLib/AdNetworkLibs/AdMob\"",
+					"\"$(SRCROOT)/Voice/Classes/AD/AdsMoGoLib/AdNetworkLibs/YouMi\"",
+					"\"$(SRCROOT)/Voice/Classes/AD/AdsMoGoLib/AdsMoGoSDK\"",
+					"\"$(SRCROOT)/Voice/Classes/AD/AdsMoGoLib/AdNetworkLibs/DoMob\"",
+					"\"$(SRCROOT)/Voice/Classes/AdsMoGoLib/AdNetworkLibs/AdMob\"",
+					"\"$(SRCROOT)/Voice/Classes/AdsMoGoLib/AdNetworkLibs/DoMob\"",
+					"\"$(SRCROOT)/Voice/Classes/AdsMoGoLib/AdsMoGoSDK\"",
 				);
 				OTHER_LDFLAGS = (
 					"-lz",
