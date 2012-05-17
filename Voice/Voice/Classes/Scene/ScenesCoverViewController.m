@@ -120,8 +120,15 @@
     DayParser* parser = [[DayParser alloc] init];
     [parser loadData:resourcePath];
     
+    if ([parser.everydaySentences count] > 0) {
+        NSMutableDictionary* dic = [parser.everydaySentences objectAtIndex:0];
+        _everydaySentence = [dic retain];
+    }
+    [self performSelector:@selector(tap) withObject:nil afterDelay:0.3];
+    [parser release];
+    parser = nil;
     // get the sentence
-    NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"DaybyDayView" owner:self options:NULL];
+    /*NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"DaybyDayView" owner:self options:NULL];
     if ([array count] > 0) {
         DaybyDayView* dayView = [array objectAtIndex:0];
         [self.view addSubview:dayView];
@@ -137,7 +144,7 @@
         }
         [dayView setBackground];
         dayView.delegate = (id)self;
-     }
+     }*/
 }
 
 - (void) viewWillAppear:(BOOL)animated{

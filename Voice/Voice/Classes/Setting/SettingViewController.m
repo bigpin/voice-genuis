@@ -121,7 +121,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -151,8 +151,14 @@
         return STRING_TRANING_MODE;
     } else if (section == 1){
         return STRING_CONTROL_SETTING;
-    } else {
+    } else if (section == 2){
         return STRING_SHOW_MODE;
+    } else if (section == 3) {
+        return STRING_DAY;
+    } else if (section == 4) {
+        return STRING_ABOUT_US;
+    } else {
+        return STRING_OTHER;
     }
 }
 
@@ -226,6 +232,7 @@
             NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingSwitchCell" owner:self options:nil];
             cell = [array objectAtIndex:0];
             cell.label.text = STRING_SETTING_LOOP_TEXT;
+            cell.switchControl.tag = LOOPCONTROL_TAG;
             cell.switchControl.on = settingData.bLoop;
             cell.delegate = (id)self;
             return cell;
@@ -296,6 +303,18 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     } else if (nSection == 3) {
+        SettingSwitchCell* cell = (SettingSwitchCell*)[tableView dequeueReusableCellWithIdentifier:@"SettingSwitchCell"];
+        if (cell == nil) {
+            NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"SettingSwitchCell" owner:self options:nil];
+            cell = [array objectAtIndex:0];
+            cell.label.text = STRING_DAY_CONTROL;
+            cell.switchControl.tag = DAYCONTROL_TAG;
+            cell.switchControl.on = settingData.bShowDay;
+            cell.delegate = (id)self;
+            return cell;
+        }
+        return cell;
+    } else if (nSection == 4) {
         UITableViewCell * cell =  (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"otherAbout"];
         if (cell == nil) {
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"otherAbout"] autorelease];
@@ -416,12 +435,19 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
 }
 
-- (void)isOn:(BOOL)bOn;
+- (void)isOn:(BOOL)bOn withTag:(NSInteger)tag;
 {
-    if (settingData.bLoop != bOn) {
-        settingData.bLoop = bOn;
-        [settingData saveSettingData];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
+    if (tag == LOOPCONTROL_TAG) {
+        if (settingData.bLoop != bOn) {
+            settingData.bLoop = bOn;
+            [settingData saveSettingData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
+        }
+    } else {
+        if (settingData.bShowDay != bOn) {
+            settingData.bShowDay = bOn;
+            [settingData saveSettingData];
+        }
     }
 }
 

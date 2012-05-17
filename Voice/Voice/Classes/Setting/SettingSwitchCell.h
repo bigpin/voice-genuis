@@ -10,7 +10,7 @@
 
 @protocol SettingSwitchCellDelegate <NSObject>
 
-- (void)isOn:(BOOL)bOn;
+- (void)isOn:(BOOL)bOn withTag:(NSInteger)tag;
 
 @end
 

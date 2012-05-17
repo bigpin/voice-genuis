@@ -21,6 +21,7 @@
 @synthesize eShowTextType;
 @synthesize eReadingMode;
 @synthesize bLoop;
+@synthesize bShowDay;
 
 - (id)init
 {
@@ -47,6 +48,7 @@
     self.nReadingCount = 1.0;
     self.eShowTextType = SHOW_TEXT_TYPE_SRC;
     self.bLoop = NO;
+    self.bShowDay = YES;
 }
 
 - (void)loadSettingData;
@@ -97,7 +99,11 @@
         if (loopTemp != nil) {
             self.bLoop = [loopTemp boolValue];
         }
-    
+        NSNumber* dayTemp = [tempsetting objectForKey:kSettingShowDay];
+        if (dayTemp != nil) {
+            self.bShowDay = [dayTemp boolValue];
+        }
+   
 	}
 }
 
@@ -131,6 +137,7 @@
     [settingdictionary setObject:[NSNumber numberWithInt:self.eReadingMode] forKey:kSettingReadingMode];
     [settingdictionary setObject:[NSNumber numberWithInt:self.eShowTextType] forKey:kSettingisShowTranslation];
     [settingdictionary setObject:[NSNumber numberWithBool:self.bLoop] forKey:kSettingLoopReading];
+    [settingdictionary setObject:[NSNumber numberWithBool:self.bShowDay] forKey:kSettingShowDay];
 	[settingdictionary writeToFile:path atomically:YES];
     [settingdictionary release];
 }

@@ -40,6 +40,6 @@
 
 - (IBAction)onClickSwitch:(id)sender;
 {
-    [delegate isOn:self.switchControl.on];
+    [delegate isOn:self.switchControl.on withTag:self.switchControl.tag];
 }
 @end

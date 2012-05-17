@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingData.h"
+#define LOOPCONTROL_TAG 102
+#define DAYCONTROL_TAG 103
 
 @interface SettingViewController : UITableViewController {
     SettingData* settingData;
