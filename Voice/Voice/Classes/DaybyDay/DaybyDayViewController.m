@@ -38,7 +38,7 @@
     [super viewDidLoad];
     self.title = DAYBYDY_TITLE;
     // Do any additional setup after loading the view from its nib.
-    UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonSystemItemDone target:self action:@selector(back)];
+    UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithTitle:STRING_BACK style:UIBarButtonSystemItemDone target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = right;
     [right release];
     self.textLabel.text = txtContent;

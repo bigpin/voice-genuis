@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <TapkuLibrary/TapkuLibrary.h>
-
+#import "DayByDayObject.h"
 
 @interface ScenesCoverViewController : UIViewController <TKCoverflowViewDelegate,TKCoverflowViewDataSource,UIScrollViewDelegate> {
     NSMutableArray* _scenesArray;
@@ -18,7 +18,7 @@
 	NSInteger nCoverIndex;
     UILabel* _scenesLabel;
     BOOL bAnimation;
-    NSMutableDictionary* _everydaySentence;
+    DayByDayObject* _daybayday;
 }
 
 @property (nonatomic,retain) TKCoverflowView *coverflow; 
@@ -28,5 +28,5 @@
 
 - (void)loadScenes;
 - (void)openScenes:(TKCoverflowView*)coverflowView coverAtIndex:(int)index;
-- (void)loadDaybyDayView;
+
 @end

@@ -44,6 +44,7 @@
 #define PATH_USERDATA                   @"/UserData"
 #define DIR_SETTING                     @"Setting"
 #define FILE_SETTING_PLIST				@"setting.plist"
+#define FILE_DAYTIME_PLIST				@"daytime.plist"
 #define DIR_DATABASE                    @"Data"
 #define DATABASE_NAME                   @"database1_0.sqlite"
 #define STRING_SCENE_TITLE              @"场景"

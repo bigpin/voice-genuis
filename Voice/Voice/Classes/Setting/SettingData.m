@@ -125,8 +125,7 @@
 	BOOL hasFile = [fileManager fileExistsAtPath:path];
 	if (!hasFile) {
 		[fileManager createFileAtPath:path contents:nil attributes:nil];
-	}
-    
+	}     
     NSMutableDictionary * settingdictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     if (settingdictionary == nil) {
         settingdictionary = [[NSMutableDictionary alloc] init];

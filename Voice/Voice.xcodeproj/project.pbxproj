@@ -106,6 +106,7 @@
 		0DD478E813F129250054E726 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E413F129250054E726 /* icon.png */; };
 		0DD478E913F129250054E726 /* icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E513F129250054E726 /* icon_small.png */; };
 		0DD478EA13F129250054E726 /* icon_72.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E613F129250054E726 /* icon_72.png */; };
+		0DD93866156B17C000E131C6 /* DayByDayObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD93865156B17C000E131C6 /* DayByDayObject.m */; };
 		0DDDFCAD143551F500D1632F /* ConfigData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDDFCAC143551F500D1632F /* ConfigData.m */; };
 		0DE1B021155C9C53003A71B9 /* DaybyDayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DE1B01F155C9C53003A71B9 /* DaybyDayViewController.m */; };
 		0DE1B022155C9C53003A71B9 /* DaybyDayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DE1B020155C9C53003A71B9 /* DaybyDayViewController.xib */; };
@@ -332,6 +333,8 @@
 		0DD478E513F129250054E726 /* icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_small.png; path = Voice/Resources/Other/icon_small.png; sourceTree = "<group>"; };
 		0DD478E613F129250054E726 /* icon_72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_72.png; path = Voice/Resources/Other/icon_72.png; sourceTree = "<group>"; };
 		0DD5618913DE3D2800F928E6 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = Voice/TapKu/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
+		0DD93864156B17C000E131C6 /* DayByDayObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DayByDayObject.h; path = DaybyDay/DayByDayObject.h; sourceTree = "<group>"; };
+		0DD93865156B17C000E131C6 /* DayByDayObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayByDayObject.m; path = DaybyDay/DayByDayObject.m; sourceTree = "<group>"; };
 		0DDDFCAB143551F500D1632F /* ConfigData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigData.h; path = Configuration/ConfigData.h; sourceTree = "<group>"; };
 		0DDDFCAC143551F500D1632F /* ConfigData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigData.m; path = Configuration/ConfigData.m; sourceTree = "<group>"; };
 		0DE1B01E155C9C53003A71B9 /* DaybyDayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DaybyDayViewController.h; path = DaybyDay/DaybyDayViewController.h; sourceTree = "<group>"; };
@@ -933,6 +936,8 @@
 				0DE1B023155C9D43003A71B9 /* DaybyDayView.h */,
 				0DE1B024155C9D43003A71B9 /* DaybyDayView.m */,
 				0DE1B026155C9D82003A71B9 /* DaybyDayView.xib */,
+				0DD93864156B17C000E131C6 /* DayByDayObject.h */,
+				0DD93865156B17C000E131C6 /* DayByDayObject.m */,
 			);
 			name = DaybydDay;
 			sourceTree = "<group>";
@@ -1258,6 +1263,7 @@
 				0D7F4D7F15633E620072723A /* AdMoGoAdapterGoogleAdMobAds.m in Sources */,
 				0D7F4D8115633E620072723A /* AdMoGoAdapterDoMob.m in Sources */,
 				0D7F4D8315633E620072723A /* DoMobViewController.m in Sources */,
+				0DD93866156B17C000E131C6 /* DayByDayObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
