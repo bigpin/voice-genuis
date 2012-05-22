@@ -110,8 +110,8 @@
     if (_daybayday == nil) {
         _daybayday = [[DayByDayObject alloc] init];
         _daybayday.navigationController = self.navigationController;
+        [_daybayday performSelector:@selector(loadDaybyDayView) withObject:nil afterDelay:0.2];
     }
-    [_daybayday performSelector:@selector(loadDaybyDayView) withObject:nil afterDelay:0.2];
 }
 
 - (void) viewWillAppear:(BOOL)animated{

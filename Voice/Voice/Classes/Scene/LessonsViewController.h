@@ -10,6 +10,7 @@
 #import "CourseParser.h"
 #import "Course.h"
 #import "Lesson.h"
+#import "DayByDayObject.h"
 
 @class XMLAuthorsViewController;
 
@@ -19,6 +20,7 @@
     NSInteger nSelectedPage;
     NSInteger nPageCount;
     UISegmentedControl* _pageSegment;
+    DayByDayObject* _daybayday;
 }
 
 @property (nonatomic, retain) NSString* scenesName;

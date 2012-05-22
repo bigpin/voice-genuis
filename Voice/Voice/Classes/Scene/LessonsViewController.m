@@ -40,6 +40,8 @@
 {
 	[_courseParser release];
     [self.scenesName release];
+    [_daybayday release];
+
     [super dealloc];
 }
 
@@ -84,6 +86,11 @@
         self.navigationItem.rightBarButtonItem = itemSetting;
         
         [itemSetting release];        
+        if (_daybayday == nil) {
+            _daybayday = [[DayByDayObject alloc] init];
+            _daybayday.navigationController = self.navigationController;
+            [_daybayday performSelector:@selector(loadDaybyDayView) withObject:nil afterDelay:0.2];
+        }
     }
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     NSString* resourcePath = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@/%@", [[NSBundle mainBundle] resourcePath], @"Image"]];
