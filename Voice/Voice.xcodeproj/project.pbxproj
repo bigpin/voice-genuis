@@ -123,12 +123,12 @@
 		0DFCFF6E14016A5200B1050E /* SettingSwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6D14016A5200B1050E /* SettingSwitchCell.m */; };
 		0DFCFF7014016A6C00B1050E /* SettingSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */; };
 		9570CC28142DCDDE009C1E7E /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 9570CC27142DCDDE009C1E7E /* Word.m */; };
-		9583C8A1140E4F3E0025BC2B /* libisaybio.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583C89F140E4F3E0025BC2B /* libisaybio.d.a */; };
-		9583C8A2140E4F3E0025BC2B /* libisaybio.s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */; };
 		95B9398D13F66432006F4D61 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9398C13F66432006F4D61 /* AudioToolbox.framework */; };
 		95B9399713F67991006F4D61 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9399613F67990006F4D61 /* SystemConfiguration.framework */; };
 		95B9657813FE13C2002F6087 /* WaveView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657713FE13C2002F6087 /* WaveView.mm */; };
 		95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657913FE1499002F6087 /* WaveFile.cpp */; };
+		95CB0A9C1572149B003BA118 /* libisaybio.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95CB0A9A1572149B003BA118 /* libisaybio.d.a */; };
+		95CB0A9D1572149B003BA118 /* libisaybio.s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95CB0A9B1572149B003BA118 /* libisaybio.s.a */; };
 		95E6381B154FB28500A3EAC5 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E6381A154FB28500A3EAC5 /* libMobClickLibrary.a */; };
 		95E6382915542B7A00A3EAC5 /* NSPhoneticSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E6382815542B7A00A3EAC5 /* NSPhoneticSymbol.m */; };
 		95ED3784142A1E5900DF6BE5 /* libIsaybEncrypt.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ED3782142A1E5900DF6BE5 /* libIsaybEncrypt.d.a */; };
@@ -364,8 +364,6 @@
 		0DFCFF6F14016A6B00B1050E /* SettingSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingSwitchCell.xib; sourceTree = "<group>"; };
 		9570CC26142DCDDE009C1E7E /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
 		9570CC27142DCDDE009C1E7E /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
-		9583C89F140E4F3E0025BC2B /* libisaybio.d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.d.a; path = Voice/WaveDecode/libisaybio.d.a; sourceTree = "<group>"; };
-		9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.s.a; path = Voice/WaveDecode/libisaybio.s.a; sourceTree = "<group>"; };
 		9585CB3F140E3683006AF6FE /* isaybio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = isaybio.h; path = Voice/WaveDecode/isaybio.h; sourceTree = "<group>"; };
 		95B9398C13F66432006F4D61 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		95B9399613F67990006F4D61 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -373,6 +371,8 @@
 		95B9657513FE0962002F6087 /* WaveFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveFile.h; path = Voice/WaveDecode/WaveFile.h; sourceTree = "<group>"; };
 		95B9657713FE13C2002F6087 /* WaveView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = WaveView.mm; path = Recording/WaveView.mm; sourceTree = "<group>"; };
 		95B9657913FE1499002F6087 /* WaveFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveFile.cpp; path = Voice/WaveDecode/WaveFile.cpp; sourceTree = "<group>"; };
+		95CB0A9A1572149B003BA118 /* libisaybio.d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.d.a; path = Voice/WaveDecode/libisaybio.d.a; sourceTree = "<group>"; };
+		95CB0A9B1572149B003BA118 /* libisaybio.s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.s.a; path = Voice/WaveDecode/libisaybio.s.a; sourceTree = "<group>"; };
 		95E6381A154FB28500A3EAC5 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = Voice/UMeng/libMobClickLibrary.a; sourceTree = "<group>"; };
 		95E6382715542B7A00A3EAC5 /* NSPhoneticSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPhoneticSymbol.h; sourceTree = "<group>"; };
 		95E6382815542B7A00A3EAC5 /* NSPhoneticSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPhoneticSymbol.m; sourceTree = "<group>"; };
@@ -416,14 +416,14 @@
 				0D8E162C13D471580005CD0F /* UIKit.framework in Frameworks */,
 				0D8E162E13D471580005CD0F /* Foundation.framework in Frameworks */,
 				0D8E163013D471580005CD0F /* CoreGraphics.framework in Frameworks */,
-				9583C8A1140E4F3E0025BC2B /* libisaybio.d.a in Frameworks */,
-				9583C8A2140E4F3E0025BC2B /* libisaybio.s.a in Frameworks */,
 				95ED3784142A1E5900DF6BE5 /* libIsaybEncrypt.d.a in Frameworks */,
 				95ED3785142A1E5900DF6BE5 /* libIsaybEncrypt.s.a in Frameworks */,
 				95E6381B154FB28500A3EAC5 /* libMobClickLibrary.a in Frameworks */,
 				0D7F4D8015633E620072723A /* libGoogleAdMobAds.a in Frameworks */,
 				0D7F4D8415633E620072723A /* libDomob.a in Frameworks */,
 				0D7F4D9215633E620072723A /* libAdMoGo.a in Frameworks */,
+				95CB0A9C1572149B003BA118 /* libisaybio.d.a in Frameworks */,
+				95CB0A9D1572149B003BA118 /* libisaybio.s.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,10 +704,10 @@
 		0D8E162A13D471580005CD0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95CB0A9A1572149B003BA118 /* libisaybio.d.a */,
+				95CB0A9B1572149B003BA118 /* libisaybio.s.a */,
 				95ED3782142A1E5900DF6BE5 /* libIsaybEncrypt.d.a */,
 				95ED3783142A1E5900DF6BE5 /* libIsaybEncrypt.s.a */,
-				9583C89F140E4F3E0025BC2B /* libisaybio.d.a */,
-				9583C8A0140E4F3E0025BC2B /* libisaybio.s.a */,
 				0D872D8413EE7DFF00361672 /* libsqlite3.0.dylib */,
 				0D7F4D45156338B20072723A /* CoreLocation.framework */,
 				0D7F4D431563388F0072723A /* MessageUI.framework */,
@@ -1330,7 +1330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: d l";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: DING LI (Q87F79P6RK)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -1342,7 +1342,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lz";
 				PREBINGDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "AA25EE93-8852-4D5E-AE24-83775E790A3E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "31CC201B-8269-4928-98CD-FA57DEF6A32D";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1352,7 +1352,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Wang Yi (SHC58C4T94)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DING LI";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -1361,7 +1361,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lz";
 				PREBINGDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08D81EB1-9835-47BD-99CA-B041AF82336C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4A2C2363-7200-4795-909A-FD26EA662B6A";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

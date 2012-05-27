@@ -11,8 +11,8 @@
 
 @interface isaybio : NSObject 
 
-+(bool)ISB_LoadFile:(const char*)filename;
++(bool)ISB_Isb:(const char*)isbFile toWav:(const char *)wavFile;
 
-+(bool)ISB_SaveFile:(const char *)filename;
++(bool)ISB_Wav:(const char*)wavFile toIsb:(const char *)isbFile;
 
 @end

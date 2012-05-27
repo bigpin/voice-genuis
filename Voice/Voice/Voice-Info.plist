@@ -18,7 +18,7 @@
 		<string>icon_72.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.ilovestory.voice.chuguobibei</string>
+	<string>com.story.voice.chuguobibei</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

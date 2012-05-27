@@ -228,8 +228,7 @@
     
     char strisbfile[256];
     [self.isbfile getCString:strisbfile maxLength:256 encoding:NSUTF8StringEncoding];
-    if ([isaybio ISB_LoadFile:strisbfile])
-        [isaybio ISB_SaveFile:strwavefile];
+    [isaybio ISB_Isb:strisbfile toWav:strwavefile];
     [self removeLoadingView];
     [self initValue];
     [self.navigationItem setHidesBackButton:NO animated:YES];
