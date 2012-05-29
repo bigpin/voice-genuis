@@ -44,14 +44,12 @@
     UIBarButtonItem* left = [[UIBarButtonItem alloc] initWithTitle:STRING_BACK style:UIBarButtonSystemItemDone target:self action:@selector(back)];
     self.navigationItem.leftBarButtonItem = left;
     [left release];
-    [self.segmentControl setTitle:STRING_DAY_CONTROL_OPEN forSegmentAtIndex:0];
-    [self.segmentControl setTitle:STRING_DAY_CONTROL_CLOSE forSegmentAtIndex:1];
-    self.segmentControl.selectedSegmentIndex = 0;
-    UISegmentedControl* rightSegment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:STRING_DAY_CONTROL_OPEN,STRING_DAY_CONTROL_CLOSE, nil]];
+     UISegmentedControl* rightSegment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:STRING_DAY_CONTROL_OPEN,STRING_DAY_CONTROL_CLOSE, nil]];
     rightSegment.segmentedControlStyle = UISegmentedControlStyleBar;
     UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithCustomView:rightSegment];
     self.segmentControl = rightSegment;
-    [rightSegment addTarget:self action:@selector(doChangedSegment:) forControlEvents:UIControlEventValueChanged];
+    self.segmentControl.selectedSegmentIndex = 0;
+   [rightSegment addTarget:self action:@selector(doChangedSegment:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.rightBarButtonItem = right;
     [right release];
     [rightSegment release];
