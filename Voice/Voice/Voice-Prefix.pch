@@ -77,7 +77,9 @@
 
 #define STRING_DAY                      @"每日一句"
 #define STRING_DAY_CONTROL              @"开启每日一句"
-
+#define STRING_DAY_CONTROL_OPEN         @"开启"
+#define STRING_DAY_CONTROL_CLOSE        @"关闭"
+#define STRING_DAY_PROMPT               @"(在设置里可重新开启每日一句)"
 #define STRING_OTHER                    @"其他"
 #define STRING_ABOUT_US                 @"关于我们"
 #define STRING_ABOUT_VERSION            @"版本号"

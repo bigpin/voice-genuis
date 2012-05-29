@@ -9,13 +9,25 @@
 #import <UIKit/UIKit.h>
 #import "AdMoGoView.h"
 
+@protocol DaybyDayViewControllerDelegate <NSObject>
+
+- (void)setClosedDay;
+@end
+
 @interface DaybyDayViewController : UIViewController<AdMoGoDelegate>
 {
     AdMoGoView *adView;
 }
 @property (nonatomic, retain) AdMoGoView *adView;
-@property(nonatomic, retain) IBOutlet UITextView* textLabel;
+@property (nonatomic, retain) IBOutlet UITextView* textLabel;
 @property (nonatomic, retain) NSString* txtContent;
+@property (nonatomic, retain) IBOutlet UISegmentedControl* segmentControl;
+@property (nonatomic, retain) IBOutlet UILabel* settingPrompt;
+@property (nonatomic, readwrite, assign) id <DaybyDayViewControllerDelegate> delegate;
+
 - (void)back;
 - (void)addAD;
+
+- (IBAction)doChangedSegment:(id)sender;
+
 @end

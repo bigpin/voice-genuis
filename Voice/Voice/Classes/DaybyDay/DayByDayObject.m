@@ -10,12 +10,21 @@
 #import "DaybyDayView.h"
 #import "DaybyDayViewController.h"
 #import "DayParser.h"
+#import "SettingData.h"
 
 @implementation DayByDayObject
 @synthesize navigationController;
 
 - (void)loadDaybyDayView;
 {
+    SettingData* data = [[SettingData alloc] init];
+    [data loadSettingData];
+    if (!data.bShowDay) {
+        [data release];
+        return;
+    }
+    [data release];
+
     NSFileManager *fileManager = [NSFileManager defaultManager];
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
 	NSString *documentDirectory = [paths objectAtIndex:0];
@@ -136,7 +145,7 @@
 - (void)tap
 {
     DaybyDayViewController* dayViewController = [[DaybyDayViewController alloc] initWithNibName:@"DaybyDayViewController" bundle:nil];
-    
+    dayViewController.delegate = (id)self;
     NSString * orintext = [_everydaySentence objectForKey:@"orintext"];
     NSString * transtext = [_everydaySentence objectForKey:@"transtext"];
     if (transtext != nil && orintext != nil) {
@@ -155,6 +164,17 @@
 {
     [_everydaySentence release];
     [super dealloc];
+}
+
+- (void)setClosedDay
+{
+    SettingData* data = [[SettingData alloc] init];
+    [data loadSettingData];
+    if (data.bShowDay) {
+        data.bShowDay = NO;
+        [data saveSettingData];
+    }
+    [data release];
 }
 
 @end

@@ -16,6 +16,9 @@
 @synthesize textLabel;
 @synthesize txtContent;
 @synthesize adView;
+@synthesize segmentControl;
+@synthesize settingPrompt;
+@synthesize delegate;
 
 - (void)dealloc
 {
@@ -38,10 +41,23 @@
     [super viewDidLoad];
     self.title = DAYBYDY_TITLE;
     // Do any additional setup after loading the view from its nib.
-    UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithTitle:STRING_BACK style:UIBarButtonSystemItemDone target:self action:@selector(back)];
+    UIBarButtonItem* left = [[UIBarButtonItem alloc] initWithTitle:STRING_BACK style:UIBarButtonSystemItemDone target:self action:@selector(back)];
+    self.navigationItem.leftBarButtonItem = left;
+    [left release];
+    [self.segmentControl setTitle:STRING_DAY_CONTROL_OPEN forSegmentAtIndex:0];
+    [self.segmentControl setTitle:STRING_DAY_CONTROL_CLOSE forSegmentAtIndex:1];
+    self.segmentControl.selectedSegmentIndex = 0;
+    UISegmentedControl* rightSegment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:STRING_DAY_CONTROL_OPEN,STRING_DAY_CONTROL_CLOSE, nil]];
+    rightSegment.segmentedControlStyle = UISegmentedControlStyleBar;
+    UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithCustomView:rightSegment];
+    self.segmentControl = rightSegment;
+    [rightSegment addTarget:self action:@selector(doChangedSegment:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.rightBarButtonItem = right;
     [right release];
+    [rightSegment release];
     self.textLabel.text = txtContent;
+    self.settingPrompt.text = STRING_DAY_PROMPT;
+    self.settingPrompt.textAlignment = UITextAlignmentRight;
     [self performSelector:@selector(addAD) withObject:nil afterDelay:0.2];
 }
 
@@ -112,6 +128,13 @@
 
 - (void)adMoGoDidDismissFullScreenModal {
     //关闭广告内置浏览器时调用 
+}
+
+- (IBAction)doChangedSegment:(id)sender;
+{
+    if (self.segmentControl.selectedSegmentIndex == 1) {
+        [self.delegate setClosedDay];
+    }
 }
 
 @end
