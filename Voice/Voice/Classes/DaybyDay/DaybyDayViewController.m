@@ -73,7 +73,7 @@
 
 - (void)addAD
 {
-    self.adView = [AdMoGoView requestAdMoGoViewWithDelegate:self AndAdType:AdViewTypeNormalBanner
+    self.adView = [AdMoGoView requestAdMoGoViewWithDelegate:self AndAdType:IS_IPAD? AdViewTypeMediumBanner: AdViewTypeNormalBanner
                                                 ExpressMode:NO];
     [adView setFrame:CGRectMake(0, self.view.bounds.size.height, 0, 0)];
     [self.view addSubview:adView];
