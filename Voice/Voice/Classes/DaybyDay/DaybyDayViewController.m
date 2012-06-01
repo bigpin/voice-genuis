@@ -53,7 +53,10 @@
     self.navigationItem.rightBarButtonItem = right;
     [right release];
     [rightSegment release];
-    self.textLabel.text = txtContent;
+    [self.textLabel setOpaque:NO];
+    [self.textLabel loadHTMLString:txtContent baseURL:nil];
+    [self.textLabel setBackgroundColor:[UIColor clearColor]];
+    self.textLabel.scrollView.bounces = NO;
     self.settingPrompt.text = STRING_DAY_PROMPT;
     self.settingPrompt.textAlignment = UITextAlignmentRight;
     [self performSelector:@selector(addAD) withObject:nil afterDelay:0.2];

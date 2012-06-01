@@ -18,4 +18,5 @@
 @property (nonatomic, assign) UINavigationController* navigationController;
 - (void)loadDaybyDayView;
 - (void)tap;
+- (NSString*)setStringStyle:(NSString*)oriText withPro:(NSString*)pro;
 @end

@@ -148,9 +148,31 @@
     dayViewController.delegate = (id)self;
     NSString * orintext = [_everydaySentence objectForKey:@"orintext"];
     NSString * transtext = [_everydaySentence objectForKey:@"transtext"];
+    NSString* txtContent = nil;
     if (transtext != nil && orintext != nil) {
-        dayViewController.txtContent = [NSString stringWithFormat:@"%@\r\n%@", orintext, transtext];
-    }                      
+         txtContent = [NSString stringWithFormat:@"%@<br>%@", orintext, transtext];
+    } 
+    NSMutableArray* wordsArray = [_everydaySentence objectForKey:@"words"];
+    NSString* proText = @"";
+    if (wordsArray != nil && [wordsArray count] > 0) {
+        for (NSInteger i = 0; i < [wordsArray count]; i++) {
+            NSMutableDictionary* dic = [wordsArray objectAtIndex:i];
+            NSString* txt = [dic objectForKey:@"txt"];
+            if (txt != nil) {
+                proText = [NSString stringWithFormat:@"%@<br>%@", proText, txt];
+            }
+            NSString* pro = [dic objectForKey:@"pro"];
+            if (pro != nil) {
+                proText = [NSString stringWithFormat:@"%@ %@", proText, pro];
+            }
+            NSString* def = [dic objectForKey:@"def"];
+            if (def != nil) {
+                proText = [NSString stringWithFormat:@"%@<br>%@", proText, def];
+            }
+        }
+    }
+    txtContent = [self setStringStyle:txtContent withPro:proText];
+     dayViewController.txtContent = txtContent;
     UINavigationController* nav = [[UINavigationController alloc] initWithRootViewController:dayViewController];
 	if (IS_IPAD) {
 		[nav setModalPresentationStyle:UIModalPresentationFormSheet];
@@ -177,4 +199,12 @@
     [data release];
 }
 
+- (NSString*)setStringStyle:(NSString*)oriText withPro:(NSString*)pro;
+{
+    NSInteger fontSizeOri = IS_IPAD ? 24 :18;
+    NSInteger fontSizePro = IS_IPAD ? 18 :14;
+    NSString* txtContent = [NSString stringWithFormat:@"<html><style type='text/css\'> body { background-color:transparent; font-family:Helvetica; color: #c8b981; font-size:%dpx;text-align:left} .class1 { background-color:transparent; font-family:Helvetica; color: #564b44; font-size:%dpx; } .class2 { background-color:transparent; font-family:Helvetica; color: #88766b ; font-size:%dpx; font-style: italic;}' </style><body> <p class='class1'> %@ </p><p class='class2'> %@ </p></body></html>", fontSizeOri, fontSizeOri,fontSizePro,oriText, pro];
+    
+    return txtContent;
+}
 @end

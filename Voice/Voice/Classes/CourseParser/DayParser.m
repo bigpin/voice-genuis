@@ -72,7 +72,7 @@
             NSString* txt = [TBXML textForElement:txtElem];
             if (txt != nil) {
                 [wordDic setObject:txt forKey:@"txt"];
-               // NSLog(@"%@", txt);
+                NSLog(@"%@", txt);
             }
         }
         
@@ -81,7 +81,7 @@
             NSString* pro = [TBXML textForElement:proElem];
             if (pro != nil) {
                 [wordDic setObject:pro forKey:@"pro"];
-                //NSLog(@"%@", pro);
+                NSLog(@"%@", pro);
             }
         }
         TBXMLElement* defElem = [TBXML childElementNamed:@"def" parentElement:wordElement];;
@@ -89,7 +89,7 @@
             NSString* def = [TBXML textForElement:defElem];
             if (def != nil) {
                 [wordDic setObject:def forKey:@"def"];
-                //NSLog(@"%@", def);
+                NSLog(@"%@", def);
             }
         }
         [wordArray addObject:wordDic];
