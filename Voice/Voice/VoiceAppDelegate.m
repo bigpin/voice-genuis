@@ -40,6 +40,45 @@
 @synthesize  tabBar = _tabBar;
 @synthesize configData = _configData;
 
+- (void)dayNotification
+{
+    UILocalNotification *notification=[[UILocalNotification alloc] init];   
+    
+    if (notification!=nil) { 
+        
+        
+        NSDate *now=[NSDate new]; 
+        
+        notification.fireDate=[now dateByAddingTimeInterval:10];
+        
+        notification.repeatInterval=0;//循环次数，kCFCalendarUnitWeekday一周一次
+        
+        notification.timeZone=[NSTimeZone defaultTimeZone];
+        
+        notification.alertBody=@"学习口语，每日一句！";//提示信息 
+        
+        notification.applicationIconBadgeNumber=1; //应用的红色数字 
+        
+        notification.soundName= UILocalNotificationDefaultSoundName;//声音，可以换成alarm.soundName = @"myMusic.caf" 
+        
+        notification.alertAction = @"学习";  //提示框按钮 
+        
+        notification.hasAction = YES; //是否显示额外的按钮，为no时alertAction消失
+        
+        //        NSDictionary *infoDict = [NSDictionary dictionaryWithObject:@"someValue" forKey:@"someKey"];
+        
+        //        localNotif.userInfo = infoDict; 添加额外的信息，这个功能我没有用到过
+        
+        [[UIApplication sharedApplication] scheduleLocalNotification:notification];      
+    }
+    [notification release];
+}
+
+- (void)application:(UIApplication *)app didReceiveLocalNotification:(UILocalNotification *)notif {
+    app.applicationIconBadgeNumber=0;
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     /*if (databaseQuery == nil) {
@@ -61,6 +100,8 @@
     [MobClick appLaunched];
     
     [self.window makeKeyAndVisible];
+    //[self dayNotification];
+    
     return YES;
 }
 
