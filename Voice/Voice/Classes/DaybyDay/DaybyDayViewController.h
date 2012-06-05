@@ -21,7 +21,7 @@
 @property (nonatomic, retain) AdMoGoView *adView;
 @property (nonatomic, retain) IBOutlet UIWebView* textLabel;
 @property (nonatomic, retain) NSString* txtContent;
-@property (nonatomic, retain) IBOutlet UISegmentedControl* segmentControl;
+@property (nonatomic, retain) IBOutlet UISwitch* switchControl;
 @property (nonatomic, retain) IBOutlet UILabel* settingPrompt;
 @property (nonatomic, readwrite, assign) id <DaybyDayViewControllerDelegate> delegate;
 

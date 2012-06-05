@@ -16,7 +16,7 @@
 @synthesize textLabel;
 @synthesize txtContent;
 @synthesize adView;
-@synthesize segmentControl;
+@synthesize switchControl;
 @synthesize settingPrompt;
 @synthesize delegate;
 
@@ -41,24 +41,25 @@
     [super viewDidLoad];
     self.title = DAYBYDY_TITLE;
     // Do any additional setup after loading the view from its nib.
-    UIBarButtonItem* left = [[UIBarButtonItem alloc] initWithTitle:STRING_BACK style:UIBarButtonSystemItemDone target:self action:@selector(back)];
-    self.navigationItem.leftBarButtonItem = left;
-    [left release];
-     UISegmentedControl* rightSegment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:STRING_DAY_CONTROL_OPEN,STRING_DAY_CONTROL_CLOSE, nil]];
-    rightSegment.segmentedControlStyle = UISegmentedControlStyleBar;
-    UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithCustomView:rightSegment];
-    self.segmentControl = rightSegment;
-    self.segmentControl.selectedSegmentIndex = 0;
-   [rightSegment addTarget:self action:@selector(doChangedSegment:) forControlEvents:UIControlEventValueChanged];
+    UIBarButtonItem* right = [[UIBarButtonItem alloc] initWithTitle:STRING_BACK style:UIBarButtonSystemItemDone target:self action:@selector(back)];
     self.navigationItem.rightBarButtonItem = right;
     [right release];
-    [rightSegment release];
+    UISwitch *closeDay = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 60, 36)];
+     /*UISegmentedControl* rightSegment = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:STRING_DAY_CONTROL_OPEN,STRING_DAY_CONTROL_CLOSE, nil]];
+    rightSegment.segmentedControlStyle = UISegmentedControlStyleBar;*/
+    UIBarButtonItem* left = [[UIBarButtonItem alloc] initWithCustomView:closeDay];
+    self.switchControl = closeDay;
+    self.switchControl.on = YES;
+    [closeDay addTarget:self action:@selector(doChangedSegment:) forControlEvents:UIControlEventValueChanged];
+    self.navigationItem.leftBarButtonItem = left;
+    [left release];
+    [closeDay release];
     [self.textLabel setOpaque:NO];
     [self.textLabel loadHTMLString:txtContent baseURL:nil];
     [self.textLabel setBackgroundColor:[UIColor clearColor]];
     self.textLabel.scrollView.bounces = NO;
     self.settingPrompt.text = STRING_DAY_PROMPT;
-    self.settingPrompt.textAlignment = UITextAlignmentRight;
+    self.settingPrompt.textAlignment = UITextAlignmentLeft;
     [self performSelector:@selector(addAD) withObject:nil afterDelay:0.2];
 }
 
@@ -133,7 +134,7 @@
 
 - (IBAction)doChangedSegment:(id)sender;
 {
-    if (self.segmentControl.selectedSegmentIndex == 1) {
+    if (!self.switchControl.on) {
         [self.delegate setClosedDay];
     }
 }
