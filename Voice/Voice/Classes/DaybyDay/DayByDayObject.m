@@ -90,7 +90,9 @@
         file = [dirEnum nextObject];
     }
     if (i > nFileListIndex) {
-         return;
+        // all the file have showed, show the first again.
+        nFileListIndex = 0;
+        nSentenceIndex = 0;
     }
     if (dateString == nil) {
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
