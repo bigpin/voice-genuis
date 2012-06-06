@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>I am a slow walker, but I never walk backwards.</ot>
+          <tt>我走得很慢，但是我从来不后退。</tt>
+          <wd v="4">
+            <w>
+              <txt>slow</txt>
+              <pro>[sləu]</pro>
+              <pos></pos>
+              <def>adj. 慢的; adv. 慢慢地; 迟缓地</def>
+            </w>
+            <w>
+              <txt>backward</txt>
+              <pro>['bækwəd]</pro>
+              <pos></pos>
+              <def>adj. 向后的; 反向的; 发展迟缓的</def>
+				<clon>
+					<c>backwards</c>
+				</clon>			  
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Cease to struggle and you cease to live.</ot>
+          <tt>生命不息， 奋斗不止。</tt>
+          <wd v="4">
+            <w>
+              <txt>cease</txt>
+              <pro>[si:s]</pro>
+              <pos></pos>
+              <def>n. 停止；　vi. 停止；终了；　vt. 停止；结束</def>
+            </w>
+            <w>
+              <txt>struggle</txt>
+              <pro>['strʌɡl]</pro>
+              <pos></pos>
+              <def>n. 努力，奋斗；竞争； vi. 奋斗，努力；挣扎</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Never underestimate your power to change yourself.</ot>
+          <tt>永远不要低估你改变自己的能力。</tt>
+          <wd v="4">
+            <w>
+              <txt>underestimate</txt>
+              <pro>[,ʌndə'estimeit] </pro>
+              <pos></pos>
+              <def>vt. 低估；看轻  n. 低估</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A thousand journey is started by taking the first step.</ot>
+          <tt>千里之行，始于足下。</tt>
+          <wd v="4">
+            <w>
+              <txt>thousand</txt>
+              <pro>['θauzənd] </pro>
+              <pos></pos>
+              <def>n. 一千；一千个；许许多多  adj. 成千的；无数的</def>
+            </w>
+            <w>
+              <txt>journey</txt>
+              <pro>['dʒə:ni]</pro>
+              <pos></pos>
+              <def>n. 旅行；行程; vi. 旅行</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>In the end, it's not the years in your life that count. It's the life in your years.</ot>
+          <tt>到头来，你活了多少岁不算什么，重要的是你是如何度过这些岁月的。</tt>
+          <wd v="4">
+            <w>
+              <txt>count</txt>
+              <pro>[kaunt]</pro>
+              <pos></pos>
+              <def>n. 计数；计算； vt. 计算；认为</def>
+            </w>
+            <w>
+              <txt>in the end</txt>
+              <pos></pos>
+              <def>终于，最后</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>泰坦尼克号(Titanic)：20世纪初，由英国白星航运公司制造的一艘巨大豪华客轮。是当时世界上最大的豪华客轮，被称为是“永不沉没的”或“梦幻客轮”。1912年4月10日，泰坦尼克号从英国南安普顿驶往纽约，开始了这艘“梦幻客轮”的处女航。4月14日晚在北大西洋撞上冰山而沉没，由于缺少足够的救生艇，1500人葬生海底，造成了当时在和平时期最严重的一次航海事故，也是迄今为止最著名的一次海难。</txt>
+      <img>20120423.jpg</img>
+    </tips>
+  </body>
+</lesson>

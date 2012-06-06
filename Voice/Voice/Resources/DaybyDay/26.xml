@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>A merry heart makes a cheerful countenance.</ot>
+          <tt>人逢喜事精神爽。</tt>
+          <wd v="4">
+            <w>
+              <txt>cheerful</txt>
+              <pro>['tʃiəfəl]</pro>
+              <pos></pos>
+              <def>adj. 1.兴高采烈的;情绪好的 2.使人感到愉快的 3.乐意的;由衷的</def>
+            </w>
+            <w>
+              <txt>countenance</txt>
+              <pro>['kauntinəns]</pro>
+              <pos></pos>
+              <def>n. 1.面容,脸色;表情[C] 2.赞同;支持,鼓励[U] 3.冷静,镇定[U][S]</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A mouse in time may bite in two a cable.</ot>
+          <tt>只要功夫深，铁杵磨成针。</tt>
+          <wd v="4">
+            <w>
+              <txt>cable</txt>
+              <pro>['keibl]</pro>
+              <pos></pos>
+              <def>n. 1.缆;索;钢索[C][U] 2.电缆[C]</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A ragged colt may make a good horse.</ot>
+          <tt>后生可畏.</tt>
+          <wd v="4">
+            <w>
+              <txt>ragged</txt>
+              <pro>['rægid]</pro>
+              <pos></pos>
+              <def>a. 1.破烂的;衣衫褴褛的 2.不整洁的,蓬乱的 3.粗糙的,不平的;锯齿状的,参差不齐的</def>
+            </w>
+            <w>
+              <txt>colt</txt>
+              <pro>[kəult]</pro>
+              <pos></pos>
+              <def>n. 1.小马驹,小雄马 2.生手,新手</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A wise fox will never rob his neighbour's henroost.</ot>
+          <tt>兔子不吃窝边草.</tt>
+          <wd v="4">
+            <w>
+              <txt>rob</txt>
+              <pro>[rɔb]</pro>
+              <pos></pos>
+              <def>vt. 1.抢劫,劫掠,盗取[(+of)] 2.非法剥夺,使丧失[(+of)]</def>
+            </w>
+            <w>
+              <txt>henroost</txt>
+              <pro>['henru:st]</pro>
+              <pos></pos>
+              <def> n. 1.鸡窝</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>An hour in the morning is worth two in the evening.</ot>
+          <tt>一日之计在于晨.</tt>
+          <wd v="4">
+            <w>
+              <txt>worth</txt>
+              <pro>[wə:θ]</pro>
+              <pos></pos>
+              <def>adj. 1.有(...的)价值 2.值得(做...) &amp;  n. [U]1.价值 2.值一定金额的数量</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>海啸(tsunami):是由水下地震、火山爆发或水下塌陷和滑坡等大地活动造成的海面恶浪，并伴随巨响的现象。是一种具有强大破坏力的海浪，是地球上最强大的自然力。海啸的波长比海洋的最大深度还要大，在海底附近传播不受阻滞，不管海洋深度如何，波都可以传播过去.海啸在海洋的传播速度大约每小时五百到一千公里，而相邻两个浪头的距离可能远达500到650公里，它的这种波浪运动所卷起的海涛，波高可达数十米，并形成极具危害性的“水墙”.海底50千米以下出现垂直断层，里氏震级大于6.5级的条件下，最易引发破坏性海啸。</txt>
+      <img>2012_05_21.jpg</img>
+    </tips>
+  </body>
+</lesson>

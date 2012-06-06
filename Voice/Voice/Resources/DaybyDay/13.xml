@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>Men are not to be measured by inchies.</ot>
+          <tt>人不可貌相。</tt>
+          <wd v="4">
+            <w>
+              <txt>measure</txt>
+              <pro>['meʒə]</pro>
+              <pos></pos>
+              <def>vt. 1.测量;计量 2.打量;估量 &amp; vi. 1.量 2.有...长(或阔、高等)&amp; n. 1.尺寸;分量[U] 2.度量单位[C]</def>
+			  <clon>
+				<c>measured</c>
+			  </clon>
+            </w>
+            <w>
+              <txt>inch</txt>
+              <pro>[intʃ]</pro>
+              <pos></pos>
+              <def>n. 1.英寸 2.少许,一点儿 &amp; vt. 使缓慢地移动[O]</def>
+				<clon>
+				<c>inchies</c>
+			  </clon>			  
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The childhood shows the man, as the morning shows the day.</ot>
+          <tt>从小看大,七岁看老.</tt>
+          <wd v="4">
+            <w>
+              <txt>childhood</txt>
+              <pro>['tʃaild,hud]</pro>
+              <pos></pos>
+              <def>n.幼年时期,童年时期</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>They that know nothing fear nothing.</ot>
+          <tt>不知艰难险阻,往往无所畏惧.</tt>
+          <wd v="4">
+            <w>
+              <txt>fear</txt>
+              <pro>[fiə]</pro>
+              <pos></pos>
+              <def>n. 1.害怕,恐惧[C][U][(+of)] 2.可能性 &amp; vt.1.害怕,畏惧;担心[+(that)]</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Walk before you can run.</ot>
+          <tt>循序渐进.</tt>
+          <wd v="4">
+            <w>
+              <txt>before</txt>
+              <pro>[bi'fɔ:]</pro>
+              <pos></pos>
+              <def>prep. 1.在...以前 2.(指顺序、重要性等)在...之前,先于 &amp; ad. 1.较早 2.以前;曾经 &amp; conj. 1.在...以前 2.与其...宁可</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Wise men are silent; fools talk.</ot>
+          <tt>愚人多话，智者寡言。</tt>
+          <wd v="4">
+            <w>
+              <txt>wise</txt>
+              <pro>[waiz]</pro>
+              <pos></pos>
+              <def>adj.  1.有智慧的;聪明的 2.英明的;明智的[+to-v] 3.博学的,有见识的</def>
+            </w>
+            <w>
+              <txt>fool</txt>
+              <pro>[fu:l]</pro>
+              <pos></pos>
+              <def>n. 1.蠢人,傻瓜;白痴 2.(从前宫廷内养的供人娱乐的)弄臣,小丑 &amp; vt. 1.愚弄;欺骗[O]. vi &amp;1.开玩笑;演滑稽角色</def>
+			  <clon>
+				<c>fools</c>
+			  </clon>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>双子座（Gemini ）的来历：在希腊神话中，丽达王妃生了许多可爱的孩子，其中有两个兄弟，感情特别要好，看起来很像双胞胎。.其实，俩人为同母异父的兄弟，哥哥的身份是“神”，弟弟则是一般的普通人。有一天，希腊遭到了一头巨大的野猪攻击，因为杀死野猪后互争功劳，王子和勇士结下了仇恨。在一次市集的热闹场合中，两边不期而遇，当然又免不了一番争吵。在争吵中，有人开始动起武来，很不幸地的，弟弟在这一场混乱之中，被杀身亡。哥哥，希望弟弟可以起死回生。於是，向父亲宙斯请求，希望宙斯可以让弟弟复活。但是宙斯向他表示若是真的要让弟弟复活，就必须把哥哥剩余的生命分给弟弟。哥哥，当然是毫不犹豫的马上答应了，从此之后，兄弟俩又可以一起快乐的生活了。</txt>
+      <img>2012_05_14.jpg</img>
+    </tips>
+  </body>
+</lesson>

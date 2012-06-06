@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>One nail drives out another.</ot>
+          <tt>喜新厌旧。</tt>
+          <wd v="4">
+            <w>
+              <txt>nail</txt>
+              <pro>[neil]</pro>
+              <pos></pos>
+              <def>n. 1.钉子 2.(手,脚的)指甲;(鸟,兽的)爪 3.(鸟禽)喙上的硬甲壳  vt. 1.钉,将...钉牢;使固定[O] 2.使(目光,注意力等)集中于[(+on/to)]</def>
+            </w>
+            <w>
+              <txt>drive out</txt>
+              <pro></pro>
+              <pos></pos>
+              <def>1.开车外出  2.驱赶</def>
+			  <clon><c>drives out</c></clon>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>One never loses anything by politeness.</ot>
+          <tt>礼多人不怪，谦虚无所失。</tt>
+          <wd v="4">
+            <w>
+              <txt>politeness</txt>
+              <pro>[pə'laitnis]</pro>
+              <pos></pos>
+              <def>n. 1.有礼貌;客气;文雅[U] 2.有礼貌的行为;客气的词语</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Take no more on you than you're able to bear.</ot>
+          <tt>凡事量力而行</tt>
+          <wd v="4">
+            <w>
+              <txt>bear</txt>
+              <pro>[bɛə]</pro>
+              <pos></pos>
+              <def>vt. 1.支持,承受;承担 2.运送;携带;带走[O] 3.忍受;经得起 &amp; vi. 1.承受重量(或压力) 2.用力推(或挤,压) 3.开花结果 &amp; n. 1.熊;似熊的动物 2.鲁莽的人;笨拙的人</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The wolf may loose his teeth, but never his nature.</ot>
+          <tt>本性难移。</tt>
+          <wd v="4">
+            <w>
+              <txt>loose</txt>
+              <pro>[lu:s]</pro>
+              <pos></pos>
+              <def>vi. 1.变松;松开 2.放射;开火. &amp; adj. 1.松的,宽的;松散的 2.未予束缚的;未控制的[F] 3.松开的,松掉了的 &amp; vt. 1.解开(结等) 2.放(枪);射(箭)[(+off)] 3.释放;把...放开</def>
+            </w>
+            <w>
+              <txt>nature</txt>
+              <pro>['neitʃə]</pro>
+              <pos></pos>
+              <def>n. 1.(常大写)自然;自然界[U] 2.性质,本质[C][U] 3.种类[S]</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Wise men are silent; fools talk.</ot>
+          <tt>愚人多话，智者寡言。</tt>
+          <wd v="4">
+            <w>
+              <txt>wise</txt>
+              <pro>[waiz]</pro>
+              <pos></pos>
+              <def>adj.  1.有智慧的;聪明的 2.英明的;明智的[+to-v] 3.博学的,有见识的</def>
+            </w>
+            <w>
+              <txt>fool</txt>
+              <pro>[fu:l]</pro>
+              <pos></pos>
+              <def>n. 1.蠢人,傻瓜;白痴 2.(从前宫廷内养的供人娱乐的)弄臣,小丑 &amp; vt. 1.愚弄;欺骗[O]. vi &amp;1.开玩笑;演滑稽角色</def>
+			  <clon><c>fools</c></clon>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>地震（earthquake），是地球内部发生的急剧破裂产生的震波，在一定范围内引起地面振动的现象。地震就是地球表层的快速振动，在古代又称为地动。它就像海啸、龙卷风、冰冻灾害一样，是地球上经常发生的一种自然灾害。大地振动是地震最直观、最普遍的表现。在海底或滨海地区发生的强烈地震，能引起巨大的波浪，称为海啸。地震是极其频繁的，全球每年发生地震约五百五十万次。  全球板块运动
+地震常常造成严重人员伤亡，能引起火灾、水灾、有毒气体泄漏、细菌及放射性物质扩散，还可能造成海啸、滑坡、崩塌、地裂缝等次生灾害。</txt>
+      <img>2012_05_14.jpg</img>
+    </tips>
+  </body>
+</lesson>

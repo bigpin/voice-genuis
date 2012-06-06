@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>A smile may hide a dagger.</ot>
+          <tt>笑里藏刀。</tt>
+          <wd v="4">
+            <w>
+              <txt>hide</txt>
+              <pro>[haid]</pro>
+              <pos></pos>
+              <def>vi. 隐藏</def>
+            </w>
+            <w>
+              <txt>dagger</txt>
+              <pro>['dæɡə]</pro>
+              <pos></pos>
+              <def>n. 匕首，短剑</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Appearances are deceptive.</ot>
+          <tt>知人知面不知心。</tt>
+          <wd v="4">
+            <w>
+              <txt>appearance</txt>
+              <pro>[ə'piərəns]</pro>
+              <pos></pos>
+              <def>n. 外貌，外观；出现，露面</def>
+				<clon>
+					<c>appearances</c>
+				</clon>			  
+            </w>
+            <w>
+              <txt>deceptive</txt>
+              <pro>[di'septiv]</pro>
+              <pos></pos>
+              <def>adj. 欺诈的；迷惑的；虚伪的</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Better one eyewitness than two hearsay witnesses.</ot>
+          <tt>百闻不如一见。</tt>
+          <wd v="4">
+            <w>
+              <txt>eyewitness</txt>
+              <pro>['ai,witnis]</pro>
+              <pos></pos>
+              <def>n. 目击者；见证人</def>
+            </w>
+            <w>
+              <txt>hearsay</txt>
+              <pro>['hiəsei]</pro>
+              <pos></pos>
+              <def>n. 传闻，谣言</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Better rely on yourself than on others.</ot>
+          <tt>求人不如求己。</tt>
+          <wd v="4">
+            <w>
+              <txt>rely</txt>
+              <pro>[ri'lai]</pro>
+              <pos></pos>
+              <def>vi. 依靠；信赖</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Anger and haste hinder good counsel.</ot>
+          <tt>小不忍则乱大谋。</tt>
+          <wd v="4">
+            <w>
+              <txt>haste</txt>
+              <pro>[heist]</pro>
+              <pos></pos>
+              <def>n. 匆忙；急忙；轻率</def>
+            </w>
+            <w>
+              <txt>counsel</txt>
+              <pro>['kaunsəl]</pro>
+              <pos></pos>
+              <def>n. 忠告；商议；讨论；决策; 法律顾问</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>波罗的海(Baltic Sea)，是世界上盐度最低的海。波罗的海得名于芬兰湾沿岸从什切青到的雷维尔的波罗的山脉，长1600多千米，平均宽度190千米，面积42万平方千米，总贮水量2.3万立方千米，是地球上最大的半咸水水域,相当于我国渤海面积的5倍。波罗的海是个浅海。深70～100米，平均深度只有55米，最深处哥特兰沟459米。</txt>
+      <img>2012_05_07.jpg</img>
+    </tips>
+  </body>
+</lesson>

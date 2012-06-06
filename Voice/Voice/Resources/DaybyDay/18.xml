@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>Nothing is impossible, the word itself says ' I'm possible!'.            By Audrey Hepburn</ot>
+          <tt>没有什么不可能，这个单词本身表达的意思是 "我有可能！”。               ——奥黛丽•赫本</tt>
+          <wd v="4">
+            <w>
+              <txt>impossible</txt>
+              <pro>[imˈpɔsəbəl]</pro>
+              <pos></pos>
+              <def>a.不可能的；难以忍受的，很难对付的</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Failure doesn't mean you are a failure. It does mean you haven't succeeded yet.       By Robert Schoen</ot>
+          <tt>失败并不代表你是个失败者。它只表明你尚未成功。                                      ——罗伯特•舒赫</tt>
+          <wd v="4">
+            <w>
+              <txt>mean</txt>
+              <pro>[mi:n]</pro>
+              <pos></pos>
+              <def>vt.意欲 vi.特意    a.吝啬的；平均的</def>
+            </w>
+            <w>
+              <txt>failure</txt>
+              <pro>[ˈfeiljə]</pro>
+              <pos></pos>
+              <def>n.失败；失败的人(或事)</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>I can accept failure, everyone fails at something.                  By Michael Jorda </ot>
+          <tt>我可以接受失败，每一个人都会在一些事情上失败。                           ——迈克尔•乔丹</tt>
+          <wd v="4">
+            <w>
+              <txt>failure</txt>
+              <pro>['feiljə]</pro>
+              <pos></pos>
+              <def>n. 失败；故障；失败者；破产</def>
+              <w>
+                <txt>fail at... </txt>
+                <def>在……上失败</def>
+                <clon>
+                  <c>fails at</c>
+                </clon>
+              </w>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>In a gentle way, you can shake the world.                            By Mohandas Gandhi</ot>
+          <tt>用一种温和的方式，你也可以晃动地球。                                      ——莫罕达斯•甘地</tt>
+          <wd v="4">
+            <w>
+              <txt>gentle</txt>
+              <pro>[ˈdʒentl]</pro>
+              <pos></pos>
+              <def>a.和蔼的；轻柔的，徐缓的</def>
+            </w>
+            <w>
+              <txt>shake</txt>
+              <pro>[ʃeik]</pro>
+              <pos></pos>
+              <def>v.摇动, 震动, 握手n.片刻, 摇晃</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Believe you can and you're halfway there.              By Theodore Roosevelt</ot>
+          <tt>相信你能行，那么你在成功之路上就已经走了一半了。              ——西奥多•罗斯福</tt>
+          <wd v="4">
+            <w>
+              <txt>halfway</txt>
+              <pro>['hɑ:f'wei]</pro>
+              <pos></pos>
+              <def>adj.中途的, 不彻底的   adv.半路地, 在…中间, 折中</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>奥黛丽•赫本，著名影星，奥斯卡影后，世人敬仰她为“人间天使”。身为好莱坞最著名的女星之一，她以高雅的气质与有品味的穿着著称。赫本晚年投身于慈善事业，是联合国儿童基金会亲善大使的代表，1992年被授予“总统自由勋章”。作为亲善大使，她不时举办一些音乐会和募捐慰问活动，造访一些贫穷地区的儿童，足迹遍及亚非拉许多国家。她曾经说过：“记住，如果你在任何时候需要一只手来帮助你，你可以在自己每条手臂的末端找到它。随着你的成长，你会发现你有两只手，一只用来帮助自己，另一只用来帮助别人。”</txt>
+      <img>20120326.png</img>
+    </tips>
+  </body>
+</lesson>

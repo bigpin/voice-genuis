@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>I am not afraid of tomorrow, for I have seen yesterday and love today.</ot>
+          <tt>我不害怕明天，因为我经历过昨天，又热爱今天。</tt>
+          <wd v="4">
+            <w>
+              <txt>be afraid of</txt>
+              <pro></pro>
+              <pos></pos>
+              <def>害怕</def>
+				<clon>
+					<c>am</c>
+					<c>afraid of</c>
+				</clon>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Ａ smile is the shortest distance between two people.</ot>
+          <tt>微笑是两人之间最短的距离。</tt>
+          <wd v="4">
+            <w>
+              <txt>shortest distance</txt>
+              <pro></pro>
+              <pos></pos>
+              <def>最短距离，最近距离 </def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Whatever with the past has gone, the best is always yet to come.</ot>
+          <tt>无论过去发生什么，最好的尚未到来。</tt>
+        </s>
+        <s t="t1">
+          <ot>Hope for the best and prepare for the worst.</ot>
+          <tt>从最好处着想， 从最坏处准备。</tt>
+          <wd v="4">
+            <w>
+              <txt>prepare</txt>
+              <pro>[pri'pεə]</pro>
+              <pos></pos>
+              <def>vt. 准备；使适合；装备；起草</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Sorrow is at parting if at meeting there be laughter.</ot>
+          <tt>相见欢时，离别难。</tt>
+          <wd v="4">
+            <w>
+              <txt>sorrow</txt>
+              <pro>['sɔrəu]</pro>
+              <pos></pos>
+              <def>n. 悲伤；懊悔；伤心事</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>五四青年节，是为纪念1919年5月4日爆发的五四运动而设立的。它来源于中国1919年反帝爱国的“五四运动”。五四运动是1919年5月4日在北京爆发的中国人民彻底的反对帝国主义、封建主义的爱国运动。五四精神的核心内容为“爱国、进步、民主、科学”。五四运动是中国旧民主主义革命的结束和新民主主义革命的开端,是中国革命史上划时代的事件，是中国旧民主主义革命到新民主主义革命的转折点。</txt>
+      <img>20120430.jpg</img>
+    </tips>
+  </body>
+</lesson>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>A friend to everybody is a friend to nobody.</ot>
+          <tt>滥交者无友。</tt>
+          <wd v="4">
+            <w>
+              <txt>everybody</txt>
+              <pro>['evribɔdi]</pro>
+              <pos></pos>
+              <def>pron. 每个人,人人,各人。</def>
+            </w>
+            <w>
+              <txt>nobody</txt>
+              <pro>['nəubɔdi]</pro>
+              <pos></pos>
+              <def>pron. 无人,没有人。 n. 无足轻重的人,小人物。</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Bad news has wings.</ot>
+          <tt>好事不出门，坏事传千里。</tt>
+          <wd v="4">
+            <w>
+              <txt>news</txt>
+              <pro>[nju:z]</pro>
+              <pos></pos>
+              <def>n.新闻；消息；报导 &amp; 新闻节目</def>
+            </w>
+            <w>
+              <txt>wing</txt>
+              <pro>[wiŋ]</pro>
+              <pos></pos>
+              <def>n. 翅膀;机翼;【建】侧;vt. 1.在...装翼2.造厢房于</def>
+			  <clon>
+				<c>wings</c>
+				</clon>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>If there were no clouds, we should not enjoy the sun.</ot>
+          <tt>没有云遮日,怎知阳光好.</tt>
+          <wd v="4">
+            <w>
+              <txt>enjoy</txt>
+              <pro>[in'dʒɔi]</pro>
+              <pos></pos>
+              <def>vt. 1.欣赏;享受;喜爱[+v-ing] 2.【书】享有(利益、权利、声誉等)3.使过得快活;使得到乐趣[+oneself]</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>If you play with fire you get burnt</ot>
+          <tt>玩火者必自焚</tt>
+          <wd v="4">
+            <w>
+              <txt>play with</txt>
+              <pro></pro>
+              <pos></pos>
+              <def>1.以 …… 为消遣，玩弄; 2.和……一起玩</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Sow nothing, reap nothing.</ot>
+          <tt>不劳而无获。</tt>
+          <wd v="4">
+            <w>
+              <txt>sow</txt>
+              <pro>[səu]</pro>
+              <pos></pos>
+              <def>vt. 1.播(种) 2.播种于(土地等) 3.散布,传播 4.使密布[H][(+with)] vi. 1.播种 n. 1.(大)母猪;牝猪[C]</def>
+            </w>
+            <w>
+              <txt>reap</txt>
+              <pro>[ri:p]</pro>
+              <pos></pos>
+              <def>vt. 1.收割(庄稼);收割(田地)里的庄稼;收获 2.获得,得到 vi. 1.收割;收获</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>母亲节（Mother's Day），是一个感谢母亲的节日。这个节日最早出现在古希腊，而现代的母亲节是每年5月的第二个星期日，起源于美国。母亲们在这一天通常会收到礼物，康乃馨被视为献给母亲的花，而中国的母亲花是萱草花，又叫忘忧草。母亲节的传统起源于古希腊。17世纪中叶，母亲节流传到英国。每年5月的第二个星期日为“国际母亲节”，选择这一时间是因为5月天气晴朗、明丽，同时周日适合公众性的喜庆活动.</txt>
+      <img>2012_05_07.jpg</img>
+    </tips>
+  </body>
+</lesson>

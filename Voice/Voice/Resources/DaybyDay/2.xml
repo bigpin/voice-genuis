@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>You must study to be frank with the world: frankness is the child of honesty and courage.    By Robert E. Lee</ot>
+          <tt>在世间必须学会以真诚示人：率真乃是诚实与勇敢之子。    ——罗比特·E·李</tt>
+          <wd v="4">
+            <w>
+              <txt>be frank with</txt>
+              <pro></pro>
+              <pos></pos>
+              <def>对……坦白、直率</def>
+            </w>
+            <w>
+              <txt>courage</txt>
+              <pro>[ˈkʌridʒ]</pro>
+              <pos></pos>
+              <def>n.勇气，胆量</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Turn your wounds into wisdom.    By Oprah Winfrey</ot>
+          <tt>把你的伤口转变为智慧。    ——奥普拉·温弗瑞</tt>
+          <wd v="4">
+            <w>
+              <txt>turn...into...</txt>
+              <pro></pro>
+              <pos></pos>
+              <def>把……变成……</def>
+              <clon>
+                <c>turn</c>
+                <c>into</c>
+              </clon>
+            </w>
+            <w>
+              <txt>wound</txt>
+              <pro>[wu:nd]</pro>
+              <pos></pos>
+              <def> n.创伤，伤口 vt.使受伤，伤害</def>
+              <clon>
+                <c>wounds</c>
+              </clon>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A good head and a good heart are always a formidable combination.   By Nelson Mandela</ot>
+          <tt>聪明的头脑和高尚的心灵永远是最强大的结合。    ——纳尔逊·曼德拉</tt>
+          <wd v="4">
+            <w>
+              <txt>formidable</txt>
+              <pro>['fɔ:midəbl]</pro>
+              <pos></pos>
+              <def>adj. 强大的，可怕的，难对付的</def>
+            </w>
+            <w>
+              <txt>combination</txt>
+              <pro>[ˌkɔmbiˈneiʃən]</pro>
+              <pos></pos>
+              <def> n.结合(体)，联合(体)，化合</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The truest wisdom is a resolute determination.     By Napoleon Bonaparte</ot>
+          <tt>最真正的智慧在于有一个坚定的决心。    ——拿破仑·波拿巴</tt>
+          <wd v="4">
+            <w>
+              <txt>resolute</txt>
+              <pro>[ˈrezəlu:t]</pro>
+              <pos></pos>
+              <def>a.坚决的</def>
+            </w>
+            <w>
+              <txt>determination</txt>
+              <pro>[diˌtə:miˈneiʃən]</pro>
+              <pos></pos>
+              <def>n.决心，决定；确定，测定</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Honesty is the first chapter in the book of wisdom.    By Thomas Jefferson</ot>
+          <tt>诚实是智慧之书的第一章。    ——托马斯·杰斐逊</tt>
+          <wd v="4">
+            <w>
+              <txt>honesty</txt>
+              <pro>['ɔnisti]</pro>
+              <pos></pos>
+              <def> n.诚实, 正直</def>
+            </w>
+            <w>
+              <txt>chapter</txt>
+              <pro>[ˈtʃæptə]</pro>
+              <pos></pos>
+              <def>n.章，回，篇</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>在《伊索寓言》的“狼、狐狸和猿”（The Wolf, the Fox and the Ape）中，狼控告狐狸偷窃，狐狸矢口否认。猿负责审理本案，经双方申诉原委之后，猿判决：“狼啊，我不认为你遗失了你向我报失的东西；狐狸啊，我确信你偷了你否认偷过的东西。”不诚实的人即使做了诚实的事，也得不到信任。就像西塞罗所说的“没有比虚伪更可耻的事情”（Nothing is more disgraceful than insincerity）。我们要学会真诚待人、坦率做事，不仅能让自己的心胸开阔起来，更能赢得他人的信任与尊重。</txt>
+      <img>yy.png</img>
+    </tips>
+  </body>
+</lesson>

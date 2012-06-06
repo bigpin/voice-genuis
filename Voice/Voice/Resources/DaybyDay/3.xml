@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title>2012-3-12</title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>Life was like a box of chocolates. You never know what you're gonna get.      From Forrest Gump
+
+
+</ot>
+          <tt>生活就像一盒巧克力，你永远不会知道你拿的是哪一块。             ——《阿甘正传》</tt>
+          <wd v="4">
+            <w>
+              <txt>a box of</txt>
+              <def>一盒……</def>
+            </w>
+           <w>
+              <txt>gonna</txt>
+              <pro>US:[ˈɡɔnə] UK:[ˈɡʌnə]</pro>
+              <pos></pos>
+              <def>na. 1. 美俚〉同“going to”  将要; 2.会</def>
+            </w>			
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Sometimes it's nice to enjoy each morsel of life as it comes.           From Life as Chopsticks
+
+                                      
+</ot>
+          <tt>有时候，按部就班地享受生活的一点一滴是很幸福的。              ——《人生如筷》</tt>
+          <wd v="4">
+            <w>
+              <txt>morsel</txt>
+              <pro>[ˈmɔ:səl]</pro>
+              <pos></pos>
+              <def>n.少量 </def>
+            </w>
+            <w>
+              <txt>chopstick</txt>
+              <pro>['tʃɔpstik]</pro>
+              <pos></pos>
+              <def>n. 筷子</def>
+              <clon>
+                <c>chopsticks</c>
+              </clon>			  
+            </w>			
+			Chopsticks
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>We have a wonderful world that is full of beauty, light and promise.         From In life we are happiest when...
+ 
+</ot>
+          <tt>我们美妙的世界充满了美丽、光明、希望。                     ——《生活中我们最幸福》
+                                      </tt>
+          <wd v="4">
+            <w>
+              <txt>be full of</txt>
+              <def>充满……</def>
+              <clon>
+                <c>is full of</c>
+              </clon>
+		  </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The art of living is to know when to hold fast and when to let go.          By J.B.Priestley
+ 
+</ot>
+          <tt>生活的艺术在于知道什么时候追求，什么时候放弃。            ——J.B.普里斯特列 </tt>
+          <wd v="4">
+            <w>
+              <txt>hold fast</txt>
+              <def>紧紧抓住</def>
+            </w>
+            <w>
+              <txt>let go</txt>
+              <def>放开，松手</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>However mean your life is,meet it and live it.                   By Henry David Thoreau
+
+</ot>
+          <tt>
+不论你的生活如何卑贱，你要面对它生活。                  ——亨利•戴维•梭罗   </tt>
+          <wd v="4">
+            <w>
+              <txt>mean</txt>
+              <pro>[mi:n]</pro>
+              <pos></pos>
+              <def>adj.低劣的，刻薄的 v.意思是，打算，导致，意味</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt> 尚•保罗曾经说过：“人生犹如一本书，愚蠢者草草翻过，聪明人细细阅读。为何如此. 因为他们只能读它一次。”泰戈尔说：“天空没有翅膀的痕迹，而我已经飞过。”人生就是一次旅行，只有留心地欣赏周围的风景，在人生的尽头，才不会留后悔，少有遗憾。人生会因为欣赏、因为品味、因为阅览而丰富充实。所以，请不要忽略道旁的风景，学会欣赏，学会品味。人生的道路不能重走，昨天的故事无法重复。我们所要追求的不只是高高在上的风景，还有会欣赏的明眸，会品味的心灵，只有欣赏与品味才是人生的本质。慢慢走，欣赏啊!欣赏现在的生活，品味人生的过程。我们欣赏天边的风景，我们品味飞翔的过程。也许，天空没有飞过的痕迹，但我们的心里装着整个天空。</txt>
+      <img>20120312.jpg</img>
+    </tips>
+  </body>
+</lesson>

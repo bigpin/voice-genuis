@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>The great fish eat up the small.</ot>
+          <tt>弱肉强食。(大鱼吃小鱼)</tt>
+          <wd v="4">
+            <w>
+              <txt>eat up</txt>
+              <pro></pro>
+              <pos></pos>
+              <def>吃完,消耗</def>
+            </w>
+            <w>
+              <txt>great</txt>
+              <pro>[greit]</pro>
+              <pos></pos>
+              <def>adj.大的,巨大的;美妙的,极好的</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The good is the enemy of the best.</ot>
+          <tt>不以"好"为足,"好"中求"最好"</tt>
+          <wd v="4">
+            <w>
+              <txt>enemy</txt>
+              <pro>['enimi]</pro>
+              <pos></pos>
+              <def>n.敌人,仇敌;大敌;大害;危害物</def>
+            </w>
+            <w>
+              <txt>best</txt>
+              <pro>[best]</pro>
+              <pos></pos>
+              <def>adj(good的最高级);最好的;最熟练的;道德最高尚的adv.(well的最高级)最好地;最适当地;最有效地</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A good dog deserves a good bone.</ot>
+          <tt>立功者应受奖.</tt>
+          <wd v="4">
+            <w>
+              <txt>deserve</txt>
+              <pro>[di'zə:v]</pro>
+              <pos></pos>
+              <def>vt.应受,该得;不及物动词; vi.应受赏(罚)</def>
+				<clon>
+					<c>deserves</c>
+				</clon>			  
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A small bird wants a small nest.</ot>
+          <tt>燕雀无鸿鹄之志.</tt>
+          <wd v="4">
+            <w>
+              <txt>want</txt>
+              <pro>[wɔnt]</pro>
+              <pos></pos>
+              <def>vt.要,想要;want to do sth; n.需要的东西;必需品</def>
+				<clon>
+					<c>wants</c>
+				</clon>			  
+            </w>
+            <w>
+              <txt>nest</txt>
+              <pro>[nest]</pro>
+              <pos></pos>
+              <def>n.巢;窝;穴;(鸟等的)一窝,一群;vi.筑巢;巢居;伏窝
+</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A good friend is as the sun in winter.</ot>
+          <tt>好朋友就像冬天的太阳。</tt>
+          <wd v="4">
+            <w>
+              <txt>as</txt>
+              <pro>[æz]</pro>
+              <pos></pos>
+              <def>prep.如同；当作；以…的身份;conj. 因为；随着；虽然；依照；当…时</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>国际劳动节又称“五一国际劳动节”、(International Labor Day或者May Day)，是世界上大多数国家的劳动节。定在每年的五月一日。它是全世界劳动人民共同拥有的节日。1889年7月，由恩格斯领导的第二国际在巴黎举行代表大会。会议通过决议，规定1890年5月1日国际劳动者举行游行，并决定把5月1日这一天定为国际劳动节。中央人民政府政务院于1949年12月作出决定，将5月1日确定为劳动节.</txt>
+      <img>20120430.jpg</img>
+    </tips>
+  </body>
+</lesson>

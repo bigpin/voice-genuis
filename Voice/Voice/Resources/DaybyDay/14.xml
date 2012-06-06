@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>A bride is diligent for 3 days.</ot>
+          <tt>新官上任三把火。</tt>
+          <wd v="4">
+            <w>
+              <txt>bride</txt>
+              <pro>[braid]</pro>
+              <pos></pos>
+              <def>n.1.新娘;即将做新娘的女子 2.【英】【俚】姑娘;女朋友</def>
+            </w>
+            <w>
+              <txt>diligent</txt>
+              <pro>['dilidʒənt]</pro>
+              <pos></pos>
+              <def>adj.1.勤勉的,勤奋的. 2.费尽心血的.</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A courtesy is a flower.</ot>
+          <tt>礼貌是朵花，人人都爱它。</tt>
+          <wd v="4">
+            <w>
+              <txt>courtesy</txt>
+              <pro>['kə:tisi]</pro>
+              <pos></pos>
+              <def>n. 1.礼貌;殷勤,好意[U] 2.谦恭有礼的言辞(或举动)</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A foul foot makes a full wame.</ot>
+          <tt>脚脏肚子饱,勤劳出生计.</tt>
+          <wd v="4">
+            <w>
+              <txt>foul</txt>
+              <pro>[faul]</pro>
+              <pos></pos>
+              <def>adj. 1.肮脏的,污浊的 2.恶臭的;(食物)腐败的 3.邪恶的,可恶的</def>
+            </w>
+            <w>
+              <txt>wame</txt>
+              <pro>[weim]</pro>
+              <pos></pos>
+              <def>n. 1.【苏格兰】【英】腹部 (belly)</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A good name is better than riches.</ot>
+          <tt>美名胜过财富.</tt>
+          <wd v="4">
+            <w>
+              <txt>riches</txt>
+              <pro>['ritʃiz]</pro>
+              <pos></pos>
+              <def>n. 1.财富,财产;富有,丰饶[K]</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>A living dog is better than a dead lion.</ot>
+          <tt>留得青山在,不怕没柴烧.</tt>
+          <wd v="4">
+            <w>
+              <txt>living</txt>
+              <pro>['liviŋ]</pro>
+              <pos></pos>
+              <def>a. 1.活的;活着的 2.现存的 3.在活动中的;在使用着的</def>
+            </w>
+            <w>
+              <txt>dead</txt>
+              <pro>[ded]</pro>
+              <pos></pos>
+              <def>adj.1.死的;枯的 2.已废的,不用的 3.无效的,失效的</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>“世界牛奶日” (World Milk Day):在上 个世纪50年代，法国的促进牛奶消费协会提出了庆祝“牛奶日”的设想，这个设想在1961年被国际牛奶联合会（IDF）所采纳，并做出了每年5月第三周的周二为“世界  国际牛奶日”的决定.“世界牛奶日”活动的目的是以多种形式向广大消费者介绍牛奶的生产情况，宣传牛奶的营养价值和对人体健康的重要性,了解广大消费者对牛奶和奶制品的意见和要求。</txt>
+      <img>2012_05_21.jpg</img>
+    </tips>
+  </body>
+</lesson>

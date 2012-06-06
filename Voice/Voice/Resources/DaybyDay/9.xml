@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<lesson verion="1.0">
+  <head>
+    <created>2012-02-29T14:06:00</created>
+    <lastModified>2012-02-29T14:06:00</lastModified>
+  </head>
+  <body>
+    <metas>
+      <meta lang="chi">
+        <title></title>
+        <description></description>
+        <creator>ewan</creator>
+        <content></content>
+      </meta>
+    </metas>
+    <textstream>
+      <p>
+        <s t="t1">
+          <ot>Don't be pushed by your problems, be led by your dream.</ot>
+          <tt>推动你前进的应该是梦想，而不是困难。</tt>
+          <wd v="4">
+            <w>
+              <txt>push</txt>
+              <pro>[puʃ]</pro>
+              <pos></pos>
+              <def>vt. 推动；增加  n. 推；决心；进取心</def>
+             <clon>
+                <c>pushed</c>
+              </clon>
+			  
+            </w>
+            <w>
+              <txt>led</txt>
+              <pro>[[li:d], [led]] </pro>
+              <pos></pos>
+              <def>n. 领导； led 为 lead 的过去式</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>The ideal of life is to live for ideals.</ot>
+          <tt>生活的理想就是为了有理想的生活。</tt>
+          <wd v="4">
+            <w>
+              <txt>ideal</txt>
+              <pro>[ai'diəl]</pro>
+              <pos></pos>
+              <def>adj. 理想的；完美的；想象的；不切实际的 n. 理想；典范</def>
+             <clon>
+                <c>ideals</c>
+              </clon>
+			  
+            </w>
+            <w>
+              <txt>live</txt>
+              <pro> [lɪv,lʌɪv]</pro>
+              <pos></pos>
+              <def>vi. 活；居住；生存   adj. 活的；生动的；实况转播的；精力充沛的</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Doing what you like is freedom, liking what you do is happiness.</ot>
+          <tt>做自己喜欢的事是自由，喜欢自己做的事是幸福。</tt>
+          <wd v="4">
+            <w>
+              <txt>freedom</txt>
+              <pro>['fri:dəm]</pro>
+              <pos></pos>
+              <def>n. 自由，自主；直率</def>
+            </w>
+            <w>
+              <txt>happiness</txt>
+              <pro> ['hæpinis]</pro>
+              <pos></pos>
+              <def>n.  幸福</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>Nothing that's worth while is ever easy, remember it.</ot>
+          <tt>记住，值得的是最不易获得的。</tt>
+          <wd v="4">
+            <w>
+              <txt>worth</txt>
+              <pro>[wə:θ]</pro>
+              <pos></pos>
+              <def>adj. 值…的 n. 价值；财产</def>
+            </w>
+            <w>
+              <txt>remember</txt>
+              <pro>[ri'membə]</pro>
+              <pos></pos>
+              <def>vi. 记得，记起</def>
+            </w>
+          </wd>
+        </s>
+        <s t="t1">
+          <ot>You got a dream, you gotta protect it.</ot>
+          <tt>如果你有梦想，就要捍卫它。</tt>
+          <wd v="4">
+            <w>
+              <txt>gotta</txt>
+              <pro>['ɡɔtə]</pro>
+              <pos></pos>
+              <def>adv. 必须（等于have got to）</def>
+            </w>
+            <w>
+              <txt>protect</txt>
+              <pro>[prəu'tekt]</pro>
+              <pos></pos>
+              <def>vt. 保护，防卫；警戒</def>
+            </w>
+          </wd>
+        </s>
+      </p>
+    </textstream>
+    <teachers>
+      <teacher id="t1">
+        <surname>ma</surname>
+        <name>isayBuddy</name>
+        <description></description>
+        <gender>male</gender>
+        <avatar>avatarFileID</avatar>
+      </teacher>
+    </teachers>
+    <logos>
+      <log title="" level="" name="isbc.jpg" path="" size="" width="" height="" mime="image/jpg" url="" />
+    </logos>
+    <tips>
+      <txt>珊瑚海位于太平洋西南部海域，总面积达479.1万平方公里，是世界上最大的海，相当于半个中国的国土面积。它以众多的珊瑚礁而著名，这里坐落着世界最大的三个珊瑚礁群：大堡礁、塔古拉堡礁和新喀里多尼亚堡礁其中以大堡礁最为著名。色彩斑驳的珊瑚岛礁，镶嵌在碧波万顷的海面上，构成了一幅幅绮丽壮美的图景。</txt>
+      <img>20120416.jpg</img>
+    </tips>
+  </body>
+</lesson>
