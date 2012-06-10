@@ -410,7 +410,7 @@
             [settingData saveSettingData];
             [[NSNotificationCenter defaultCenter] postNotificationName:NOTI_CHANGED_SETTING_VALUE object:nil];
         }
-    } else if (indexPath.section == 3) {
+    } else if (indexPath.section == 4) {
         SettingAboutViewController* about = [[SettingAboutViewController alloc] initWithNibName:@"SettingAboutViewController" bundle:nil];
         [self.navigationController pushViewController:about animated:YES];
         [about release];
