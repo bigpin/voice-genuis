@@ -100,8 +100,6 @@
 		0DC0218F13E45825007170F3 /* BubbleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC0218D13E45825007170F3 /* BubbleCell.m */; };
 		0DC11C601561EB5F00996BC3 /* DayParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC11C5F1561EB5F00996BC3 /* DayParser.m */; };
 		0DCC434D143414FF00F2BCBE /* configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0DCC434C143414FF00F2BCBE /* configuration.plist */; };
-		0DCD635F1436123B002F91F5 /* Default-Landscape.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD635D1436123B002F91F5 /* Default-Landscape.png */; };
-		0DCD63601436123B002F91F5 /* Default-Portrait.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD635E1436123B002F91F5 /* Default-Portrait.png */; };
 		0DD478E713F129250054E726 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E313F129250054E726 /* icon@2x.png */; };
 		0DD478E813F129250054E726 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E413F129250054E726 /* icon.png */; };
 		0DD478E913F129250054E726 /* icon_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DD478E513F129250054E726 /* icon_small.png */; };
@@ -129,6 +127,11 @@
 		95B9657A13FE1499002F6087 /* WaveFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95B9657913FE1499002F6087 /* WaveFile.cpp */; };
 		95CB0A9C1572149B003BA118 /* libisaybio.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95CB0A9A1572149B003BA118 /* libisaybio.d.a */; };
 		95CB0A9D1572149B003BA118 /* libisaybio.s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95CB0A9B1572149B003BA118 /* libisaybio.s.a */; };
+		95D1F7631586438D0040AD7E /* icon_144.png in Resources */ = {isa = PBXBuildFile; fileRef = 95D1F7621586438D0040AD7E /* icon_144.png */; };
+		95D1F765158644E30040AD7E /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 95D1F764158644E30040AD7E /* Default-Portrait~ipad.png */; };
+		95D1F767158644EA0040AD7E /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 95D1F766158644EA0040AD7E /* Default-Portrait@2x~ipad.png */; };
+		95D1F769158644F30040AD7E /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 95D1F768158644F30040AD7E /* Default-Landscape@2x~ipad.png */; };
+		95D1F76B158645270040AD7E /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 95D1F76A158645270040AD7E /* Default-Landscape~ipad.png */; };
 		95E6381B154FB28500A3EAC5 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E6381A154FB28500A3EAC5 /* libMobClickLibrary.a */; };
 		95E6382915542B7A00A3EAC5 /* NSPhoneticSymbol.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E6382815542B7A00A3EAC5 /* NSPhoneticSymbol.m */; };
 		95ED3784142A1E5900DF6BE5 /* libIsaybEncrypt.d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ED3782142A1E5900DF6BE5 /* libIsaybEncrypt.d.a */; };
@@ -326,8 +329,6 @@
 		0DC11C5E1561EB5F00996BC3 /* DayParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayParser.h; sourceTree = "<group>"; };
 		0DC11C5F1561EB5F00996BC3 /* DayParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayParser.m; sourceTree = "<group>"; };
 		0DCC434C143414FF00F2BCBE /* configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = configuration.plist; path = Voice/Resources/Setting/configuration.plist; sourceTree = "<group>"; };
-		0DCD635D1436123B002F91F5 /* Default-Landscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape.png"; path = "Voice/Resources/Other/Default-Landscape.png"; sourceTree = "<group>"; };
-		0DCD635E1436123B002F91F5 /* Default-Portrait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait.png"; path = "Voice/Resources/Other/Default-Portrait.png"; sourceTree = "<group>"; };
 		0DD478E313F129250054E726 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon@2x.png"; path = "Voice/Resources/Other/icon@2x.png"; sourceTree = "<group>"; };
 		0DD478E413F129250054E726 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = Voice/Resources/Other/icon.png; sourceTree = "<group>"; };
 		0DD478E513F129250054E726 /* icon_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_small.png; path = Voice/Resources/Other/icon_small.png; sourceTree = "<group>"; };
@@ -373,6 +374,11 @@
 		95B9657913FE1499002F6087 /* WaveFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveFile.cpp; path = Voice/WaveDecode/WaveFile.cpp; sourceTree = "<group>"; };
 		95CB0A9A1572149B003BA118 /* libisaybio.d.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.d.a; path = Voice/WaveDecode/libisaybio.d.a; sourceTree = "<group>"; };
 		95CB0A9B1572149B003BA118 /* libisaybio.s.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libisaybio.s.a; path = Voice/WaveDecode/libisaybio.s.a; sourceTree = "<group>"; };
+		95D1F7621586438D0040AD7E /* icon_144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_144.png; sourceTree = "<group>"; };
+		95D1F764158644E30040AD7E /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		95D1F766158644EA0040AD7E /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		95D1F768158644F30040AD7E /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		95D1F76A158645270040AD7E /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		95E6381A154FB28500A3EAC5 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMobClickLibrary.a; path = Voice/UMeng/libMobClickLibrary.a; sourceTree = "<group>"; };
 		95E6382715542B7A00A3EAC5 /* NSPhoneticSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSPhoneticSymbol.h; sourceTree = "<group>"; };
 		95E6382815542B7A00A3EAC5 /* NSPhoneticSymbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSPhoneticSymbol.m; sourceTree = "<group>"; };
@@ -896,11 +902,14 @@
 		0DD478E213F128950054E726 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				95D1F76A158645270040AD7E /* Default-Landscape~ipad.png */,
+				95D1F768158644F30040AD7E /* Default-Landscape@2x~ipad.png */,
+				95D1F766158644EA0040AD7E /* Default-Portrait@2x~ipad.png */,
+				95D1F764158644E30040AD7E /* Default-Portrait~ipad.png */,
+				95D1F7621586438D0040AD7E /* icon_144.png */,
 				0D4220D2155D0DA0007B6BBB /* daydetail.png */,
 				0D79487D1413250000E92396 /* Default~iphone.png */,
 				0D79487E1413250000E92396 /* Default@2x.png */,
-				0DCD635D1436123B002F91F5 /* Default-Landscape.png */,
-				0DCD635E1436123B002F91F5 /* Default-Portrait.png */,
 				0DD478E313F129250054E726 /* icon@2x.png */,
 				0DD478E413F129250054E726 /* icon.png */,
 				0DD478E513F129250054E726 /* icon_small.png */,
@@ -1152,8 +1161,6 @@
 				0D7948811413250000E92396 /* Default@2x.png in Resources */,
 				0D9A0155141E36D500FFF508 /* SettingShowTranslationCell.xib in Resources */,
 				0DCC434D143414FF00F2BCBE /* configuration.plist in Resources */,
-				0DCD635F1436123B002F91F5 /* Default-Landscape.png in Resources */,
-				0DCD63601436123B002F91F5 /* Default-Portrait.png in Resources */,
 				0DAAE030155BBB2200D9B3F1 /* DaybyDay in Resources */,
 				0DE1B022155C9C53003A71B9 /* DaybyDayViewController.xib in Resources */,
 				0DE1B027155C9D83003A71B9 /* DaybyDayView.xib in Resources */,
@@ -1172,6 +1179,11 @@
 				0D7F4D8F15633E620072723A /* adsmogo_corner.png in Resources */,
 				0D7F4D9015633E620072723A /* adsmogo_picrollbg.png in Resources */,
 				0D7F4D9115633E620072723A /* AdMoGoWebBrowser.xib in Resources */,
+				95D1F7631586438D0040AD7E /* icon_144.png in Resources */,
+				95D1F765158644E30040AD7E /* Default-Portrait~ipad.png in Resources */,
+				95D1F767158644EA0040AD7E /* Default-Portrait@2x~ipad.png in Resources */,
+				95D1F769158644F30040AD7E /* Default-Landscape@2x~ipad.png in Resources */,
+				95D1F76B158645270040AD7E /* Default-Landscape~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1351,13 +1363,17 @@
 		0D8E166213D471580005CD0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = (
+					armv7,
+					armv6,
+				);
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: DING LI";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lz";
 				PREBINGDING = NO;
