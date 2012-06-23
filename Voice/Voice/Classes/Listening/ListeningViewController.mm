@@ -422,7 +422,11 @@
             break;
         }
         default:
-            break;
+            cell.imgIcon = [[NSString alloc] initWithFormat:@"%@/%@%@", resourcePath, @"teachers/", teacherfemale1];
+            NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"bubble2.png"]];
+            cell.imgName = imgName;
+            [imgName release];
+           break;
     }
     /*NSString* imgName = [[NSString alloc] initWithString:[resourcePath stringByAppendingPathComponent:@"aqua.png"]];
      cell.imgName = imgName;
