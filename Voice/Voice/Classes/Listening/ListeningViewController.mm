@@ -15,7 +15,7 @@
 #import "ListeningVolumView.h"
 #import "RecordingViewController.h"
 #import "SettingViewController.h"
-#import "isaybio.h"
+#import "isaybioDecode.h"
 #import "VoiceAppDelegate.h"
 
 #define LOADINGVIEWTAG      20933
@@ -157,7 +157,7 @@
     loadingText.text = STRING_LOADING_TEXT;
     loadingText.font = [UIFont systemFontOfSize:14];
     loadingText.backgroundColor = [UIColor clearColor];
-    loadingText.textAlignment  = UITextAlignmentCenter;
+    loadingText.textAlignment  = NSTextAlignmentCenter;
     [loadingView addSubview:loadingText];
     [loadingText release];
     loadingView.center = self.view.center;
@@ -228,7 +228,7 @@
     
     char strisbfile[256];
     [self.isbfile getCString:strisbfile maxLength:256 encoding:NSUTF8StringEncoding];
-    [isaybio ISB_Isb:strisbfile toWav:strwavefile];
+    [isaybioDecode ISB_Isb:strisbfile toWav:strwavefile];
     [self removeLoadingView];
     [self initValue];
     [self.navigationItem setHidesBackButton:NO animated:YES];
@@ -352,7 +352,7 @@
             if ([self.teachersArray count] == 3) {
                 teacher1 = [self.teachersArray objectAtIndex:0];
                 teacher2 = [self.teachersArray objectAtIndex:1];
-                teacher3 = [self.teachersArray objectAtIndex:2];
+//                teacher3 = [self.teachersArray objectAtIndex:2];
                 if ([teacher1.teacherid isEqualToString:sentence.techerid]) {
                     nTeacher = 1;
                     [cell setBurnColor:colorvalueR withGreen:colorvalueG withBlue:colorvalueBlue];

@@ -47,9 +47,10 @@
     if (notification!=nil) { 
         
         
-        NSDate *now=[NSDate new]; 
+        NSDate *now = [NSDate new]; 
         
-        notification.fireDate=[now dateByAddingTimeInterval:10];
+        notification.fireDate = [now dateByAddingTimeInterval:10];
+        [now dealloc];
         
         notification.repeatInterval=0;//循环次数，kCFCalendarUnitWeekday一周一次
         

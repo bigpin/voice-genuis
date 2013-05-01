@@ -12,6 +12,14 @@
 #import "MobClick.h"
 #import "NSPhoneticSymbol.h"
 #import "VoiceAppDelegate.h"
+#import "Word.h"
+
+#import "isaybiosscroe.h"
+#import <vector>
+using namespace std;
+
+//弹出信息
+#define ALERT(msg) [[[UIAlertView alloc] initWithTitle:nil message:msg delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show]
 
 @implementation RecordingViewController
 @synthesize recordingdelegate;
@@ -39,7 +47,7 @@
 char *OSTypeToStr(char *buf, OSType t)
 {
 	char *p = buf;
-	char str[4], *q = str;
+	char str[4] = {""}, *q = str;
 	*(UInt32 *)str = CFSwapInt32(t);
 	for (int i = 0; i < 4; ++i) {
 		if (isprint(*q) && *q != '\\')
@@ -57,7 +65,7 @@ char *OSTypeToStr(char *buf, OSType t)
 {
 	char buf[5];
 	const char *dataFormat = OSTypeToStr(buf, format.mFormatID);
-	NSString* description = [[NSString alloc] initWithFormat:@"(%d ch. %s @ %g Hz)", format.NumberChannels(), dataFormat, format.mSampleRate, nil];
+	NSString* description = [[NSString alloc] initWithFormat:@"(%d ch. %s @ %g Hz)", (unsigned int)(format.NumberChannels()), dataFormat, format.mSampleRate, nil];
 	//fileDescription.text = description;
 	[description release];	
 }
@@ -103,6 +111,7 @@ char *OSTypeToStr(char *buf, OSType t)
     } else {
         recordCell.playingButton.enabled = NO;
     }
+    
 	//recordFilePath = (CFStringRef)[NSTemporaryDirectory() stringByAppendingPathComponent: @"recordedFile.wav"];
 	//player->CreateQueueForFile(recordFilePath);
     
@@ -335,8 +344,69 @@ char *OSTypeToStr(char *buf, OSType t)
     NSString* start = STRING_START_RECORDING;
     self.recordingItem.title = start;
     [self stopRecord];
+
+    NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"recordedFile.wav"];
+    [self scoreForSentence:self.sentence file:recordFile];
+    
     [self performSelector:@selector(playingRecordingVoice) withObject:nil afterDelay:0.5];
 
+}
+
+- (int)scoreForSentence:(Sentence*)sentence file:(NSString*)filename
+{
+    FILE* file = fopen([filename cStringUsingEncoding:NSUTF8StringEncoding], "rb");
+    
+    fseeko(file, 0, SEEK_END);
+    long fileLength = ftell(file);
+    
+    fseeko(file, 0, SEEK_SET);
+    short *buffer = (short*)new char[fileLength];
+    
+    int n = fread(buffer, 1, fileLength, file);
+    // 跳到data数据区
+    int nOffset = 2046;
+    
+    if (strncmp((char*)&buffer[nOffset - 2], "data", 4) != 0) {
+        char * p = (char*) &buffer[0];
+        nOffset = 0;
+        while (strncmp(p, "data", 4) != 0) {
+            nOffset += 2;
+            p += 4;
+        }
+//        p += 4;
+        nOffset += 2;
+    }
+
+    NSLog([NSString stringWithFormat:@"%d, %d", n, nOffset]);
+   
+    [isaybios ISAYB_Recognition:[sentence.orintext cStringUsingEncoding:NSUTF8StringEncoding]
+                           From:&buffer[nOffset]
+                         Length:(n / 2) - nOffset
+                             To: &pWord
+                         Length: &nWord
+                       AndScore: &score];
+    
+    delete[] buffer;
+    
+    NSString* tempString = [NSString stringWithFormat:@"<%@>得分：\n", sentence.orintext];
+    score = 0;
+    for(int i = 0;i < [sentence.words count]; i++)
+    {
+        Word* word = [sentence.words objectAtIndex:i];
+        NSComparisonResult cr = [[word text] compare:[NSString stringWithCString:pWord[i].text encoding:NSUTF8StringEncoding] options:NSCaseInsensitiveSearch];
+        if (cr == NSOrderedSame) {
+            double time = [word.endtime doubleValue] - [word.starttime doubleValue];
+            double per = time - (pWord[i].fTimeEd - pWord[i].fTimeSt) / time;
+            score += (30 * (1 - fabs(per)) + 70) / nWord;
+            printf("%f %f %s\n",pWord[i].fTimeSt - pWord[i].fTimeEd, time, pWord[i].text);
+            printf("%d \n", score);
+        }
+        tempString = [tempString stringByAppendingFormat:@"%f -> %f : %s\n", pWord[i].fTimeSt,pWord[i].fTimeEd, pWord[i].text];
+    }
+    
+    tempString = [tempString stringByAppendingFormat:@"Score: %d", score];
+    ALERT(tempString);
+    return score;
 }
 
 - (void) start;
@@ -360,6 +430,12 @@ char *OSTypeToStr(char *buf, OSType t)
         
         // Set the button's state to "stop"
         // btn_record.title = @"Stop";
+        
+        // test score
+//        NSString* resourcePath = [[NSBundle mainBundle] resourcePath];
+//        NSLog(@"%@", resourcePath);
+//        NSString* tempString = [NSString stringWithFormat:@"%@/tmp/test.wav", resourcePath];
+//        [self score:wavefile];
         
         // Start the recorder
         BOOL bOK = recorder->StartRecord(CFSTR("recordedFile.wav"));
@@ -518,7 +594,7 @@ char *OSTypeToStr(char *buf, OSType t)
             cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         }
         cell.textLabel.text = [self getSrcTextString];
-        cell.textLabel.lineBreakMode   = UILineBreakModeWordWrap;
+        cell.textLabel.lineBreakMode   = NSLineBreakByWordWrapping;
         cell.textLabel.numberOfLines   = 0;
         cell.textLabel.font            = [UIFont systemFontOfSize:FONT_SIZE_BUBBLE];
         return cell;
@@ -875,7 +951,7 @@ void propListener(	void *                  inClientData,
     loadingText.text = STRING_RECORDING_ERROR;
     loadingText.font = [UIFont systemFontOfSize:14];
     loadingText.backgroundColor = [UIColor clearColor];
-    loadingText.textAlignment  = UITextAlignmentCenter;
+    loadingText.textAlignment  = NSTextAlignmentCenter;
     loadingText.center = loadingView.center;
     [loadingView addSubview:loadingText];
     [loadingText release];
@@ -905,7 +981,7 @@ void propListener(	void *                  inClientData,
     loadingText.text = STRING_RECORDING_TEXT;
     loadingText.font = [UIFont systemFontOfSize:14];
     loadingText.backgroundColor = [UIColor clearColor];
-    loadingText.textAlignment  = UITextAlignmentCenter;
+    loadingText.textAlignment  = NSTextAlignmentCenter;
     loadingText.center = loadingView.center;
     [loadingView addSubview:loadingText];
     [loadingText release];

@@ -35,6 +35,8 @@
             
             NSString *backgroundImagePath = useDarkBackground ? darkPath : lightPath ;
             UIImage *backgroundImage = [[UIImage imageWithContentsOfFile:backgroundImagePath] stretchableImageWithLeftCapWidth:0.0 topCapHeight:1.0];
+            [darkPath release];
+            [lightPath release];
             self.backgroundView = [[[UIImageView alloc] initWithImage:backgroundImage] autorelease];
 
         } else {

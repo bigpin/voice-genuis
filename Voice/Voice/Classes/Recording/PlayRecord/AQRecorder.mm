@@ -188,7 +188,7 @@ void AQRecorder::SetupAudioFormat(UInt32 inFormatID)
     
     mRecordFormat.mFormatFlags = kLinearPCMFormatFlagIsSignedInteger | kLinearPCMFormatFlagIsPacked;
     
-    mRecordFormat.mChannelsPerFrame = 2;  // 1:单声道；2:立体声
+    mRecordFormat.mChannelsPerFrame = 1;  // 1:单声道；2:立体声
     
     mRecordFormat.mBitsPerChannel = 16; // 语音每采样点占用位数
     
@@ -230,7 +230,13 @@ BOOL AQRecorder::StartRecord(CFStringRef inRecordFile)
 			
 		NSString *recordFile = [NSTemporaryDirectory() stringByAppendingPathComponent: (NSString*)inRecordFile];	
         NSLog(@"%@", recordFile);
-		url = CFURLCreateWithString(kCFAllocatorDefault, (CFStringRef)recordFile, NULL);
+        
+        CFStringRef fileName = (CFStringRef) recordFile;
+        CFStringRef fileNameEscaped = CFURLCreateStringByAddingPercentEscapes(NULL, fileName, NULL, NULL, kCFStringEncodingUTF8);
+        
+        // Create the URL
+        url = CFURLCreateWithString(kCFAllocatorDefault, (CFStringRef)fileNameEscaped, NULL);
+ //		url = CFURLCreateWithString(kCFAllocatorDefault, (CFStringRef)recordFile, NULL);
 		
 		// create the audio file
 		XThrowIfError(AudioFileCreateWithURL(url, kAudioFileWAVEType, &mRecordFormat, kAudioFileFlags_EraseFile,

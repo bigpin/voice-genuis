@@ -14,6 +14,8 @@
 #import "AQPlayer.h"
 #import "RecordingWaveCell.h"
 
+#import "isaybiosscroe.h"
+
 #define FAILEDRECORDINGVIEW_TAG 45505
 #define PLAY_SRC_VOICE_BUTTON_TAG 50001
 #define PLAY_USER_VOICE_BUTTON_TAG 50002
@@ -54,6 +56,11 @@
     NSInteger               nPos;
     NSInteger               nTotalCount;
     NSMutableString*         _psContent;
+    
+    // Score
+    ISAYB5WORD * pWord;
+    int nWord;
+    int score;
 }
 
 @property (nonatomic, assign) NSString* resourcePath;
@@ -95,4 +102,6 @@
 - (void)removeFailedRecordingView;
 - (void)setpscontent;
 - (NSString*)getSrcTextString;
+
+- (int)scoreForSentence:(Sentence*)sentence file:(NSString*)filename;
 @end
